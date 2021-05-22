@@ -1,8 +1,10 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -88,6 +90,8 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create() {
 
+		Assets.instance.init(new AssetManager());
+
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);//可以把监听信息分发给所有的stage
 
@@ -100,6 +104,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 		stage0 = new Stage0(inputMultiplexer);
 		stage1 = new Stage1(inputMultiplexer,world);
+
 
 
 

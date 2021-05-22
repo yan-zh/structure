@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import jdk.internal.loader.Resource;
 
 
@@ -26,6 +28,7 @@ public class MainCharacter extends Actor {
     Animation aniRight;
     Animation aniLeft;
     Animation aniIdle;
+    Animation test;
 
     //老状态
     float state1;
@@ -53,7 +56,7 @@ public class MainCharacter extends Actor {
         shape.setAsBox(1f/PublicData.worldSize_shapeAndPhysics,1.5f/PublicData.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
-        myBodyDef.position.set(10,10.9f);//这个表示物理世界中的米
+        myBodyDef.position.set(10,30.9f);//这个表示物理世界中的米
 
         mySimulation = world.createBody(myBodyDef);
         mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -110,6 +113,26 @@ public class MainCharacter extends Actor {
 
         aniIdle = new Animation(0.1f, regionI);
 
+        test = Assets.instance.bunny.animNormal;
+
+        Action delayedAction = Actions.run(new Runnable() {
+
+
+
+            @Override
+
+            public void run() {
+
+                System.out.println("time:" + (System.currentTimeMillis() / 1000) + ",执行something");
+
+            }
+
+        });
+
+        Action action = Actions.delay(20f,delayedAction);//这个数就是20s
+
+        this.addAction(Actions.sequence(action));
+
     }
 
     @Override
@@ -130,13 +153,14 @@ public class MainCharacter extends Actor {
 
         statetime += delta;//用于调整主角要展示的图片的时间标记,****************这里调整了，用了传入的delta，看看行不行
 
-        if(state == PublicData.marioLeft) {
-            currentFrame = (TextureRegion)aniLeft.getKeyFrame(statetime, true);//根据当前“时间”提供该播放的图片，后面的true是循环播放
-        }else if (state == PublicData.marioRight) {
-            currentFrame = (TextureRegion)aniRight.getKeyFrame(statetime, true);
-        }else if (state == PublicData.marioIdle) {
-            currentFrame = (TextureRegion)aniIdle.getKeyFrame(statetime, true);
-        }
+//        if(state == PublicData.marioLeft) {
+//            currentFrame = (TextureRegion)aniLeft.getKeyFrame(statetime, true);//根据当前“时间”提供该播放的图片，后面的true是循环播放
+//        }else if (state == PublicData.marioRight) {
+//            currentFrame = (TextureRegion)aniRight.getKeyFrame(statetime, true);
+//        }else if (state == PublicData.marioIdle) {
+//            currentFrame = (TextureRegion)aniIdle.getKeyFrame(statetime, true);
+//        }
+        currentFrame = (TextureRegion)test.getKeyFrame(statetime,true);
 
         super.act(delta);
     }
