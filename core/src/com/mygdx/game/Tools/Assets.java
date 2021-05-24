@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.Tools;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.mygdx.game.Constants.DisplayConstants;
 
 /**
  * @auther SHI Zhancheng
@@ -74,7 +75,7 @@ public class Assets implements Disposable, AssetErrorListener {
         // 设置资源管理的错误处理对象
         assetManager.setErrorListener(this);
         // 预加载纹理集资源
-        assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
+        assetManager.load(DisplayConstants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
         // 预加载声音
         assetManager.load("core/assets/sounds/jump.wav", Sound.class);
         assetManager.load("core/assets/sounds/jump_with_feather.wav", Sound.class);
@@ -92,7 +93,7 @@ public class Assets implements Disposable, AssetErrorListener {
             Gdx.app.debug(TAG, "Asset: "+a);
         }
 
-        TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
+        TextureAtlas atlas = assetManager.get(DisplayConstants.TEXTURE_ATLAS_OBJECTS);
 
         // 激活平滑纹理过滤
         for (Texture t :

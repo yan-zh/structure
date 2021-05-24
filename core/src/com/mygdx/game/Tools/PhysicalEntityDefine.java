@@ -1,8 +1,8 @@
-package com.mygdx.game;
+package com.mygdx.game.Tools;
 
-import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.mygdx.game.Constants.ActConstants;
 
 public class PhysicalEntityDefine {//定义了各种物理实体，在各个类中需要加入物理实体时使用
     static BodyDef bd =new BodyDef();
@@ -57,53 +57,13 @@ public class PhysicalEntityDefine {//定义了各种物理实体，在各个类�
         //碰撞默认全碰撞
         //sensor默认否
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox((width-0.1f)/PublicData.worldSize_shapeAndPhysics,height/PublicData.worldSize_shapeAndPhysics);
+        shape.setAsBox((width-0.1f)/ ActConstants.worldSize_shapeAndPhysics,height/ ActConstants.worldSize_shapeAndPhysics);
         fd1.shape = shape;
 
         Body b1 = world.createBody(bd1);
-        b1.createFixture(fd1).setUserData(PublicData.ground);
-
-
-        //做侧面的墙小块
-//        fd1.friction = 1;
-//        shape.setAsBox(0.01f,height/PublicData.worldSize_shapeAndPhysics);
-//        fd1.shape = shape;
-//
-//
-//
-//        bd1.position.set((float)(positionX+0.5f*width*Math.cos(bd1.angle)),(float)(positionY+Math.sin(bd1.angle)*0.5*width));
-//        bd1.position.set(bd1.position.sub(translate));
-//        Body b2 = world.createBody(bd1);
-//        b2.createFixture(fd1).setUserData(PublicData.wall);
-//
-//
-//
-//
-//
-//        bd1.position.set((float)(positionX-0.5f*width*Math.cos(bd1.angle)),(float)(positionY-Math.sin(bd1.angle)*0.5*width));
-//        bd1.position.set(bd1.position.sub(translate));
-//        Body b3 = world.createBody(bd1);
-//        b3.createFixture(fd1).setUserData(PublicData.wall);
-
-
-
-
-
-
-
+        b1.createFixture(fd1).setUserData(ActConstants.ground);
 
     }
-
-
-    public static void defineWall(){
-
-        bd.type = BodyDef.BodyType.StaticBody;
-
-
-        fd.restitution = 0; //弹性，越大越弹
-        fd.friction = 1f;
-    }
-
 
     public static void defineCharacter(){
 

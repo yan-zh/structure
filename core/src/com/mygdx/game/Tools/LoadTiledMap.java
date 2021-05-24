@@ -1,16 +1,17 @@
-package com.mygdx.game;
+package com.mygdx.game.Tools;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.game.Constants.ActConstants;
 
-public class Scene2 {
+public class LoadTiledMap {
 
     static FixtureDef fixtureDef;
     static BodyDef bodyDef;
     static PolygonShape shape;
 
-    public Scene2(){
+    public LoadTiledMap(){
 
     }
 
@@ -67,7 +68,7 @@ public class Scene2 {
 //            System.out.println(tiledMap.getLayers().get("object-rectangle").getObjects().get(i).getProperties().get("height").toString());
 //            System.out.println(tiledMap.getLayers().get("object-rectangle").getObjects().get(i).getProperties().get("rotation").toString());
 
-            PhysicalEntityDefine.createStandardBlock(positionX/PublicData.worldSize_pAndPhysic,positionY/PublicData.worldSize_pAndPhysic,width/PublicData.worldSize_pAndPhysic,height/PublicData.worldSize_pAndPhysic,-angle);
+            PhysicalEntityDefine.createStandardBlock(positionX/ ActConstants.worldSize_pAndPhysic,positionY/ ActConstants.worldSize_pAndPhysic,width/ ActConstants.worldSize_pAndPhysic,height/ ActConstants.worldSize_pAndPhysic,-angle);
         }
 
         //PhysicalEntityDefine.createStandardBlock(6.7f,5,9.8f,2.4f,15);//前面都是物理世界的量，最后一个是弧度，物理世界用的弧度

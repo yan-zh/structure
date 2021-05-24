@@ -1,17 +1,16 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level1.Stage1;
+import com.mygdx.game.Tools.Assets;
+
 /* *这*************************************************这个是监听换舞台的版本
 public class MyGdxGame extends ApplicationAdapter {
 
@@ -78,7 +77,6 @@ public class MyGdxGame extends ApplicationAdapter {
 public class MyGdxGame extends ApplicationAdapter {
 
 
-	Stage stage0;
 	Stage stage1;
 
 	World world;
@@ -86,26 +84,25 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	InputMultiplexer inputMultiplexer;
 
+	public static Stage currentStage;
+
 
 	@Override
 	public void create() {
 
+		//加载全部资源
 		Assets.instance.init(new AssetManager());
 
+
+		//准备分发监听
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);//可以把监听信息分发给所有的stage
-
-		PublicData.currentStage = PublicData.Stage0;
-
-		world = new World(new Vector2(0,-10),true);
-		world.setContactListener(new MyContactListener());
-
-		PhysicalEntityDefine.boundWorld(world);
-
-		stage0 = new Stage0(inputMultiplexer);
-		stage1 = new Stage1(inputMultiplexer,world);
+		//监听分发处理器放入公共域
+		ActConstants.inputMultiplexer = inputMultiplexer;
 
 
+		//设置当前舞台为stage1
+		currentStage = new Stage1(inputMultiplexer);
 
 
 
@@ -114,20 +111,12 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
-
+		//清屏
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-
-		switch (PublicData.currentStage) {
-			case PublicData.Stage0:
-				stage0.act();
-				stage0.draw();
-				break;
-			case PublicData.Stage1:
-				stage1.act();
-				stage1.draw();
-				break;
-		}
+		//运行当前舞台
+		currentStage.act();
+		currentStage.draw();
 
 	}
 

@@ -1,7 +1,9 @@
-package com.mygdx.game;
+package com.mygdx.game.Tools;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.MainCharacter;
 
 public class CameraFocus {
     OrthographicCamera camerab2d;
@@ -15,11 +17,11 @@ public class CameraFocus {
 
    
     //物理世界和皮肤的摄像头错位了，不知道为什么，但是好像不影响皮肤的显示和动作的流畅
-    CameraFocus(OrthographicCamera camerab2d,MainCharacter characterMain,OrthographicCamera camera){
-        this.mainCharacter = characterMain;
+    public CameraFocus(OrthographicCamera camerab2d, OrthographicCamera camera){
+        this.mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         this.camerab2d = camerab2d;
         leftMouse = rightMouse = upMouse = downMouse = 50;
-        state = PublicData.CameraCharacterControl;
+        state = ActConstants.CameraCharacterControl;
         this.camera = camera;
 
 
@@ -29,7 +31,7 @@ public class CameraFocus {
 
     public void focusOn(float x, float y, float rate){
         camerab2d.translate((x-camerab2d.position.x)/rate,(y-camerab2d.position.y)/rate);
-        camera.position.set(camerab2d.position.x*PublicData.worldSize_pAndPhysic,camerab2d.position.y*PublicData.worldSize_pAndPhysic,0);
+        camera.position.set(camerab2d.position.x* ActConstants.worldSize_pAndPhysic,camerab2d.position.y* ActConstants.worldSize_pAndPhysic,0);
 
         // System.out.println("physics camera x"+camerab2d.position.x);
         //System.out.println("physics camera y"+camerab2d.position.y);
