@@ -76,7 +76,7 @@ public class MyGdxGame extends ApplicationAdapter {
 //**************************t跳的低是因为有向下的速度，直接给动量就抵充了一部分速度，应该向下速度清零再给动量
 public class MyGdxGame extends ApplicationAdapter {
 
-	// test git
+	// test2
 	Stage stage1;
 
 	World world;
