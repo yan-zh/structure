@@ -5,7 +5,7 @@ import com.mygdx.game.abstraction.ContactReaction;
 
 public class GroundAndMainCharacter implements ContactReaction {
 
-    public static long contactID = 0x11;
+    public static long contactID = 0b11;
 
     public GroundAndMainCharacter() {
         ActConstants.contactList.put(contactID,this);

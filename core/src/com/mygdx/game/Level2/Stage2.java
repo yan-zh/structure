@@ -8,17 +8,19 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
+import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpFire;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
+import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.abstraction.Fairy;
 
 public class Stage2 extends Stage {
 
@@ -84,13 +86,18 @@ public class Stage2 extends Stage {
         cameraFocus.focusOn(0,5,1);//这里单位是米
 
         //把stage1加入公共域，用于之后的析构和交互
-        ActConstants.publicInformation.put("Stage1",this);
+        ActConstants.publicInformation.replace("CurrentStage",this);
 
         //为主角添加一个技能，具体有关添加技能的细节在这个类里会写
-        ActConstants.skillGroups[1]=new SkillGourpFire();
+        //ActConstants.skillGroups[1]=new SkillGourpFire();
 
         //为这一关用到的物理碰撞监听添加一个函数
         new GroundAndMainCharacter();
+        new WindFairyAndMainCharacter();
+
+        this.addActor(new Fairy(new SkillGourpFire(),1, Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+
+
 
 
 
@@ -102,6 +109,13 @@ public class Stage2 extends Stage {
 
         world.step(1.0f/60.0f, 6,6);//进行一次物理世界模拟，第一个 时间步，和系统时间同步；速度和位置的模拟精度，越大越准
         //上面这个要放在各个stage里，因为不到这个stage运行的时候stage对应的物理世界是不动的
+
+        if(ActConstants.BodyDeleteList.size()!=0){
+            for(int i = 0; i<ActConstants.BodyDeleteList.size(); i++){
+                world.destroyBody(ActConstants.BodyDeleteList.get(i));
+                ActConstants.BodyDeleteList.remove(i);
+            }
+        }
 
         cameraFocus.innerBoundary(6,7,19,6);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
 
@@ -126,5 +140,9 @@ public class Stage2 extends Stage {
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
+    }
+
+    public World getWorld(){
+        return world;
     }
 }
