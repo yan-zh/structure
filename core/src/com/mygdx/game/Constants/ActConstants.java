@@ -1,12 +1,12 @@
 package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.SkillGroup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActConstants {
@@ -49,14 +49,19 @@ public class ActConstants {
     static
     {
         publicInformation = new HashMap<String,Object>();
+        publicInformation.put("CurrentStage",null);
     }
 
     public static SkillGroup[] skillGroups;
     static{
         skillGroups = new SkillGroup[5];
+
     }
 
     public static int currentSkillGroup;
+    static{
+        currentSkillGroup=1;
+    }
 
 
 
@@ -68,10 +73,19 @@ public class ActConstants {
     }
 
 
-    public static long mainCharacterID = 0x1;
-    public static long ground = 0x10;
+    public static long mainCharacterID = 0b1;
+    public static long ground = 0b10;
+    public static long windFairyID = 0b100;
     //碰撞类型ID表
-    //  0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0011
+    //  0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0010
+   //   0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0011
+
+
+    public static ArrayList<Body> BodyDeleteList;
+    static{
+        BodyDeleteList = new ArrayList<>();
+    }
+
 
 
 

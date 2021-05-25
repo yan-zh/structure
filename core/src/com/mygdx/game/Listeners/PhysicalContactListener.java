@@ -16,7 +16,11 @@ public class PhysicalContactListener implements ContactListener{
 
         long result = faData+fbData;
 
-        ActConstants.contactList.get(result).react();
+        System.out.println(Integer.toBinaryString((int)result));
+        if(ActConstants.contactList.get(result)!=null){
+            ActConstants.contactList.get(result).react();
+        }
+
         
 
  //跳跃使用一个跳跃标记，踩到地面跳跃标记为2（二段跳）,摁一下上键就减一，地图边上用普通块贴一下，分为地面块和普通块
