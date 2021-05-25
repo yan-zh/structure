@@ -24,7 +24,7 @@ public class Fairy extends Actor {
 
     TextureRegion currentFrame;
 
-    boolean state;
+    public boolean state;//true就是存在
 
     float statetime;
 
@@ -39,6 +39,7 @@ public class Fairy extends Actor {
         this.skillGroup = skillGroup;
         this.numberPosition = numberPosition;
 
+        state=true;
 
         this.setX(x);
         this.setY(y);
@@ -78,7 +79,8 @@ public class Fairy extends Actor {
 
         statetime += delta;//用于调整主角要展示的图片的时间标记,****************这里调整了，用了传入的delta，看看行不行
 
-        currentFrame = (TextureRegion)wait.getKeyFrame(statetime,true);
+        if(state==true)currentFrame = (TextureRegion)wait.getKeyFrame(statetime,true);
+        else currentFrame = (TextureRegion)absorb.getKeyFrame(statetime,true);
 
 
     }
@@ -93,8 +95,11 @@ public class Fairy extends Actor {
 
     @Override
     public boolean remove() {
-        ActConstants.BodyDeleteList.add(mySimulation);
         ActConstants.publicInformation.remove(name);
         return super.remove();
+    }
+
+    public void removeBody(){
+        ActConstants.BodyDeleteList.add(mySimulation);
     }
 }
