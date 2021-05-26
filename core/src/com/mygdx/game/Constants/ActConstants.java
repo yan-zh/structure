@@ -74,7 +74,7 @@ public class ActConstants {
 
 
     public static long mainCharacterID = 0b1;
-    public static long ground = 0b10;
+    public static long groundID = 0b10;
     public static long windFairyID = 0b100;
     //碰撞类型ID表
     //  0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0010
@@ -86,6 +86,12 @@ public class ActConstants {
         BodyDeleteList = new ArrayList<>();
     }
 
+
+    //yzh**********************
+
+    public static long windAttackID = 0b10000;
+
+    //yzh_________________________
 
 
 

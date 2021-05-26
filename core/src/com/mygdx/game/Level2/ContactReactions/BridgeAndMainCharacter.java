@@ -6,6 +6,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
+import com.mygdx.game.abstraction.UserData;
 
 public class BridgeAndMainCharacter implements ContactReaction {
     public static long contactID = 0b1001;
@@ -17,11 +18,12 @@ public class BridgeAndMainCharacter implements ContactReaction {
     }
 
     @Override
-    public void react() {
+    public void react(UserData userData1, UserData userData2) {
         brokenBridge brokenBridge = ((brokenBridge)ActConstants.publicInformation.get("brokenBridge"));
         MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
-
-        if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
+        ActConstants.MainCharacterState.replace("onGround",true);
+        ActConstants.MainCharacterState.replace("repulse",false);
+        if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y>0)
         {
             brokenBridge.removeBody();
             brokenBridge.state = false;

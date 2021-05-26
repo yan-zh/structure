@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.abstraction.UserData;
 
 public class brokenBridge extends Actor {
    Body mySimulation;
@@ -55,7 +56,7 @@ public class brokenBridge extends Actor {
       mySimulation = world.createBody(myBodyDef);
       myFixture = mySimulation.createFixture(myFixtureDef);
 
-      myFixture.setUserData(actorId);
+      myFixture.setUserData(new UserData(actorId, "brokenBridge"));
 
       this.name = name;
       ActConstants.publicInformation.put(name, this);

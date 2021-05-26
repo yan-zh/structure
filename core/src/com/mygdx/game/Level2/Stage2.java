@@ -15,7 +15,7 @@ import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
 import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
-import com.mygdx.game.Level2.SkillGroupManager.SkillGourpFire;
+import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.Assets;
@@ -23,8 +23,9 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.Fairy;
+import com.mygdx.game.abstraction.MyStage;
 
-public class Stage2 extends Stage {
+public class Stage2 extends MyStage {
 
     World world;
 
@@ -98,7 +99,7 @@ public class Stage2 extends Stage {
         new WindFairyAndMainCharacter();
         new BridgeAndMainCharacter();
 
-        this.addActor(new Fairy(new SkillGourpFire(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
         //Add brokenBridge
         this.addActor(new brokenBridge(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 500, 500, ActConstants.brokenBridgeID, world, "brokenBridge"));
 

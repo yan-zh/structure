@@ -1,7 +1,7 @@
 package com.mygdx.game.Tools;
 
 public class MyVector {
-    public static float[] getVector(float x1, float y1, float x2, float y2){
+    public static float[] getStandardVector(float x1, float y1, float x2, float y2){
         float[] begin = new float[2];
         begin[0]=x1;
         begin[1]=y1;

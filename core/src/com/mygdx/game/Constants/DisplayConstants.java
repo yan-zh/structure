@@ -13,8 +13,10 @@ public class DisplayConstants {
     public static final float VIEWPORT_GUI_WIDTH = 800f;
     // GUI 视口高度
     public static final float VIEWPORT_GUI_HEIGHT = 480f;
+
     // 纹理集描述文件路径
     public static final String TEXTURE_ATLAS_OBJECTS = "core/assets/images-out/canyonBunny.atlas";
+    public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_1 = "core/assets/images_level/level1.atlas";
     // 01关卡文件路径
     public static final String LEVEL_01 = "core/assets/levels/level-01.png";
     // 初始化玩家生命数
