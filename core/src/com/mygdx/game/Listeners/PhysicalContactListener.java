@@ -1,8 +1,8 @@
 package com.mygdx.game.Listeners;
 
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.abstraction.UserData;
 
 public class PhysicalContactListener implements ContactListener{
     @Override
@@ -11,75 +11,28 @@ public class PhysicalContactListener implements ContactListener{
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
 
-        long faData = (long) fa.getUserData();
-        long fbData = (long) fb.getUserData();
+//        long faData = (long) fa.getUserData();
+//        long fbData = (long) fb.getUserData();
+//
+//        long result = faData+fbData;
 
-        long result = faData+fbData;
+        UserData faData = (UserData)fa.getUserData();
+        UserData fbData = (UserData)fb.getUserData();
+
+        long result = faData.contactId+fbData.contactId;
 
         System.out.println(Integer.toBinaryString((int)result));
         if(ActConstants.contactList.get(result)!=null){
-            ActConstants.contactList.get(result).react();
+            ActConstants.contactList.get(result).react(faData,fbData);
+        }
+        if(ActConstants.contactList.get(faData.contactId)!=null){
+            ActConstants.contactList.get(faData.contactId).react(faData,fbData);
+        }
+        if(ActConstants.contactList.get(fbData.contactId)!=null){
+            ActConstants.contactList.get(fbData.contactId).react(faData,fbData);
         }
 
-        
 
- //跳跃使用一个跳跃标记，踩到地面跳跃标记为2（二段跳）,摁一下上键就减一，地图边上用普通块贴一下，分为地面块和普通块
-
-//两个指定物体碰撞后
-//        if( ((faData.equals("ground")|| fbData.equals("ground"))&&(faData.equals("main character") || fbData.equals("main character")))){
-//            ActConstants.MainCharacterState.replace("onGround",true);
-//            ActConstants.MainCharacterState.replace("repulse",false);
-//        }
-//
-//
-//
-//        if( ((faData.equals("back")|| fbData.equals("back"))&&(faData.equals("main character") || fbData.equals("main character")))){
-//            ActConstants.MainCharacterState.replace("repulse",true);
-//            ActConstants.MainCharacterState.replace("goLeft",false);
-//            ActConstants.MainCharacterState.replace("goRight",false);
-//            if(faData.equals("main character")){
-//                Vector2 direction = fb.getBody().getPosition().sub(fa.getBody().getPosition());
-//
-//                if(direction.y>=0){
-//                    ActConstants.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(0,-400), ActConstants.mainCharacter.getMySimulation().getPosition(),true);
-//                    System.out.println("0"+"1");
-//                }else{
-//                    ActConstants.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(0,400), ActConstants.mainCharacter.getMySimulation().getPosition(),true);
-//                    System.out.println("`"+"1");
-//                }
-//
-//                if(direction.x>=0){
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(400,0),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                }else{
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(-400,0),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                }
-//
-//
-//                System.out.println(direction+"1");
-//            }else{
-//                Vector2 direction = fa.getBody().getPosition().sub(fb.getBody().getPosition());
-//
-//                if(direction.y>=0){
-//                    ActConstants.mainCharacter.getMySimulation().setLinearVelocity(ActConstants.mainCharacter.getMySimulation().getLinearVelocity().x,-5);
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(0,-400),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                    System.out.println("0"+"2");
-//                }else{
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(0,400),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                    ActConstants.mainCharacter.getMySimulation().setLinearVelocity(ActConstants.mainCharacter.getMySimulation().getLinearVelocity().x,5);
-//                    System.out.println("1"+"2");
-//                }
-//
-//                if(direction.x>=0){
-//                    ActConstants.mainCharacter.getMySimulation().setLinearVelocity(-5, ActConstants.mainCharacter.getMySimulation().getLinearVelocity().y);
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(400,0),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                }else{
-//                    ActConstants.mainCharacter.getMySimulation().setLinearVelocity(5, ActConstants.mainCharacter.getMySimulation().getLinearVelocity().y);
-//                    //PublicData.mainCharacter.getMySimulation().applyLinearImpulse(new Vector2(-400,0),PublicData.mainCharacter.getMySimulation().getPosition(),true);
-//                }
-//
-//                System.out.println(direction+"2");
-//            }
-//        }
 
         //之后也可以获得碰撞点坐标等
         //还可以把刚体设置为传感器，就是会检测到碰撞但是物理世界里不与其它刚体产生相互作用

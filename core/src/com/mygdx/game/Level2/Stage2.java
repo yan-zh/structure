@@ -8,9 +8,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
+import com.mygdx.game.Level2.ContactReactions.WindAttack;
 import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Platform;
@@ -22,10 +22,10 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.Fairy;
+import com.mygdx.game.abstraction.MyStage;
 
-public class Stage2 extends Stage {
+public class Stage2 extends MyStage {
 
-    World world;
 
     Box2DDebugRenderer boxRender;//物理世界绘制器
     OrthographicCamera cameraPhysic;//物理世界相机
@@ -96,8 +96,9 @@ public class Stage2 extends Stage {
         //为这一关用到的物理碰撞监听添加一个函数
         new GroundAndMainCharacter();
         new WindFairyAndMainCharacter();
+        new WindAttack();
 
-        this.addActor(new Fairy(new SkillGourpFire(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
 
 

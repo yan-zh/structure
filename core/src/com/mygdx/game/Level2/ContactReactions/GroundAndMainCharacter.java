@@ -2,6 +2,7 @@ package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.abstraction.ContactReaction;
+import com.mygdx.game.abstraction.UserData;
 
 public class GroundAndMainCharacter implements ContactReaction {
 
@@ -12,11 +13,10 @@ public class GroundAndMainCharacter implements ContactReaction {
     }
 
     @Override
-    public void react() {
+    public void react(UserData userData1, UserData userData2) {
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
 
     }
-
 
 }
