@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.game.Constants.DisplayConstants;
@@ -26,9 +27,12 @@ public class Assets implements Disposable, AssetErrorListener {
     private AssetManager assetManager;
 
     // 创建内部类变量
+    public AssetMainCharacter mainCharacter;
+
+    // goldCoin 被修改了
+    public AssetGoldCoin goldCoin;
     public AssetBunny bunny;
     public AssetRock rock;
-    public AssetGoldCoin goldCoin;
     public AssetFeather feather;
     public AssetLevelDecoration levelDecoration;
 
@@ -76,6 +80,7 @@ public class Assets implements Disposable, AssetErrorListener {
         assetManager.setErrorListener(this);
         // 预加载纹理集资源
         assetManager.load(DisplayConstants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
+        assetManager.load(DisplayConstants.TEXTURE_ATLAS_OBJECTS_LEVEL_1, TextureAtlas.class);
         // 预加载声音
         assetManager.load("core/assets/sounds/jump.wav", Sound.class);
         assetManager.load("core/assets/sounds/jump_with_feather.wav", Sound.class);
@@ -105,11 +110,19 @@ public class Assets implements Disposable, AssetErrorListener {
         fonts = new AssetFonts();
         bunny = new AssetBunny(atlas);
         rock = new AssetRock(atlas);
-        goldCoin = new AssetGoldCoin(atlas);
+//        goldCoin = new AssetGoldCoin(atlas);
         feather = new AssetFeather(atlas);
         levelDecoration = new AssetLevelDecoration(atlas);
         sounds = new AssetSounds(assetManager);
         music = new AssetMusic(assetManager);
+
+        // 加载测试纹理集
+        TextureAtlas atlas_test = assetManager.get(DisplayConstants.TEXTURE_ATLAS_OBJECTS_LEVEL_1);
+        // 主角类
+        mainCharacter = new AssetMainCharacter(atlas_test);
+
+        goldCoin = new AssetGoldCoin(atlas_test);
+        // 测试对象
 
 
     }
@@ -129,7 +142,49 @@ public class Assets implements Disposable, AssetErrorListener {
     }
 
 
+
     // 资源内部类：玩家角色
+    // 主角资源
+    public class AssetMainCharacter {
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animRun;
+
+        public AssetMainCharacter(TextureAtlas atlas){
+            main = atlas.findRegion("ygg_Attack A");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("ygg_Attack A");
+            animBreath = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("ygg_Attack A");
+            animRun = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_REVERSED);
+        }
+    }
+
+    // 资源内部类：金币道具
+    public class AssetGoldCoin {
+        public final AtlasRegion goldCoin;
+        public final Animation animGoldCoin;
+
+
+        public AssetGoldCoin (TextureAtlas atlas) {
+            goldCoin = atlas.findRegion("Jubokko_Idle");
+
+            // Animation: Gold Coin
+            Array<AtlasRegion> regions = atlas.findRegions("Jubokko_Idle");
+            AtlasRegion region = regions.first();
+            for (int i = 0; i<10;i++)
+                regions.insert(0,region);
+            animGoldCoin = new Animation(1.0f/20f,regions,
+                    Animation.PlayMode.LOOP_REVERSED);
+
+        }
+
+    }
+
     public class AssetBunny {
         public final AtlasRegion head;
         public final Animation animNormal;
@@ -173,27 +228,7 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
-    // 资源内部类：金币道具
-    public class AssetGoldCoin {
-        public final AtlasRegion goldCoin;
-        public final Animation animGoldCoin;
 
-
-        public AssetGoldCoin (TextureAtlas atlas) {
-            goldCoin = atlas.findRegion("item_gold_coin");
-
-            // Animation: Gold Coin
-            Array<AtlasRegion> regions =
-                    atlas.findRegions("anim_gold_coin");
-            AtlasRegion region = regions.first();
-            for (int i = 0; i<10;i++)
-                regions.insert(0,region);
-            animGoldCoin = new Animation(1.0f/20f,regions,
-                    Animation.PlayMode.LOOP_PINGPONG);
-
-        }
-
-    }
 
     // 资源内部类：羽毛道具
     public class AssetFeather {
@@ -251,4 +286,6 @@ public class Assets implements Disposable, AssetErrorListener {
             song01 = am.get("core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
         }
     }
+
+
 }

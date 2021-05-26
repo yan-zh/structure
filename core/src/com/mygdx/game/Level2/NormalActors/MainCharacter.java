@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
-import com.mygdx.game.abstraction.UserData;
 
 
 public class MainCharacter extends Actor {
@@ -48,7 +47,7 @@ public class MainCharacter extends Actor {
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
-        mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.mainCharacterID,"MainCharacter"));
+        mySimulation.createFixture(myFixtureDef).setUserData(ActConstants.mainCharacterID);
 
 
         //内存显示区
@@ -65,7 +64,7 @@ public class MainCharacter extends Actor {
 
     public void prepareForPicture() {
 
-        test = Assets.instance.bunny.getAnimCopterRotate;
+        test = Assets.instance.mainCharacter.animBreath;
 
         Action delayedAction = Actions.run(new Runnable() {
 
