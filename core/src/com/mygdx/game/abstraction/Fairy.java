@@ -65,7 +65,7 @@ public class Fairy extends Actor {
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         myFixture = mySimulation.createFixture(myFixtureDef);
-        myFixture.setUserData(actorId);
+        myFixture.setUserData(new UserData(actorId,name));
 
 
         this.name = name;

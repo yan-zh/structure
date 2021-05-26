@@ -76,6 +76,8 @@ public class UserInputListener extends InputListener {
             System.out.println("鼠标点击");
             if(button==1){
                 ActConstants.skillGroups[ActConstants.currentSkillGroup].skill1(x,y);
+            }else{
+                ActConstants.skillGroups[ActConstants.currentSkillGroup].skill2(x,y);
             }
         }
         return super.touchDown(event, x, y, pointer, button);
