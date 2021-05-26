@@ -64,7 +64,7 @@ public class MainCharacter extends Actor {
 
     public void prepareForPicture() {
 
-        test = Assets.instance.bunny.animNormal;
+        test = Assets.instance.mainCharacter.animBreath;
 
         Action delayedAction = Actions.run(new Runnable() {
 
