@@ -13,6 +13,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
 import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.NormalActors.Platform;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpFire;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
@@ -53,6 +54,7 @@ public class Stage2 extends Stage {
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
         this.addActor(new MainCharacter(world,0* ActConstants.worldSize_pAndPhysic,10f* ActConstants.worldSize_pAndPhysic));
+        this.addActor(new Platform(world,10* ActConstants.worldSize_pAndPhysic,20f* ActConstants.worldSize_pAndPhysic));
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
