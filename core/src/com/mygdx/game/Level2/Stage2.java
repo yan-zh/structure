@@ -96,7 +96,7 @@ public class Stage2 extends MyStage {
         new WindFairyAndMainCharacter();
         new WindAttack();
 
-        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
 
 
@@ -117,6 +117,7 @@ public class Stage2 extends MyStage {
                 ActConstants.BodyDeleteList.remove(i);
             }
         }
+
 
         cameraFocus.innerBoundary(6,7,19,6);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
 

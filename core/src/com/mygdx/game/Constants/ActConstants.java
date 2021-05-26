@@ -3,6 +3,7 @@ package com.mygdx.game.Constants;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.SkillGroup;
 

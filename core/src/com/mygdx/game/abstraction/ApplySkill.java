@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import org.graalvm.compiler.lir.LIRInstruction;
 
@@ -30,18 +31,26 @@ public class ApplySkill extends Actor {
     public boolean state;//true就是存在
 
     boolean fireMark;
-    boolean flyMark;
-    boolean contactMark;
+    public boolean flyMark;
+    public boolean contactMark;
 
+    float stateTime;
+    float stateTimeContact;
 
     World world;
 
     static int bulletMark=0;
 
+    short count;
+
     float drawX;
     float drawY;
 
+    float[] direction;
+
     public ApplySkill(Animation prepare, Animation fly, Animation contact,float x, float y, float[] direction, long actorId) {
+
+        this.direction = direction;
 
         bulletMark++;
 
@@ -82,68 +91,65 @@ public class ApplySkill extends Actor {
         flyMark=true;
         contactMark=false;
 
-        Action delayedAction = Actions.run(new Runnable() {
-            @Override
-            public void run() {
-                fireMark=false;
-            }
-        });
-
-        Action action = Actions.delay(0.3f,delayedAction);//这个数就是1s
-        this.addAction(action);
-
-
+        stateTime=0;
+        stateTimeContact=0;
+        count=0;
         currentFrameContact = (TextureRegion) contact.getKeyFrames()[0];
 
     }
 
     @Override
     public void act(float delta) {
+        if(contactMark==false){
+            drawX = (mySimulation.getPosition().x-0.7f)*50f;
+            drawY = (mySimulation.getPosition().y-0.45f)*50f;
+        }
+
+        stateTime += delta;
+
 
         super.act(delta);
-        if(fireMark==true) currentFramePrepare = (TextureRegion) prepare.getKeyFrame(delta,false);
+        if(fireMark==true) currentFramePrepare = (TextureRegion) prepare.getKeyFrame(stateTime,false);
+        if(prepare.isAnimationFinished(stateTime)) fireMark=false;
 
-        if(flyMark==true) currentFrameFly = (TextureRegion) fly.getKeyFrame(delta,true);
+        if(flyMark==true) currentFrameFly = (TextureRegion) fly.getKeyFrame(stateTime,true);
 
-        if(contactMark==true)currentFrameContact = (TextureRegion) contact.getKeyFrame(delta,false);
+        if(contactMark==true){
+            stateTimeContact +=delta;
+            currentFrameContact = (TextureRegion) contact.getKeyFrame(stateTimeContact,false);
 
+        }
+        if(contact.isAnimationFinished(stateTimeContact)){
+            ActConstants.publicInformation.remove(bulletMark);
+            this.remove();
+        }
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        drawX = (mySimulation.getPosition().x-0.7f)*50f;
-        drawY = (mySimulation.getPosition().y-0.45f)*50f;
 
         super.draw(batch, parentAlpha);
-        if(fireMark==true) batch.draw(currentFramePrepare,drawX, drawY);
+        if(fireMark==true){
+        float cos = MyVector.countAngle(0,1,direction[0],direction[1]);
+        float angle = (float)Math.acos(cos);
+        if(direction[0]<0){
+            angle = -angle;
+        }
+            batch.draw(currentFramePrepare,
+                    drawX,drawY,
+                    (float)0.5*currentFramePrepare.getRegionWidth(),(float)0.5*currentFramePrepare.getRegionHeight(),currentFramePrepare.getRegionWidth(),
+                    currentFramePrepare.getRegionWidth(),(float)1.0,(float)1.0,angle,true);
+        }
+
 
         if(flyMark==true) batch.draw(currentFrameFly,drawX, drawY);
 
         if(contactMark==true) batch.draw(currentFrameContact,drawX, drawY);
 
-
-
     }
 
-    public void removeBody(){ ActConstants.BodyDeleteList.add(mySimulation); }
-
-    public void contact(){
-        contactMark=true;
-        flyMark=false;
-
-
-//        Action delayedAction = Actions.run(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                ApplySkill applySkill = (ApplySkill) ActConstants.publicInformation.get(Integer.toString(bulletMark));
-//                ActConstants.publicInformation.remove(Integer.toString(bulletMark));
-//                applySkill.remove();
-//
-//            }
-//        });
-//
-//        Action action = Actions.delay(0.3f,delayedAction);//这个数就是1s
-//        this.addAction(action);
+    public void deleteBody(){
+        ActConstants.BodyDeleteList.add(mySimulation);
     }
+
 }

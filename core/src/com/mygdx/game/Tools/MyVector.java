@@ -17,4 +17,11 @@ public class MyVector {
 
         return d;
     }
+
+    public static float countAngle(float x1, float y1, float x2, float y2){
+        double normA = Math.sqrt(x1*x1+y1*y1);
+        double normB = Math.sqrt(x2*x2+y2*y2);
+        double amb = x1*x2+y1*y2;
+        return (float)(amb/(normA*normB));
+    }
 }
