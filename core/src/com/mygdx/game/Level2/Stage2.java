@@ -10,9 +10,11 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
+import com.mygdx.game.Level2.ContactReactions.MainCharacterAndSpine;
 import com.mygdx.game.Level2.ContactReactions.WindAttack;
 import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.NormalActors.Spine;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
@@ -52,7 +54,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,0* ActConstants.worldSize_pAndPhysic,10f* ActConstants.worldSize_pAndPhysic));
+        this.addActor(new MainCharacter(world,0,10f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -98,7 +100,8 @@ public class Stage2 extends MyStage {
 
         this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
-
+        this.addActor(new Spine(world,10,10));
+        new MainCharacterAndSpine();
 
 
 

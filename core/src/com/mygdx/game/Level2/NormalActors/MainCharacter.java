@@ -45,7 +45,7 @@ public class MainCharacter extends Actor {
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
-        myBodyDef.position.set(x/ActConstants.worldSize_pAndPhysic,y/ActConstants.worldSize_pAndPhysic);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);//这个表示物理世界中的米
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -139,5 +139,21 @@ public class MainCharacter extends Actor {
     @Override
     public float getY() {
         return mySimulation.getPosition().y*ActConstants.worldSize_pAndPhysic;
+    }
+
+
+    public void repulse(float spineX, float spineY){
+        mySimulation.setLinearVelocity(0,0);
+        ActConstants.MainCharacterState.replace("repulse",true);
+        ActConstants.MainCharacterState.replace("goLeft",false);
+        ActConstants.MainCharacterState.replace("goRight",false);
+        float myX = mySimulation.getPosition().x;
+        float myY = mySimulation.getPosition().y;
+        if(spineX>=myX){
+            mySimulation.applyLinearImpulse(-100,400,myX,myY,true);
+        }else{
+            mySimulation.applyLinearImpulse(100,400,myX,myY,true);
+        }
+
     }
 }

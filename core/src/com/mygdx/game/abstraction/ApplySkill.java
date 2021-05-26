@@ -121,6 +121,7 @@ public class ApplySkill extends Actor {
         }
         if(contact.isAnimationFinished(stateTimeContact)){
             ActConstants.publicInformation.remove(bulletMark);
+            System.out.print("123131");
             this.remove();
         }
     }

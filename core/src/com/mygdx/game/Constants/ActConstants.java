@@ -92,6 +92,9 @@ public class ActConstants {
 
     public static long windAttackID = 0b10000;
 
+    public static long spineID = 0b1000000;
+
+
     //yzh_________________________
 
 
