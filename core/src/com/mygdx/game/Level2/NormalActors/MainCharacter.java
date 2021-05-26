@@ -15,7 +15,7 @@ import com.mygdx.game.Tools.PhysicalEntityDefine;
 
 public class MainCharacter extends Actor {
     World world;
-    Body mySimulation;
+    public Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
     PolygonShape shape;

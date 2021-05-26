@@ -89,4 +89,7 @@ public class ActConstants {
 
 
 
+//郐洋Part
+    public static long brokenBridgeID = 0b1000;
+    //0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0101
 }
