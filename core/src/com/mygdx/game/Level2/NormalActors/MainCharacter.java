@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.abstraction.UserData;
+import org.graalvm.compiler.lir.LIRInstruction;
 
 
 public class MainCharacter extends Actor {
@@ -47,7 +49,7 @@ public class MainCharacter extends Actor {
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
-        mySimulation.createFixture(myFixtureDef).setUserData(ActConstants.mainCharacterID);
+        mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.mainCharacterID,"MainCharacter"));
 
 
         //内存显示区

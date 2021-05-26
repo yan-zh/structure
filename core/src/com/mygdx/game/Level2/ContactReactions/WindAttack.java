@@ -16,8 +16,11 @@ public class WindAttack implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
         if(userData1.contactId==ActConstants.windAttackID){
             ((ApplySkill)ActConstants.publicInformation.get(userData1.nameInPublicInformation)).removeBody();
+            ((ApplySkill)ActConstants.publicInformation.get(userData1.nameInPublicInformation)).contact();
         }else{
+
             ((ApplySkill)ActConstants.publicInformation.get(userData2.nameInPublicInformation)).removeBody();
+            ((ApplySkill)ActConstants.publicInformation.get(userData2.nameInPublicInformation)).contact();
         }
     }
 }

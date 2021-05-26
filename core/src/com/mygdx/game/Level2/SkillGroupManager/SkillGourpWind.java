@@ -3,6 +3,7 @@ package com.mygdx.game.Level2.SkillGroupManager;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.abstraction.ApplySkill;
 import com.mygdx.game.abstraction.SkillGroup;
@@ -21,6 +22,6 @@ public class SkillGourpWind implements SkillGroup {
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction;
         direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
-        currentStage.addActor(new ApplySkill((int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windAttackID));
+        currentStage.addActor(new ApplySkill(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.animNormal,Assets.instance.goldCoin.animGoldCoin,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windAttackID));
     }
 }
