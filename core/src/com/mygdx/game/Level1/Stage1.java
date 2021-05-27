@@ -48,7 +48,8 @@ public class Stage1 extends Stage {//有一些按钮和背景，是类似开始�
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                // 在适当的条件（这里是按钮被按下），切换舞台，用下一个舞台换掉MyGdxGame的currentStage
                 MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
-
+                Stage1 stage1 = (Stage1)ActConstants.publicInformation.get("stage1");
+                stage1.dispose();
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;
             }
@@ -56,7 +57,7 @@ public class Stage1 extends Stage {//有一些按钮和背景，是类似开始�
 
         this.addActor(backGround);
         this.addActor(startButton);
-
+        ActConstants.publicInformation.put("stage1", this);
 
       //  this.addListener(new MyInputListener1());//这个监听是对从最外层传入的输入信息的响应,可以多个舞台各自new一个同一个类的对象，都有效果
         //****************注意，这个监听就算这个舞台没运行act也有效果

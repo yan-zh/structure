@@ -7,10 +7,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Portal;
+import com.mygdx.game.Level2.NormalActors.rotateSwitch;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
 import com.mygdx.game.Level2.Stage2;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.CameraFocus;
 
 public class UserInputListener extends InputListener {
@@ -34,7 +37,7 @@ public class UserInputListener extends InputListener {
             if(event.getKeyCode()==Input.Keys.K) {
                 Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
                 MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
-                if(portal.triggerState == true)
+                if(portal.triggerState == true && portal.isActive == true)
                 {
 
                 portal.state = false;
@@ -51,8 +54,13 @@ public class UserInputListener extends InputListener {
                                 public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
                                     Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
+                                    Stage2 stage2 = (Stage2)ActConstants.publicInformation.get("stage2");
                                     portal.state = true;
-
+                                    if(portal.Stagetranto == "Stage1")
+                                    {
+                                        stage2.dispose();
+                                        MyGdxGame.currentStage = new Stage1(ActConstants.inputMultiplexer);
+                                    }
 
                                 }
                             });
@@ -60,6 +68,29 @@ public class UserInputListener extends InputListener {
                             Action action = Actions.delay(1f, delayedAction);
                             portal.addAction(action);
 
+                        }
+                    });
+                    Action action = Actions.delay(3f, delayedAction);
+                    portal.addAction(action);
+
+
+                }
+            }
+
+            if(event.getKeyCode()==Input.Keys.E) {
+                rotateSwitch rotateSwitch =  ((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
+                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+                if(rotateSwitch.triggerState == true)
+                {
+                    Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
+                    portal.turnOn();
+
+                    Action delayedAction = Actions.run(new Runnable() {
+                        @Override
+                        public void run() {
+//                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
+                            rotateSwitch rotateSwitch =  ((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
+                            rotateSwitch.state = true;
                         }
                     });
                     Action action = Actions.delay(3f, delayedAction);

@@ -8,9 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
-public class Portal extends Actor{
+public class rotateSwitch extends Actor {
     Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
@@ -22,32 +21,19 @@ public class Portal extends Actor{
     TextureRegion currentFrame;
 
     public boolean state = true;
-
     public boolean triggerState = false;
-
     float statetime;
 
     String name;
 
-    public String Stagetranto;
-
-    public Boolean isActive;
-
-    public int dstXPos, dstYPos;
-
     World world;
 
-    public Portal(Animation animationWait, Animation animationTrigger, int x, int y, int dstX, int dstY, long actorId, World world, String name, Boolean isActive, String Stagetranto)
+    public rotateSwitch(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name)
     {
-        this.Stagetranto = Stagetranto;
-        this.isActive = isActive;
         //Set position
         this.setX(x);
         this.setY(y);
 
-        //Set the destination position
-        this.dstXPos = dstX;
-        this.dstYPos = dstY;
         //Set the animation of the wait state and absorb
         this.wait = animationWait;
         this.trigger = animationTrigger;
@@ -68,17 +54,11 @@ public class Portal extends Actor{
         mySimulation = world.createBody(myBodyDef);
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setSensor(true);
-        myFixture.setUserData(new UserData(actorId, "Portal"));
+        myFixture.setUserData(new UserData(actorId, "rotateSwitch"));
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);
-    }
 
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
-
-        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
     }
 
     @Override
@@ -90,16 +70,13 @@ public class Portal extends Actor{
         if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
 
         else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
-    }
 
-    public void turnOn()
-    {
-        this.isActive = true;
     }
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
 
-    public void turnOff()
-    {
-        this.isActive = false;
+        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
+
     }
-
 }

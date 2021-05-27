@@ -4,6 +4,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.abstraction.UserData;
+import com.mygdx.game.Level2.NormalActors.rotateSwitch;
 
 public class PhysicalContactListener implements ContactListener{
     @Override
@@ -43,6 +44,12 @@ public class PhysicalContactListener implements ContactListener{
 
         }
 
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b1000000000000000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b1000000000000000000)
+        {
+            rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
+            rotateSwitch.triggerState = true;
+            System.out.println("tRIGGER true");
+        }
 
 
         //之后也可以获得碰撞点坐标等
@@ -68,6 +75,14 @@ public class PhysicalContactListener implements ContactListener{
             portal.triggerState = false;
             System.out.println("tRIGGER fALUSE");
         }
+
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b1000000000000000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b1000000000000000000)
+        {
+            rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
+            rotateSwitch.triggerState = false;
+            System.out.println("tRIGGER fALUSE");
+        }
+
 
 
     }
