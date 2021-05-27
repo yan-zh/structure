@@ -104,6 +104,10 @@ public class ActConstants {
 
     public static long Boss1SensorID = 0b10000000000000;
 
+    public static long axeID = 0b100000000000000;
+
+    public static long axeSensorID = 0b1000000000000000;
+
 
     //yzh_________________________
 

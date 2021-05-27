@@ -164,4 +164,9 @@ public class MainCharacter extends Actor {
         }
 
     }
+
+
+    public void die(){
+        System.out.println("die");
+    }
 }

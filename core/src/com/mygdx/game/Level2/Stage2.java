@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
+import com.mygdx.game.Level2.NormalActors.Axe;
 import com.mygdx.game.Level2.NormalActors.Boss1;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Spine;
@@ -102,9 +103,14 @@ public class Stage2 extends MyStage {
         new MainCharacterAndSpine();
 
 
-        this.addActor(new Boss1(world,10,8));
-        new Boss1SensorContact();
-        new Boss1AndMainCharacter();
+//        this.addActor(new Boss1(world,10,8));
+//        new Boss1SensorContact();
+//        new Boss1AndMainCharacter();
+
+
+        this.addActor(new Axe(world,20,15));
+        new AxeAndMainCharacter();
+        new AxeSensorContact();
 
 
 
