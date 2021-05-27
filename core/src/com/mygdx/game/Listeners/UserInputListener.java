@@ -1,10 +1,17 @@
 package com.mygdx.game.Listeners;
 
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.NormalActors.Portal;
+import com.mygdx.game.Level2.NormalActors.brokenBridge;
+import com.mygdx.game.Level2.Stage2;
+import com.mygdx.game.Tools.CameraFocus;
 
 public class UserInputListener extends InputListener {
 
@@ -22,6 +29,44 @@ public class UserInputListener extends InputListener {
                 ActConstants.MainCharacterState.replace("goRight",false);
                 ActConstants.MainCharacterState.replace("goLeft",true);
                 ActConstants.MainCharacterState.replace("noControl",false);
+            }
+            //Portal Listener
+            if(event.getKeyCode()==Input.Keys.K) {
+                Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
+                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+                if(portal.triggerState == true)
+                {
+
+                portal.state = false;
+
+                    Action delayedAction = Actions.run(new Runnable() {
+                        @Override
+                        public void run() {
+//                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
+                            Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
+                            MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+                            mainCharacter.mySimulation.setTransform(new Vector2(portal.dstXPos, portal.dstYPos), 0);
+                            Action delayedAction = Actions.run(new Runnable() {
+                                @Override
+                                public void run() {
+//                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
+                                    Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
+                                    portal.state = true;
+
+
+                                }
+                            });
+                            //一秒后回到之前的状态
+                            Action action = Actions.delay(1f, delayedAction);
+                            portal.addAction(action);
+
+                        }
+                    });
+                    Action action = Actions.delay(3f, delayedAction);
+                    portal.addAction(action);
+
+
+                }
             }
             if(event.getKeyCode()==Input.Keys.W&& ActConstants.MainCharacterState.get("onGround")) {
 

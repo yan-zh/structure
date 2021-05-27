@@ -33,10 +33,11 @@ public class CameraFocus {
         camerab2d.translate((x-camerab2d.position.x)/rate,(y-camerab2d.position.y)/rate);
         camera.position.set(camerab2d.position.x* ActConstants.worldSize_pAndPhysic,camerab2d.position.y* ActConstants.worldSize_pAndPhysic,0);
 
-        // System.out.println("physics camera x"+camerab2d.position.x);
-        //System.out.println("physics camera y"+camerab2d.position.y);
-        // System.out.println("physics character x"+characterMain.getPositionInSimulation().x);
-        // System.out.println("physics character y"+characterMain.getPositionInSimulation().y);
+         System.out.println("physics camera x"+camerab2d.position.x);
+        System.out.println("physics camera y"+camerab2d.position.y);
+
+         System.out.println("physics character x"+mainCharacter.getPositionInSimulation().x);
+         System.out.println("physics character y"+mainCharacter.getPositionInSimulation().y);
     }
 
 

@@ -21,7 +21,7 @@ public class brokenBridge extends Actor {
 
    TextureRegion currentFrame;
 
-   public boolean state;
+   public boolean state = true;
 
    float statetime;
 
@@ -42,6 +42,7 @@ public class brokenBridge extends Actor {
       //Create the physical Entity
       PhysicalEntityDefine.defineCharacter();
       myBodyDef = PhysicalEntityDefine.getBd();
+      myBodyDef.type = BodyDef.BodyType.StaticBody;
       myFixtureDef = PhysicalEntityDefine.getFd();
 
       //这里设定盒子的大小

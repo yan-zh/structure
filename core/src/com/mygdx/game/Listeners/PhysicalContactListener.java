@@ -2,12 +2,15 @@ package com.mygdx.game.Listeners;
 
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.abstraction.UserData;
 
 public class PhysicalContactListener implements ContactListener{
     @Override
     public void beginContact(Contact contact) {//出现新接触点
         //通过把这个my contact listener 添加到word里，进行监听，可以在函数里通过contact获得碰撞对象的fixturedefine（里面可以通过usedata设置编号来区分对象）
+        System.out.println("Begin contact");
+
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
 
@@ -32,6 +35,14 @@ public class PhysicalContactListener implements ContactListener{
             ActConstants.contactList.get(fbData.contactId).react(faData,fbData);
         }
 
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b10000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b10000000)
+        {
+            Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
+            portal.triggerState = true;
+            System.out.println("tRIGGER TRUE");
+
+        }
+
 
 
         //之后也可以获得碰撞点坐标等
@@ -51,6 +62,14 @@ public class PhysicalContactListener implements ContactListener{
 ////
 ////        PublicData.MainCharacterState.replace("onGround",true);
 ////    }
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b10000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b10000000)
+        {
+            Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
+            portal.triggerState = false;
+            System.out.println("tRIGGER fALUSE");
+        }
+
+
     }
 
     @Override

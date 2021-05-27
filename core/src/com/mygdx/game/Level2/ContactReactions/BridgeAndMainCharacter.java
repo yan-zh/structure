@@ -21,9 +21,10 @@ public class BridgeAndMainCharacter implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
         brokenBridge brokenBridge = ((brokenBridge)ActConstants.publicInformation.get("brokenBridge"));
         MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+        //Refresh the state of jump
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
-        if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y>0)
+        if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
         {
             brokenBridge.removeBody();
             brokenBridge.state = false;

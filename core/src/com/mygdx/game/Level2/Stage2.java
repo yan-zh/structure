@@ -12,8 +12,10 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.BridgeAndMainCharacter;
 import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
+import com.mygdx.game.Level2.ContactReactions.PortalAndMainCharacter;
 import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
@@ -30,10 +32,10 @@ public class Stage2 extends MyStage {
     World world;
 
     Box2DDebugRenderer boxRender;//物理世界绘制器
-    OrthographicCamera cameraPhysic;//物理世界相机
+    public OrthographicCamera cameraPhysic;//物理世界相机
     OrthographicCamera stageCamera;//舞台用的摄像机
 
-    CameraFocus cameraFocus;
+    public CameraFocus cameraFocus;
    //dfsdfdsf
 
     TiledMap tiledMap;
@@ -98,13 +100,16 @@ public class Stage2 extends MyStage {
         new GroundAndMainCharacter();
         new WindFairyAndMainCharacter();
         new BridgeAndMainCharacter();
+        new PortalAndMainCharacter();
 
         this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
         //Add brokenBridge
-        this.addActor(new brokenBridge(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 500, 500, ActConstants.brokenBridgeID, world, "brokenBridge"));
+        this.addActor(new brokenBridge(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 500, 360, ActConstants.brokenBridgeID, world, "brokenBridge"));
 
+        //Add Portal
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 700, 360, ((int)(900/ ActConstants.worldSize_pAndPhysic)), ((int)(700/ ActConstants.worldSize_pAndPhysic)), ActConstants.portalID,world,"Portal"));
 
-
+        ActConstants.publicInformation.put("stage2", this);
 
 
     }
