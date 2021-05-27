@@ -95,7 +95,7 @@ public class Stage2 extends Stage {
         new GroundAndMainCharacter();
         new WindFairyAndMainCharacter();
 
-        this.addActor(new Fairy(new SkillGourpFire(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(new SkillGourpFire(),1, Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
 
 
