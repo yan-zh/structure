@@ -9,10 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.ContactReactions.GroundAndMainCharacter;
-import com.mygdx.game.Level2.ContactReactions.MainCharacterAndSpine;
-import com.mygdx.game.Level2.ContactReactions.WindAttack;
-import com.mygdx.game.Level2.ContactReactions.WindFairyAndMainCharacter;
+import com.mygdx.game.Level2.ContactReactions.*;
+import com.mygdx.game.Level2.NormalActors.Boss1;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Spine;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
@@ -102,6 +100,11 @@ public class Stage2 extends MyStage {
 
         this.addActor(new Spine(world,10,10));
         new MainCharacterAndSpine();
+
+
+        this.addActor(new Boss1(world,10,8));
+        new Boss1SensorContact();
+        new Boss1AndMainCharacter();
 
 
 

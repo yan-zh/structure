@@ -14,7 +14,7 @@ public class WindAttack implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        if(userData1.contactId==ActConstants.windAttackID){
+        if(userData1.contactId==ActConstants.windBulletID){
             ApplySkill applySkill = (ApplySkill) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
             applySkill.contactMark=true;
             applySkill.flyMark=false;

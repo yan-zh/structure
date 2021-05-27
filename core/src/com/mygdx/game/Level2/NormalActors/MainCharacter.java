@@ -141,6 +141,14 @@ public class MainCharacter extends Actor {
         return mySimulation.getPosition().y*ActConstants.worldSize_pAndPhysic;
     }
 
+    public float getPhysicalX(){
+        return mySimulation.getPosition().x;
+    }
+
+    public float getPhysicalY(){
+        return mySimulation.getPosition().y;
+    }
+
 
     public void repulse(float spineX, float spineY){
         mySimulation.setLinearVelocity(0,0);
