@@ -15,13 +15,22 @@ public class DesktopLauncher {
 
 		if (rebuildAtlas) {
 			Settings settings = new Settings();
-			settings.maxWidth = 1024*4;
-			settings.maxHeight = 1024*4;
+			settings.maxWidth = 1024*16;
+			settings.maxHeight = 1024*16;
 			settings.debug = drawDebugOutline;
+
+			// 加载通用资源管理
+			TexturePacker.process(settings,"core/assets/level_normal","core/assets/images_level",
+					"level_normal");
 			// load level_1 characters
 			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level",
 					"level1");
-
+			// load level_2 characters
+			TexturePacker.process(settings,"core/assets/level2","core/assets/images_level",
+					"level2");
+			// load level_3 characters
+			TexturePacker.process(settings,"core/assets/level3","core/assets/images_level",
+					"level3");
 //			TexturePacker.process(settings,"core/assets/images","core/assets/images-out","canyonBunny");
 //			TexturePacker.process(settings,"core/assets/images-ui","core/assets/images-out","canyonBunny-ui");
 		}

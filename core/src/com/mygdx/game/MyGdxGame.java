@@ -93,7 +93,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		//加载全部资源
 		Assets.instance.init(new AssetManager());
 
-
 		//准备分发监听
 		inputMultiplexer = new InputMultiplexer();
 		Gdx.input.setInputProcessor(inputMultiplexer);//可以把监听信息分发给所有的stage
