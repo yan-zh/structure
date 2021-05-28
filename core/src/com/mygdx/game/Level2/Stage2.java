@@ -10,10 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
-import com.mygdx.game.Level2.NormalActors.Axe;
-import com.mygdx.game.Level2.NormalActors.Boss1;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.Spine;
+import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
@@ -113,6 +110,10 @@ public class Stage2 extends MyStage {
         new AxeSensorContact();
 
 
+        this.addActor(new Frag(world,30,8));
+
+        new HeatFragEye();
+
 
     }
 
@@ -123,10 +124,11 @@ public class Stage2 extends MyStage {
         world.step(1.0f/60.0f, 6,6);//进行一次物理世界模拟，第一个 时间步，和系统时间同步；速度和位置的模拟精度，越大越准
         //上面这个要放在各个stage里，因为不到这个stage运行的时候stage对应的物理世界是不动的
 
-        if(ActConstants.BodyDeleteList.size()!=0){
-            for(int i = 0; i<ActConstants.BodyDeleteList.size(); i++){
-                world.destroyBody(ActConstants.BodyDeleteList.get(i));
-                ActConstants.BodyDeleteList.remove(i);
+
+        if(ActConstants.physicalActionList.size()!=0){
+            for(int i = 0; i<ActConstants.physicalActionList.size(); i++){
+               ActConstants.physicalActionList.get(i).act();
+                ActConstants.physicalActionList.remove(i);
             }
         }
 

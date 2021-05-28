@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.DelateBody;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import org.graalvm.compiler.lir.LIRInstruction;
@@ -150,7 +151,7 @@ public class ApplySkill extends Actor {
     }
 
     public void deleteBody(){
-        ActConstants.BodyDeleteList.add(mySimulation);
+        ActConstants.physicalActionList.add(new DelateBody(mySimulation,world));
     }
 
 }

@@ -93,7 +93,7 @@ public class PhysicalEntityDefine {//定义了各种物理实体，在各个类�
 
 
 
-        fd.restitution = 1f;//主角有点弹性，可以调整地面的软硬设置弹簧区域（0-1）
+        fd.restitution = 0f;//主角有点弹性，可以调整地面的软硬设置弹簧区域（0-1）
         fd.friction = 0f;//摩擦力（0-1）
         fd.density = 40;
     }

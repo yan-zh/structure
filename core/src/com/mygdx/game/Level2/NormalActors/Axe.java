@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.DelateBody;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
@@ -165,7 +166,7 @@ public class Axe extends Actor {
 
     @Override
     public boolean remove() {
-        ActConstants.BodyDeleteList.add(mySimulation);
+        ActConstants.physicalActionList.add(new DelateBody(mySimulation,world));
         ActConstants.publicInformation.remove("Axe");
         return super.remove();
     }

@@ -2,9 +2,8 @@ package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.abstraction.ContactReaction;
+import com.mygdx.game.abstraction.PhysicalAction;
 import com.mygdx.game.abstraction.SkillGroup;
 
 import java.util.ArrayList;
@@ -82,10 +81,6 @@ public class ActConstants {
    //   0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0011
 
 
-    public static ArrayList<Body> BodyDeleteList;
-    static{
-        BodyDeleteList = new ArrayList<>();
-    }
 
 
     //yzh**********************
@@ -107,6 +102,13 @@ public class ActConstants {
     public static long axeID = 0b100000000000000;
 
     public static long axeSensorID = 0b1000000000000000;
+
+    public static long toadEyeID = 0b100000000000000000;
+
+    public static ArrayList<PhysicalAction> physicalActionList;
+    static{
+        physicalActionList = new ArrayList<>();
+    }
 
 
     //yzh_________________________
