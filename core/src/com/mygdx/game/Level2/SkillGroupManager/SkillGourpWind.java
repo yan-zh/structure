@@ -22,6 +22,6 @@ public class SkillGourpWind implements SkillGroup {
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction;
         direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
-        currentStage.addActor(new ApplySkill(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.animNormal,Assets.instance.goldCoin.animGoldCoin,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windAttackID));
+        currentStage.addActor(new ApplySkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID));
     }
 }

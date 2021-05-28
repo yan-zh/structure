@@ -11,11 +11,15 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
+import com.mygdx.game.Level2.ContactReactions.*;
+import com.mygdx.game.Level2.NormalActors.Axe;
+import com.mygdx.game.Level2.NormalActors.Boss1;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Platform;
 import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
 import com.mygdx.game.Level2.NormalActors.rotateSwitch;
+import com.mygdx.game.Level2.NormalActors.Spine;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
@@ -60,6 +64,7 @@ public class Stage2 extends MyStage {
                 0b100000,"Platform"));
 
 
+        this.addActor(new MainCharacter(world,0,10f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -110,9 +115,22 @@ public class Stage2 extends MyStage {
         //Add brokenBridge
         this.addActor(new brokenBridge(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 500, 360, ActConstants.brokenBridgeID, world, "brokenBridge"));
 
+        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+
+        this.addActor(new Spine(world,10,10));
+        new MainCharacterAndSpine();
+
         //Add Portal
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 700, 360, ((int)(900/ ActConstants.worldSize_pAndPhysic)), ((int)(700/ ActConstants.worldSize_pAndPhysic)), ActConstants.portalID,world,"Portal", false,"Stage1"));
 
+//        this.addActor(new Boss1(world,10,8));
+//        new Boss1SensorContact();
+//        new Boss1AndMainCharacter();
+
+
+        this.addActor(new Axe(world,20,15));
+        new AxeAndMainCharacter();
+        new AxeSensorContact();
         //Add RotateSwitch
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 900, 360, ActConstants.switchID, world, "rotateSwitch"));
 

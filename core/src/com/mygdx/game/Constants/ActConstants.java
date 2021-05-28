@@ -3,6 +3,7 @@ package com.mygdx.game.Constants;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.SkillGroup;
 
@@ -89,7 +90,24 @@ public class ActConstants {
 
     //yzh**********************
 
-    public static long windAttackID = 0b10000;
+    public static long windBulletID = 0b10000;
+
+    public static long woodBulletID = 0b10000000000;
+
+    public static long sandBulletID = 0b10000000000;
+
+    public static long iceBulletID = 0b100000000000;
+
+    public static long spineID = 0b1000000;
+
+    public static long Boss1ID = 0b100000000;
+
+    public static long Boss1SensorID = 0b10000000000000;
+
+    public static long axeID = 0b100000000000000;
+
+    public static long axeSensorID = 0b1000000000000000;
+
 
     //yzh_________________________
 
