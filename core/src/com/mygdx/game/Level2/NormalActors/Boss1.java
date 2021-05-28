@@ -94,9 +94,9 @@ public class Boss1 extends Actor {
         //交互注册
         ActConstants.publicInformation.put("Boss1",this);
 
-        rest = Assets.instance.bunny.getAnimCopterRotate;
-        purchase = Assets.instance.bunny.animNormal;
-        weakUp = Assets.instance.goldCoin.animGoldCoin;
+        rest = Assets.instance.characrer01.animBreath;
+        purchase =Assets.instance.characrer01.animBreath;
+        weakUp = Assets.instance.characrer01.animBreath;
 
         actionState1 = true;//true是等待，false是追逐
         actionState2 = false;//true是播放weakup

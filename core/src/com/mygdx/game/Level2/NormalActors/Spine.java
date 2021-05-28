@@ -61,7 +61,7 @@ public class Spine extends Actor {
         //内存显示区
         this.statetime = 0;
 
-        this.spine = Assets.instance.bunny.animCopterTransform;
+        this.spine = Assets.instance.characrer01.animBreath;
 
     }
 

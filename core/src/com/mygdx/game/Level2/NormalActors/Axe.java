@@ -92,7 +92,8 @@ public class Axe extends Actor {
         ActConstants.publicInformation.put("Axe",this);
 
 
-        this.picutre = (TextureRegion) Assets.instance.goldCoin.animGoldCoin.getKeyFrames()[0];
+
+        this.picutre = (TextureRegion) Assets.instance.characrer01.animBreath.getKeyFrames()[0];
 
     }
 

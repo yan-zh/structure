@@ -3,13 +3,14 @@ package com.mygdx.game.Level2.NormalActors;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
 
-public class rotateSwitch extends Actor {
+public class Door extends Actor {
     Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
@@ -21,19 +22,18 @@ public class rotateSwitch extends Actor {
     TextureRegion currentFrame;
 
     public boolean state = true;
+
     public boolean triggerState = false;
+
     float statetime;
 
     String name;
 
-    public String ControlType;
+    public int dstXPos, dstYPos;
+
     World world;
-
-
-
-    public rotateSwitch(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name, String controlType)
+        public Door(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name)
     {
-        this.ControlType = controlType;
         //Set position
         this.setX(x);
         this.setY(y);
@@ -41,24 +41,27 @@ public class rotateSwitch extends Actor {
         //Set the animation of the wait state and absorb
         this.wait = animationWait;
         this.trigger = animationTrigger;
+
         //Create the physical Entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
+        myBodyDef.type = BodyDef.BodyType.KinematicBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(2f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
-        myBodyDef.type = BodyDef.BodyType.StaticBody;
+
         this.world = world;
 
         mySimulation = world.createBody(myBodyDef);
         myFixture = mySimulation.createFixture(myFixtureDef);
-        myFixture.setSensor(true);
-        myFixture.setUserData(new UserData(actorId, "rotateSwitch"));
+
+
+        myFixture.setUserData(new UserData(actorId, "door"));
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);
@@ -74,6 +77,10 @@ public class rotateSwitch extends Actor {
         if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
 
         else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
+        if(mySimulation.getPosition().y >= 600 / ActConstants.worldSize_pAndPhysic)
+        {
+            mySimulation.setLinearVelocity(new Vector2(0,0));
+        }
 
     }
     @Override
@@ -82,5 +89,14 @@ public class rotateSwitch extends Actor {
 
         batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
 
+    }
+
+    public void turnOn()
+    {
+        this.triggerState = true;
+        System.out.println("The door is opened");
+        mySimulation.setLinearVelocity(new Vector2(0,4));
+
+        System.out.println(this.myBodyDef.type);
     }
 }

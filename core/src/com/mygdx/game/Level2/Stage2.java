@@ -12,14 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.ContactReactions.*;
-import com.mygdx.game.Level2.NormalActors.Axe;
-import com.mygdx.game.Level2.NormalActors.Boss1;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.Platform;
-import com.mygdx.game.Level2.NormalActors.Portal;
-import com.mygdx.game.Level2.NormalActors.brokenBridge;
-import com.mygdx.game.Level2.NormalActors.rotateSwitch;
-import com.mygdx.game.Level2.NormalActors.Spine;
+import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
@@ -59,12 +52,12 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,0* ActConstants.worldSize_pAndPhysic,10f* ActConstants.worldSize_pAndPhysic));
-        this.addActor(new Platform(world,5* ActConstants.worldSize_pAndPhysic,10f* ActConstants.worldSize_pAndPhysic,
-                0b100000,"Platform"));
+
+//        this.addActor(new Platform(world,5* ActConstants.worldSize_pAndPhysic,10f* ActConstants.worldSize_pAndPhysic,
+//                0b100000,"Platform"));
 
 
-        this.addActor(new MainCharacter(world,0,10f));//单位是米
+        this.addActor(new MainCharacter(world,112,13f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -111,28 +104,32 @@ public class Stage2 extends MyStage {
         new PortalAndMainCharacter();
         new BridgeAndMainCharacter();
         new PortalAndMainCharacter();
-        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        new BridgeAndIce();
+//        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath,300,500,ActConstants.windFairyID,world,"WindFairy"));
         //Add brokenBridge
-        this.addActor(new brokenBridge(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 500, 360, ActConstants.brokenBridgeID, world, "brokenBridge"));
+//        this.addActor(new brokenBridge( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 500, 360, ActConstants.brokenBridgeID, world, "brokenBridge"));
 
-        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+//        this.addActor(new Fairy(new SkillGourpWind(),1,  Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
-        this.addActor(new Spine(world,10,10));
+//        this.addActor(new Spine(world,10,10));
         new MainCharacterAndSpine();
 
         //Add Portal
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 700, 360, ((int)(900/ ActConstants.worldSize_pAndPhysic)), ((int)(700/ ActConstants.worldSize_pAndPhysic)), ActConstants.portalID,world,"Portal", false,"Stage1"));
+//        this.addActor(new Portal( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 700, 360, ((int)(900/ ActConstants.worldSize_pAndPhysic)), ((int)(700/ ActConstants.worldSize_pAndPhysic)), ActConstants.portalID,world,"Portal", false,"Stage1"));
 
 //        this.addActor(new Boss1(world,10,8));
 //        new Boss1SensorContact();
 //        new Boss1AndMainCharacter();
 
 
-        this.addActor(new Axe(world,20,15));
-        new AxeAndMainCharacter();
-        new AxeSensorContact();
+//        this.addActor(new Axe(world,20,15));
+//        new AxeAndMainCharacter();
+//        new AxeSensorContact();
         //Add RotateSwitch
-        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 900, 360, ActConstants.switchID, world, "rotateSwitch"));
+        this.addActor(new rotateSwitch( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 500, 360, ActConstants.switchID, world, "rotateSwitch", "door"));
+        this.addActor(new Door(Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 900, 360, ActConstants.switchID, world, "door"));
+        this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
+        this.addActor(new brokenBridge( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
 
         ActConstants.publicInformation.put("stage2", this);
 

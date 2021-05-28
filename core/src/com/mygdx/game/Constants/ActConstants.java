@@ -122,4 +122,7 @@ public class ActConstants {
 
     public static long switchID = 0b1000000000000000000;
 
+    public static long IceID = 0b100000000000000000000;
+
+
 }
