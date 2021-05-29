@@ -14,9 +14,9 @@ public class HeatFragEye implements ContactReaction {
 
     public HeatFragEye() {
         ActConstants.contactList.put(contactID1,this);
-        ActConstants.contactList.put(contactID1,this);
-        ActConstants.contactList.put(contactID1,this);
-        ActConstants.contactList.put(contactID1,this);
+        ActConstants.contactList.put(contactID2,this);
+        ActConstants.contactList.put(contactID3,this);
+        ActConstants.contactList.put(contactID4,this);
     }
 
     @Override

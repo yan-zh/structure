@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.NormalActors.MonsterA;
 
 public class UserInputListener extends InputListener {
 
@@ -16,12 +17,12 @@ public class UserInputListener extends InputListener {
             if(event.getKeyCode()==Input.Keys.D) {
                 ActConstants.MainCharacterState.replace("goRight",true);
                 ActConstants.MainCharacterState.replace("goLeft",false);
-                ActConstants.MainCharacterState.replace("noControl",false);
+                //ActConstants.MainCharacterState.replace("noControl",false);
             }
             if(event.getKeyCode()==Input.Keys.A) {
                 ActConstants.MainCharacterState.replace("goRight",false);
                 ActConstants.MainCharacterState.replace("goLeft",true);
-                ActConstants.MainCharacterState.replace("noControl",false);
+                //ActConstants.MainCharacterState.replace("noControl",false);
             }
             if(event.getKeyCode()==Input.Keys.W&& ActConstants.MainCharacterState.get("onGround")) {
 
@@ -49,7 +50,7 @@ public class UserInputListener extends InputListener {
                     ((event.getKeyCode()==Input.Keys.A&& ActConstants.MainCharacterState.get("goLeft")))){
                 ActConstants.MainCharacterState.replace("goRight",false);
                 ActConstants.MainCharacterState.replace("goLeft",false);
-                ActConstants.MainCharacterState.replace("noControl",true);
+               // ActConstants.MainCharacterState.replace("noControl",true);
                 ((MainCharacter) ActConstants.publicInformation.get("MainCharacter")).getMySimulation().setLinearVelocity(0, ((MainCharacter) ActConstants.publicInformation.get("MainCharacter")).getMySimulation().getLinearVelocity().y);
             }
 
@@ -79,6 +80,8 @@ public class UserInputListener extends InputListener {
             }else{
                 ActConstants.skillGroups[ActConstants.currentSkillGroup].skill2(x,y);
             }
+
+           // ((MonsterA)ActConstants.publicInformation.get("Monster0")).start();
         }
         return super.touchDown(event, x, y, pointer, button);
     }

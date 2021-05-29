@@ -18,18 +18,20 @@ public class AxeSensorContact implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        if (userData1.contactId == ActConstants.axeSensorID) {
-            Axe axe = (Axe) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-            axe.fall();
-            if(axe!=null){
-                axe.stop();
-            }
+        synchronized (ActConstants.axeLock) {
+            if (userData1.contactId == ActConstants.axeSensorID) {
+                Axe axe = (Axe) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
+                axe.fall();
+                if (axe != null) {
+                    axe.stop();
+                }
 
-        }else{
-            Axe axe = (Axe) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-            axe.fall();
-            if(axe!=null){
-                axe.stop();
+            } else {
+                Axe axe = (Axe) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
+                axe.fall();
+                if (axe != null) {
+                    axe.stop();
+                }
             }
         }
     }

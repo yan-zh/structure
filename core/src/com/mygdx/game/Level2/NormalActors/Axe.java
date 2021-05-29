@@ -1,13 +1,12 @@
 package com.mygdx.game.Level2.NormalActors;
 
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.PhysicalActions.DelateBody;
+import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
@@ -137,17 +136,17 @@ public class Axe extends Actor {
 
                 public void run() {
 
-                    synchronized(new Integer(2)) {
+
+                    Axe axe = (Axe) ActConstants.publicInformation.get("Axe");
+                    if(axe!=null){
 
                         mySimulation.setGravityScale(0);
                         mySimulation.setLinearVelocity(0,0);
 
-                        Axe axe = (Axe) ActConstants.publicInformation.get("Axe");
-                        if(axe!=null){
-                            axe.remove();
-                        }
 
+                        axe.remove();
                     }
+
 
                 }
 
@@ -166,7 +165,14 @@ public class Axe extends Actor {
 
     @Override
     public boolean remove() {
-        ActConstants.physicalActionList.add(new DelateBody(mySimulation,world));
+
+        DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
+        deletePhysicalEntity1.deleteBody(mySimulation,world);
+        DeletePhysicalEntity deletePhysicalEntity2 = new DeletePhysicalEntity();
+        deletePhysicalEntity2.deleteBody(sensorSimulation,world);
+
+        ActConstants.physicalActionList.add(deletePhysicalEntity1);
+        ActConstants.physicalActionList.add(deletePhysicalEntity2);
         ActConstants.publicInformation.remove("Axe");
         return super.remove();
     }

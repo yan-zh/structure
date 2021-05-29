@@ -6,8 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.PhysicalActions.DelateBody;
-import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 
 public class Fairy extends Actor {
@@ -101,6 +100,8 @@ public class Fairy extends Actor {
     }
 
     public void removeBody(){
-        ActConstants.physicalActionList.add(new DelateBody(mySimulation,world));
+        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
+        deletePhysicalEntity.deleteBody(mySimulation,world);
+        ActConstants.physicalActionList.add(deletePhysicalEntity);
     }
 }

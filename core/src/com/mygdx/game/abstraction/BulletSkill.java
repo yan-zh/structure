@@ -4,16 +4,13 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.PhysicalActions.DelateBody;
+import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
-import org.graalvm.compiler.lir.LIRInstruction;
 
-public class ApplySkill extends Actor {
+public class BulletSkill extends Actor {
 
     Body mySimulation;
     FixtureDef myFixtureDef;
@@ -49,7 +46,11 @@ public class ApplySkill extends Actor {
 
     float[] direction;
 
-    public ApplySkill(Animation prepare, Animation fly, Animation contact,float x, float y, float[] direction, long actorId) {
+    int damage;
+
+    public BulletSkill(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
+
+        this.damage = damage;
 
         this.direction = direction;
 
@@ -151,7 +152,11 @@ public class ApplySkill extends Actor {
     }
 
     public void deleteBody(){
-        ActConstants.physicalActionList.add(new DelateBody(mySimulation,world));
+        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
+        deletePhysicalEntity.deleteBody(mySimulation,world);
+        ActConstants.physicalActionList.add(deletePhysicalEntity);
     }
+
+    public int getDamage(){return damage;}
 
 }

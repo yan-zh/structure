@@ -5,7 +5,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
-import com.mygdx.game.abstraction.ApplySkill;
+import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.SkillGroup;
 
 public class SkillGourpWind implements SkillGroup {
@@ -22,6 +22,6 @@ public class SkillGourpWind implements SkillGroup {
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction;
         direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
-        currentStage.addActor(new ApplySkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID));
+        currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID,1));
     }
 }

@@ -92,12 +92,12 @@ public class Stage2 extends MyStage {
         //为这一关用到的物理碰撞监听添加一个函数
         new GroundAndMainCharacter();
         new WindFairyAndMainCharacter();
-        new WindAttack();
+        new BulletDispose();
 
         this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
-        this.addActor(new Spine(world,10,10));
-        new MainCharacterAndSpine();
+//        this.addActor(new Spine(world,10,10));
+//        new MainCharacterAndSpine();
 
 
 //        this.addActor(new Boss1(world,10,8));
@@ -105,14 +105,20 @@ public class Stage2 extends MyStage {
 //        new Boss1AndMainCharacter();
 
 
-        this.addActor(new Axe(world,20,15));
-        new AxeAndMainCharacter();
-        new AxeSensorContact();
+//        this.addActor(new Axe(world,20,15));
+//        new AxeAndMainCharacter();
+//        new AxeSensorContact();
+//
+//
+//        this.addActor(new Frag(world,30,8));
+//
+//        new HeatFragEye();
 
+        new BulletAndMonsterA();
+        MonsterA monsterA = new MonsterA(world,10,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA);
 
-        this.addActor(new Frag(world,30,8));
-
-        new HeatFragEye();
+        new MonsterASensorAndMainCharacter();
 
 
     }

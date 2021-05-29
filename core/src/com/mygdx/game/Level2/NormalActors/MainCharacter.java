@@ -67,24 +67,24 @@ public class MainCharacter extends Actor {
     public void prepareForPicture() {
 
         test = Assets.instance.mainCharacter.animBreath;
-
-        Action delayedAction = Actions.run(new Runnable() {
-
-
-
-            @Override
-
-            public void run() {
-
-                System.out.println("time:" + (System.currentTimeMillis() / 1000) + ",执行something");
-
-            }
-
-        });
-
-        Action action = Actions.delay(20f,delayedAction);//这个数就是20s
-
-        this.addAction(Actions.sequence(action));
+//
+//        Action delayedAction = Actions.run(new Runnable() {
+//
+//
+//
+//            @Override
+//
+//            public void run() {
+//
+//                System.out.println("time:" + (System.currentTimeMillis() / 1000) + ",执行something");
+//
+//            }
+//
+//        });
+//
+//        Action action = Actions.delay(20f,delayedAction);//这个数就是20s
+//
+//        this.addAction(Actions.sequence(action));
 
     }
 
@@ -95,10 +95,10 @@ public class MainCharacter extends Actor {
         if(ActConstants.MainCharacterState.get("goLeft")){
             mySimulation.setLinearVelocity(-ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
 
-        }
-        if(ActConstants.MainCharacterState.get("goRight")){
+        }else if(ActConstants.MainCharacterState.get("goRight")){
             mySimulation.setLinearVelocity(ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
         }
+
 
 
 
@@ -169,4 +169,6 @@ public class MainCharacter extends Actor {
     public void die(){
         System.out.println("die");
     }
+
+
 }
