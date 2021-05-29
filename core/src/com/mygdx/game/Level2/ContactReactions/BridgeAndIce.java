@@ -10,7 +10,7 @@ import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
 public class BridgeAndIce implements ContactReaction {
-    public static long contactID = 0b100000000000000000001;
+    public static long contactID = 0b100000000000000001000;
 
     public BridgeAndIce()
     {

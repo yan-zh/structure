@@ -130,6 +130,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Door(Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 900, 360, ActConstants.switchID, world, "door"));
         this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
         this.addActor(new brokenBridge( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animBreath, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
+        this.addActor(new laserTransmitter( Assets.instance.characrer01.animBreath,Assets.instance.characrer02.animRun, 6809, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
 
         ActConstants.publicInformation.put("stage2", this);
 
