@@ -49,7 +49,7 @@ public class PhysicalEntityDefine {//定义了各种物理实体，在各个类�
 
 
 
-        System.out.println(bd1.angle);
+
 
         FixtureDef fd1 = new FixtureDef();
         fd1.density = 1;
@@ -85,6 +85,21 @@ public class PhysicalEntityDefine {//定义了各种物理实体，在各个类�
 
     public static void defineStatic(){
         bd.type = BodyDef.BodyType.StaticBody;
+        bd.active = true;//激活
+        bd.allowSleep = false;//是否允许在不运动时停止模拟，停止模拟后之前施加的力也会消失
+        bd.bullet = true;//不需要用于高速运动的高精度检测
+        bd.fixedRotation = true;//禁止刚体旋转
+        bd.linearDamping = 0;//线性阻尼，类似空气摩擦，在很黏的水里运行
+
+
+
+        fd.restitution = 0f;//主角有点弹性，可以调整地面的软硬设置弹簧区域（0-1）
+        fd.friction = 0f;//摩擦力（0-1）
+        fd.density = 40;
+    }
+
+    public static void defineKinematic(){
+        bd.type = BodyDef.BodyType.KinematicBody;
         bd.active = true;//激活
         bd.allowSleep = false;//是否允许在不运动时停止模拟，停止模拟后之前施加的力也会消失
         bd.bullet = true;//不需要用于高速运动的高精度检测

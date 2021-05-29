@@ -64,6 +64,8 @@ public class Flower extends Actor {
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,4f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
+        myFixtureDef.isSensor = false;
+
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
 
         mySimulation = world.createBody(myBodyDef);

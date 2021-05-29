@@ -65,6 +65,8 @@ public class MonsterA extends Actor {
 
     public boolean move;
 
+    int count;
+
 
 
     public MonsterA(World world, float x, float y,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
@@ -77,6 +79,8 @@ public class MonsterA extends Actor {
         this.dieRight = dieRight;
 
         life=5;
+
+        count=0;
 
         animationArrayListLeft = new ArrayList<>();
 
@@ -186,22 +190,28 @@ public class MonsterA extends Actor {
     }
 
     public void start(){
-        Timer timer = new Timer();
-        Timer.Task timerTask = new Timer.Task() {
-            @Override
 
-            public void run() {
-                synchronized (ActConstants.MonsterActionLock){
-                    MonsterA monsterA = (MonsterA)ActConstants.publicInformation.get("Monster"+myNumber);
-                    if(monsterA!=null){
-                        monsterA.attack();
-                        monsterA.move=true;
+        if(count==0){
+            Timer timer = new Timer();
+            Timer.Task timerTask = new Timer.Task() {
+                @Override
+
+                public void run() {
+                    synchronized (ActConstants.MonsterActionLock){
+                        MonsterA monsterA = (MonsterA)ActConstants.publicInformation.get("Monster"+myNumber);
+                        if(monsterA!=null){
+                            monsterA.attack();
+                            monsterA.move=true;
+                        }
                     }
                 }
-            }
 
-        };
-        timer.scheduleTask(timerTask, 1, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
+            };
+            timer.scheduleTask(timerTask, 1, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
+        }
+
+
+        count=1;
     }
 
     @Override

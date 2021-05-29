@@ -105,7 +105,7 @@ public class Stage2 extends MyStage {
 
         this.addActor(new Fairy(new SkillGroupIce(),2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
 
-        this.addActor(new Spine(world,60,10));
+        this.addActor(new Spine(world,60,10,1,3));
         new MainCharacterAndSpine();
 
 
@@ -134,6 +134,8 @@ public class Stage2 extends MyStage {
         new FlowerAndMainCharacter();
 
 
+        EatPlatform eatPlatform = new EatPlatform(world,70,10);
+        this.addActor(eatPlatform);
 
 
 

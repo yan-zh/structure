@@ -27,7 +27,7 @@ public class Spine extends Actor {
 
 
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
-    public Spine(World world, float x, float y) {
+    public Spine(World world, float x, float y, float height, float width) {
 
         number++;
 
@@ -36,7 +36,7 @@ public class Spine extends Actor {
         this.world = world;
 
         //创建主角物理模拟
-        PhysicalEntityDefine.defineStatic();
+        PhysicalEntityDefine.defineKinematic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
@@ -44,7 +44,7 @@ public class Spine extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(width/ ActConstants.worldSize_shapeAndPhysics,height/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
@@ -86,4 +86,10 @@ public class Spine extends Actor {
     public float getPhysicalY(){
         return mySimulation.getPosition().y;
     }
+
+    public void setVelocity(float x, float y){
+        mySimulation.setLinearVelocity(x,y);
+    }
+
+
 }

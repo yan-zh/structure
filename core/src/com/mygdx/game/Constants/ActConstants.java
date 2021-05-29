@@ -116,6 +116,8 @@ public class ActConstants {
 
     public static long woodFairyID = 0b100000000000000000000000000000;
 
+    public static long eatPlatformID = 0b10000000000000000000000000000000;
+
 
     public static ArrayList<PhysicalAction> physicalActionList;
     static{
