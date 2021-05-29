@@ -25,7 +25,7 @@ public class MainCharacterAndSpine implements ContactReaction {
         }
 
         mainCharacter.repulse(spine.getPhysicalX(),spine.getPhysicalY());
-        System.out.print("666777888");
+
 
     }
 }

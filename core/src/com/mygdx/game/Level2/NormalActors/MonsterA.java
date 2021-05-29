@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
@@ -15,7 +14,7 @@ import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.BulletSkill;
-import com.mygdx.game.abstraction.MonsterADie;
+import com.mygdx.game.abstraction.DieAction;
 import com.mygdx.game.abstraction.UserData;
 
 import java.util.ArrayList;
@@ -254,7 +253,7 @@ public class MonsterA extends Actor {
     @Override
     public boolean remove() {
         synchronized (ActConstants.MonsterActionLock){
-            MyGdxGame.currentStage.addActor(new MonsterADie(Assets.instance.bunny.animNormal,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
+            MyGdxGame.currentStage.addActor(new DieAction(Assets.instance.bunny.animNormal,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
             //消除自身，要锁
 
             DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();

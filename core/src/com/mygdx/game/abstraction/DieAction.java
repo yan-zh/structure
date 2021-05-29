@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class MonsterADie extends Actor {
+public class DieAction extends Actor {
     Animation die;
     TextureRegion currentFrame;
 
@@ -14,7 +14,7 @@ public class MonsterADie extends Actor {
     float pX;
     float pY;
 
-    public MonsterADie(Animation die, float pX, float pY) {
+    public DieAction(Animation die, float pX, float pY) {
         this.die = die;
         this.pX = pX;
         this.pY = pY;
@@ -27,7 +27,6 @@ public class MonsterADie extends Actor {
 
         t += delta;
         System.out.println(t);
-        System.out.println(delta);
 
         super.act(delta);
     }

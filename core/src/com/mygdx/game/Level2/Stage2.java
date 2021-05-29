@@ -12,6 +12,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
+import com.mygdx.game.Level2.SkillGroupManager.SkillGroupIce;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.Assets;
@@ -90,35 +91,50 @@ public class Stage2 extends MyStage {
         //ActConstants.skillGroups[1]=new SkillGourpFire();
 
         //为这一关用到的物理碰撞监听添加一个函数
+
         new GroundAndMainCharacter();
-        new WindFairyAndMainCharacter();
         new BulletDispose();
+
+        //风精灵
+        new WindFairyAndMainCharacter();
 
         this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
-//        this.addActor(new Spine(world,10,10));
-//        new MainCharacterAndSpine();
+
+        new IceFairyAndMainCharacter();
+
+        this.addActor(new Fairy(new SkillGroupIce(),2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
+
+        this.addActor(new Spine(world,60,10));
+        new MainCharacterAndSpine();
 
 
-//        this.addActor(new Boss1(world,10,8));
-//        new Boss1SensorContact();
-//        new Boss1AndMainCharacter();
+        this.addActor(new Boss1(world,50,8));
+        new Boss1SensorContact();
+        new Boss1AndMainCharacter();
 
 
-//        this.addActor(new Axe(world,20,15));
-//        new AxeAndMainCharacter();
-//        new AxeSensorContact();
-//
-//
-//        this.addActor(new Frag(world,30,8));
-//
-//        new HeatFragEye();
+        this.addActor(new Axe(world,40,15));
+        new AxeAndMainCharacter();
+        new AxeSensorContact();
+
+        this.addActor(new Frag(world,30,8));
+
+        new HeatFragEye();
+
 
         new BulletAndMonsterA();
-        MonsterA monsterA = new MonsterA(world,10,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(monsterA);
 
         new MonsterASensorAndMainCharacter();
+
+        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
+        this.addActor(flower);
+        new FlowerAndMainCharacter();
+
+
+
 
 
     }

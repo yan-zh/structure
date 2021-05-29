@@ -157,8 +157,8 @@ public class Axe extends Actor {
 
         }
 
-        mark++;
-        System.out.println(mark);
+        mark=2;
+
 
     }
 

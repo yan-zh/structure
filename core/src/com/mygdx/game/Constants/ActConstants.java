@@ -108,6 +108,15 @@ public class ActConstants {
 
     public static long monsterSensorID = 0b1000000000000000000000;
 
+    public static long flowerID = 0b100000000000000000000000000;
+
+    public static long iceFairyID = 0b1000000000000000000000000000;
+
+    public static long sandFairyID = 0b10000000000000000000000000000;
+
+    public static long woodFairyID = 0b100000000000000000000000000000;
+
+
     public static ArrayList<PhysicalAction> physicalActionList;
     static{
         physicalActionList = new ArrayList<>();
