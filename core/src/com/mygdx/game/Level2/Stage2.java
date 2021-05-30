@@ -39,7 +39,7 @@ public class Stage2 extends MyStage {
     public Stage2(InputMultiplexer inputMultiplexer){
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 
-
+//666
 //12312312
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
