@@ -4,10 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.Portal;
-import com.mygdx.game.Level2.NormalActors.ThinSurface;
-import com.mygdx.game.Level2.NormalActors.rotateSwitch;
 import com.mygdx.game.abstraction.UserData;
 
 public class PhysicalContactListener implements ContactListener{
@@ -27,7 +23,6 @@ public class PhysicalContactListener implements ContactListener{
 
         long result = faData.contactId+fbData.contactId;
 
-        System.out.println(Integer.toBinaryString((int)result));
         if(ActConstants.contactList.get(result)!=null){
             ActConstants.contactList.get(result).react(faData,fbData);
         }
@@ -61,11 +56,24 @@ public class PhysicalContactListener implements ContactListener{
 
     @Override
     public void endContact(Contact contact) {//新接触点消失
-//        Fixture fa = contact.getFixtureA();
-////        Fixture fb = contact.getFixtureB();
-////
-////        Object faData = fa.getUserData();
-////        Object fbData = fb.getUserData();
+
+        Fixture fa = contact.getFixtureA();
+        Fixture fb = contact.getFixtureB();
+
+        UserData faData = (UserData) fa.getUserData();
+        UserData fbData = (UserData) fb.getUserData();
+
+
+        if(faData.contactId==ActConstants.tongueMonsterID){
+            ((TongueMonster)ActConstants.publicInformation.get(faData.nameInPublicInformation)).setContact(false);
+        }
+        if(fbData.contactId==ActConstants.tongueMonsterID){
+            ((TongueMonster)ActConstants.publicInformation.get(fbData.nameInPublicInformation)).setContact(false);
+        }
+
+
+
+
 ////
 //////两个指定物体碰撞后
 ////    if( ((faData.equals("wall")|| fbData.equals("wall"))&&(faData.equals("main character") || fbData.equals("main character")))){

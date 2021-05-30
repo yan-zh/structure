@@ -102,7 +102,7 @@ public class EatPlatform extends Actor {
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.eatPlatformID,"EatPlatform"+number));
-        System.out.println("EatPlatform"+number);
+
 
 
         ActConstants.publicInformation.put("EatPlatform"+number,this);

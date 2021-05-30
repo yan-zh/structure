@@ -21,9 +21,13 @@ public class TongueMonsterAndMainCharacter implements ContactReaction {
         if(userData1.contactId==ActConstants.tongueMonsterID){
             TongueMonster tongueMonster = (TongueMonster) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
             tongueMonster.setContact(true);
+            MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
+            mainCharacter.reFreshJump();
         }else{
             TongueMonster tongueMonster = (TongueMonster) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
             tongueMonster.setContact(true);
+            MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
+            mainCharacter.reFreshJump();
         }
 
 

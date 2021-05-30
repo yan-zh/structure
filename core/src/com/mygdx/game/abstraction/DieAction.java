@@ -26,7 +26,7 @@ public class DieAction extends Actor {
     public void act(float delta) {
 
         t += delta;
-        System.out.println(t);
+
 
         super.act(delta);
     }
