@@ -84,7 +84,7 @@ public class ActConstants {
 
 
 
-    //yzh**********************
+    //阎之泓**********************
 
     public static long windBulletID = 0b10000;
 
@@ -164,7 +164,7 @@ public class ActConstants {
         isFrozen = false;
     }
 
-    //yzh_________________________
+    //阎之泓part________________________
 
     //郐洋Part
     public static long brokenBridgeID = 0b1000;
@@ -177,5 +177,12 @@ public class ActConstants {
 
     public static long IceID = 0b100000000000000000000;
 
+    //****************郐洋
+
+
+    //***************林韫奇
+    public static long platformID = 0b100000;
+    public static long thinSurfaceID= 0b1000000000000000000000000000000;
+    public static long hangedBallsID=0b10000000000000000;
 
 }

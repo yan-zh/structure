@@ -19,6 +19,7 @@ import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
+import jdk.tools.jaotc.Main;
 
 public class Stage2 extends MyStage {
 
@@ -48,7 +49,15 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,112,13f));//单位是米
+
+        //阎之泓主角出生点：
+//        this.addActor(new MainCharacter(world, 2,7f));
+
+        //郐洋主角出生点
+//        this.addActor(new MainCharacter(world,0,13f));//单位是米
+
+        //林韫奇主角出生点
+//        this.addActor(new MainCharacter(world,192,10f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -151,7 +160,7 @@ public class Stage2 extends MyStage {
         //*************************yzh
 
 
-        //************************************gy
+        //************************************郐洋
         new BridgeAndMainCharacter();
         new PortalAndMainCharacter();
         new BridgeAndIce();
@@ -161,7 +170,15 @@ public class Stage2 extends MyStage {
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
 
         ActConstants.publicInformation.put("stage2", this);
+        //************************************郐洋
 
+        //****************************林韫奇 主角9600
+        this.addActor(new Platform(world,9800,500,ActConstants.platformID,"Platform"));
+//        this.addActor(new HangedBalls(world,"012",10200));
+        this.addActor(new ThinSurface(world,204,12,2f,0.2f,
+                ActConstants.thinSurfaceID,"thinSurface"));
+        new ThinSurfaceContact();
+        new BallsContact();
     }
 
     @Override

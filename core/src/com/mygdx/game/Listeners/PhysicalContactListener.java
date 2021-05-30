@@ -1,8 +1,12 @@
 package com.mygdx.game.Listeners;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.Portal;
+import com.mygdx.game.Level2.NormalActors.ThinSurface;
 import com.mygdx.game.Level2.NormalActors.rotateSwitch;
 import com.mygdx.game.abstraction.UserData;
 
@@ -85,7 +89,29 @@ public class PhysicalContactListener implements ContactListener{
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {//aabb框之间出现新接触点
+        Fixture fa = contact.getFixtureA();
+        Fixture fb = contact.getFixtureB();
+        UserData faData = (UserData)fa.getUserData();
+        UserData fbData = (UserData)fb.getUserData();
+        long result = faData.contactId+fbData.contactId;
+        if(result==(0b1+0b1000000000000000000000000000000)){
+            ThinSurface srf= (ThinSurface) ActConstants.publicInformation.get("thinSurface");
+            MainCharacter mainCha= (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
+            if(mainCha.getPositionInSimulation().y-(mainCha.getHeight()/2f)
+                    >= srf.y+ (srf.getHeight()/2f)){
+                if(Gdx.input.isKeyPressed(Input.Keys.S)== true){
 
+                    contact.setEnabled(false);
+                }
+            }
+            if(mainCha.getPositionInSimulation().y-(mainCha.getHeight()/2f)
+                    < srf.y+ (srf.getHeight()/2f)){
+                contact.setEnabled(false);
+            }
+
+
+
+        }
     }
 
     @Override
