@@ -120,6 +120,12 @@ public class ActConstants {
 
     public static long eatPlatformID = 0b10000000000000000000000000000000;
 
+    public static long tongueMonsterID;
+    static{
+        tongueMonsterID=1;
+        tongueMonsterID = tongueMonsterID<<33;
+    }
+
 
     public static ArrayList<PhysicalAction> physicalActionList;
     static{
@@ -155,7 +161,7 @@ public class ActConstants {
 
     public static boolean isFrozen;
     static{
-        isFrozen = true;
+        isFrozen = false;
     }
 
     //yzh_________________________

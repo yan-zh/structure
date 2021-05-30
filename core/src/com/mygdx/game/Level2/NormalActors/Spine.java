@@ -89,6 +89,7 @@ public class Spine extends Actor {
 
     }
 
+
     public float getPhysicalX(){
         return mySimulation.getPosition().x;
     }

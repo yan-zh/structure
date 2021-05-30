@@ -145,6 +145,9 @@ public class Stage2 extends MyStage {
         new EatPlatformAndMainCharacter();
 
 
+        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
+        this.addActor(tongueMonster);
+
 
     }
 
