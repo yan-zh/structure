@@ -25,9 +25,13 @@ public class Spine extends Actor {
 
     Animation spine;//这个就是
 
+    boolean draw;
+
 
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public Spine(World world, float x, float y, float height, float width) {
+
+        draw=true;
 
         number++;
 
@@ -36,7 +40,7 @@ public class Spine extends Actor {
         this.world = world;
 
         //创建主角物理模拟
-        PhysicalEntityDefine.defineKinematic();
+        PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
@@ -67,16 +71,22 @@ public class Spine extends Actor {
 
     @Override
     public void act(float delta) {
+        //if(draw==true){
+            statetime+=delta;
+            currentFrame = (TextureRegion) spine.getKeyFrame(statetime);
+        //}
 
         super.act(delta);
-        statetime+=delta;
-        currentFrame = (TextureRegion) spine.getKeyFrame(statetime);
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        //if(draw==true){
+            batch.draw(currentFrame,getX(),getY());
+       // }
         super.draw(batch, parentAlpha);
-        batch.draw(currentFrame,getX(),getY());
+
     }
 
     public float getPhysicalX(){
@@ -91,5 +101,12 @@ public class Spine extends Actor {
         mySimulation.setLinearVelocity(x,y);
     }
 
+//    public void setDraw(boolean draw){
+//        this.draw = draw;
+//    }
+
+    public Body getSimulation(){
+        return mySimulation;
+    }
 
 }

@@ -3,7 +3,7 @@ package com.mygdx.game.Level2.ContactReactions;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
+import com.mygdx.game.Level2.SkillGroupManager.SkillGroupIce;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.UserData;
@@ -19,7 +19,7 @@ public class IceFairyAndMainCharacter implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
         Fairy fairy= ((Fairy)ActConstants.publicInformation.get("IceFairy"));
         if(fairy!=null){
-            ActConstants.skillGroups[fairy.numberPosition] = new SkillGourpWind();
+            ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupIce();
             fairy.removeBody();
             fairy.state=false;
 

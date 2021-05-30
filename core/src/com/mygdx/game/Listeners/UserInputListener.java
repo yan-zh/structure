@@ -32,9 +32,11 @@ public class UserInputListener extends InputListener {
             }
             if(event.getKeyCode()==Input.Keys.NUM_1){
                 ActConstants.currentSkillGroup=1;
+                System.out.println("1 put");
             }
             if(event.getKeyCode()==Input.Keys.NUM_2){
                 ActConstants.currentSkillGroup=2;
+                System.out.println("2 put");
             }
         }
 

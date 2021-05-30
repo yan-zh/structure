@@ -60,7 +60,7 @@ public class MainCharacter extends Actor {
         //交互注册
         ActConstants.publicInformation.put("MainCharacter",this);
 
-
+        ActConstants.mainCharacter = this;
 
     }
 
@@ -168,6 +168,11 @@ public class MainCharacter extends Actor {
 
     public void die(){
         System.out.println("die");
+    }
+
+    public void reFreshJump(){
+        ActConstants.MainCharacterState.replace("onGround",true);
+        ActConstants.MainCharacterState.replace("repulse",false);
     }
 
 

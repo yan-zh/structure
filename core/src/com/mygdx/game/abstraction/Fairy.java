@@ -11,7 +11,7 @@ import com.mygdx.game.Tools.PhysicalEntityDefine;
 
 public class Fairy extends Actor {
 
-    public SkillGroup skillGroup;
+    //public SkillGroup skillGroup;
     public int numberPosition;
 
     Body mySimulation;
@@ -35,8 +35,8 @@ public class Fairy extends Actor {
     String name;
 
     //输入的xy单位是像素
-    public Fairy(SkillGroup skillGroup,int numberPosition, Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world,String name) {
-        this.skillGroup = skillGroup;
+    public Fairy(int numberPosition, Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world,String name) {
+       // this.skillGroup = skillGroup;
         this.numberPosition = numberPosition;
 
         state=true;

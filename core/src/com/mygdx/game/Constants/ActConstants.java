@@ -1,6 +1,7 @@
 package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
+import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.PhysicalAction;
 import com.mygdx.game.abstraction.SkillGroup;
@@ -19,6 +20,7 @@ public class ActConstants {
     public static InputMultiplexer inputMultiplexer;
 
 
+    public static MainCharacter mainCharacter;
 
     public static float MainCharacterUpImpulse = 600f;
     public static float MainCharacterSpeed = 5;

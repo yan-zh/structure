@@ -11,8 +11,6 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
-import com.mygdx.game.Level2.SkillGroupManager.SkillGourpWind;
-import com.mygdx.game.Level2.SkillGroupManager.SkillGroupIce;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.Assets;
@@ -97,12 +95,12 @@ public class Stage2 extends MyStage {
         //风精灵
         new WindFairyAndMainCharacter();
 
-        this.addActor(new Fairy(new SkillGourpWind(),1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
 
         new IceFairyAndMainCharacter();
 
-        this.addActor(new Fairy(new SkillGroupIce(),2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
+        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
 
         this.addActor(new Spine(world,60,10,1,3));
         new MainCharacterAndSpine();
@@ -133,8 +131,14 @@ public class Stage2 extends MyStage {
         new FlowerAndMainCharacter();
 
 
-        EatPlatform eatPlatform = new EatPlatform(world,70,10);
-        this.addActor(eatPlatform);
+        EatPlatform eatPlatform1 = new EatPlatform(world,70,10);
+        this.addActor(eatPlatform1);
+
+        EatPlatform eatPlatform2 = new EatPlatform(world,80,10);
+        this.addActor(eatPlatform2);
+
+
+        new EatPlatformAndMainCharacter();
 
 
 
