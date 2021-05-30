@@ -67,6 +67,8 @@ public class MonsterA extends Actor {
 
     int count;
 
+    Timer timer;
+
 
 
     public MonsterA(World world, float x, float y,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
@@ -196,7 +198,7 @@ public class MonsterA extends Actor {
     public void start(){
 
         if(count==0){
-            Timer timer = new Timer();
+            timer = new Timer();
             Timer.Task timerTask = new Timer.Task() {
                 @Override
 
@@ -212,6 +214,7 @@ public class MonsterA extends Actor {
 
             };
             timer.scheduleTask(timerTask, 1, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
+
         }
 
 
@@ -284,6 +287,7 @@ public class MonsterA extends Actor {
             ActConstants.physicalActionList.add(deletePhysicalEntity2);
             ActConstants.physicalActionList.add(deletePhysicalEntity1);
             ActConstants.publicInformation.remove("Monster"+myNumber);
+            timer.clear();
             return super.remove();
         }
     }
