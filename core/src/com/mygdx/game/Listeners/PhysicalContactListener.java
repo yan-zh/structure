@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.abstraction.UserData;
 
 public class PhysicalContactListener implements ContactListener{

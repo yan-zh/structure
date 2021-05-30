@@ -50,7 +50,7 @@ public class Stage2 extends MyStage {
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
 
         //阎之泓主角出生点：
-//        this.addActor(new MainCharacter(world, 2,7f));
+        this.addActor(new MainCharacter(world, 2,7f));
 
         //郐洋主角出生点
 //        this.addActor(new MainCharacter(world,0,13f));//单位是米
