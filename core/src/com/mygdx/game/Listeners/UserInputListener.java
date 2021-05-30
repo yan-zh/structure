@@ -32,11 +32,11 @@ public class UserInputListener extends InputListener {
             }
             if(event.getKeyCode()==Input.Keys.NUM_1){
                 ActConstants.currentSkillGroup=1;
-                System.out.println("1 put");
+
             }
             if(event.getKeyCode()==Input.Keys.NUM_2){
                 ActConstants.currentSkillGroup=2;
-                System.out.println("2 put");
+
             }
         }
 
@@ -76,7 +76,7 @@ public class UserInputListener extends InputListener {
     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
         //button 0左键 1右键
         if(ActConstants.skillGroups[ActConstants.currentSkillGroup]!=null){
-            System.out.println("鼠标点击");
+
             if(button==1){
                 ActConstants.skillGroups[ActConstants.currentSkillGroup].skill1(x,y);
             }else{
