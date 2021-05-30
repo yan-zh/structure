@@ -30,7 +30,7 @@ public class fireBoll extends Actor {
 		TextureRegion region[] = new TextureRegion[2];
 		region[0]=new TextureRegion(boll1);
 		region[1]=new TextureRegion(boll2);
-
+//12123
 		animation = new Animation(0.1f,region);
 
 		lifeTime=200;
