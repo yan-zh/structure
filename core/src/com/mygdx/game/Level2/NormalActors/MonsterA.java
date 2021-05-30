@@ -119,11 +119,15 @@ public class MonsterA extends Actor {
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
+        myFixtureDef.isSensor=false;
+
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
+
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.MonsterID,"Monster"+myNumber));
+        mySimulation.setGravityScale(1);
 
 
 

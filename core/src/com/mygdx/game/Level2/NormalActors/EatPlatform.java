@@ -1,8 +1,11 @@
 package com.mygdx.game.Level2.NormalActors;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreateSpine;
 import com.mygdx.game.Level2.PhysicalActions.CreateTongue;
@@ -35,8 +38,40 @@ public class EatPlatform extends Actor {
 
     int myNumber;
 
+    boolean contact;
+    enum State
+    {
+        wait,release;
+    }
+    State state;
 
-    public EatPlatform(World world, float x, float y) {//单位是m
+    Animation wait;
+    Animation attack;
+    Animation release;
+
+    TextureRegion currentFrame;
+
+
+    float waitStateTime;
+    float attackStateTime;
+    float releaseStateTime;
+
+
+    public EatPlatform(World world, float x, float y, Animation wait, Animation attack, Animation release) {//单位是m
+
+        this.wait = wait;
+        this.attack = attack;
+        this.release = release;
+
+
+        contact = false;
+        state = State.wait;
+
+        attackStateTime = 0;
+        releaseStateTime = 0;
+        waitStateTime = 0;
+
+
         this.world = world;
         //创建主角物理模拟
         PhysicalEntityDefine.defineStatic();
@@ -68,6 +103,7 @@ public class EatPlatform extends Actor {
 
         ActConstants.publicInformation.put("EatPlatform"+number,this);
 
+        currentFrame = (TextureRegion) wait.getKeyFrames()[0];
 
 
 //        //创建主角物理模拟
@@ -108,7 +144,31 @@ public class EatPlatform extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        //三个状态，等待，攻击，返回
+
+        if(contact==true){
+            if(state==State.wait){
+                attackStateTime += delta;
+                currentFrame = (TextureRegion) attack.getKeyFrame(attackStateTime,false);
+                if(attack.isAnimationFinished(attackStateTime)){
+                    this.addSpine();
+                    attackStateTime=0;
+                    state = State.release;
+                }
+            }else if(state==State.release){
+                releaseStateTime += delta;
+                currentFrame = (TextureRegion) release.getKeyFrame(releaseStateTime,false);
+                if(release.isAnimationFinished(releaseStateTime)){
+                    releaseStateTime = 0;
+                    this.deleteSpine();
+                    state = State.wait;
+                    contact = false;
+                }
+            }
+        }else{
+            waitStateTime += delta;
+            currentFrame = (TextureRegion) wait.getKeyFrame(waitStateTime,true);
+        }
+
 
 
 
@@ -116,7 +176,10 @@ public class EatPlatform extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+
         super.draw(batch, parentAlpha);
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
     }
 
 
@@ -140,6 +203,6 @@ public class EatPlatform extends Actor {
 
 
     public void contact(){
-
+        this.contact = true;
     }
 }

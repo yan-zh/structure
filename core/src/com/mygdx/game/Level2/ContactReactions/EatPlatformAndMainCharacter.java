@@ -1,6 +1,7 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.EatPlatform;
 import com.mygdx.game.Level2.NormalActors.Flower;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
@@ -15,7 +16,11 @@ public class EatPlatformAndMainCharacter implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
         ActConstants.mainCharacter.reFreshJump();
 
-
+        if(userData1.contactId==ActConstants.eatPlatformID){
+            ((EatPlatform)ActConstants.publicInformation.get(userData1.nameInPublicInformation)).contact();
+        }else{
+            ((EatPlatform)ActConstants.publicInformation.get(userData2.nameInPublicInformation)).contact();
+        }
 
 
 
