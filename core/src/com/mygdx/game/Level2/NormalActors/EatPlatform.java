@@ -48,6 +48,7 @@ public class EatPlatform extends Actor {
     Animation wait;
     Animation attack;
     Animation release;
+    Animation frozen;
 
     TextureRegion currentFrame;
 
@@ -55,13 +56,15 @@ public class EatPlatform extends Actor {
     float waitStateTime;
     float attackStateTime;
     float releaseStateTime;
+    float statetime;
 
 
-    public EatPlatform(World world, float x, float y, Animation wait, Animation attack, Animation release) {//单位是m
+    public EatPlatform(World world, float x, float y, Animation wait, Animation attack, Animation release, Animation frozen) {//单位是m
 
         this.wait = wait;
         this.attack = attack;
         this.release = release;
+        this.frozen = frozen;
 
 
         contact = false;
@@ -70,6 +73,7 @@ public class EatPlatform extends Actor {
         attackStateTime = 0;
         releaseStateTime = 0;
         waitStateTime = 0;
+        statetime = 0;
 
 
         this.world = world;
@@ -145,29 +149,35 @@ public class EatPlatform extends Actor {
         super.act(delta);
 
 
-        if(contact==true){
-            if(state==State.wait){
-                attackStateTime += delta;
-                currentFrame = (TextureRegion) attack.getKeyFrame(attackStateTime,false);
-                if(attack.isAnimationFinished(attackStateTime)){
-                    this.addSpine();
-                    attackStateTime=0;
-                    state = State.release;
+        if(ActConstants.isFrozen==false){
+            if(contact==true){
+                if(state==State.wait){
+                    attackStateTime += delta;
+                    currentFrame = (TextureRegion) attack.getKeyFrame(attackStateTime,false);
+                    if(attack.isAnimationFinished(attackStateTime)){
+                        this.addSpine();
+                        attackStateTime=0;
+                        state = State.release;
+                    }
+                }else if(state==State.release){
+                    releaseStateTime += delta;
+                    currentFrame = (TextureRegion) release.getKeyFrame(releaseStateTime,false);
+                    if(release.isAnimationFinished(releaseStateTime)){
+                        releaseStateTime = 0;
+                        this.deleteSpine();
+                        state = State.wait;
+                        contact = false;
+                    }
                 }
-            }else if(state==State.release){
-                releaseStateTime += delta;
-                currentFrame = (TextureRegion) release.getKeyFrame(releaseStateTime,false);
-                if(release.isAnimationFinished(releaseStateTime)){
-                    releaseStateTime = 0;
-                    this.deleteSpine();
-                    state = State.wait;
-                    contact = false;
-                }
+            }else{
+                waitStateTime += delta;
+                currentFrame = (TextureRegion) wait.getKeyFrame(waitStateTime,true);
             }
         }else{
-            waitStateTime += delta;
-            currentFrame = (TextureRegion) wait.getKeyFrame(waitStateTime,true);
+            statetime += delta;
+            currentFrame = (TextureRegion) frozen.getKeyFrame(statetime,true);
         }
+
 
 
 
@@ -203,6 +213,9 @@ public class EatPlatform extends Actor {
 
 
     public void contact(){
-        this.contact = true;
+
+        if(ActConstants.isFrozen==false){
+            this.contact = true;
+        }
     }
 }

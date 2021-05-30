@@ -135,10 +135,10 @@ public class Stage2 extends MyStage {
         new FlowerAndMainCharacter();
 
 
-        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath);
+        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(eatPlatform1);
 
-        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath);
+        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(eatPlatform2);
 
 

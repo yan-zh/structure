@@ -153,6 +153,11 @@ public class ActConstants {
         MonsterActionLock =4;
     }
 
+    public static boolean isFrozen;
+    static{
+        isFrozen = true;
+    }
+
     //yzh_________________________
 
 
