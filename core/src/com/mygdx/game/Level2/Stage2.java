@@ -48,7 +48,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,0,10f));//单位是米
+        this.addActor(new MainCharacter(world,112,13f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -89,6 +89,7 @@ public class Stage2 extends MyStage {
 
         //为这一关用到的物理碰撞监听添加一个函数
 
+        //********************yzh
         new GroundAndMainCharacter();
         new BulletDispose();
 
@@ -147,7 +148,19 @@ public class Stage2 extends MyStage {
 
         TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
         this.addActor(tongueMonster);
+        //*************************yzh
 
+
+        //************************************gy
+        new BridgeAndMainCharacter();
+        new PortalAndMainCharacter();
+        new BridgeAndIce();
+        this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
+        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
+        this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
+
+        ActConstants.publicInformation.put("stage2", this);
 
     }
 

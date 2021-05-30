@@ -166,6 +166,16 @@ public class ActConstants {
 
     //yzh_________________________
 
+    //郐洋Part
+    public static long brokenBridgeID = 0b1000;
+    //0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 1000
+
+    public static long portalID = 0b10000000;
+    //0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 1000 0000
+
+    public static long switchID = 0b1000000000000000000;
+
+    public static long IceID = 0b100000000000000000000;
 
 
 }

@@ -16,8 +16,9 @@ import org.graalvm.compiler.lir.LIRInstruction;
 
 
 public class MainCharacter extends Actor {
+
     World world;
-    Body mySimulation;
+    public Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
     PolygonShape shape;
