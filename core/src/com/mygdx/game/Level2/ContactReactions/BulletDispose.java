@@ -21,28 +21,18 @@ public class BulletDispose implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-//
-//        ActConstants.countnumber++;
-//        System.out.println(ActConstants.countnumber);
+
         if(userData1.contactId!=ActConstants.monsterSensorID&&userData2.contactId!=ActConstants.monsterSensorID){
             if(userData1.contactId==ActConstants.windBulletID||
                     userData1.contactId==ActConstants.iceBulletID||
                     userData1.contactId==ActConstants.sandBulletID||
                     userData1.contactId==ActConstants.woodBulletID){
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-                bulletSkill.contactMark=true;
-                bulletSkill.flyMark=false;
-                bulletSkill.deleteBody();
-
+                bulletSkill.dispose();
             }else{
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-                bulletSkill.contactMark=true;
-                bulletSkill.flyMark=false;
-                bulletSkill.deleteBody();
+                bulletSkill.dispose();
             }
         }
-
-
-
     }
 }

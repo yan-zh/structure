@@ -68,10 +68,30 @@ public class MonsterA extends Actor {
     int count;
 
     Timer timer;
+    Timer.Task timerTask;
 
 
 
     public MonsterA(World world, float x, float y,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
+
+
+        timer = new Timer();
+        timerTask = new Timer.Task() {
+            @Override
+
+            public void run() {
+                synchronized (ActConstants.MonsterActionLock){
+                    MonsterA monsterA = (MonsterA)ActConstants.publicInformation.get("Monster"+myNumber);
+                    if(monsterA!=null){
+                        monsterA.attack();
+                        monsterA.move=true;
+                    }
+                }
+            }
+
+        };
+
+
 
         this.standLeft = standLeft;
         this.standRight = standRight;
@@ -198,25 +218,10 @@ public class MonsterA extends Actor {
     public void start(){
 
         if(count==0){
-            timer = new Timer();
-            Timer.Task timerTask = new Timer.Task() {
-                @Override
 
-                public void run() {
-                    synchronized (ActConstants.MonsterActionLock){
-                        MonsterA monsterA = (MonsterA)ActConstants.publicInformation.get("Monster"+myNumber);
-                        if(monsterA!=null){
-                            monsterA.attack();
-                            monsterA.move=true;
-                        }
-                    }
-                }
-
-            };
             timer.scheduleTask(timerTask, 1, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
 
         }
-
 
         count=1;
     }

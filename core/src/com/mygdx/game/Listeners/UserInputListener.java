@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.MonsterA;
+import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
 
 public class UserInputListener extends InputListener {
 
@@ -37,6 +38,10 @@ public class UserInputListener extends InputListener {
             if(event.getKeyCode()==Input.Keys.NUM_2){
                 ActConstants.currentSkillGroup=2;
 
+            }
+
+            if(event.getKeyCode()==Input.Keys.Q){
+                ActConstants.physicalActionList.add(new ReverseMainCharacterGravity());
             }
         }
 

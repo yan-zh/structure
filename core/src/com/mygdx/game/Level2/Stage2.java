@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
@@ -34,14 +35,17 @@ public class Stage2 extends MyStage {
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
 
 
+
     public Stage2(InputMultiplexer inputMultiplexer){
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
+
 
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
         //一个舞台代表游戏的一个关，每关各自使用一个物理世界
         world = new World(new Vector2(0,-10),true);
         world.setContactListener(new PhysicalContactListener());
+
         //这个类包含一些用于定义物理实体属性的函数，一般的物理实体都可以通过这个类定义
         PhysicalEntityDefine.boundWorld(world);
 
@@ -155,7 +159,16 @@ public class Stage2 extends MyStage {
         this.addActor(tongueMonster2);
 
         new TongueMonsterAndMainCharacter();
+
+
+
+
+
+
 //yzh***************************************************************
+
+
+
 
     }
 

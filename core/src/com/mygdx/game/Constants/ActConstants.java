@@ -126,6 +126,12 @@ public class ActConstants {
         tongueMonsterID = tongueMonsterID<<33;
     }
 
+    public static long mainCharacterSensorID;
+    static{
+        mainCharacterSensorID=1;
+        mainCharacterSensorID = mainCharacterSensorID<<34;
+    }
+
 
     public static ArrayList<PhysicalAction> physicalActionList;
     static{
@@ -163,6 +169,8 @@ public class ActConstants {
     static{
         isFrozen = false;
     }
+
+    public static boolean canGravityInverse = true;
 
     //yzh_________________________
 

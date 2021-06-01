@@ -159,4 +159,10 @@ public class BulletSkill extends Actor {
 
     public int getDamage(){return damage;}
 
+    public void dispose(){
+        this.contactMark=true;
+        this.flyMark=false;
+        this.deleteBody();
+    }
+
 }
