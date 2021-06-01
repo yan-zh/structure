@@ -161,6 +161,12 @@ public class Stage2 extends MyStage {
         new TongueMonsterAndMainCharacter();
 
 
+        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
+        this.addActor(blower);
+
+        new BlowerAndMainCharacter();
+
+
 
 
 

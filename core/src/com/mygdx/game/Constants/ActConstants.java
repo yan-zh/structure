@@ -36,6 +36,7 @@ public class ActConstants {
         MainCharacterState.put("repulse",false);
 //        MainCharacterState.put("slowDown",false);
         MainCharacterState.put("onGround",true);
+        MainCharacterState.put("blow",false);
 //        MainCharacterState.put("noControl",true);
 //        MainCharacterState.put("froze",false);
 //        MainCharacterState.put("jumping",false);
@@ -119,6 +120,12 @@ public class ActConstants {
     public static long woodFairyID = 0b100000000000000000000000000000;
 
     public static long eatPlatformID = 0b10000000000000000000000000000000;
+
+    public static long blowerID;
+    static{
+        blowerID=1;
+        blowerID = blowerID<<35;
+    }
 
     public static long tongueMonsterID;
     static{

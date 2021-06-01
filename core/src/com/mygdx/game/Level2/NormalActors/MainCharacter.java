@@ -110,6 +110,10 @@ public class MainCharacter extends Actor {
             mySimulation.setLinearVelocity(ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
         }
 
+        if(ActConstants.MainCharacterState.get("blow")){
+            mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,5);
+        }
+
 
 
 

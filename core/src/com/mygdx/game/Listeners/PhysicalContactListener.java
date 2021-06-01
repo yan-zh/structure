@@ -48,11 +48,14 @@ public class PhysicalContactListener implements ContactListener{
         UserData fbData = (UserData) fb.getUserData();
 
 
-        if(faData.contactId==ActConstants.tongueMonsterID){
+        if(faData.contactId==ActConstants.tongueMonsterID&&fbData.contactId==ActConstants.mainCharacterID){
             ((TongueMonster)ActConstants.publicInformation.get(faData.nameInPublicInformation)).setContact(false);
-        }
-        if(fbData.contactId==ActConstants.tongueMonsterID){
+        }else if(fbData.contactId==ActConstants.tongueMonsterID&&faData.contactId==ActConstants.mainCharacterID){
             ((TongueMonster)ActConstants.publicInformation.get(fbData.nameInPublicInformation)).setContact(false);
+        }else if(faData.contactId==ActConstants.blowerID&&fbData.contactId==ActConstants.mainCharacterID){
+            ActConstants.MainCharacterState.replace("blow",false);
+        }else if(fbData.contactId==ActConstants.blowerID&&faData.contactId==ActConstants.mainCharacterID){
+            ActConstants.MainCharacterState.replace("blow",false);
         }
 
 

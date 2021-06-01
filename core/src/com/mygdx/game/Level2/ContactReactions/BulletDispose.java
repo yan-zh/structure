@@ -22,7 +22,7 @@ public class BulletDispose implements ContactReaction {
     @Override
     public void react(UserData userData1, UserData userData2) {
 
-        if(userData1.contactId!=ActConstants.monsterSensorID&&userData2.contactId!=ActConstants.monsterSensorID){
+        if(userData1.contactId!=ActConstants.monsterSensorID&&userData2.contactId!=ActConstants.monsterSensorID&&userData1.contactId!=ActConstants.blowerID&&userData2.contactId!=ActConstants.blowerID){
             if(userData1.contactId==ActConstants.windBulletID||
                     userData1.contactId==ActConstants.iceBulletID||
                     userData1.contactId==ActConstants.sandBulletID||
