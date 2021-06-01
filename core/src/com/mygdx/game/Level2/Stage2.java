@@ -53,7 +53,7 @@ public class Stage2 extends MyStage {
         this.addActor(new MainCharacter(world, 2,7f));
 
         //郐洋主角出生点
-//        this.addActor(new MainCharacter(world,0,13f));//单位是米
+//        this.addActor(new MainCharacter(world,151,1.64f));//单位是米
 
         //林韫奇主角出生点
 //        this.addActor(new MainCharacter(world,192,10f));//单位是米
@@ -170,11 +170,13 @@ public class Stage2 extends MyStage {
         new BridgeAndMainCharacter();
         new PortalAndMainCharacter();
         new BridgeAndIce();
+        new SensorAndMainCharacter();
         this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
         this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
         this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
-
+        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7580, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new Sensor(7780,82,ActConstants.SensorID,world,"Sensor"));
         ActConstants.publicInformation.put("stage2", this);
         //************************************郐洋
 

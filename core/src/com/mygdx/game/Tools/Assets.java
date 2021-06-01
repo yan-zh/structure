@@ -30,6 +30,7 @@ public class Assets implements Disposable, AssetErrorListener {
     public AssetMainCharacter mainCharacter;
 
     // goldCoin 被修改了
+
     public AssetGoldCoin goldCoin;
     public AssetBunny bunny;
     public AssetRock rock;

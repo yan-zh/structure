@@ -65,6 +65,12 @@ public class MainCharacter extends Actor {
 
     }
 
+    //Cancel Jump
+    public void cancelJump(){
+        ActConstants.MainCharacterState.replace("onGround",false);
+        ActConstants.MainCharacterState.replace("repulse",false);
+    }
+
     public void prepareForPicture() {
 
         test = Assets.instance.mainCharacter.animBreath;

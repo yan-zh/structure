@@ -3,6 +3,7 @@ package com.mygdx.game.Listeners;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.abstraction.UserData;
@@ -34,7 +35,7 @@ public class PhysicalContactListener implements ContactListener{
             ActConstants.contactList.get(fbData.contactId).react(fbData,faData);
         }
 
-        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b10000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b10000000)
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.portalID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.portalID)
         {
             Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
             portal.triggerState = true;
@@ -42,14 +43,41 @@ public class PhysicalContactListener implements ContactListener{
 
         }
 
-        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b1000000000000000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b1000000000000000000)
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.switchID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.switchID )
         {
             rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
             rotateSwitch.triggerState = true;
             System.out.println("tRIGGER true");
         }
 
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.SensorID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.SensorID )
+        {
+            Sensor sensor =((Sensor)ActConstants.publicInformation.get("Sensor"));
+            sensor.triggerState = true;
+            System.out.println("Sensor is tRIGGER true");
+            laserTransmitter laserTransmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
+            System.out.println("IT is " + laserTransmitter.triggerState);
 
+
+            if(ActConstants.i==1) {
+                Timer timer = new Timer();
+                Timer.Task timerTask = new Timer.Task() {
+                    @Override
+
+                    public void run() {
+
+                        laserTransmitter laserTransmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
+                        laserTransmitter.emmit();
+                        System.out.println("sssdfsdkjfjslkfjdsl");
+                    }
+
+                };
+                timer.scheduleTask(timerTask, 1, 2, 5);// 0s之后执行，每次间隔1s，执行20次。
+            }
+            ActConstants.i = 2;
+//            laserTransmitter laserTransmitter = ((laserTransmitter)ActConstants.publicInformation.get("laserTransmitter"));
+//            laserTransmitter.emmit();
+        }
 
         //之后也可以获得碰撞点坐标等
         //还可以把刚体设置为传感器，就是会检测到碰撞但是物理世界里不与其它刚体产生相互作用
@@ -81,18 +109,26 @@ public class PhysicalContactListener implements ContactListener{
 ////
 ////        PublicData.MainCharacterState.replace("onGround",true);
 ////    }
-        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b10000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b10000000)
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.portalID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.portalID)
         {
             Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
             portal.triggerState = false;
             System.out.println("tRIGGER fALUSE");
         }
 
-        if(((UserData)(contact.getFixtureA().getUserData())).contactId == 0b1000000000000000000 || ((UserData)(contact.getFixtureB().getUserData())).contactId == 0b1000000000000000000)
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.switchID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.switchID)
         {
             rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
             rotateSwitch.triggerState = false;
+
             System.out.println("tRIGGER fALUSE");
+        }
+
+        if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.SensorID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.SensorID )
+        {
+            Sensor sensor =((Sensor)ActConstants.publicInformation.get("Sensor"));
+            sensor.triggerState = false;
+            System.out.println("Sensor is tRIGGER false");
         }
     }
 

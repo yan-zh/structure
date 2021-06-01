@@ -177,6 +177,20 @@ public class ActConstants {
 
     public static long IceID = 0b100000000000000000000;
 
+    public static long SensorID;
+
+    static{
+        SensorID=1;
+        SensorID = SensorID<<32;
+    }
+    public static long laserTransmitterID;
+
+    static{
+        laserTransmitterID=1;
+        laserTransmitterID = laserTransmitterID<<34;
+    }
+
+    public static int i = 1;
     //****************郐洋
 
 
