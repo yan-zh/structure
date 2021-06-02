@@ -50,10 +50,10 @@ public class Stage2 extends MyStage {
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
 
         //阎之泓主角出生点：
-        this.addActor(new MainCharacter(world, 2,7f));
+//        this.addActor(new MainCharacter(world, 2,7f));
 
         //郐洋主角出生点
-//        this.addActor(new MainCharacter(world,151,1.64f));//单位是米
+        this.addActor(new MainCharacter(world,151,1.64f));//单位是米
 
         //林韫奇主角出生点
 //        this.addActor(new MainCharacter(world,192,10f));//单位是米
@@ -171,12 +171,15 @@ public class Stage2 extends MyStage {
         new PortalAndMainCharacter();
         new BridgeAndIce();
         new SensorAndMainCharacter();
+        new ReflectiveStoneAndBullet();
         this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
         this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
         this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
-        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7580, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-        this.addActor(new Sensor(7780,82,ActConstants.SensorID,world,"Sensor"));
+        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7500, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new Sensor(7300,82,ActConstants.SensorID,world,"Sensor"));
+        this.addActor(new ReflectiveStone(8080,82,ActConstants.IceID,world,"ReflectiveStone1"));
+
         ActConstants.publicInformation.put("stage2", this);
         //************************************郐洋
 

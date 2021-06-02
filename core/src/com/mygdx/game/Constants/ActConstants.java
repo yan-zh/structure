@@ -191,6 +191,14 @@ public class ActConstants {
     }
 
     public static int i = 1;
+
+    public static long ReflectiveStoneID;
+
+    static{
+        ReflectiveStoneID=1;
+        ReflectiveStoneID = ReflectiveStoneID<<37;
+    }
+
     //****************郐洋
 
 
