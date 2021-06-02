@@ -121,10 +121,22 @@ public class ActConstants {
 
     public static long eatPlatformID = 0b10000000000000000000000000000000;
 
+    public static long reboundBallID;
+    static{
+        reboundBallID = 1;
+        reboundBallID = reboundBallID<<38;
+    }
+
     public static long blowerID;
     static{
         blowerID=1;
         blowerID = blowerID<<35;
+    }
+
+    public static long ballLauncherID;
+    static{
+        ballLauncherID = 1;
+        ballLauncherID = ballLauncherID <<39;
     }
 
     public static long tongueMonsterID;
@@ -137,6 +149,12 @@ public class ActConstants {
     static{
         mainCharacterSensorID=1;
         mainCharacterSensorID = mainCharacterSensorID<<34;
+    }
+
+    public static long ballReceiverID;
+    static{
+        ballReceiverID = 1;
+        ballReceiverID = ballReceiverID <<40;
     }
 
 

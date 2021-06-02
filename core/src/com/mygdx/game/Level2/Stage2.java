@@ -101,10 +101,10 @@ public class Stage2 extends MyStage {
         new BulletDispose();
 
         //风精灵
-//        new WindFairyAndMainCharacter();
-//
-//        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
-//
+        new WindFairyAndMainCharacter();
+
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+
 //
 //        new IceFairyAndMainCharacter();
 //
@@ -178,15 +178,20 @@ public class Stage2 extends MyStage {
        // ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
-        new BulletAndMonsterA();
-        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-        this.addActor(monsterA2);
+//        new BulletAndMonsterA();
+//        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+//        this.addActor(monsterA2);
 
 
 
-        ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal("core/assets/particle3.p"),Gdx.files.internal("core/assets/"));
-        ReboundBall reboundBall = new ReboundBall(world,Assets.instance.bunny.animCopterTransformBack,effect,10,10);
+        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
+        this.addActor(ballLauncher);
+        new BallLauncherAndMainCharacter();
+
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
+        this.addActor(ballReceiver);
+        new BallAndBallReceiver();
+
 
 
 
