@@ -126,6 +126,12 @@ public class ActConstants {
         tongueMonsterID = tongueMonsterID<<33;
     }
 
+    public static long BearID;
+    static{
+        BearID=1;
+        BearID=BearID<<35;
+    }
+
 
     public static ArrayList<PhysicalAction> physicalActionList;
     static{

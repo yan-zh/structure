@@ -22,8 +22,6 @@ public class ThinSurfaceContact implements ContactReaction {
         //Refresh the state of jump
         ActConstants.MainCharacterState.replace("onGround",true);
        ActConstants.MainCharacterState.replace("repulse",false);
-        ThinSurface srf= (ThinSurface) ActConstants.publicInformation.get("thinSurface");
-        MainCharacter mainCha= (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
 
     }
 

@@ -50,13 +50,13 @@ public class Stage2 extends MyStage {
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
 
         //阎之泓主角出生点：
-        this.addActor(new MainCharacter(world, 2,7f));
+//        this.addActor(new MainCharacter(world, 2,7f));
 
         //郐洋主角出生点
 //        this.addActor(new MainCharacter(world,0,13f));//单位是米
 
         //林韫奇主角出生点
-//        this.addActor(new MainCharacter(world,192,10f));//单位是米
+        this.addActor(new MainCharacter(world,192,10f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -184,8 +184,13 @@ public class Stage2 extends MyStage {
 //        this.addActor(new HangedBalls(world,"012",10200));
         this.addActor(new ThinSurface(world,204,12,2f,0.2f,
                 ActConstants.thinSurfaceID,"thinSurface"));
+        this.addActor(new HangedBalls(world,208,12,"012",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new SleepingBear(world,212,10,5f,3f,ActConstants.BearID,"sleepingBear"));
         new ThinSurfaceContact();
         new BallsContact();
+        new BearWindContact();
+        new PlatformAndMainCharacter();
+        new BearAndMainCharacter();
     }
 
     @Override
