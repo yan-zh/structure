@@ -158,6 +158,7 @@ public class ActConstants {
     }
 
 
+
     public static ArrayList<PhysicalAction> physicalActionList;
     static{
         physicalActionList = new ArrayList<>();
@@ -194,6 +195,11 @@ public class ActConstants {
     public static Integer bossLauncherLock;
     static{
         bossLauncherLock=5;
+    }
+
+    public static Integer bulletDisposeLock;
+    static{
+        bulletDisposeLock=6;
     }
 
     public static boolean isFrozen;

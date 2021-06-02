@@ -278,7 +278,7 @@ public class BossLauncher extends Actor {
     public void start(){
 
         if(count==0){
-            timer.scheduleTask(timerTask, 1, 1, 500);// 0s之后执行，每次间隔1s，执行20次。
+            timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
         }
 
         count=1;

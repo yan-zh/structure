@@ -94,11 +94,6 @@ public class UserInputListener extends InputListener {
 
 
 
-        BossLauncher bossLauncher = ((BossLauncher)ActConstants.publicInformation.get("BossLauncher"));
-                    if(bossLauncher!=null){
-                        bossLauncher.launch();
-                    }
-
 
         return super.touchDown(event, x, y, pointer, button);
     }

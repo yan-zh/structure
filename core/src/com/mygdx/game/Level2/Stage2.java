@@ -175,7 +175,7 @@ public class Stage2 extends MyStage {
 
         this.addActor(new BossLauncher(world,45,10));
 
-       // ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
 //        new BulletAndMonsterA();

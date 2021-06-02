@@ -99,6 +99,11 @@ public class BulletSkill extends Actor {
         stateTimeContact=0;
         count=0;
         currentFrameContact = (TextureRegion) contact.getKeyFrames()[0];
+        currentFramePrepare = (TextureRegion) prepare.getKeyFrame(0);
+        currentFrameFly = (TextureRegion) fly.getKeyFrame(0);
+
+        drawX = (mySimulation.getPosition().x-0.7f)*50f;
+        drawY = (mySimulation.getPosition().y-0.45f)*50f;
 
     }
 
@@ -164,7 +169,11 @@ public class BulletSkill extends Actor {
     public void dispose(){
         this.contactMark=true;
         this.flyMark=false;
-        this.deleteBody();
+
+        synchronized (ActConstants.bulletDisposeLock){
+            this.deleteBody();
+        }
+
     }
 
 }
