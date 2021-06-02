@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
@@ -75,7 +76,6 @@ public class BossLauncher extends Actor {
 
         };
 
-        timer.scheduleTask(timerTask, 10, 1, 20);// 0s之后执行，每次间隔1s，执行20次。
 
 
 
@@ -248,10 +248,8 @@ public class BossLauncher extends Actor {
         float[] launchDirection = new float[2];
         launchDirection[0] = direction.x;
         launchDirection[1] = direction.y;
-        System.out.println(direction.x+"v  "+direction.y);
+        System.out.println(direction.x+"  "+direction.y);
 
-
-        System.out.println("begin new");
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position1.x*50,position1.y*50,launchDirection,ActConstants.windBulletID,1));
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1));
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1));
@@ -259,27 +257,30 @@ public class BossLauncher extends Actor {
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1));
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1));
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1));
-        System.out.println("end new");
+
     }
 
     @Override
     public boolean remove() {
         synchronized (ActConstants.bossLauncherLock){
             timer.clear();
+
+            DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
+            deletePhysicalEntity1.deleteBody(mySimulation,world);
+            ActConstants.physicalActionList.add(deletePhysicalEntity1);
+
             ActConstants.publicInformation.remove("BossLauncher");
             return super.remove();
         }
     }
 
 
-//    public void start(){
-//
-//        if(count==0){
-//
-//            timer.scheduleTask(timerTask, 7, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
-//
-//        }
-//
-//        count=1;
-//    }
+    public void start(){
+
+        if(count==0){
+            timer.scheduleTask(timerTask, 1, 1, 500);// 0s之后执行，每次间隔1s，执行20次。
+        }
+
+        count=1;
+    }
 }
