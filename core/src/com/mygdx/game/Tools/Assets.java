@@ -26,6 +26,14 @@ public class Assets implements Disposable, AssetErrorListener {
     public static final Assets instance = new Assets();
     private AssetManager assetManager;
 
+    // add for test
+    public AssetGoldCoin goldCoin;
+    public AssetBunny bunny;
+    public AssetRock rock;
+    public AssetFeather feather;
+    public AssetLevelDecoration levelDecoration;
+    // add for test
+
     // 创建内部类变量
     public AssetMainCharacter mainCharacter;
     public AssetCharacter01 characrer01;
@@ -111,6 +119,17 @@ public class Assets implements Disposable, AssetErrorListener {
                 atlas_level01.getTextures()) {
             t.setFilter(TextureFilter.Linear,TextureFilter.Linear);
         }
+
+        // 测试类
+        fonts = new AssetFonts();
+        bunny = new AssetBunny(atlas_level01);
+        rock = new AssetRock(atlas_level01);
+        goldCoin = new AssetGoldCoin(atlas_level01);
+        feather = new AssetFeather(atlas_level01);
+        levelDecoration = new AssetLevelDecoration(atlas);
+        sounds = new AssetSounds(assetManager);
+        music = new AssetMusic(assetManager);
+
         // 主角类
         mainCharacter = new AssetMainCharacter(atlas_level01);
         characrer01 = new AssetCharacter01(atlas_level01);
@@ -225,5 +244,78 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
+    // 资源内部类：金币道具
+    public class AssetGoldCoin {
+        public final AtlasRegion goldCoin;
+        public final Animation animGoldCoin;
 
+
+        public AssetGoldCoin (TextureAtlas atlas) {
+            goldCoin = atlas.findRegion("Jubokko_Idle");
+
+            // Animation: Gold Coin
+            Array<AtlasRegion> regions = atlas.findRegions("Jubokko_Idle");
+            AtlasRegion region = regions.first();
+            for (int i = 0; i<10;i++)
+                regions.insert(0,region);
+            animGoldCoin = new Animation(1.0f/20f,regions,
+                    Animation.PlayMode.LOOP_REVERSED);
+
+        }
+
+    }
+
+    public class AssetBunny {
+        public final AtlasRegion head;
+        public final Animation animNormal;
+        public final Animation animCopterTransform;
+        public final Animation animCopterTransformBack;
+        public final Animation getAnimCopterRotate;
+        public AssetBunny (TextureAtlas atlas) {
+            head = atlas.findRegion("bunny_head");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            // Animation : Bunny Normal
+            regions = atlas.findRegions("anim_bunny_normal");
+            animNormal = new Animation(1.0f/ 10.0f, regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            // Animation: Bunny Copter - knot earsnn
+            regions = atlas.findRegions("anim_bunny_normal");
+            animCopterTransform = new Animation(1.0f/ 10.0f, regions);
+
+            // Animation: Bunny Copter - unknot ears
+            regions = atlas.findRegions("anim_bunny_normal");
+            animCopterTransformBack = new Animation(1.0f/ 10.0f, regions,Animation.PlayMode.LOOP_REVERSED);
+
+            // Animation: Bunny Copter - rotate ears
+            regions = new Array<AtlasRegion>();
+            regions.add(atlas.findRegion("anim_bunny_copter",4));
+            regions.add(atlas.findRegion("anim_bunny_copter",5));
+            getAnimCopterRotate = new Animation(1.0f/ 15.0f, regions);
+        }
+    }
+
+    // 资源内部类：石块
+    public class AssetRock {
+        public final AtlasRegion edge;
+        public final AtlasRegion middle;
+
+        public AssetRock (TextureAtlas atlas) {
+            edge = atlas.findRegion("rock_edge");
+            middle = atlas.findRegion("rock_middle");
+        }
+    }
+
+
+    // 资源内部类：羽毛道具
+    public class AssetFeather {
+        public final AtlasRegion feather;
+
+        public AssetFeather(TextureAtlas atlas) {
+            feather = atlas.findRegion("item_feather");
+        }
+
+    }
 }
