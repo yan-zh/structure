@@ -190,7 +190,9 @@ public class ActConstants {
         laserTransmitterID = laserTransmitterID<<34;
     }
 
-    public static int i = 1;
+    public static int SensorCount = 1;
+
+    public static int BulletCount = 1;
 
     public static long ReflectiveStoneID;
 
