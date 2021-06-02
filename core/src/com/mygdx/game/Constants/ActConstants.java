@@ -157,6 +157,7 @@ public class ActConstants {
         axeLock=2;
     }
 
+
     public static int countnumber;
     static{
         countnumber=0;
@@ -170,6 +171,11 @@ public class ActConstants {
     public static Integer MonsterActionLock;
     static{
         MonsterActionLock =4;
+    }
+
+    public static Integer bossLauncherLock;
+    static{
+        bossLauncherLock=5;
     }
 
     public static boolean isFrozen;

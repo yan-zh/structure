@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.BossLauncher;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.MonsterA;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
@@ -90,6 +91,15 @@ public class UserInputListener extends InputListener {
 
            // ((MonsterA)ActConstants.publicInformation.get("Monster0")).start();
         }
+
+
+
+        BossLauncher bossLauncher = ((BossLauncher)ActConstants.publicInformation.get("BossLauncher"));
+                    if(bossLauncher!=null){
+                        bossLauncher.launch();
+                    }
+
+
         return super.touchDown(event, x, y, pointer, button);
     }
 }

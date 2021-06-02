@@ -39,6 +39,8 @@ public class BulletSkill extends Actor {
 
     static int bulletMark=0;
 
+    public int myMark;
+
     short count;
 
     float drawX;
@@ -49,13 +51,13 @@ public class BulletSkill extends Actor {
     int damage;
 
     public BulletSkill(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
-
+//这里输入的x y是像素
         this.damage = damage;
 
         this.direction = direction;
 
         bulletMark++;
-
+        myMark = bulletMark;
         //这里传入参数xy是主角位置，像素，之后根据方向移动一点获得发射位置
         this.setX(x+80*direction[0]);
         this.setY(y+80*direction[1]);
@@ -82,9 +84,9 @@ public class BulletSkill extends Actor {
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         myFixture = mySimulation.createFixture(myFixtureDef);
-        myFixture.setUserData(new UserData(actorId,Integer.toString(bulletMark)));
+        myFixture.setUserData(new UserData(actorId,Integer.toString(myMark)));
 
-        ActConstants.publicInformation.put(Integer.toString(bulletMark),this);
+        ActConstants.publicInformation.put(Integer.toString(myMark),this);
         mySimulation.setGravityScale(0);
 
         mySimulation.setLinearVelocity(8*direction[0],8*direction[1]);
@@ -122,7 +124,7 @@ public class BulletSkill extends Actor {
 
         }
         if(contact.isAnimationFinished(stateTimeContact)){
-            ActConstants.publicInformation.remove(bulletMark);
+            ActConstants.publicInformation.remove(myMark);
 
             this.remove();
         }
