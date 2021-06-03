@@ -201,6 +201,15 @@ public class ActConstants {
         ReflectiveStoneID = ReflectiveStoneID<<37;
     }
 
+
+    public static long SandID;
+
+    static{
+        SandID=1;
+        SandID = SandID<<41;
+    }
+
+    public static int SandCount = 1;
     //****************郐洋
 
 
