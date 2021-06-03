@@ -45,7 +45,7 @@ public class HangedBalls extends Actor {
         Array<Body> vertices=new Array<Body>();
         Array<Vector2> positions=new Array<>();
 
-        for (Integer i = 0; i < 3; i++) {
+        for (Integer i = 0; i < 3; i++) {//注意这里改坐标的话三行代码都得改
             vertices.add(BodyBuilder.createBox(world, x+i*2 , y+2f, 0.05f, 0.05f, false, 0b10, "vertex"));
             positions.add(new Vector2(x+i*2  , y+2f));
             bodies.add(BodyBuilder.createCircle(world, x+i*2 , y, 0.5f, true,

@@ -186,11 +186,13 @@ public class Stage2 extends MyStage {
                 ActConstants.thinSurfaceID,"thinSurface"));
         this.addActor(new HangedBalls(world,208,12,"012",ActConstants.hangedBallsID,"hangedBalls"));
         this.addActor(new SleepingBear(world,212,10,5f,3f,ActConstants.BearID,"sleepingBear"));
+        this.addActor(new Bubbles(world,216,10,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();
         new BallsContact();
         new BearWindContact();
         new PlatformAndMainCharacter();
         new BearAndMainCharacter();
+        new BubbleAndCharacter();
     }
 
     @Override

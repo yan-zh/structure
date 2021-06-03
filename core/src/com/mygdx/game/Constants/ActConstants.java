@@ -1,6 +1,7 @@
 package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
+import com.mygdx.game.Level2.NormalActors.Bubbles;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.PhysicalAction;
@@ -130,6 +131,12 @@ public class ActConstants {
     static{
         BearID=1;
         BearID=BearID<<35;
+    }
+
+    public static long BubbleID;
+    static{
+        BubbleID=1;
+        BubbleID=BubbleID<<43;
     }
 
 
