@@ -157,6 +157,12 @@ public class ActConstants {
         ballReceiverID = ballReceiverID <<40;
     }
 
+    public static long bossLauncherID;
+    static{
+        bossLauncherID = 1;
+        bossLauncherID = bossLauncherID<<42;
+    }
+
 
 
     public static ArrayList<PhysicalAction> physicalActionList;

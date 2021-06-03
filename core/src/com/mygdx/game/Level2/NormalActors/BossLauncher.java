@@ -53,6 +53,11 @@ public class BossLauncher extends Actor {
     BodyDef myBodyDef;
     PolygonShape shape;
 
+    Body sensorSimulation;
+    FixtureDef sensorFixtureDef;
+    BodyDef sensorBodyDef;
+    CircleShape sensorShape;
+
 
     public BossLauncher(World world,float physicalX, float physicalY) {
         //启动一个打的计时器，1秒动一下
@@ -100,6 +105,27 @@ public class BossLauncher extends Actor {
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.groundID,"Ground"));
 
+
+
+        //sensor body
+        PhysicalEntityDefine.defineStatic();
+        sensorBodyDef = PhysicalEntityDefine.getBd();
+        sensorFixtureDef = PhysicalEntityDefine.getFd();
+
+
+
+        sensorShape = new CircleShape();
+        sensorShape.setRadius(1f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+//        sensorShape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        sensorFixtureDef.shape = sensorShape;
+
+        sensorFixtureDef.isSensor=true;
+
+        sensorBodyDef.position.set(physicalX,physicalY-3);//这个表示物理世界中的米
+
+        sensorSimulation = world.createBody(sensorBodyDef);
+        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
+        sensorSimulation.createFixture(sensorFixtureDef).setUserData(new UserData(ActConstants.bossLauncherID,"BossLauncher"));
 
 
         this.physicalX = physicalX;
