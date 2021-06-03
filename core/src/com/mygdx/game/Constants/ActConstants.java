@@ -197,9 +197,21 @@ public class ActConstants {
         bossLauncherLock=5;
     }
 
-    public static Integer bulletDisposeLock;
+
+    public final static Integer publicInformationLock;
     static{
-        bulletDisposeLock=6;
+        publicInformationLock=7;
+    }
+
+    public final static Integer physicalActionListLock;
+    static{
+        physicalActionListLock=7;
+    }
+
+
+    public final static Integer bulletDeleteLock;
+    static{
+        bulletDeleteLock = 9;
     }
 
     public static boolean isFrozen;

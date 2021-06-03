@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.CreateBullet;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
@@ -250,13 +251,31 @@ public class BossLauncher extends Actor {
         launchDirection[1] = direction.y;
         System.out.println(direction.x+"  "+direction.y);
 
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position1.x*50,position1.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position4.x*50,position4.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1));
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1));
+
+        CreateBullet createBullet1 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position1.x*50,position1.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet2 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet3 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet4 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position4.x*50,position4.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet5 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet6 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet7 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1);
+
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(createBullet1);
+            ActConstants.physicalActionList.add(createBullet2);
+            ActConstants.physicalActionList.add(createBullet3);
+            ActConstants.physicalActionList.add(createBullet4);
+            ActConstants.physicalActionList.add(createBullet5);
+            ActConstants.physicalActionList.add(createBullet6);
+            ActConstants.physicalActionList.add(createBullet7);
+        }
+
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1));
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1));
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position4.x*50,position4.y*50,launchDirection,ActConstants.windBulletID,1));
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1));
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1));
+//        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1));
 
     }
 

@@ -288,10 +288,17 @@ public class MonsterA extends Actor {
             deletePhysicalEntity3.deleteJoint(weldJoint,world);
 
 
-            ActConstants.physicalActionList.add(deletePhysicalEntity3);
-            ActConstants.physicalActionList.add(deletePhysicalEntity2);
-            ActConstants.physicalActionList.add(deletePhysicalEntity1);
-            ActConstants.publicInformation.remove("Monster"+myNumber);
+            synchronized (ActConstants.physicalActionListLock){
+                ActConstants.physicalActionList.add(deletePhysicalEntity3);
+                ActConstants.physicalActionList.add(deletePhysicalEntity2);
+                ActConstants.physicalActionList.add(deletePhysicalEntity1);
+            }
+
+
+            synchronized (ActConstants.publicInformationLock){
+                ActConstants.publicInformation.remove("Monster"+myNumber);
+            }
+
             timer.clear();
             return super.remove();
         }

@@ -143,7 +143,6 @@ public class Axe extends Actor {
                         mySimulation.setGravityScale(0);
                         mySimulation.setLinearVelocity(0,0);
 
-
                         axe.remove();
                     }
 
@@ -166,14 +165,21 @@ public class Axe extends Actor {
     @Override
     public boolean remove() {
 
+
         DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
         deletePhysicalEntity1.deleteBody(mySimulation,world);
         DeletePhysicalEntity deletePhysicalEntity2 = new DeletePhysicalEntity();
         deletePhysicalEntity2.deleteBody(sensorSimulation,world);
 
-        ActConstants.physicalActionList.add(deletePhysicalEntity1);
-        ActConstants.physicalActionList.add(deletePhysicalEntity2);
-        ActConstants.publicInformation.remove("Axe");
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(deletePhysicalEntity1);
+            ActConstants.physicalActionList.add(deletePhysicalEntity2);
+        }
+
+        synchronized (ActConstants.publicInformationLock){
+            ActConstants.publicInformation.remove("Axe");
+        }
+
         return super.remove();
     }
 }

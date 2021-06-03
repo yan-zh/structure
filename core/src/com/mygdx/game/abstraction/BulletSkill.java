@@ -50,9 +50,12 @@ public class BulletSkill extends Actor {
 
     int damage;
 
+    boolean delete;
+
     public BulletSkill(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
 //这里输入的x y是像素
         this.damage = damage;
+        this.delete = false;
 
         this.direction = direction;
 
@@ -79,14 +82,19 @@ public class BulletSkill extends Actor {
 
         myBodyDef.position.set(this.getX()/ActConstants.worldSize_pAndPhysic,this.getY()/ActConstants.worldSize_pAndPhysic);//这个表示物理世界中的米
 
-        this.world = ((MyStage)ActConstants.publicInformation.get("CurrentStage")).world;
+        synchronized (ActConstants.publicInformationLock){
+            this.world = ((MyStage)ActConstants.publicInformation.get("CurrentStage")).world;
+        }
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setUserData(new UserData(actorId,Integer.toString(myMark)));
 
-        ActConstants.publicInformation.put(Integer.toString(myMark),this);
+        synchronized (ActConstants.publicInformationLock){
+            ActConstants.publicInformation.put(Integer.toString(myMark),this);
+        }
+
         mySimulation.setGravityScale(0);
 
         mySimulation.setLinearVelocity(8*direction[0],8*direction[1]);
@@ -128,11 +136,24 @@ public class BulletSkill extends Actor {
             currentFrameContact = (TextureRegion) contact.getKeyFrame(stateTimeContact,false);
 
         }
+
+        synchronized (ActConstants.bulletDeleteLock){
+            if(delete==true){
+                deleteBody();
+                delete=false;
+            }
+        }
+
+
         if(contact.isAnimationFinished(stateTimeContact)){
-            ActConstants.publicInformation.remove(myMark);
+            synchronized (ActConstants.publicInformationLock){
+                ActConstants.publicInformation.remove(myMark);
+            }
 
             this.remove();
         }
+
+
     }
 
     @Override
@@ -161,7 +182,10 @@ public class BulletSkill extends Actor {
     public void deleteBody(){
         DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
         deletePhysicalEntity.deleteBody(mySimulation,world);
-        ActConstants.physicalActionList.add(deletePhysicalEntity);
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(deletePhysicalEntity);
+        }
+
     }
 
     public int getDamage(){return damage;}
@@ -169,10 +193,12 @@ public class BulletSkill extends Actor {
     public void dispose(){
         this.contactMark=true;
         this.flyMark=false;
-
-        synchronized (ActConstants.bulletDisposeLock){
-            this.deleteBody();
+        synchronized (ActConstants.bulletDeleteLock){
+            this.delete = true;
         }
+
+        //this.deleteBody();
+
 
     }
 

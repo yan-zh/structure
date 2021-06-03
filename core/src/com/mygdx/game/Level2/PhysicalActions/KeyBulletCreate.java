@@ -20,6 +20,7 @@ public class KeyBulletCreate implements PhysicalAction {
 
     @Override
     public void act() {
+
         Stage currentStage = (Stage) ActConstants.publicInformation.get("CurrentStage");
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction;
