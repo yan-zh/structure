@@ -15,8 +15,8 @@ public class DesktopLauncher {
 
 		if (rebuildAtlas) {
 			Settings settings = new Settings();
-			settings.maxWidth = 1024*16;
-			settings.maxHeight = 1024*16;
+			settings.maxWidth = 1024*4;
+			settings.maxHeight = 1024*4;
 			settings.debug = drawDebugOutline;
 
 			// 加载通用资源管理

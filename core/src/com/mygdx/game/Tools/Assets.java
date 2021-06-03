@@ -26,6 +26,14 @@ public class Assets implements Disposable, AssetErrorListener {
     public static final Assets instance = new Assets();
     private AssetManager assetManager;
 
+    // 图片切换的帧率 animSpeed/animSpeedA|B|C
+    private float animSpeed = 1.0f;
+    private float animSpeedA = 15.0f;
+    private float animSpeedB = 20.0f;
+    private float animSpeedC = 30.0f;
+
+
+
     // add for test
     public AssetGoldCoin goldCoin;
     public AssetBunny bunny;
@@ -33,6 +41,19 @@ public class Assets implements Disposable, AssetErrorListener {
     public AssetFeather feather;
     public AssetLevelDecoration levelDecoration;
     // add for test
+
+
+    // 从这里开始进行资源扩展；后期考虑将他们分开初始化；
+    public AssetFijling fijling;
+    public AssetCdxgw cdxgw;
+    public AssetCddpxgw cddpxgw;
+    public AssetCdboss cdboss;
+
+
+
+
+
+    // 资源扩展结束
 
     // 创建内部类变量
     public AssetMainCharacter mainCharacter;
@@ -135,9 +156,9 @@ public class Assets implements Disposable, AssetErrorListener {
         characrer01 = new AssetCharacter01(atlas_level01);
         characrer02 = new AssetCharacter02(atlas_level01);
         // 测试对象
-
-
     }
+
+
 
     @Override
     public void dispose() {
@@ -317,5 +338,34 @@ public class Assets implements Disposable, AssetErrorListener {
             feather = atlas.findRegion("item_feather");
         }
 
+    }
+
+    // 正式添加的资源
+    private class AssetFijling {
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public AssetFijling(TextureAtlas atlas){
+            main = atlas.findRegion("fxJling_idle");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("fxJling_idle");
+            animBreath = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("fxJling_idle");
+            animAttack = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
+    }
+
+
+    private class AssetCdxgw {
+    }
+
+    private class AssetCddpxgw {
+    }
+
+    private class AssetCdboss {
     }
 }
