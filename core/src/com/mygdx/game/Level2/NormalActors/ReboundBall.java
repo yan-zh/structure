@@ -122,7 +122,14 @@ public class ReboundBall extends Actor {
 
         DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
         deletePhysicalEntity.deleteBody(mySimulation,world);
-        ActConstants.publicInformation.remove("ReboundBall");
+
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(deletePhysicalEntity);
+        }
+
+        synchronized (ActConstants.publicInformationLock){
+            ActConstants.publicInformation.remove("ReboundBall");
+        }
 
         return super.remove();
     }

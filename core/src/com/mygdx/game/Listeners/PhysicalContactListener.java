@@ -22,6 +22,7 @@ public class PhysicalContactListener implements ContactListener{
 
         long result = faData.contactId+fbData.contactId;
 
+
         if(ActConstants.contactList.get(result)!=null){
             ActConstants.contactList.get(result).react(faData,fbData);
         }

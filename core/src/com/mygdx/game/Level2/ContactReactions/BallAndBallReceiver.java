@@ -2,6 +2,7 @@ package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.BallLauncher;
+import com.mygdx.game.Level2.NormalActors.BallReceiver;
 import com.mygdx.game.Level2.NormalActors.ReboundBall;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
@@ -24,9 +25,13 @@ public class BallAndBallReceiver implements ContactReaction {
             if(userData1.contactId==ActConstants.reboundBallID){
                 ReboundBall reboundBall = (ReboundBall) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                 reboundBall.remove();
+                BallReceiver ballReceiver = (BallReceiver) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
+                ballReceiver.hit = true;
             }else{
                 ReboundBall reboundBall = (ReboundBall) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 reboundBall.remove();
+                BallReceiver ballReceiver = (BallReceiver) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
+                ballReceiver.hit = true;
             }
         }
 

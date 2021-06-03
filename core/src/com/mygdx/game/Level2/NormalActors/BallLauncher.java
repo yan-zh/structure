@@ -104,6 +104,9 @@ public class BallLauncher extends Actor {
 
     public void realLaunch(){
         CreateBall createBall = new CreateBall(this);
-        ActConstants.physicalActionList.add(createBall);
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(createBall);
+        }
+
     }
 }

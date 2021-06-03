@@ -173,9 +173,9 @@ public class Stage2 extends MyStage {
 
 
 
-        this.addActor(new BossLauncher(world,45,15));
-
-        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+//        this.addActor(new BossLauncher(world,45,15));
+//
+//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
 //        new BulletAndMonsterA();
@@ -183,14 +183,14 @@ public class Stage2 extends MyStage {
 //        this.addActor(monsterA2);
 
 
-//
-//        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
-//        this.addActor(ballLauncher);
-//        new BallLauncherAndMainCharacter();
-//
-//        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
-//        this.addActor(ballReceiver);
-//        new BallAndBallReceiver();
+
+        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
+        this.addActor(ballLauncher);
+        new BallLauncherAndMainCharacter();
+
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
+        this.addActor(ballReceiver);
+        new BallAndBallReceiver();
 
 
 

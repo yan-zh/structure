@@ -27,7 +27,7 @@ public class BallReceiver extends Actor {
 
     float stateTime;
 
-    boolean hit;
+    public boolean hit;
 
 
 
@@ -73,16 +73,18 @@ public class BallReceiver extends Actor {
 
         stateTime += delta;
 
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        super.draw(batch, parentAlpha);
 
         if(hit==false){
             currentFrame = (TextureRegion) wait.getKeyFrame(stateTime,true);
         }else{
             currentFrame = (TextureRegion) receive.getKeyFrame(stateTime,false);
         }
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
     }
 }
