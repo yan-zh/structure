@@ -27,16 +27,16 @@ public class BulletDispose implements ContactReaction {
                     userData1.contactId==ActConstants.iceBulletID||
                     userData1.contactId==ActConstants.sandBulletID||
                     userData1.contactId==ActConstants.woodBulletID){
-                synchronized (ActConstants.publicInformationLock){
+
                     BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                     bulletSkill.dispose();
-                }
+
 
             }else{
-                synchronized (ActConstants.publicInformationLock){
+
                     BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                     bulletSkill.dispose();
-                }
+
 
             }
         }

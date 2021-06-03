@@ -22,16 +22,19 @@ public class PhysicalContactListener implements ContactListener{
 
         long result = faData.contactId+fbData.contactId;
 
+        synchronized (ActConstants.publicInformationLock){
+            if(ActConstants.contactList.get(result)!=null){
+                ActConstants.contactList.get(result).react(faData,fbData);
+            }
+            if(ActConstants.contactList.get(faData.contactId)!=null){
+                ActConstants.contactList.get(faData.contactId).react(faData,fbData);
+            }
+            if(ActConstants.contactList.get(fbData.contactId)!=null){
+                ActConstants.contactList.get(fbData.contactId).react(fbData,faData);
+            }
+        }
 
-        if(ActConstants.contactList.get(result)!=null){
-            ActConstants.contactList.get(result).react(faData,fbData);
-        }
-        if(ActConstants.contactList.get(faData.contactId)!=null){
-            ActConstants.contactList.get(faData.contactId).react(faData,fbData);
-        }
-        if(ActConstants.contactList.get(fbData.contactId)!=null){
-            ActConstants.contactList.get(fbData.contactId).react(fbData,faData);
-        }
+
 
 
 

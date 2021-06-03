@@ -16,18 +16,18 @@ public class AxeAndMainCharacter implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        synchronized (ActConstants.axeLock) {
-            if (userData1.contactId == ActConstants.axeID) {
-                Axe axe = (Axe) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-                axe.stop();
-                MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-                mainCharacter.die();
-            } else {
-                Axe axe = (Axe) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-                axe.stop();
-                MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-                mainCharacter.die();
-            }
+
+        if (userData1.contactId == ActConstants.axeID) {
+            Axe axe = (Axe) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
+            axe.stop();
+            MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
+            mainCharacter.die();
+        } else {
+            Axe axe = (Axe) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
+            axe.stop();
+            MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
+            mainCharacter.die();
         }
+
     }
 }

@@ -106,78 +106,78 @@ public class Stage2 extends MyStage {
         this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
 
 
-//        new IceFairyAndMainCharacter();
-//
-//        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
-//
-//        this.addActor(new Spine(world,60,10,1,3));
-//        new MainCharacterAndSpine();
-//
-//
-//        this.addActor(new Boss1(world,50,8));
-//        new Boss1SensorContact();
-//        new Boss1AndMainCharacter();
-//
-//
-//        this.addActor(new Axe(world,40,15));
-//        new AxeAndMainCharacter();
-//        new AxeSensorContact();
-//
-//        this.addActor(new Frag(world,30,8));
-//
-//        new HeatFragEye();
-//
-//
-//        new BulletAndMonsterA();
-//        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(monsterA);
-//
-//
-//        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(monsterA2);
-//
-//        new MonsterASensorAndMainCharacter();
-//
-//        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
-//        this.addActor(flower);
-//        new FlowerAndMainCharacter();
-//
-//
-//        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(eatPlatform1);
-//
-//        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(eatPlatform2);
-//
-//
-//        new EatPlatformAndMainCharacter();
-//
-//
-//        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
-//        this.addActor(tongueMonster);
-//
-//
-//        TongueMonster tongueMonster2 = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,90,13);
-//        this.addActor(tongueMonster2);
-//
-//        new TongueMonsterAndMainCharacter();
-//
-//
-//        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
-//        this.addActor(blower);
-//
-//        new BlowerAndMainCharacter();
+        new IceFairyAndMainCharacter();
+
+        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
+
+        this.addActor(new Spine(world,60,10,1,3));
+        new MainCharacterAndSpine();
+
+
+        this.addActor(new Boss1(world,50,8));
+        new Boss1SensorContact();
+        new Boss1AndMainCharacter();
+
+
+        this.addActor(new Axe(world,40,15));
+        new AxeAndMainCharacter();
+        new AxeSensorContact();
+
+        this.addActor(new Frag(world,30,8));
+
+        new HeatFragEye();
+
+
+        new BulletAndMonsterA();
+        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA);
+
+
+        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA2);
+
+        new MonsterASensorAndMainCharacter();
+
+        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
+        this.addActor(flower);
+        new FlowerAndMainCharacter();
+
+
+        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform1);
+
+        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform2);
+
+
+        new EatPlatformAndMainCharacter();
+
+
+        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
+        this.addActor(tongueMonster);
+
+
+        TongueMonster tongueMonster2 = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,90,13);
+        this.addActor(tongueMonster2);
+
+        new TongueMonsterAndMainCharacter();
+
+
+        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
+        this.addActor(blower);
+
+        new BlowerAndMainCharacter();
 
 
 
 
 
 
-//        this.addActor(new BossLauncher(world,45,15));
+        this.addActor(new BossLauncher(world,45,15));
+
+        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+
 //
-//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
-
-
 //        new BulletAndMonsterA();
 //        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
 //        this.addActor(monsterA2);
