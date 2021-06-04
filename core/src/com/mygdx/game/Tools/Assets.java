@@ -155,6 +155,14 @@ public class Assets implements Disposable, AssetErrorListener {
         mainCharacter = new AssetMainCharacter(atlas_level01);
         characrer01 = new AssetCharacter01(atlas_level01);
         characrer02 = new AssetCharacter02(atlas_level01);
+        fijling = new AssetFijling(atlas_level01);
+        cdxgw = new AssetCdxgw(atlas_level01);
+        cddpxgw = new AssetCddpxgw(atlas_level01);
+        cdboss = new AssetCdboss(atlas_level01);
+
+
+
+
         // 测试对象
     }
 
@@ -341,7 +349,7 @@ public class Assets implements Disposable, AssetErrorListener {
     }
 
     // 正式添加的资源
-    private class AssetFijling {
+    public class AssetFijling {
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
@@ -360,7 +368,7 @@ public class Assets implements Disposable, AssetErrorListener {
     }
 
 
-    private class AssetCdxgw {
+    public class AssetCdxgw {
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
@@ -382,7 +390,7 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetCddpxgw {
+    public class AssetCddpxgw {
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
@@ -404,7 +412,7 @@ public class Assets implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetCdboss {
+    public class AssetCdboss {
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttackA;
