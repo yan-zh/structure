@@ -352,20 +352,85 @@ public class Assets implements Disposable, AssetErrorListener {
             AtlasRegion region = null;
 
             regions = atlas.findRegions("fxJling_idle");
-            animBreath = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_PINGPONG);
+            animBreath = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
 
-            regions = atlas.findRegions("fxJling_idle");
-            animAttack = new Animation(1.0f/30.0f,regions,Animation.PlayMode.LOOP_PINGPONG);
+            regions = atlas.findRegions("fxJling_attack");
+            animAttack = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
         }
     }
 
 
     private class AssetCdxgw {
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+        public AssetCdxgw(TextureAtlas atlas){
+            main = atlas.findRegion("cdXgw_idle");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("cdXgw_idle");
+            animBreath = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdXgw_attack");
+            animAttack = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdXgw_dead");
+            animDead = new Animation(animSpeed/animSpeedB,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
     }
 
     private class AssetCddpxgw {
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+        public AssetCddpxgw(TextureAtlas atlas){
+            main = atlas.findRegion("cdDpxgw_idle");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("cdDpxgw_idle");
+            animBreath = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdDpxgw_attack");
+            animAttack = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdDpxgw_dead");
+            animDead = new Animation(animSpeed/animSpeedB,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
     }
 
     private class AssetCdboss {
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttackA;
+        public final Animation animAttackB;
+        public final Animation animAttackC;
+        public final Animation animDamage;
+        public AssetCdboss(TextureAtlas atlas){
+            main = atlas.findRegion("cdBoss_idle");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("cdBoss_idle");
+            animBreath = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdBoss_attackA");
+            animAttackA = new Animation(animSpeed/animSpeedC,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdBoss_attackB");
+            animAttackB = new Animation(animSpeed/animSpeedB,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdBoss_attackC");
+            animAttackC = new Animation(animSpeed/animSpeedB,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdBoss_damage");
+            animDamage = new Animation(animSpeed/animSpeedB,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
     }
 }
