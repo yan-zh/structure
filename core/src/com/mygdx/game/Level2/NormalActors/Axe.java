@@ -104,6 +104,7 @@ public class Axe extends Actor {
         if(mySimulation!=null){
             physicalX = mySimulation.getPosition().x;
             physicalY = mySimulation.getPosition().y;
+
         }
 
     }
@@ -111,7 +112,6 @@ public class Axe extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-
 
 
         batch.draw(picutre,(physicalX-0.7f)*50f, (physicalY-0.45f)*50f);

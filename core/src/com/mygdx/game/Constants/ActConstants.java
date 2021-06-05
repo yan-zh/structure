@@ -231,4 +231,10 @@ public class ActConstants {
 
 
 
+    public static void dispose(){
+        publicInformation.clear();
+        physicalActionList.clear();
+        physicalActionList.clear();
+    }
+
 }

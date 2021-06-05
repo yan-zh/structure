@@ -53,7 +53,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,0,10f));//单位是米
+        this.addActor(new MainCharacter(world,0,40f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -76,6 +76,7 @@ public class Stage2 extends MyStage {
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
         tiledMap = new TmxMapLoader().load("core/assets/map begin/map begin.tmx");
+        //tiledMap = new TmxMapLoader().load("core/assets/wood/JX01.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         //根据tiledmap中的object图层自动在物理世界中创建实体
@@ -98,101 +99,105 @@ public class Stage2 extends MyStage {
 
 //yzh***************************************************
         new GroundAndMainCharacter();
-        new BulletDispose();
-
-        //风精灵
-        new WindFairyAndMainCharacter();
-
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
-
-
-        new IceFairyAndMainCharacter();
-
-        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
-
-        this.addActor(new Spine(world,60,10,1,3));
-        new MainCharacterAndSpine();
-
-
-        this.addActor(new Boss1(world,50,8));
-        new Boss1SensorContact();
-        new Boss1AndMainCharacter();
-
-
-        this.addActor(new Axe(world,40,15));
-        new AxeAndMainCharacter();
-        new AxeSensorContact();
-
-        this.addActor(new Frag(world,30,8));
-
-        new HeatFragEye();
-
-
-        new BulletAndMonsterA();
-        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-        this.addActor(monsterA);
-
-
-        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-        this.addActor(monsterA2);
-
-        new MonsterASensorAndMainCharacter();
-
-        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
-        this.addActor(flower);
-        new FlowerAndMainCharacter();
-
-
-        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-        this.addActor(eatPlatform1);
-
-        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-        this.addActor(eatPlatform2);
-
-
-        new EatPlatformAndMainCharacter();
-
-
-        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
-        this.addActor(tongueMonster);
-
-
-        TongueMonster tongueMonster2 = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,90,13);
-        this.addActor(tongueMonster2);
-
-        new TongueMonsterAndMainCharacter();
-
-
-        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
-        this.addActor(blower);
-
-        new BlowerAndMainCharacter();
-
-
-
-
-
-
-        this.addActor(new BossLauncher(world,45,15));
-        new BossLauncherAndMainCharacter();
-        //((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
-
+//        new BulletDispose();
+//
+//        //风精灵
+//        new WindFairyAndMainCharacter();
+//
+//        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
+//
+//
+//        new IceFairyAndMainCharacter();
+//
+//        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
+//
+//        this.addActor(new Spine(world,60,10,1,3));
+//        new MainCharacterAndSpine();
+//
+//
+//        this.addActor(new Boss1(world,50,8));
+//        new Boss1SensorContact();
+//        new Boss1AndMainCharacter();
+//
+//
+//        this.addActor(new Axe(world,40,15));
+//        new AxeAndMainCharacter();
+//        new AxeSensorContact();
+//
+//        this.addActor(new Frag(world,30,8));
+//
+//        new HeatFragEye();
+//
 //
 //        new BulletAndMonsterA();
+//        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+//        this.addActor(monsterA);
+//
+//
 //        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
 //        this.addActor(monsterA2);
+//
+//        new MonsterASensorAndMainCharacter();
+//
+//        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
+//        this.addActor(flower);
+//        new FlowerAndMainCharacter();
+//
+//
+//        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+//        this.addActor(eatPlatform1);
+//
+//        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+//        this.addActor(eatPlatform2);
+//
+//
+//        new EatPlatformAndMainCharacter();
+//
+//
+//        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
+//        this.addActor(tongueMonster);
+//
+//
+//        TongueMonster tongueMonster2 = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,90,13);
+//        this.addActor(tongueMonster2);
+//
+//        new TongueMonsterAndMainCharacter();
+//
+//
+//        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
+//        this.addActor(blower);
+//
+//        new BlowerAndMainCharacter();
+//
+//
+//
+//
+//
+//
+//        this.addActor(new BossLauncher(world,45,15));
+//        new BossLauncherAndMainCharacter();
+//        //((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+//
+////
+////        new BulletAndMonsterA();
+////        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+////        this.addActor(monsterA2);
+//
+//
+//
+//        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
+//        this.addActor(ballLauncher);
+//        new BallLauncherAndMainCharacter();
+//
+//        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
+//        this.addActor(ballReceiver);
+//        new BallAndBallReceiver();
 
 
 
-        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
-        this.addActor(ballLauncher);
-        new BallLauncherAndMainCharacter();
-
-        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
-        this.addActor(ballReceiver);
-        new BallAndBallReceiver();
-
-
+        this.addActor(new ReverberateAxe(world,40,15));
+        new AxeAndMainCharacter();
+        new AxeSensorContact();
 
 
 //yzh***************************************************************
@@ -218,7 +223,7 @@ public class Stage2 extends MyStage {
         }
 
 
-        cameraFocus.innerBoundary(6,7,19,6);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
+        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
 
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
@@ -241,9 +246,26 @@ public class Stage2 extends MyStage {
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
-    }
+    } 
 
     public World getWorld(){
         return world;
+    }
+
+    @Override
+    public void dispose() {
+
+
+
+
+        this.boxRender.dispose();
+        this.orthogonalTiledMapRenderer.dispose();
+
+        this.world.dispose();
+
+        //手动清除ActConstant和调用所有演员的dispose
+
+
+        super.dispose();
     }
 }

@@ -308,8 +308,10 @@ public class BossLauncher extends Actor {
     @Override
     public boolean remove() {
         synchronized (ActConstants.bossLauncherLock){
+            timerTask.cancel();
             timer.clear();
 
+            System.out.println("launcherremove");
             DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
             deletePhysicalEntity1.deleteBody(mySimulation,world);
             ActConstants.physicalActionList.add(deletePhysicalEntity1);
