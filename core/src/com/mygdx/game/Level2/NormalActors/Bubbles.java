@@ -12,14 +12,18 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
 import org.graalvm.compiler.loop.MathUtil;
 
-//超出屏幕时销毁
+//注意：由于未知bug无法修复，泡泡会一直生成，不会自动销毁，可能会随着时间推移超内存。如果出现此问题则需修改代码，例如仅当泡泡区
+//出现在主角视野中才生成，离开主角视野就不生成（仍无法自动销毁）
 public class Bubbles extends Actor {
-    World world;
+    public World world;
     long actorId;
     String name;
     float range;//生成泡泡的区域范围，米
     float radius;
     float distance; //发射台间隔
+   public Array<Body> bubbles;
+    Integer bubbleIndex;
+   public int numOfDestroyed;
 
 
     public Bubbles(World world, float x, float y, float range, float radius, long actorId, String name) {
@@ -31,14 +35,17 @@ public class Bubbles extends Actor {
         this.actorId = actorId;
         this.name = name;
         ActConstants.publicInformation.put(name, this);
+        bubbleIndex=0;
+        numOfDestroyed=0;
 //        System.out.println("lifetime "+time);
+        bubbles = new Array<Body>();
         createBubbles();
 
     }
 
-    public Body createOneBubble(float x) {
+    public Body createOneBubble(float x, String bubbleIndex) {//
         float velocity = 1f;
-        Body body = BodyBuilder.createKineticCircle(world, x, getY(), radius, actorId, name);
+        Body body = BodyBuilder.createKineticCircle(world, x, getY(), radius, actorId, bubbleIndex);
         body.setLinearVelocity(0, velocity);
         return body;
 
@@ -46,7 +53,7 @@ public class Bubbles extends Actor {
     }
 
     public void createBubbles() {
-        final Array<Body> bubbles = new Array<Body>();
+
         distance = 3f;
         final int numOfLauncher = (int) (range / distance);
         for(int i=0;i<numOfLauncher;i++) {
@@ -55,14 +62,18 @@ public class Bubbles extends Actor {
             Timer.Task timerTask = new Timer.Task() {
                 @Override
                 public void run() {
-                    bubbles.add(createOneBubble(getX()+dis));
-                    for(Body b:bubbles){
-                        if(b.getPosition().y>15f){
-                           int index= bubbles.indexOf(b,true);
-                            bubbles.removeIndex(index);
-                            world.destroyBody(b);//阎哥说销毁得放别的地方？
-                        }
-                    }
+                    bubbles.add(createOneBubble(getX()+dis,bubbleIndex.toString() ));//这里把数组indedx加进去
+                    System.out.println("index: "+bubbleIndex.toString());
+                    bubbleIndex++;
+                    //此处为自动销毁泡泡的代码
+//                    for(Body b:bubbles){
+//                        if(b.getPosition().y>15f){
+//                           int index= bubbles.indexOf(b,true);
+//                           bubbles.removeIndex(index);
+//                            world.destroyBody(b);
+//                            numOfDestroyed++;
+//                        }
+//                    }
                 }
 
             };
