@@ -12,8 +12,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
 import org.graalvm.compiler.loop.MathUtil;
 
-//注意：由于未知bug无法修复，泡泡会一直生成，不会自动销毁，可能会随着时间推移超内存。如果出现此问题则需修改代码，例如仅当泡泡区
-//出现在主角视野中才生成，离开主角视野就不生成（仍无法自动销毁）
+
 public class Bubbles extends Actor {
     public World world;
     long actorId;
@@ -24,6 +23,7 @@ public class Bubbles extends Actor {
    public Array<Body> bubbles;
     Integer bubbleIndex;
    public int numOfDestroyed;
+   public int numOfSpawned;
 
 
     public Bubbles(World world, float x, float y, float range, float radius, long actorId, String name) {
@@ -37,6 +37,7 @@ public class Bubbles extends Actor {
         ActConstants.publicInformation.put(name, this);
         bubbleIndex=0;
         numOfDestroyed=0;
+        numOfSpawned=0;
 //        System.out.println("lifetime "+time);
         bubbles = new Array<Body>();
         createBubbles();
@@ -44,7 +45,7 @@ public class Bubbles extends Actor {
     }
 
     public Body createOneBubble(float x, String bubbleIndex) {//
-        float velocity = 1f;
+        float velocity = 2f;
         Body body = BodyBuilder.createKineticCircle(world, x, getY(), radius, actorId, bubbleIndex);
         body.setLinearVelocity(0, velocity);
         return body;
@@ -62,23 +63,29 @@ public class Bubbles extends Actor {
             Timer.Task timerTask = new Timer.Task() {
                 @Override
                 public void run() {
-                    bubbles.add(createOneBubble(getX()+dis,bubbleIndex.toString() ));//这里把数组indedx加进去
-                    System.out.println("index: "+bubbleIndex.toString());
-                    bubbleIndex++;
+                    if(numOfSpawned<20){
+                        bubbles.add(createOneBubble(getX()+dis,bubbleIndex.toString() ));//这里把数组indedx加进去
+//                    System.out.println("index: "+bubbleIndex.toString());
+                        bubbleIndex++;
+                        numOfSpawned++;
+                    }
+
                     //此处为自动销毁泡泡的代码
-//                    for(Body b:bubbles){
-//                        if(b.getPosition().y>15f){
+                    for(Body b:bubbles){
+                        if(b.getPosition().y>30f){
+                            b.setTransform(b.getPosition().x,getY(),0);
+//                            System.out.println(b);
 //                           int index= bubbles.indexOf(b,true);
 //                           bubbles.removeIndex(index);
 //                            world.destroyBody(b);
 //                            numOfDestroyed++;
-//                        }
-//                    }
+                        }
+                    }
                 }
 
             };
-            timer.scheduleTask(timerTask, 0, MathUtils.random(2f,10f));// 0s之后执行，每次间隔1s，执行20次。
-        System.out.println(i);
+            timer.scheduleTask(timerTask, i*0.5f, MathUtils.random(2f,10f));// 0s之后执行，每次间隔1s，执行20次。
+//        System.out.println(i);
 
         }
 

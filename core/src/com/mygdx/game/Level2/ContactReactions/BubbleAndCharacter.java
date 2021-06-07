@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.Bubbles;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.PhysicalActions.DeleteBubble;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
@@ -38,16 +39,20 @@ public class BubbleAndCharacter implements ContactReaction {
         character.mySimulation.setLinearVelocity(0,0);
         character.mySimulation.applyLinearImpulse(new Vector2(0,400),position,true);
         World world = bubbles.world;
-
+//        System.out.println(bubbles.getY());
+        float posX=body.getPosition().x;
+        float posY=bubbles.getY();
+        deleteBody(body,posX,posY);
+//        body.setTransform(posX,posY,0);
 //        bubbles.bubbles.removeIndex(index);
-        deleteBody(body,world);
+//        deleteBody(body,world);
 
     }
 
-    public void deleteBody(Body mySimulation, World world){
-        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
-        deletePhysicalEntity.deleteBody(mySimulation,world);
-        ActConstants.physicalActionList.add(deletePhysicalEntity);
+    public void deleteBody(Body mySimulation, float posX, float posY){
+        DeleteBubble deleteBubble = new DeleteBubble();
+        deleteBubble.deleteBody(mySimulation,posX,posY);
+        ActConstants.physicalActionList.add(deleteBubble);
     }
 
 }
