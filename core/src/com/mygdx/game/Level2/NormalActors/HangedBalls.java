@@ -16,14 +16,21 @@ public class HangedBalls extends Actor {
     int pswLength;
     int enteredLength;
 
+    float x;
+    float y;
+    long actorId;
+
     World world;
     String name;
 
 
-    public HangedBalls(World world, String password, String name){
+    public HangedBalls(World world, float x, float y,String password,long actorId,String name){
         setPassword(password);
         this.world=world;
         this.name=name;
+       this.x=x;
+       this.y=y;
+       this.actorId=actorId;
        createBalls();
         ActConstants.publicInformation.put(name,this);
     }
@@ -38,11 +45,11 @@ public class HangedBalls extends Actor {
         Array<Body> vertices=new Array<Body>();
         Array<Vector2> positions=new Array<>();
 
-        for (Integer i = 0; i < 3; i++) {
-            vertices.add(BodyBuilder.createBox(world, 30 + (1 + i) * 5, 15, 0.05f, 0.05f, false, 0b10, "vertex"));
-            positions.add(new Vector2(30 + (1 + i) * 5, 15));
-            bodies.add(BodyBuilder.createCircle(world, 30+(1 + i) * 5, 11.5f, 1f, true,
-                    0b10000000000000000, name+i.toString()));
+        for (Integer i = 0; i < 3; i++) {//注意这里改坐标的话三行代码都得改
+            vertices.add(BodyBuilder.createBox(world, x+i*2 , y+2f, 0.05f, 0.05f, false, 0b10, "vertex"));
+            positions.add(new Vector2(x+i*2  , y+2f));
+            bodies.add(BodyBuilder.createCircle(world, x+i*2 , y, 0.5f, true,
+                    actorId, name+i.toString()));
             RevoluteJointDef rDef= new RevoluteJointDef();
             rDef.initialize(vertices.get(i),bodies.get(i),positions.get(i));
             rDef.enableLimit=true;

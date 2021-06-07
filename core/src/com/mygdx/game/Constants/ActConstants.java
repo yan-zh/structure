@@ -1,6 +1,7 @@
 package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
+import com.mygdx.game.Level2.NormalActors.Bubbles;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.PhysicalAction;
@@ -85,7 +86,7 @@ public class ActConstants {
 
 
 
-    //yzh**********************
+    //阎之泓**********************
 
     public static long windBulletID = 0b10000;
 
@@ -144,6 +145,17 @@ public class ActConstants {
         tongueMonsterID=1;
         tongueMonsterID = tongueMonsterID<<33;
     }
+    public static long BearID;
+    static{
+        BearID=1;
+        BearID=BearID<<35;
+    }
+
+    public static long BubbleID;
+    static{
+        BubbleID=1;
+        BubbleID=BubbleID<<43;
+    }
 
     public static long mainCharacterSensorID;
     static{
@@ -181,7 +193,6 @@ public class ActConstants {
     static{
         axeLock=2;
     }
-
 
     public static int countnumber;
     static{
@@ -226,7 +237,7 @@ public class ActConstants {
     }
     public static boolean canGravityInverse = true;
 
-    //yzh_________________________
+    //阎之泓part________________________
 
     //郐洋Part
     public static long brokenBridgeID = 0b1000;

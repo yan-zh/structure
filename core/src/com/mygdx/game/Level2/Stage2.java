@@ -205,14 +205,21 @@ public class Stage2 extends MyStage {
 //        ActConstants.publicInformation.put("stage2", this);
 //        //************************************郐洋
 
-//
-//        //****************************林韫奇 主角9600
-//        this.addActor(new Platform(world,9800,500,ActConstants.platformID,"Platform"));
-////        this.addActor(new HangedBalls(world,"012",10200));
-//        this.addActor(new ThinSurface(world,204,12,2f,0.2f,
-//                ActConstants.thinSurfaceID,"thinSurface"));
-//        new ThinSurfaceContact();
-//        new BallsContact();
+
+        //****************************林韫奇 主角9600
+        this.addActor(new Platform(world,9800,500,ActConstants.platformID,"Platform"));
+//        this.addActor(new HangedBalls(world,"012",10200));
+        this.addActor(new ThinSurface(world,204,12,2f,0.2f,
+                ActConstants.thinSurfaceID,"thinSurface"));
+        this.addActor(new HangedBalls(world,208,12,"012",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new SleepingBear(world,212,10,5f,3f,ActConstants.BearID,"sleepingBear"));
+        this.addActor(new Bubbles(world,216,10,15,0.7f,ActConstants.BubbleID,"bubbles"));
+        new ThinSurfaceContact();
+        new BallsContact();
+        new BearWindContact();
+        new PlatformAndMainCharacter();
+        new BearAndMainCharacter();
+        new BubbleAndCharacter();
     }
 
     @Override
