@@ -181,6 +181,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Sensor(7300,82,ActConstants.SensorID,world,"Sensor"));
         this.addActor(new ReflectiveStone(8080,82,ActConstants.ReflectiveStoneID,world,"ReflectiveStone1"));
         this.addActor(new SandPlat( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 9033, 585, ActConstants.SandID, world, "SandPlat1"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,8500,82,7500,82,ActConstants.portalID,world,"Portal",true,"Stage1"));
 
         ActConstants.publicInformation.put("stage2", this);
         //************************************郐洋
