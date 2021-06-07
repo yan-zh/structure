@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -24,15 +25,20 @@ public class MainCharacter extends Actor {
     PolygonShape shape;
 
 
+
     float statetime;//用于替换主角动作图片的标记
 
     Animation test;//这个就是
 
+    boolean canAbsorb;
+
+    int jumpNumber;
 
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public MainCharacter(World world,float x,float y){
         //获得物理世界引用
         this.world = world;
+        jumpNumber=2;
 
         //创建主角物理模拟
         PhysicalEntityDefine.defineCharacter();
@@ -51,6 +57,13 @@ public class MainCharacter extends Actor {
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.mainCharacterID,"MainCharacter"));
+
+        mySimulation.setGravityScale(1);
+
+
+
+
+
 
 
         //内存显示区
@@ -106,6 +119,10 @@ public class MainCharacter extends Actor {
             mySimulation.setLinearVelocity(ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
         }
 
+        if(ActConstants.MainCharacterState.get("blow")){
+            mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,5);
+        }
+
 
 
 
@@ -127,7 +144,18 @@ public class MainCharacter extends Actor {
     }
 
     public void jump(){
-        mySimulation.applyLinearImpulse(new Vector2(0, ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+        if(jumpNumber>=1){
+            float gravityScale;
+            gravityScale = mySimulation.getGravityScale();
+            if(gravityScale==1){
+                mySimulation.applyLinearImpulse(new Vector2(0, ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+            }else{
+                mySimulation.applyLinearImpulse(new Vector2(0, -ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+            }
+            jumpNumber--;
+        }
+
+
     }
 
     public Body getMySimulation(){
@@ -180,6 +208,17 @@ public class MainCharacter extends Actor {
     public void reFreshJump(){
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
+        jumpNumber=2;
+    }
+
+    public void startGravityInverse(){
+        float scale = mySimulation.getGravityScale();
+        if(scale==1){
+            scale = -1;
+        }else{
+            scale = 1;
+        }
+        mySimulation.setGravityScale(scale);
     }
 
 

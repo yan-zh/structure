@@ -174,7 +174,10 @@ public class Frag extends Actor {
 
             animationHashMap.replace(0,heatedEye);
 
-            ActConstants.physicalActionList.add(new CreateTongue(world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+            synchronized (ActConstants.physicalActionListLock){
+                ActConstants.physicalActionList.add(new CreateTongue(world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+            }
+
 
         }
 

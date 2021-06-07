@@ -22,7 +22,7 @@ public class ActConstants {
 
     public static MainCharacter mainCharacter;
 
-    public static float MainCharacterUpImpulse = 600f;
+    public static float MainCharacterUpImpulse = 450f;
     public static float MainCharacterSpeed = 5;
 
     public static int CameraCharacterControl=5;
@@ -36,6 +36,7 @@ public class ActConstants {
         MainCharacterState.put("repulse",false);
 //        MainCharacterState.put("slowDown",false);
         MainCharacterState.put("onGround",true);
+        MainCharacterState.put("blow",false);
 //        MainCharacterState.put("noControl",true);
 //        MainCharacterState.put("froze",false);
 //        MainCharacterState.put("jumping",false);
@@ -84,7 +85,7 @@ public class ActConstants {
 
 
 
-    //阎之泓**********************
+    //yzh**********************
 
     public static long windBulletID = 0b10000;
 
@@ -120,11 +121,48 @@ public class ActConstants {
 
     public static long eatPlatformID = 0b10000000000000000000000000000000;
 
+    public static long reboundBallID;
+    static{
+        reboundBallID = 1;
+        reboundBallID = reboundBallID<<38;
+    }
+
+    public static long blowerID;
+    static{
+        blowerID=1;
+        blowerID = blowerID<<35;
+    }
+
+    public static long ballLauncherID;
+    static{
+        ballLauncherID = 1;
+        ballLauncherID = ballLauncherID <<39;
+    }
+
     public static long tongueMonsterID;
     static{
         tongueMonsterID=1;
         tongueMonsterID = tongueMonsterID<<33;
     }
+
+    public static long mainCharacterSensorID;
+    static{
+        mainCharacterSensorID=1;
+        mainCharacterSensorID = mainCharacterSensorID<<34;
+    }
+
+    public static long ballReceiverID;
+    static{
+        ballReceiverID = 1;
+        ballReceiverID = ballReceiverID <<40;
+    }
+
+    public static long bossLauncherID;
+    static{
+        bossLauncherID = 1;
+        bossLauncherID = bossLauncherID<<42;
+    }
+
 
 
     public static ArrayList<PhysicalAction> physicalActionList;
@@ -144,6 +182,7 @@ public class ActConstants {
         axeLock=2;
     }
 
+
     public static int countnumber;
     static{
         countnumber=0;
@@ -159,12 +198,35 @@ public class ActConstants {
         MonsterActionLock =4;
     }
 
+    public static Integer bossLauncherLock;
+    static{
+        bossLauncherLock=5;
+    }
+
+
+    public final static Integer publicInformationLock;
+    static{
+        publicInformationLock=7;
+    }
+
+    public final static Integer physicalActionListLock;
+    static{
+        physicalActionListLock=7;
+    }
+
+
+    public final static Integer bulletDeleteLock;
+    static{
+        bulletDeleteLock = 9;
+    }
+
     public static boolean isFrozen;
     static{
         isFrozen = false;
     }
+    public static boolean canGravityInverse = true;
 
-    //阎之泓part________________________
+    //yzh_________________________
 
     //郐洋Part
     public static long brokenBridgeID = 0b1000;

@@ -25,14 +25,16 @@ public class PhysicalContactListener implements ContactListener{
 
         long result = faData.contactId+fbData.contactId;
 
-        if(ActConstants.contactList.get(result)!=null){
-            ActConstants.contactList.get(result).react(faData,fbData);
-        }
-        if(ActConstants.contactList.get(faData.contactId)!=null){
-            ActConstants.contactList.get(faData.contactId).react(faData,fbData);
-        }
-        if(ActConstants.contactList.get(fbData.contactId)!=null){
-            ActConstants.contactList.get(fbData.contactId).react(fbData,faData);
+        synchronized (ActConstants.publicInformationLock){
+            if(ActConstants.contactList.get(result)!=null){
+                ActConstants.contactList.get(result).react(faData,fbData);
+            }
+            if(ActConstants.contactList.get(faData.contactId)!=null){
+                ActConstants.contactList.get(faData.contactId).react(faData,fbData);
+            }
+            if(ActConstants.contactList.get(fbData.contactId)!=null){
+                ActConstants.contactList.get(fbData.contactId).react(fbData,faData);
+            }
         }
 
         if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.portalID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.portalID)
@@ -79,6 +81,8 @@ public class PhysicalContactListener implements ContactListener{
 //            laserTransmitter.emmit();
         }
 
+
+
         //之后也可以获得碰撞点坐标等
         //还可以把刚体设置为传感器，就是会检测到碰撞但是物理世界里不与其它刚体产生相互作用
     }
@@ -93,11 +97,14 @@ public class PhysicalContactListener implements ContactListener{
         UserData fbData = (UserData) fb.getUserData();
 
 
-        if(faData.contactId==ActConstants.tongueMonsterID){
+        if(faData.contactId==ActConstants.tongueMonsterID&&fbData.contactId==ActConstants.mainCharacterID){
             ((TongueMonster)ActConstants.publicInformation.get(faData.nameInPublicInformation)).setContact(false);
-        }
-        if(fbData.contactId==ActConstants.tongueMonsterID){
+        }else if(fbData.contactId==ActConstants.tongueMonsterID&&faData.contactId==ActConstants.mainCharacterID){
             ((TongueMonster)ActConstants.publicInformation.get(fbData.nameInPublicInformation)).setContact(false);
+        }else if(faData.contactId==ActConstants.blowerID&&fbData.contactId==ActConstants.mainCharacterID){
+            ActConstants.MainCharacterState.replace("blow",false);
+        }else if(fbData.contactId==ActConstants.blowerID&&faData.contactId==ActConstants.mainCharacterID){
+            ActConstants.MainCharacterState.replace("blow",false);
         }
 
 

@@ -1,13 +1,16 @@
 package com.mygdx.game.Level2;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
@@ -48,15 +51,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-
-        //阎之泓主角出生点：
-        this.addActor(new MainCharacter(world, 2,7f));
-
-        //郐洋主角出生点
-//        this.addActor(new MainCharacter(world,151,1.64f));//单位是米
-
-        //林韫奇主角出生点
-//        this.addActor(new MainCharacter(world,192,10f));//单位是米
+        this.addActor(new MainCharacter(world,0,40f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -166,28 +161,6 @@ public class Stage2 extends MyStage {
         new TongueMonsterAndMainCharacter();
 //yzh***************************************************************
 
-        //************************************郐洋
-        new BridgeAndMainCharacter();
-        new PortalAndMainCharacter();
-        new BridgeAndIce();
-        new SensorAndMainCharacter();
-        this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
-        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
-        this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
-        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7580, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-        this.addActor(new Sensor(7780,82,ActConstants.SensorID,world,"Sensor"));
-        ActConstants.publicInformation.put("stage2", this);
-        //************************************郐洋
-
-
-        //****************************林韫奇 主角9600
-        this.addActor(new Platform(world,9800,500,ActConstants.platformID,"Platform"));
-//        this.addActor(new HangedBalls(world,"012",10200));
-        this.addActor(new ThinSurface(world,204,12,2f,0.2f,
-                ActConstants.thinSurfaceID,"thinSurface"));
-        new ThinSurfaceContact();
-        new BallsContact();
     }
 
     @Override
@@ -206,7 +179,7 @@ public class Stage2 extends MyStage {
         }
 
 
-        cameraFocus.innerBoundary(6,7,19,6);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
+        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
 
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update

@@ -7,8 +7,11 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.Stage1;
+import com.mygdx.game.Level2.NormalActors.BossLauncher;
+import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Tools.Assets;
 
 /* *这*************************************************这个是监听换舞台的版本
@@ -81,14 +84,23 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	World world;
 
+	boolean change;
+
+	int x;
+
 
 	InputMultiplexer inputMultiplexer;
 
 	public static Stage currentStage;
 
+	Timer timer;
+	Timer.Task timerTask;
+
 
 	@Override
 	public void create() {
+		x=0;
+		change = false;
 
 		//加载全部资源
 		Assets.instance.init(new AssetManager());
@@ -102,8 +114,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 
 		//设置当前舞台为stage1
-		currentStage = new Stage1(inputMultiplexer);
-
+		currentStage = new Stage2(inputMultiplexer);
 
 
 
@@ -113,6 +124,17 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void render() {
 		//清屏
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+//		x++;
+//		System.out.println(x);
+//
+//		if(x>1000){
+//			currentStage.dispose();
+//			currentStage = new Stage2(inputMultiplexer);
+//			System.out.println("change stage");
+//			x=0;
+//		}
+
 
 		//运行当前舞台
 		currentStage.act();

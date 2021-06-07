@@ -197,14 +197,21 @@ public class EatPlatform extends Actor {
 
         CreateSpine createSpine = new CreateSpine(world,physicalX,(float)(physicalY+0.5*platformHeight),(float)(platformHeight*0.3),(float)(platformWidth*0.9),"EatPlatform"+myNumber);
 
-        ActConstants.physicalActionList.add(createSpine);
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(createSpine);
+        }
+
 
     }
 
     public void deleteSpine(){
         DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
         deletePhysicalEntity.deleteBody(spine.getSimulation(),world);
-        ActConstants.physicalActionList.add(deletePhysicalEntity);
+
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(deletePhysicalEntity);
+        }
+
     }
 
     public void takeSpine(Spine spine){

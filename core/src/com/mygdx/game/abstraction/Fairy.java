@@ -58,6 +58,8 @@ public class Fairy extends Actor {
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
+        myFixtureDef.isSensor = false;
+
         myBodyDef.position.set(this.getX()/ActConstants.worldSize_pAndPhysic,this.getY()/ActConstants.worldSize_pAndPhysic);//这个表示物理世界中的米
 
         this.world = world;
