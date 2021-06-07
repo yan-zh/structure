@@ -35,11 +35,5 @@ public class CreateBullet implements PhysicalAction {
     @Override
     public void act() {
         MyGdxGame.currentStage.addActor(new BulletSkill(prepare,fly,contact,x,y,direction,actorId,damage));
-        if(ActConstants.BulletCount==1) {
-            ReflectiveStone reflectiveStone = ((ReflectiveStone)ActConstants.publicInformation.get("ReflectiveStone1"));
-            reflectiveStone.emmit();
-            System.out.println("The ReflectiveStone is triggered");}
-        ActConstants.BulletCount = 2;
-    }
     }
 }

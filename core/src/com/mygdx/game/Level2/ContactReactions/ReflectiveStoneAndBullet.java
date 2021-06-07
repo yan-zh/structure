@@ -9,6 +9,7 @@ import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.Level2.NormalActors.ReflectiveStone;
 import com.mygdx.game.Level2.NormalActors.laserTransmitter;
 import com.mygdx.game.Level2.PhysicalActions.CreateBullet;
+import com.mygdx.game.Level2.PhysicalActions.CreateBulletForREF;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
@@ -28,7 +29,7 @@ public class ReflectiveStoneAndBullet implements ContactReaction {
             @Override
 
             public void run() {
-                CreateBullet createBullet = new CreateBullet();
+                CreateBulletForREF createBullet = new CreateBulletForREF( );
                 ActConstants.BulletCount = 1;
                 createBullet.act();
                 }
