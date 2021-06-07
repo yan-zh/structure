@@ -40,6 +40,11 @@ public class UserInputListener extends InputListener {
                 MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
                 System.out.println(mainCharacter.mySimulation.getPosition().x + "," + mainCharacter.mySimulation.getPosition().y);
             }
+            if(event.getKeyCode()==Input.Keys.R) {
+                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+                System.out.println(mainCharacter.mySimulation.getPosition().x + "," + mainCharacter.mySimulation.getPosition().y);
+            }
+
             //Portal Listener
             if(event.getKeyCode()==Input.Keys.K) {
 

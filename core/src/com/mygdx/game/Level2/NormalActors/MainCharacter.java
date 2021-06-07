@@ -148,8 +148,10 @@ public class MainCharacter extends Actor {
             float gravityScale;
             gravityScale = mySimulation.getGravityScale();
             if(gravityScale==1){
+                mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,0);
                 mySimulation.applyLinearImpulse(new Vector2(0, ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
             }else{
+                mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,0);
                 mySimulation.applyLinearImpulse(new Vector2(0, -ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
             }
             jumpNumber--;
