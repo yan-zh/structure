@@ -97,6 +97,7 @@ public class Stage2 extends MyStage {
 //yzh***************************************************
         new GroundAndMainCharacter();
         new MainCharacterAndSpine();
+        new BridgeAndMainCharacter();
 
 
         //木系荆棘 * 区域1
@@ -114,7 +115,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,120f,86f,0.5f,12f));
         this.addActor(new Spine(world,125.5f,89f,0.5f,1f));
         this.addActor(new Spine(world,122.5f,89f,0.5f,1f));
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500, 5100, ActConstants.brokenBridgeID, world, "brokenDoor"));
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500, 5150, ActConstants.brokenBridgeID, world, "brokenDoor"));
 
 
 
@@ -184,6 +185,7 @@ public class Stage2 extends MyStage {
 //
 //        new TongueMonsterAndMainCharacter();
 //yzh***************************************************************
+
 
 //        //************************************郐洋
 //        new BridgeAndMainCharacter();

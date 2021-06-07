@@ -58,7 +58,7 @@ public class brokenBridge extends Actor {
       mySimulation.setGravityScale(1);
       myFixture = mySimulation.createFixture(myFixtureDef);
 
-      myFixture.setUserData(new UserData(actorId, "brokenBridge"));
+      myFixture.setUserData(new UserData(actorId, name));
 
       this.name = name;
       ActConstants.publicInformation.put(name, this);

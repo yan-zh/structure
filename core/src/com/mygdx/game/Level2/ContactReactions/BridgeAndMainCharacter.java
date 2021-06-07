@@ -19,21 +19,51 @@ public class BridgeAndMainCharacter implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        brokenBridge brokenBridge = ((brokenBridge)ActConstants.publicInformation.get("brokenBridge"));
+        final UserData userData;
+        if(userData1.contactId == ActConstants.brokenBridgeID){
+            userData = userData1;
+        }
+        else userData = userData2;
+        System.out.println(userData.nameInPublicInformation);
+        brokenBridge brokenBridge = ((brokenBridge)ActConstants.publicInformation.get(userData.nameInPublicInformation));
+
         MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
-        //Refresh the state of jump
-        ActConstants.MainCharacterState.replace("onGround",true);
-        ActConstants.MainCharacterState.replace("repulse",false);
-        if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
+
+        System.out.println(brokenBridge.state + "this");
+
+        if(userData.nameInPublicInformation == "brokenBridge")
+        {
+            //Refresh the state of jump
+            ActConstants.MainCharacterState.replace("onGround",true);
+            ActConstants.MainCharacterState.replace("repulse",false);
+            if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
+            {
+                brokenBridge.removeBody();
+                brokenBridge.state = false;
+
+                Action delayedAction = Actions.run(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).state = true;
+                        ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).remove();
+                    }
+                });
+                Action action = Actions.delay(0.5f, delayedAction);
+                brokenBridge.addAction(action);
+        }
+
+
+        }
+        if((userData.nameInPublicInformation) == "brokenDoor")
         {
             brokenBridge.removeBody();
             brokenBridge.state = false;
-
+            System.out.println("THis is triggered");
             Action delayedAction = Actions.run(new Runnable() {
                 @Override
                 public void run() {
-                ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).state = true;
-                ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).remove();
+                    ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).state = true;
+                    ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).remove();
                 }
             });
             Action action = Actions.delay(0.5f, delayedAction);
