@@ -61,7 +61,7 @@ public class PhysicalContactListener implements ContactListener{
             System.out.println("IT is " + laserTransmitter.triggerState);
 
 
-            if(ActConstants.i==1) {
+            if(ActConstants.SensorCount==1) {
                 Timer timer = new Timer();
                 Timer.Task timerTask = new Timer.Task() {
                     @Override
@@ -76,7 +76,7 @@ public class PhysicalContactListener implements ContactListener{
                 };
                 timer.scheduleTask(timerTask, 1, 2, 5);// 0s之后执行，每次间隔1s，执行20次。
             }
-            ActConstants.i = 2;
+            ActConstants.SensorCount = 2;
 //            laserTransmitter laserTransmitter = ((laserTransmitter)ActConstants.publicInformation.get("laserTransmitter"));
 //            laserTransmitter.emmit();
         }

@@ -9,7 +9,7 @@ import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
 public class BridgeAndMainCharacter implements ContactReaction {
-    public static long contactID = 0b1001;
+    public static long contactID = ActConstants.brokenBridgeID + ActConstants.mainCharacterID;
     private int stateJudge = 0;
     public BridgeAndMainCharacter()
     {

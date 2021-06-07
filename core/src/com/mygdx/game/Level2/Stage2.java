@@ -161,6 +161,34 @@ public class Stage2 extends MyStage {
 //        new TongueMonsterAndMainCharacter();
 //yzh***************************************************************
 
+//        //************************************郐洋
+//        new BridgeAndMainCharacter();
+//        new PortalAndMainCharacter();
+//        new BridgeAndIce();
+//        new SensorAndMainCharacter();
+//        new ReflectiveStoneAndBullet();
+//        new SandAndMainCharacter();
+//        this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
+//        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
+//        this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
+//        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6380, 130, ActConstants.brokenBridgeID, world, "brokenBridge"));
+//        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7500, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+//        this.addActor(new Sensor(7300,82,ActConstants.SensorID,world,"Sensor"));
+//        this.addActor(new ReflectiveStone(8080,82,ActConstants.ReflectiveStoneID,world,"ReflectiveStone1"));
+//        this.addActor(new SandPlat( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 9033, 585, ActConstants.SandID, world, "SandPlat1"));
+//        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,8500,82,7500,82,ActConstants.portalID,world,"Portal",true,"Stage1"));
+//
+//        ActConstants.publicInformation.put("stage2", this);
+//        //************************************郐洋
+
+//
+//        //****************************林韫奇 主角9600
+//        this.addActor(new Platform(world,9800,500,ActConstants.platformID,"Platform"));
+////        this.addActor(new HangedBalls(world,"012",10200));
+//        this.addActor(new ThinSurface(world,204,12,2f,0.2f,
+//                ActConstants.thinSurfaceID,"thinSurface"));
+//        new ThinSurfaceContact();
+//        new BallsContact();
     }
 
     @Override

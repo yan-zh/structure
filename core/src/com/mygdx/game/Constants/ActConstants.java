@@ -252,7 +252,26 @@ public class ActConstants {
         laserTransmitterID = laserTransmitterID<<34;
     }
 
-    public static int i = 1;
+    public static int SensorCount = 1;
+
+    public static int BulletCount = 1;
+
+    public static long ReflectiveStoneID;
+
+    static{
+        ReflectiveStoneID=1;
+        ReflectiveStoneID = ReflectiveStoneID<<37;
+    }
+
+
+    public static long SandID;
+
+    static{
+        SandID=1;
+        SandID = SandID<<41;
+    }
+
+    public static int SandCount = 1;
     //****************郐洋
 
 

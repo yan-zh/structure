@@ -12,11 +12,13 @@ public class BulletDispose implements ContactReaction {
     public static long contactID4 = ActConstants.iceBulletID;
 
 
+
     public BulletDispose() {
         ActConstants.contactList.put(contactID1,this);
         ActConstants.contactList.put(contactID2,this);
         ActConstants.contactList.put(contactID3,this);
         ActConstants.contactList.put(contactID4,this);
+
     }
 
     @Override
