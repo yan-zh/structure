@@ -51,21 +51,23 @@ public class BridgeAndMainCharacter implements ContactReaction {
                 Action action = Actions.delay(0.5f, delayedAction);
                 brokenBridge.addAction(action);
         }
-          if(((String) userData.nameInPublicInformation) == "brokenDoor")
-          {
-              brokenBridge.removeBody();
-              brokenBridge.state = false;
-              System.out.println("THis is triggered");
-              Action delayedAction = Actions.run(new Runnable() {
-                  @Override
-                  public void run() {
-                      ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).state = true;
-                      ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).remove();
-                  }
-              });
-              Action action = Actions.delay(0.5f, delayedAction);
-              brokenBridge.addAction(action);
-          }
+
+
+        }
+        if((userData.nameInPublicInformation) == "brokenDoor")
+        {
+            brokenBridge.removeBody();
+            brokenBridge.state = false;
+            System.out.println("THis is triggered");
+            Action delayedAction = Actions.run(new Runnable() {
+                @Override
+                public void run() {
+                    ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).state = true;
+                    ((brokenBridge)ActConstants.publicInformation.get("brokenDoor")).remove();
+                }
+            });
+            Action action = Actions.delay(0.5f, delayedAction);
+            brokenBridge.addAction(action);
         }
     }
 }
