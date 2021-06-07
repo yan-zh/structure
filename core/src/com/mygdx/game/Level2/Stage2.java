@@ -51,7 +51,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,5,90f));//单位是米
+        this.addActor(new MainCharacter(world,94.5f,87.8f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -96,6 +96,30 @@ public class Stage2 extends MyStage {
 
 //yzh***************************************************
         new GroundAndMainCharacter();
+        new MainCharacterAndSpine();
+
+
+        //木系荆棘 * 区域1
+        this.addActor(new Spine(world,8.5f,84.5f,5,0.5f));
+        this.addActor(new Spine(world,14f,82.5f,0.5f,11f));
+        this.addActor(new Spine(world,20.5f,85f,5.5f,3f));
+        this.addActor(new Spine(world,26.5f,82.5f,0.5f,10f));
+        this.addActor(new Spine(world,50.5f,82.5f,0.5f,16f));
+        this.addActor(new Spine(world,71.2f,82.3f,0.5f,3.5f));
+        //缺一个lyq的平台和可以上下的桥@lyq
+
+
+        //区域2
+        this.addActor(new Spine(world,101.4f,84.6f,5f,0.5f));
+        this.addActor(new Spine(world,120f,86f,0.5f,12f));
+        this.addActor(new Spine(world,125.5f,89f,0.5f,1f));
+        this.addActor(new Spine(world,122.5f,89f,0.5f,1f));
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500, 5100, ActConstants.brokenBridgeID, world, "brokenDoor"));
+
+
+
+
+
 //        new BulletDispose();
 //
 //        //风精灵

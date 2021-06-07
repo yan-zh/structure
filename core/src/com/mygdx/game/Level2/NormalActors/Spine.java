@@ -21,9 +21,9 @@ public class Spine extends Actor {
     PolygonShape shape;
 
 
-    float statetime;//用于替换主角动作图片的标记
+//    float statetime;//用于替换主角动作图片的标记
 
-    Animation spine;//这个就是
+//    Animation spine;//这个就是
 
     boolean draw;
 
@@ -61,30 +61,30 @@ public class Spine extends Actor {
         this.setY(mySimulation.getPosition().y*ActConstants.worldSize_pAndPhysic);
 
 
-
-        //内存显示区
-        this.statetime = 0;
-
-        this.spine = Assets.instance.bunny.animCopterTransform;
+//
+//        //内存显示区
+//        this.statetime = 0;
+//
+//        this.spine = Assets.instance.bunny.animCopterTransform;
 
     }
 
     @Override
     public void act(float delta) {
-        //if(draw==true){
-            statetime+=delta;
-            currentFrame = (TextureRegion) spine.getKeyFrame(statetime);
-        //}
-
+//        //if(draw==true){
+//            statetime+=delta;
+//            currentFrame = (TextureRegion) spine.getKeyFrame(statetime);
+//        //}
+//
         super.act(delta);
 
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        //if(draw==true){
-            batch.draw(currentFrame,getX(),getY());
-       // }
+//        //if(draw==true){
+//            batch.draw(currentFrame,getX(),getY());
+//       // }
         super.draw(batch, parentAlpha);
 
     }
