@@ -22,7 +22,7 @@ public class ActConstants {
 
     public static MainCharacter mainCharacter;
 
-    public static float MainCharacterUpImpulse = 600f;
+    public static float MainCharacterUpImpulse = 450f;
     public static float MainCharacterSpeed = 5;
 
     public static int CameraCharacterControl=5;

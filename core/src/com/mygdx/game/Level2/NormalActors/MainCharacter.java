@@ -31,11 +31,13 @@ public class MainCharacter extends Actor {
 
     boolean canAbsorb;
 
+    int jumpNumber;
 
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public MainCharacter(World world,float x,float y){
         //获得物理世界引用
         this.world = world;
+        jumpNumber=2;
 
         //创建主角物理模拟
         PhysicalEntityDefine.defineCharacter();
@@ -135,13 +137,17 @@ public class MainCharacter extends Actor {
     }
 
     public void jump(){
-        float gravityScale;
-        gravityScale = mySimulation.getGravityScale();
-        if(gravityScale==1){
-            mySimulation.applyLinearImpulse(new Vector2(0, ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
-        }else{
-            mySimulation.applyLinearImpulse(new Vector2(0, -ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+        if(jumpNumber>=1){
+            float gravityScale;
+            gravityScale = mySimulation.getGravityScale();
+            if(gravityScale==1){
+                mySimulation.applyLinearImpulse(new Vector2(0, ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+            }else{
+                mySimulation.applyLinearImpulse(new Vector2(0, -ActConstants.MainCharacterUpImpulse),mySimulation.getPosition(),true);
+            }
+            jumpNumber--;
         }
+
 
     }
 
@@ -195,6 +201,7 @@ public class MainCharacter extends Actor {
     public void reFreshJump(){
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
+        jumpNumber=2;
     }
 
     public void startGravityInverse(){

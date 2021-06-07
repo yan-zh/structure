@@ -29,7 +29,7 @@ public class UserInputListener extends InputListener {
             if(event.getKeyCode()==Input.Keys.W&& ActConstants.MainCharacterState.get("onGround")) {
 
                 ((MainCharacter) ActConstants.publicInformation.get("MainCharacter")).jump();
-                ActConstants.MainCharacterState.replace("onGround",false);
+                //ActConstants.MainCharacterState.replace("onGround",false);
 
             }
             if(event.getKeyCode()==Input.Keys.NUM_1){
