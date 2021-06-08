@@ -143,7 +143,9 @@ public class Stage2 extends MyStage {
         this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
 
 //86 46
-
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,86,40);
+        this.addActor(ballReceiver);
+        new BallAndBallReceiver();
 
 
 
