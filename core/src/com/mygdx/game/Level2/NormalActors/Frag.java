@@ -168,20 +168,23 @@ public class Frag extends Actor {
 
     public void active(){
 
-        if(activeTime==0){
+        if(ActConstants.fragState==true){
+            if(activeTime==0){
 
-            tongueMark = true;
+                tongueMark = true;
 
-            animationHashMap.replace(0,heatedEye);
+                animationHashMap.replace(0,heatedEye);
 
-            synchronized (ActConstants.physicalActionListLock){
-                ActConstants.physicalActionList.add(new CreateTongue(world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+                synchronized (ActConstants.physicalActionListLock){
+                    ActConstants.physicalActionList.add(new CreateTongue(world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+                }
+
+
             }
 
+            activeTime++;
 
         }
-
-        activeTime++;
 
 
     }

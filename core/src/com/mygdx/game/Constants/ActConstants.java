@@ -283,6 +283,9 @@ public class ActConstants {
     }
 
     public static int SandCount = 1;
+
+
+    public static boolean fragState = false;
     //****************郐洋
 
 

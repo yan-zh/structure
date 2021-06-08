@@ -30,7 +30,7 @@ public class UserInputListener extends InputListener {
                 ActConstants.MainCharacterState.replace("goLeft",true);
                 //ActConstants.MainCharacterState.replace("noControl",false);
             }
-            if(event.getKeyCode()==Input.Keys.SPACE && ActConstants.MainCharacterState.get("onGround")) {
+            if(event.getKeyCode()==Input.Keys.W && ActConstants.MainCharacterState.get("onGround")) {
 
                 ((MainCharacter) ActConstants.publicInformation.get("MainCharacter")).jump();
                 //ActConstants.MainCharacterState.replace("onGround",false);
