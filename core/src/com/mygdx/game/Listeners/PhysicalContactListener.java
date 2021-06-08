@@ -47,8 +47,16 @@ public class PhysicalContactListener implements ContactListener{
 
         if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.switchID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.switchID )
         {
-            rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
-            rotateSwitch.triggerState = true;
+            rotateSwitch rotateSwitchDoor = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
+            rotateSwitch rotateSwitchFrag = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchFrag"));
+            rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
+            if(rotateSwitchDoor != null)
+                rotateSwitchDoor.triggerState = true;
+            if(rotateSwitchFrag != null)
+                rotateSwitchFrag.triggerState = true;
+            if(rotateSwitchPortal != null)
+                rotateSwitchPortal.triggerState = true;
+
             System.out.println("tRIGGER true");
         }
 
@@ -125,8 +133,15 @@ public class PhysicalContactListener implements ContactListener{
 
         if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.switchID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.switchID)
         {
-            rotateSwitch rotateSwitch =((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
-            rotateSwitch.triggerState = false;
+            rotateSwitch rotateSwitchDoor = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
+            rotateSwitch rotateSwitchFrag = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchFrag"));
+            rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
+            if(rotateSwitchDoor != null)
+                rotateSwitchDoor.triggerState = false;
+            if(rotateSwitchFrag != null)
+                rotateSwitchFrag.triggerState = false;
+            if(rotateSwitchPortal != null)
+                rotateSwitchPortal.triggerState = false;
 
             System.out.println("tRIGGER fALUSE");
         }

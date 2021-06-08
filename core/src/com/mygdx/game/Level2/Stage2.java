@@ -52,7 +52,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,80f,45f));//单位是米
+        this.addActor(new MainCharacter(world,91f,49f));//单位是米 7 89初始位置
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -75,6 +75,7 @@ public class Stage2 extends MyStage {
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
         tiledMap = new TmxMapLoader().load("core/assets/woodMap/JX01.tmx");
+       // tiledMap = new TmxMapLoader().load("core/assets/test/JX01.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         //根据tiledmap中的object图层自动在物理世界中创建实体
@@ -102,6 +103,7 @@ public class Stage2 extends MyStage {
         new BridgeAndMainCharacter();
 
 
+
         //木系荆棘 * 区域1
         this.addActor(new Spine(world,8.5f,84.5f,5,0.5f));
         this.addActor(new Spine(world,14f,82.5f,0.5f,11f));
@@ -118,6 +120,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,125.5f,89f,0.5f,1f));
         this.addActor(new Spine(world,122.5f,89f,0.5f,1f));
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500, 5150, ActConstants.brokenBridgeID, world, "brokenDoor"));
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f, 49.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
         //区域3
@@ -133,6 +136,8 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,60,67.5f,1f,1f));
         this.addActor(new Spine(world,59,67f,1f,1f));
         this.addActor(new Spine(world,58,66.5f,1f,1f));
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 183f, 64f, ActConstants.switchID, world,"rotateSwitchDoor", "door"));
+        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 201f, 39.5f, ActConstants.switchID, world, "door"));
 
 
         Flower flower = new Flower(world,64,36.8f,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);

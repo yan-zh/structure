@@ -33,11 +33,11 @@ public class Door extends Actor {
     public int dstXPos, dstYPos;
 
     World world;
-        public Door(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name)
+        public Door(Animation animationWait, Animation animationTrigger, float x, float y, long actorId, World world, String name)
     {
         //Set position
-        this.setX(x);
-        this.setY(y);
+        this.setX(x * ActConstants.worldSize_pAndPhysic);
+        this.setY(y * ActConstants.worldSize_pAndPhysic);
 
         //Set the animation of the wait state and absorb
         this.wait = animationWait;

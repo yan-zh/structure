@@ -31,12 +31,12 @@ public class rotateSwitch extends Actor {
 
 
 
-    public rotateSwitch(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name, String controlType)
+    public rotateSwitch(Animation animationWait, Animation animationTrigger, float x, float y, long actorId, World world, String name, String controlType)
     {
         this.ControlType = controlType;
         //Set position
-        this.setX(x);
-        this.setY(y);
+        this.setX(x * ActConstants.worldSize_pAndPhysic);
+        this.setY(y * ActConstants.worldSize_pAndPhysic);
 
         //Set the animation of the wait state and absorb
         this.wait = animationWait;

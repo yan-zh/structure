@@ -15,44 +15,43 @@ import com.mygdx.game.MyGdxGame;
 
 public class UserInputListener extends InputListener {
 
-    public UserInputListener(){
+    public UserInputListener() {
     }
 
     public boolean keyDown(InputEvent event, int keycode) {
-        if(!ActConstants.MainCharacterState.get("repulse")){
-            if(event.getKeyCode()==Input.Keys.D) {
-                ActConstants.MainCharacterState.replace("goRight",true);
-                ActConstants.MainCharacterState.replace("goLeft",false);
+        if (!ActConstants.MainCharacterState.get("repulse")) {
+            if (event.getKeyCode() == Input.Keys.D) {
+                ActConstants.MainCharacterState.replace("goRight", true);
+                ActConstants.MainCharacterState.replace("goLeft", false);
                 //ActConstants.MainCharacterState.replace("noControl",false);
             }
-            if(event.getKeyCode()==Input.Keys.A) {
-                ActConstants.MainCharacterState.replace("goRight",false);
-                ActConstants.MainCharacterState.replace("goLeft",true);
+            if (event.getKeyCode() == Input.Keys.A) {
+                ActConstants.MainCharacterState.replace("goRight", false);
+                ActConstants.MainCharacterState.replace("goLeft", true);
                 //ActConstants.MainCharacterState.replace("noControl",false);
             }
-            if(event.getKeyCode()==Input.Keys.W && ActConstants.MainCharacterState.get("onGround")) {
+            if (event.getKeyCode() == Input.Keys.SPACE && ActConstants.MainCharacterState.get("onGround")) {
 
                 ((MainCharacter) ActConstants.publicInformation.get("MainCharacter")).jump();
                 //ActConstants.MainCharacterState.replace("onGround",false);
 
             }
-            if(event.getKeyCode()==Input.Keys.Y) {
-                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+            if (event.getKeyCode() == Input.Keys.Y) {
+                MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                 System.out.println(mainCharacter.mySimulation.getPosition().x + "," + mainCharacter.mySimulation.getPosition().y);
             }
-            if(event.getKeyCode()==Input.Keys.R) {
-                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+            if (event.getKeyCode() == Input.Keys.R) {
+                MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                 System.out.println(mainCharacter.mySimulation.getPosition().x + "," + mainCharacter.mySimulation.getPosition().y);
             }
 
             //Portal Listener
-            if(event.getKeyCode()==Input.Keys.K) {
+            if (event.getKeyCode() == Input.Keys.K) {
 
-                Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
-                if(portal != null){
-                    MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
-                    if(portal.triggerState == true && portal.isActive == true)
-                    {
+                Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                if (portal != null) {
+                    MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
+                    if (portal.triggerState == true && portal.isActive == true) {
 
                         portal.state = false;
 
@@ -60,18 +59,17 @@ public class UserInputListener extends InputListener {
                             @Override
                             public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
-                                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
+                                Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                                MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                                 mainCharacter.mySimulation.setTransform(new Vector2(portal.dstXPos, portal.dstYPos), 0);
                                 Action delayedAction = Actions.run(new Runnable() {
                                     @Override
                                     public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                        Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
-                                        Stage2 stage2 = (Stage2)ActConstants.publicInformation.get("stage2");
+                                        Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                                        Stage2 stage2 = (Stage2) ActConstants.publicInformation.get("stage2");
                                         portal.state = true;
-                                        if(portal.Stagetranto == "Stage1")
-                                        {
+                                        if (portal.Stagetranto == "Stage1") {
                                             stage2.dispose();
                                             MyGdxGame.currentStage = new Stage1(ActConstants.inputMultiplexer);
                                         }
@@ -93,68 +91,86 @@ public class UserInputListener extends InputListener {
 
             }
             //rotateSwitch
-            if(event.getKeyCode()==Input.Keys.E) {
-                rotateSwitch rotateSwitch =  ((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
-                MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
-
-                if(rotateSwitch != null)
-                {
-                    if(rotateSwitch.triggerState == true)
-                    {
-                        Portal portal =(Portal)ActConstants.publicInformation.get("Portal");
-                        if(portal != null && rotateSwitch.ControlType == "portal")
-                        {portal.turnOn();
+            if (event.getKeyCode() == Input.Keys.E) {
+                rotateSwitch rotateSwitchDoor = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
+                rotateSwitch rotateSwitchFrag = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchFrag"));
+                rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
+                if (rotateSwitchPortal != null) {
+                    if (rotateSwitchPortal.triggerState == true) {
+                        Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                        if (portal != null && rotateSwitchPortal.ControlType == "portal") {
+                            portal.turnOn();
                             Action delayedAction = Actions.run(new Runnable() {
                                 @Override
                                 public void run() {
-//                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                    rotateSwitch rotateSwitch =  ((rotateSwitch)ActConstants.publicInformation.get("rotateSwitch"));
+                                    rotateSwitch rotateSwitch = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
                                     rotateSwitch.state = true;
                                 }
                             });
                             Action action = Actions.delay(3f, delayedAction);
-                            portal.addAction(action);}
+                            portal.addAction(action);
+                        }
+                    }
+                }
 
+                if (rotateSwitchDoor != null) {
+                    if (rotateSwitchDoor.triggerState == true) {
                         Door door = ((Door) ActConstants.publicInformation.get("door"));
-                        System.out.println(rotateSwitch.ControlType);
-                        if(door!=null  && rotateSwitch.ControlType == "door")
-                        {
-                            rotateSwitch.state = false;
+                        if (door != null) {
+                            rotateSwitchDoor.state = false;
                             door.turnOn();
                             door.state = false;
                             Action delayedAction = Actions.run(new Runnable() {
                                 @Override
                                 public void run() {
-//                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                    Door door =  ((Door)ActConstants.publicInformation.get("door"));
+                                    Door door = ((Door) ActConstants.publicInformation.get("door"));
                                     door.state = true;
+                                    rotateSwitch rotateSwitch = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
+                                    rotateSwitch.state = true;
                                 }
                             });
                             Action action = Actions.delay(3f, delayedAction);
-                            rotateSwitch.addAction(action);}
+                            rotateSwitchDoor.addAction(action);
                         }
-}
+                    }
+                }
+                if (rotateSwitchFrag != null) {
+                    if (rotateSwitchFrag.triggerState == true) {
+                        ActConstants.fragState = true;
+                        rotateSwitchFrag.state = false;
 
-
+                        Action delayedAction = Actions.run(new Runnable() {
+                            @Override
+                            public void run() {
+                                rotateSwitch rotateSwitch = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchFrag"));
+                                rotateSwitch.state = true;
+                            }
+                        });
+                        Action action = Actions.delay(3f, delayedAction);
+                        rotateSwitchFrag.addAction(action);
+                    }
                 }
             }
-            if(event.getKeyCode()==Input.Keys.NUM_1){
-                ActConstants.currentSkillGroup=1;
+            if (event.getKeyCode() == Input.Keys.NUM_1) {
+                ActConstants.currentSkillGroup = 1;
 
             }
-            if(event.getKeyCode()==Input.Keys.NUM_2){
-                ActConstants.currentSkillGroup=2;
+            if (event.getKeyCode() == Input.Keys.NUM_2) {
+                ActConstants.currentSkillGroup = 2;
 
             }
 
-            if(event.getKeyCode()==Input.Keys.Q){
+            if (event.getKeyCode() == Input.Keys.Q) {
                 ActConstants.physicalActionList.add(new ReverseMainCharacterGravity());
             }
 
 
+
+            //return false;//不知道干嘛的
+        }
         return super.keyUp(event, keycode);
-        //return false;//不知道干嘛的
     }
+
 
     @Override
     public boolean keyUp(InputEvent event, int keycode) {
