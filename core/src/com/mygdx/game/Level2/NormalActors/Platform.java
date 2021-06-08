@@ -30,7 +30,7 @@ public class Platform extends Actor {
 
 
 
-    public Platform(World world, float x, float y,long actorId,String name) {
+    public Platform(World world, float x, float y,float width, float height, long actorId,String name) {
         this.setX(x);
         this.setY(y);
         texture = new Texture(Gdx.files.internal("badlogic.jpg"));
@@ -48,9 +48,9 @@ public class Platform extends Actor {
 //        mySimulation = world.createBody(myBodyDef);
 //
 //      myFixture = mySimulation.createFixture(myFixtureDef);
-        mySimulation=BodyBuilder.createBox(world,this.getX()/ActConstants.worldSize_pAndPhysic,
-                this.getY()/ActConstants.worldSize_pAndPhysic,2f / ActConstants.worldSize_shapeAndPhysics,
-2f / ActConstants.worldSize_shapeAndPhysics,true,actorId,name
+        mySimulation=BodyBuilder.createBox(world,this.getX(),
+                this.getY(),width / ActConstants.worldSize_shapeAndPhysics,
+height / ActConstants.worldSize_shapeAndPhysics,true,actorId,name
                 );
 //        myFixture.setUserData(new UserData(actorId,name));
         this.name = name;
@@ -60,7 +60,7 @@ public class Platform extends Actor {
     }
 
     public void buildRopeJoint(Body hanging){
-        Body vertex= BodyBuilder.createBox(world,this.getX()/ActConstants.worldSize_pAndPhysic,1.5f*(this.getY()/ActConstants.worldSize_pAndPhysic),
+        Body vertex= BodyBuilder.createBox(world,this.getX(),1.5f*(this.getY()),
                 10f/ActConstants.worldSize_pAndPhysic,
                 10f/ActConstants.worldSize_pAndPhysic,false,0b0,"vertex" );
 
@@ -68,7 +68,7 @@ public class Platform extends Actor {
 
 
 //        RopeJointDef rDef= new RopeJointDef();
-        Vector2 position=new Vector2(this.getX()/ActConstants.worldSize_pAndPhysic,1.5f*(this.getY()/ActConstants.worldSize_pAndPhysic));
+        Vector2 position=new Vector2(this.getX(),1.5f*(this.getY()));
         RevoluteJointDef rDef= new RevoluteJointDef();
         rDef.initialize(vertex,hanging,position);
 
