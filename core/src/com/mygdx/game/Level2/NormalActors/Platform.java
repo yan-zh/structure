@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 package com.mygdx.game.Level2.NormalActors;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -60,7 +67,7 @@ height / ActConstants.worldSize_shapeAndPhysics,true,actorId,name
     }
 
     public void buildRopeJoint(Body hanging){
-        Body vertex= BodyBuilder.createBox(world,this.getX(),1.5f*(this.getY()),
+        Body vertex= BodyBuilder.createBox(world,this.getX(),this.getY()+15,
                 10f/ActConstants.worldSize_pAndPhysic,
                 10f/ActConstants.worldSize_pAndPhysic,false,0b0,"vertex" );
 
@@ -68,7 +75,7 @@ height / ActConstants.worldSize_shapeAndPhysics,true,actorId,name
 
 
 //        RopeJointDef rDef= new RopeJointDef();
-        Vector2 position=new Vector2(this.getX(),1.5f*(this.getY()));
+        Vector2 position=new Vector2(this.getX(),this.getY()+15);
         RevoluteJointDef rDef= new RevoluteJointDef();
         rDef.initialize(vertex,hanging,position);
 

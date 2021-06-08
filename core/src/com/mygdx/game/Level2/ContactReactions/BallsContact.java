@@ -34,7 +34,7 @@ public class BallsContact implements ContactReaction {
         }
       HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
         balls.hit(i);
-//        System.out.println("object "+balls);
+//       System.out.println("object "+balls);
 
     }
 
