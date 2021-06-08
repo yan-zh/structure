@@ -51,7 +51,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,41f,85f));//单位是米
+        this.addActor(new MainCharacter(world,86f,44f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -143,9 +143,46 @@ public class Stage2 extends MyStage {
         this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
 
 //86 46
-        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,86,40);
-        this.addActor(ballReceiver);
-        new BallAndBallReceiver();
+
+
+        this.addActor(new ReverberateAxe(world,86.5f,45.5f));
+        //new AxeAndMainCharacter();
+        new AxeSensorContact();
+
+        //new TongueMonsterAndMainCharacter();
+//
+//
+//        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
+//        this.addActor(blower);
+//
+//        new BlowerAndMainCharacter();
+//
+//
+//
+//
+//
+//
+//        this.addActor(new BossLauncher(world,45,15));
+//        new BossLauncherAndMainCharacter();
+//        //((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+//
+////
+////        new BulletAndMonsterA();
+////        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+////        this.addActor(monsterA2);
+//
+//
+//
+//        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
+//        this.addActor(ballLauncher);
+//        new BallLauncherAndMainCharacter();
+//
+//        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
+//        this.addActor(ballReceiver);
+//        new BallAndBallReceiver();
+
+
+
 
 
 
