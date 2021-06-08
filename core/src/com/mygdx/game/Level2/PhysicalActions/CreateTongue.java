@@ -18,8 +18,9 @@ public class CreateTongue implements PhysicalAction {
 
     float physicalX;
     float physicalY;
+    boolean direction;
 
-    public CreateTongue(World world, Body tongueSimulation, FixtureDef tongueFixtureDef, BodyDef tongueBodyDef, PolygonShape tongueShape, float physicalX, float physicalY) {
+    public CreateTongue(boolean direction,World world, Body tongueSimulation, FixtureDef tongueFixtureDef, BodyDef tongueBodyDef, PolygonShape tongueShape, float physicalX, float physicalY) {
         this.world = world;
         this.tongueSimulation = tongueSimulation;
         this.tongueFixtureDef = tongueFixtureDef;
@@ -27,6 +28,7 @@ public class CreateTongue implements PhysicalAction {
         this.tongueShape = tongueShape;
         this.physicalX = physicalX;
         this.physicalY = physicalY;
+        this.direction = direction;
     }
 
     @Override
@@ -45,7 +47,12 @@ public class CreateTongue implements PhysicalAction {
 
         tongueFixtureDef.isSensor = false;
 
-        tongueBodyDef.position.set(physicalX-1,physicalY-1);//这个表示物理世界中的米
+        if(direction==false){
+            tongueBodyDef.position.set(physicalX-1,physicalY-1);//这个表示物理世界中的米
+        }else{
+            tongueBodyDef.position.set(physicalX+1,physicalY-1);//这个表示物理世界中的米
+        }
+
 
         tongueSimulation = world.createBody(tongueBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");

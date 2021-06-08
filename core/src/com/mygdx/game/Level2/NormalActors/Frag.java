@@ -54,10 +54,13 @@ public class Frag extends Actor {
 
     short activeTime;
 
+    boolean direction;
+
     public Frag(World world, float x, float y){
         physicalX = x;
         physicalY = y;
         number++;
+        direction = false;//向右
 
         activeTime = 0;
         //获得眼镜世界引用
@@ -90,10 +93,15 @@ public class Frag extends Actor {
 
         toadShape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        toadShape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        toadShape.setAsBox(1.5f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         toadFixtureDef.shape = toadShape;
 
-        toadBodyDef.position.set(x+3,y+3);//这个表示物理世界中的米
+        if(direction==false){
+            toadBodyDef.position.set(x+1,y-0.3f);//这个表示物理世界中的米
+        }else{
+            toadBodyDef.position.set(x-1,y-0.3f);//这个表示物理世界中的米
+        }
+
 
         toadSimulation = world.createBody(toadBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -176,7 +184,7 @@ public class Frag extends Actor {
                 animationHashMap.replace(0,heatedEye);
 
                 synchronized (ActConstants.physicalActionListLock){
-                    ActConstants.physicalActionList.add(new CreateTongue(world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+                    ActConstants.physicalActionList.add(new CreateTongue(direction,world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
                 }
 
 
