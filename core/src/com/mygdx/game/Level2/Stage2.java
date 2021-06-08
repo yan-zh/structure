@@ -51,7 +51,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,94.5f,87.8f));//单位是米
+        this.addActor(new MainCharacter(world,41f,85f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -95,6 +95,7 @@ public class Stage2 extends MyStage {
 
 
 //yzh***************************************************
+        new BulletDispose();
         new GroundAndMainCharacter();
         new MainCharacterAndSpine();
         new BridgeAndMainCharacter();
@@ -116,6 +117,33 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,125.5f,89f,0.5f,1f));
         this.addActor(new Spine(world,122.5f,89f,0.5f,1f));
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500, 5150, ActConstants.brokenBridgeID, world, "brokenDoor"));
+
+
+        //区域3
+        this.addActor(new Spine(world,69f,73.5f,1f,1f));
+        this.addActor(new Spine(world,68f,73f,1f,1f));
+        this.addActor(new Spine(world,67f,72.5f,1f,1f));
+        this.addActor(new Spine(world,66f,72f,1f,1f));
+        this.addActor(new Spine(world,65,71f,1f,1f));
+        this.addActor(new Spine(world,64,70f,1f,1f));
+        this.addActor(new Spine(world,63,69.5f,1f,1f));
+        this.addActor(new Spine(world,62,69f,1f,1f));
+        this.addActor(new Spine(world,61,68.5f,1f,1f));
+        this.addActor(new Spine(world,60,67.5f,1f,1f));
+        this.addActor(new Spine(world,59,67f,1f,1f));
+        this.addActor(new Spine(world,58,66.5f,1f,1f));
+
+
+        Flower flower = new Flower(world,64,36.8f,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
+        this.addActor(flower);
+        new FlowerAndMainCharacter();
+
+
+        new WindFairyAndMainCharacter();
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
+
+//86 46
+
 
 
 
