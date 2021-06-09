@@ -72,7 +72,6 @@ public class BossLauncher extends Actor {
                     BossLauncher bossLauncher = ((BossLauncher)ActConstants.publicInformation.get("BossLauncher"));
                     if(bossLauncher!=null){
                         bossLauncher.launch();
-                        bossLauncher.remove=true;
                     }
                 }
                 launch=true;
@@ -121,7 +120,7 @@ public class BossLauncher extends Actor {
 
         sensorFixtureDef.isSensor=true;
 
-        sensorBodyDef.position.set(physicalX,physicalY-3);//这个表示物理世界中的米
+        sensorBodyDef.position.set(physicalX,physicalY-7);//这个表示物理世界中的米
 
         sensorSimulation = world.createBody(sensorBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -324,10 +323,18 @@ public class BossLauncher extends Actor {
 
     public void start(){
 
-        if(count==0){
-            timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
+    }
+
+    public void stop(){
+        if(count==0) {
+
+            timerTask.cancel();
+            timer.stop();
+            timer.clear();
         }
 
         count=1;
+
     }
 }

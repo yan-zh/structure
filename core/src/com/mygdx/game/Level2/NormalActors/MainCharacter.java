@@ -30,7 +30,6 @@ public class MainCharacter extends Actor {
 
     Animation test;//这个就是
 
-    boolean canAbsorb;
 
     int jumpNumber;
 
@@ -51,6 +50,7 @@ public class MainCharacter extends Actor {
        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
+
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
 
@@ -200,6 +200,7 @@ public class MainCharacter extends Actor {
             mySimulation.applyLinearImpulse(100,400,myX,myY,true);
         }
 
+
     }
 
 
@@ -221,6 +222,27 @@ public class MainCharacter extends Actor {
             scale = 1;
         }
         mySimulation.setGravityScale(scale);
+    }
+
+    public boolean damage(int damage){
+        ActConstants.health = ActConstants.health-damage;
+
+        if(ActConstants.health<=0){
+            //
+            System.out.println("sile");
+            return false;
+        }
+
+        return true;
+    }
+
+    public void resetPosition(float x, float y){
+        world.destroyBody(mySimulation);
+
+        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+
+        mySimulation = world.createBody(myBodyDef);
+
     }
 
 

@@ -17,10 +17,10 @@ public class BossLauncherAndMainCharacter implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
         if(userData1.contactId==ActConstants.bossLauncherID){
             BossLauncher bossLauncher = (BossLauncher) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-            bossLauncher.start();
+            bossLauncher.stop();
         }else{
             BossLauncher bossLauncher = (BossLauncher) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-            bossLauncher.start();
+            bossLauncher.stop();
         }
     }
 }

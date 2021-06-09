@@ -20,8 +20,9 @@ public class ThinSurfaceContact implements ContactReaction {
     @Override
     public void react(UserData userData1, UserData userData2) {
         //Refresh the state of jump
-        ActConstants.MainCharacterState.replace("onGround",true);
-       ActConstants.MainCharacterState.replace("repulse",false);
+//        ActConstants.MainCharacterState.replace("onGround",true);
+//       ActConstants.MainCharacterState.replace("repulse",false);
+        ActConstants.mainCharacter.reFreshJump();
 
     }
 

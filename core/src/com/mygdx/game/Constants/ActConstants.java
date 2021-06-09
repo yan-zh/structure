@@ -66,6 +66,8 @@ public class ActConstants {
         currentSkillGroup=1;
     }
 
+    public static int health = 3;
+
 
 
 
@@ -293,5 +295,10 @@ public class ActConstants {
     public static long platformID = 0b100000;
     public static long thinSurfaceID= 0b1000000000000000000000000000000;
     public static long hangedBallsID=0b10000000000000000;
+    public static long PswDoorID;
+    static{
+        PswDoorID = 1;
+        PswDoorID = PswDoorID<<44;
+    }
 
 }
