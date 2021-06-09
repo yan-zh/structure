@@ -32,13 +32,16 @@ public class Door extends Actor {
 
     public int dstXPos, dstYPos;
 
+    private float originY;
+
     World world;
-        public Door(Animation animationWait, Animation animationTrigger, float x, float y, long actorId, World world, String name)
+        public Door(Animation animationWait, Animation animationTrigger, float x, float y, float hx, float hy, long actorId, World world, String name)
     {
         //Set position
         this.setX(x * ActConstants.worldSize_pAndPhysic);
         this.setY(y * ActConstants.worldSize_pAndPhysic);
 
+        this.originY = y;
         //Set the animation of the wait state and absorb
         this.wait = animationWait;
         this.trigger = animationTrigger;
@@ -48,10 +51,11 @@ public class Door extends Actor {
         myBodyDef = PhysicalEntityDefine.getBd();
         myBodyDef.type = BodyDef.BodyType.KinematicBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
+        myFixtureDef.isSensor = false;
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(2f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(hx,hy);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
@@ -79,7 +83,7 @@ public class Door extends Actor {
         if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
 
         else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
-        if(mySimulation.getPosition().y >= 600 / ActConstants.worldSize_pAndPhysic)
+        if(mySimulation.getPosition().y - this.originY>= 8)
         {
             mySimulation.setLinearVelocity(new Vector2(0,0));
         }

@@ -52,7 +52,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,91f,49f));//单位是米 7 89初始位置
+        this.addActor(new MainCharacter(world,7f,89f));//单位是米 7 89初始位置   91 49
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -109,7 +109,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,14f,82.5f,0.5f,11f));
         this.addActor(new Spine(world,20.5f,85f,5.5f,3f));
         this.addActor(new Spine(world,26.5f,82.5f,0.5f,10f));
-        this.addActor(new Spine(world,50.5f,82.5f,0.5f,16f));
+        this.addActor(new Spine(world,49.5f,82.5f,0.5f,15f));
         this.addActor(new Spine(world,71.2f,82.3f,0.5f,3.5f));
         //缺一个lyq的平台和可以上下的桥@lyq
 
@@ -136,8 +136,6 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,60,67.5f,1f,1f));
         this.addActor(new Spine(world,59,67f,1f,1f));
         this.addActor(new Spine(world,58,66.5f,1f,1f));
-        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 183f, 64f, ActConstants.switchID, world,"rotateSwitchDoor", "door"));
-        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 201f, 39.5f, ActConstants.switchID, world, "door"));
 
 
         Flower flower = new Flower(world,64,36.8f,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
@@ -148,7 +146,7 @@ public class Stage2 extends MyStage {
         new WindFairyAndMainCharacter();
        // this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
 
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,80*50,42*50,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,31*50,33*50,ActConstants.windFairyID,world,"WindFairy"));
 //147 48
 
 
@@ -162,7 +160,11 @@ public class Stage2 extends MyStage {
         this.addActor(new Frag(world,147,45));
         this.addActor(new Frag(world,165,65));
 
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 183f, 64f, ActConstants.switchID, world,"rotateSwitchDoor", "door"));
 
+        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 193f, 39.5f,1f/ ActConstants.worldSize_shapeAndPhysics, 7f/ ActConstants.worldSize_shapeAndPhysics, ActConstants.switchID, world, "door"));
+
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f, 49.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
         //        new WindFairyAndMainCharacter();

@@ -50,11 +50,12 @@ public class PhysicalContactListener implements ContactListener{
             rotateSwitch rotateSwitchDoor = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
             rotateSwitch rotateSwitchFrag = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchFrag"));
             rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
-            if(rotateSwitchDoor != null)
+
+            if(((UserData)(contact.getFixtureA().getUserData())).nameInPublicInformation == "rotateSwitchDoor" || ((UserData)(contact.getFixtureB().getUserData())).nameInPublicInformation == "rotateSwitchDoor" )
                 rotateSwitchDoor.triggerState = true;
-            if(rotateSwitchFrag != null)
+            if(((UserData)(contact.getFixtureA().getUserData())).nameInPublicInformation == "rotateSwitchFrag" || ((UserData)(contact.getFixtureB().getUserData())).nameInPublicInformation == "rotateSwitchFrag" )
                 rotateSwitchFrag.triggerState = true;
-            if(rotateSwitchPortal != null)
+            if(((UserData)(contact.getFixtureA().getUserData())).nameInPublicInformation == "rotateSwitchPortal" || ((UserData)(contact.getFixtureB().getUserData())).nameInPublicInformation == "rotateSwitchPortal" )
                 rotateSwitchPortal.triggerState = true;
 
             System.out.println("tRIGGER true");

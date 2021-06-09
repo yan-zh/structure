@@ -210,7 +210,7 @@ public class MainCharacter extends Actor {
     public void reFreshJump(){
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
-        jumpNumber=8;
+        jumpNumber=2;
     }
 
     public void startGravityInverse(){

@@ -59,7 +59,7 @@ public class rotateSwitch extends Actor {
         mySimulation.setGravityScale(5);
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setSensor(true);
-        myFixture.setUserData(new UserData(actorId, "rotateSwitch"));
+        myFixture.setUserData(new UserData(actorId, name));
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);
