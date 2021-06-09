@@ -214,6 +214,7 @@ public class Stage2 extends MyStage {
         this.addActor(new ThinSurface(world,54.1f,65,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
         this.addActor(new HangedBalls(world,185,83,"012",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new PswDoor(world,195,80,5f,1f,ActConstants.PswDoorID,"pswDoor"));
         this.addActor(new SleepingBear(world,212,10,5f,3f,ActConstants.BearID,"sleepingBear"));
         this.addActor(new Bubbles(world,216,10,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();

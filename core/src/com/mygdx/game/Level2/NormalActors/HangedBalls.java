@@ -73,6 +73,9 @@ public class HangedBalls extends Actor {
 
     private void pswCorrect(){
         System.out.println("psw correct!");
+//        HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
+        PswDoor door = (PswDoor) ActConstants.publicInformation.get("pswDoor");
+        door.move();
         //从actcontants里获得横门的body让它消失
         //调用横门对象的draw还是act让它向左移
     }
