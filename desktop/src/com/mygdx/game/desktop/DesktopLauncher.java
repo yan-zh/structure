@@ -8,8 +8,10 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 
 public class DesktopLauncher {
-	private static boolean rebuildAtlas = false;
+	private static boolean rebuildAtlas = true;
 	private static boolean drawDebugOutline = false;
+
+	public static LwjglApplication mygame;
 
 	public static void main (String[] arg) {
 
@@ -20,24 +22,25 @@ public class DesktopLauncher {
 			settings.debug = drawDebugOutline;
 
 			// 加载通用资源管理
-			TexturePacker.process(settings,"core/assets/level_normal","core/assets/images_level",
-					"level_normal");
+//			TexturePacker.process(settings,"core/assets/level_normal","core/assets/images_level","level_normal");
 			// load level_1 characters
-			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level",
-					"level1");
+//			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level","level1");
 			// load level_2 characters
-			TexturePacker.process(settings,"core/assets/level2","core/assets/images_level",
-					"level2");
+			TexturePacker.process(settings,"core/assets/level2","core/assets/images_level","level2");
 			// load level_3 characters
-			TexturePacker.process(settings,"core/assets/level3","core/assets/images_level",
-					"level3");
-//			TexturePacker.process(settings,"core/assets/images","core/assets/images-out","canyonBunny");
+			TexturePacker.process(settings,"core/assets/level3","core/assets/images_level","level3");
+			// load Ui sources
+			TexturePacker.process(settings,"core/assets/images-ui","core/assets/images_level","images-ui");
+
 //			TexturePacker.process(settings,"core/assets/images-ui","core/assets/images-out","canyonBunny-ui");
 		}
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new MyGdxGame(), config);
 		config.width = ActConstants.SCREEN_WIDTH;
 		config.height = ActConstants.SCREEN_HEIGHT;
+		// 设置全屏
+		config.fullscreen =true;
+		config.vSyncEnabled =true;
+		mygame = new LwjglApplication(new MyGdxGame(), config);
 	}
 }

@@ -22,6 +22,7 @@ public class AssetsConstent {
     public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_2 = "core/assets/images_level/level2.atlas";
     // 第三关资源
     public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_3 = "core/assets/images_level/level3.atlas";
+    public static final String TEXTURE_ATLAS_OBJECTS_UI = "core/assets/images_level/images-ui.atlas";
     // 01关卡文件路径
     public static final String LEVEL_01 = "core/assets/levels/level-01.png";
     // 初始化玩家生命数

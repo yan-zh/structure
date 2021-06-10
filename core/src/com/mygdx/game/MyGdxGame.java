@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
@@ -9,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.Stage1;
-import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
 
 /* *这*************************************************这个是监听换舞台的版本
 public class MyGdxGame extends ApplicationAdapter {
@@ -91,7 +92,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void create() {
 
 		//加载全部资源
-		Assets.instance.init(new AssetManager());
+		AssetsLevel1.instance.init(new AssetManager());
 
 		//准备分发监听
 		inputMultiplexer = new InputMultiplexer();
@@ -99,11 +100,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		//监听分发处理器放入公共域
 		ActConstants.inputMultiplexer = inputMultiplexer;
 
-
 		//设置当前舞台为stage1
 		currentStage = new Stage1(inputMultiplexer);
-
-
 
 
 	}
@@ -121,7 +119,6 @@ public class MyGdxGame extends ApplicationAdapter {
 
 	@Override
 	public void dispose() {
-
 
 	}
 
