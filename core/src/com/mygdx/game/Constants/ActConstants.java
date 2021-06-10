@@ -233,6 +233,11 @@ public class ActConstants {
         bulletDeleteLock = 9;
     }
 
+    public final static Integer mainCharacterLock;
+    static{
+        mainCharacterLock = 10;
+    }
+
     public static boolean isFrozen;
     static{
         isFrozen = false;

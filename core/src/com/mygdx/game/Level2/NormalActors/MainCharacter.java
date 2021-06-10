@@ -225,15 +225,17 @@ public class MainCharacter extends Actor {
     }
 
     public boolean damage(int damage){
-        ActConstants.health = ActConstants.health-damage;
+        synchronized (ActConstants.mainCharacterLock){
+            ActConstants.health = ActConstants.health-damage;
 
-        if(ActConstants.health<=0){
-            //
-            System.out.println("sile");
-            return false;
+            if(ActConstants.health<=0){
+                //
+                System.out.println("sile");
+                return false;
+            }
+
+            return true;
         }
-
-        return true;
     }
 
     public void resetPosition(float x, float y){

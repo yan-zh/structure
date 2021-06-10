@@ -8,40 +8,38 @@ import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.UserData;
 
-public class WindFairyAndMainCharacter implements ContactReaction {
-//    public static long contactID = 0b101;
+public class SandFairy implements ContactReaction {
 
-    public static long contactID = ActConstants.windFairyID+ActConstants.mainCharacterID;
 
-    public WindFairyAndMainCharacter() {
+    public static long contactID = ActConstants.sandFairyID+ActConstants.mainCharacterID;
+
+    public SandFairy() {
         ActConstants.contactList.put(contactID,this);
     }
 
     @Override
     public void react(UserData userData1,UserData userData2) {
-        Fairy fairy= ((Fairy)ActConstants.publicInformation.get("WindFairy"));
-        if(fairy!=null){
+        Fairy fairy = ((Fairy) ActConstants.publicInformation.get("SandFairy"));
+        if (fairy != null) {
             ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupWind();
             fairy.removeBody();
-            fairy.state=false;
+            fairy.state = false;
 
 
             Action delayedAction = Actions.run(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (ActConstants.publicInformationLock){
-                        ((Fairy)ActConstants.publicInformation.get("WindFairy")).state=true;
-                        ((Fairy)ActConstants.publicInformation.get("WindFairy")).remove();
+                    synchronized (ActConstants.publicInformationLock) {
+                        ((Fairy) ActConstants.publicInformation.get("SandFairy")).state = true;
+                        ((Fairy) ActConstants.publicInformation.get("SandFairy")).remove();
                     }
 
                 }
             });
 
-            Action action = Actions.delay(0.5f,delayedAction);//这个数就是1s
+            Action action = Actions.delay(0.5f, delayedAction);//这个数就是1s
             fairy.addAction(action);
         }
-
-
 
     }
 }

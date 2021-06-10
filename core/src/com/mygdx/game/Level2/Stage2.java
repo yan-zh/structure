@@ -52,7 +52,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,7f,66f));//单位是米 7 89初始位置 7 66   57 11
+        this.addActor(new MainCharacter(world,7,66));//单位是米 7 89初始位置 7 66
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -93,6 +93,30 @@ public class Stage2 extends MyStage {
         //ActConstants.skillGroups[1]=new SkillGourpFire();
 
         //为这一关用到的物理碰撞监听添加一个函数
+
+
+
+        //测试***********************************
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,8*50,66*50,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,9*50,66*50,ActConstants.sandFairyID,world,"SandFairy"));
+        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,10*50,66*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        new SandFairyAndMainCharacter();
+        new WoodFairyAndMainCharacter();
+        new BulletAndMonsterA();
+
+
+        MonsterA monsterA = new MonsterA(world,30,66,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA);
+
+        MonsterA monsterA2 = new MonsterA(world,34,66,2,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA2);
+
+        MonsterA monsterA3 = new MonsterA(world,38,66,3,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA3);
+
+        new MonsterASensorAndMainCharacter();
+
+        //测试***********************************
 
 
 
@@ -149,7 +173,7 @@ public class Stage2 extends MyStage {
         new WindFairyAndMainCharacter();
        // this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
 
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,10*50,ActConstants.windFairyID,world,"WindFairy"));
+       // this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,10*50,ActConstants.windFairyID,world,"WindFairy"));
 //147 48
 
 
@@ -304,7 +328,7 @@ public class Stage2 extends MyStage {
 //        this.addActor(new HangedBalls(world,"012",10200));
         this.addActor(new ThinSurface(world,54.1f-1.2f,65-23.4f,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
-        this.addActor(new HangedBalls(world,208-1.2f,12-23.4f,"012",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new HangedBalls(world,208-1.2f,30,"012",ActConstants.hangedBallsID,"hangedBalls"));
         this.addActor(new SleepingBear(world,212-1.2f,10-23.4f,5f,3f,ActConstants.BearID,"sleepingBear"));
         this.addActor(new Bubbles(world,216-1.2f,10-23.4f,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();
@@ -313,6 +337,8 @@ public class Stage2 extends MyStage {
         new PlatformAndMainCharacter();
         new BearAndMainCharacter();
         new BubbleAndCharacter();
+        this.addActor(new PswDoor(world,64f-1.2f,82f-23.4f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
+        new PswDoorContact();
     }
 
     @Override

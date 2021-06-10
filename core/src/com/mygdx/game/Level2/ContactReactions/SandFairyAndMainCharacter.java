@@ -3,25 +3,25 @@ package com.mygdx.game.Level2.ContactReactions;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.SkillGroupManager.SkillGroupSand;
 import com.mygdx.game.Level2.SkillGroupManager.SkillGroupWind;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.UserData;
 
-public class WindFairyAndMainCharacter implements ContactReaction {
-//    public static long contactID = 0b101;
+public class SandFairyAndMainCharacter implements ContactReaction {
 
-    public static long contactID = ActConstants.windFairyID+ActConstants.mainCharacterID;
+    public static long contactID = ActConstants.sandFairyID+ActConstants.mainCharacterID;
 
-    public WindFairyAndMainCharacter() {
+    public SandFairyAndMainCharacter() {
         ActConstants.contactList.put(contactID,this);
     }
 
     @Override
-    public void react(UserData userData1,UserData userData2) {
-        Fairy fairy= ((Fairy)ActConstants.publicInformation.get("WindFairy"));
+    public void react(UserData userData1, UserData userData2) {
+        Fairy fairy= ((Fairy)ActConstants.publicInformation.get("SandFairy"));
         if(fairy!=null){
-            ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupWind();
+            ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupSand();
             fairy.removeBody();
             fairy.state=false;
 
@@ -30,8 +30,8 @@ public class WindFairyAndMainCharacter implements ContactReaction {
                 @Override
                 public void run() {
                     synchronized (ActConstants.publicInformationLock){
-                        ((Fairy)ActConstants.publicInformation.get("WindFairy")).state=true;
-                        ((Fairy)ActConstants.publicInformation.get("WindFairy")).remove();
+                        ((Fairy)ActConstants.publicInformation.get("SandFairy")).state=true;
+                        ((Fairy)ActConstants.publicInformation.get("SandFairy")).remove();
                     }
 
                 }

@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.Level2.PhysicalActions.MonsterAttack;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
@@ -70,10 +71,14 @@ public class MonsterA extends Actor {
     Timer timer;
     Timer.Task timerTask;
 
+    int type;
 
 
-    public MonsterA(World world, float x, float y,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
 
+    public MonsterA(World world, float x, float y,int type,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
+
+
+        this.type = type;
 
         timer = new Timer();
         timerTask = new Timer.Task() {
@@ -324,8 +329,21 @@ public class MonsterA extends Actor {
     }
 
     public void attack(){
-        MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
-        float[] direction = MyVector.getStandardVector(mySimulation.getPosition().x,mySimulation.getPosition().y,mainCharacter.getPhysicalX(),mainCharacter.getPhysicalY());
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
+//        MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
+//        float[] direction = MyVector.getStandardVector(mySimulation.getPosition().x,mySimulation.getPosition().y,mainCharacter.getPhysicalX(),mainCharacter.getPhysicalY());
+//        if(type==1){
+//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
+//        }else if(type==2){
+//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
+//        }else if(type==3){
+//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
+//        }
+        //MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
+        synchronized (ActConstants.physicalActionListLock){
+            MonsterAttack monsterAttack = new MonsterAttack(mySimulation,getX(),getY(),type);
+            ActConstants.physicalActionList.add(monsterAttack);
+        }
+
+
     }
 }
