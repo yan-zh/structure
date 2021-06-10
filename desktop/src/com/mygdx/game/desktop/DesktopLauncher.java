@@ -8,7 +8,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 
 public class DesktopLauncher {
-	private static boolean rebuildAtlas = true;
+	private static boolean rebuildAtlas = false;
 	private static boolean drawDebugOutline = false;
 
 	public static LwjglApplication mygame;
@@ -39,8 +39,8 @@ public class DesktopLauncher {
 		config.width = ActConstants.SCREEN_WIDTH;
 		config.height = ActConstants.SCREEN_HEIGHT;
 		// 设置全屏
-		config.fullscreen =true;
-		config.vSyncEnabled =true;
+//		config.fullscreen =true;
+//		config.vSyncEnabled =true;
 		mygame = new LwjglApplication(new MyGdxGame(), config);
 	}
 }
