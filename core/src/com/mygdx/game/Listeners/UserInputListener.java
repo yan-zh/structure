@@ -45,6 +45,12 @@ public class UserInputListener extends InputListener {
                 System.out.println(mainCharacter.mySimulation.getPosition().x + "," + mainCharacter.mySimulation.getPosition().y);
             }
 
+            //Save the Game
+            if (event.getKeyCode() == Input.Keys.P) {
+                Beacon beacon = ((Beacon) ActConstants.publicInformation.get("Beacon"));
+                beacon.setBeacon();
+            }
+
             //Portal Listener
             if (event.getKeyCode() == Input.Keys.K) {
 
