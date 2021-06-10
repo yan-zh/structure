@@ -293,6 +293,13 @@ public class ActConstants {
 
 
     public static boolean fragState = false;
+
+
+    public static long beaconID;
+    static{
+        beaconID = 1;
+        beaconID = beaconID << 45;
+    }
     //****************郐洋
 
 

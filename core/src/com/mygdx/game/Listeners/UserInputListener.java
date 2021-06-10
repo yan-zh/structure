@@ -169,6 +169,11 @@ public class UserInputListener extends InputListener {
                 ActConstants.physicalActionList.add(new ReverseMainCharacterGravity());
             }
 
+            //Save the Game
+            if (event.getKeyCode() == Input.Keys.P) {
+                Beacon beacon = ((Beacon) ActConstants.publicInformation.get("Beacon"));
+                beacon.setBeacon();
+            }
 
 
             //return false;//不知道干嘛的

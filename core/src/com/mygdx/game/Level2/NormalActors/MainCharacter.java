@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.mygdx.game.Level2.PhysicalActions.AdjustPosition;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
@@ -33,8 +34,45 @@ public class MainCharacter extends Actor {
 
     int jumpNumber;
 
+    boolean die;
+
+
+    Animation walkLeft;
+    Animation walkRight;
+
+    Animation hitLeft;
+    Animation hitRight;
+
+    Animation reborn;
+
+    boolean goLeft;
+
+    float timeWalk;
+    float timeHit;
+    float timeDie;
+
+    boolean hurt;
+
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public MainCharacter(World world,float x,float y){
+
+        walkLeft = Assets.instance.bunny.getAnimCopterRotate;
+        hitLeft = Assets.instance.bunny.animNormal;
+
+        walkRight = Assets.instance.bunny.animCopterTransformBack;
+        hitRight = Assets.instance.bunny.animNormal;
+
+        reborn = Assets.instance.goldCoin.animGoldCoin;
+
+        timeWalk = 0;
+        timeHit = 0;
+        timeDie = 0;
+
+        hurt = false;
+
+        goLeft=false;
+
+        die=false;
         //获得物理世界引用
         this.world = world;
         jumpNumber=2;
@@ -110,27 +148,47 @@ public class MainCharacter extends Actor {
 
     @Override
     public void act(float delta) {
+        if(die==false){
+            timeWalk += delta;
 
-        //动作状态改变
-        if(ActConstants.MainCharacterState.get("goLeft")){
-            mySimulation.setLinearVelocity(-ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
+            //动作状态改变
+            if(ActConstants.MainCharacterState.get("goLeft")){
+                goLeft=true;
+                mySimulation.setLinearVelocity(-ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
 
-        }else if(ActConstants.MainCharacterState.get("goRight")){
-            mySimulation.setLinearVelocity(ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
+            }else if(ActConstants.MainCharacterState.get("goRight")){
+                goLeft=false;
+                mySimulation.setLinearVelocity(ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
+            }
+
+            if(ActConstants.MainCharacterState.get("blow")){
+                mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,5);
+            }
+
+
+            if(hurt==false){
+                currentFrame = (TextureRegion) walkLeft.getKeyFrame(timeWalk,true);
+            }else{
+                timeHit += delta;
+                currentFrame = (TextureRegion) hitLeft.getKeyFrame(timeHit,false);
+                if(hitLeft.isAnimationFinished(timeHit)){
+                    timeHit = 0;
+                    hurt = false;
+                }
+            }
+
+        }else{
+            timeDie += delta;
+            currentFrame = (TextureRegion) reborn.getKeyFrame(timeDie,false);
+            if(reborn.isAnimationFinished(timeDie)){
+                timeDie = 0;
+                die=false;
+                reborn();
+            }
         }
 
-        if(ActConstants.MainCharacterState.get("blow")){
-            mySimulation.setLinearVelocity(mySimulation.getLinearVelocity().x,5);
-        }
 
 
-
-
-
-
-        statetime += delta;//用于调整主角要展示的图片的时间标记,****************这里调整了，用了传入的delta，看看行不行
-
-        currentFrame = (TextureRegion)test.getKeyFrame(statetime,true);
 
         super.act(delta);
     }
@@ -138,6 +196,17 @@ public class MainCharacter extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+
+        if(goLeft==true) {
+            if (!currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }else{
+            if (currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }
+
 
         batch.draw(currentFrame, (mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);//把模拟物体的坐标拿出来，转换一下画上去
 
@@ -205,7 +274,17 @@ public class MainCharacter extends Actor {
 
 
     public void die(){
+
         System.out.println("die");
+        die=true;
+
+    }
+
+    public void reborn(){
+        Beacon beacon = ((Beacon) ActConstants.publicInformation.get("Beacon"));
+        float[] data = beacon.returnState();
+        resetPosition(data[0],data[1]);
+        ActConstants.health = (int)data[2];
     }
 
     public void reFreshJump(){
@@ -226,11 +305,11 @@ public class MainCharacter extends Actor {
 
     public boolean damage(int damage){
         synchronized (ActConstants.mainCharacterLock){
+            hurt = true;
             ActConstants.health = ActConstants.health-damage;
 
             if(ActConstants.health<=0){
-                //
-                System.out.println("sile");
+                die=true;
                 return false;
             }
 
@@ -239,11 +318,10 @@ public class MainCharacter extends Actor {
     }
 
     public void resetPosition(float x, float y){
-        world.destroyBody(mySimulation);
-
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
-
-        mySimulation = world.createBody(myBodyDef);
+        AdjustPosition adjustPosition = new AdjustPosition(x/50,y/50);
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(adjustPosition);
+        }
 
     }
 

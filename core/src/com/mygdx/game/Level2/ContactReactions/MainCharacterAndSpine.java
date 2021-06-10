@@ -25,6 +25,11 @@ public class MainCharacterAndSpine implements ContactReaction {
         }
 
         mainCharacter.repulse(spine.getPhysicalX(),spine.getPhysicalY());
+        mainCharacter.damage(1);
+
+//        if(isAlive==false){
+//            mainCharacter.die();
+//        }
 
 
     }

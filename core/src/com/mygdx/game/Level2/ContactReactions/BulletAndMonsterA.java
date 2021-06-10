@@ -1,6 +1,7 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.MonsterA;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.ContactReaction;
@@ -28,6 +29,13 @@ public class BulletAndMonsterA implements ContactReaction {
                 MonsterA monsterA = (MonsterA) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 if(monsterA!=null){
+
+                    if(bulletSkill.actorId==ActConstants.woodBulletID){
+                        ActConstants.health++;
+                    }else if(bulletSkill.actorId==ActConstants.windBulletID){
+                        monsterA.repulse(bulletSkill.mySimulation.getPosition().x,bulletSkill.mySimulation.getPosition().y);
+                    }
+
                     boolean isAlive = monsterA.damage(userData2.contactId, bulletSkill.getDamage());
                     if (!isAlive) {
                         monsterA.remove();
@@ -38,6 +46,13 @@ public class BulletAndMonsterA implements ContactReaction {
                 MonsterA monsterA = (MonsterA) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                 if(monsterA!=null){
+
+                    if(bulletSkill.actorId==ActConstants.woodBulletID){
+                        ActConstants.health++;
+                    }else if(bulletSkill.actorId==ActConstants.windBulletID){
+                        monsterA.repulse(bulletSkill.mySimulation.getPosition().x,bulletSkill.mySimulation.getPosition().y);
+                    }
+
                     boolean isAlive = monsterA.damage(userData1.contactId, bulletSkill.getDamage());
                     if (!isAlive) {
                         monsterA.remove();

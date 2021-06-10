@@ -12,7 +12,7 @@ import com.mygdx.game.Tools.PhysicalEntityDefine;
 
 public class BulletSkill extends Actor {
 
-    Body mySimulation;
+    public Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
     Fixture myFixture;
@@ -52,12 +52,16 @@ public class BulletSkill extends Actor {
 
     boolean delete;
 
+    public long actorId;
+
     public BulletSkill(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
 //这里输入的x y是像素
         this.damage = damage;
         this.delete = false;
 
         this.direction = direction;
+
+        this.actorId = actorId;
 
         bulletMark++;
         myMark = bulletMark;

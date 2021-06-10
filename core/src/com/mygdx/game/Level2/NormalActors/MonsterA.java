@@ -77,7 +77,6 @@ public class MonsterA extends Actor {
 
     public MonsterA(World world, float x, float y,int type,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
 
-
         this.type = type;
 
         timer = new Timer();
@@ -304,6 +303,7 @@ public class MonsterA extends Actor {
                 ActConstants.publicInformation.remove("Monster"+myNumber);
             }
 
+            timerTask.cancel();
             timer.clear();
             return super.remove();
         }
@@ -345,5 +345,13 @@ public class MonsterA extends Actor {
         }
 
 
+    }
+
+    public void repulse(float x, float y){
+        if(x<=mySimulation.getPosition().x){
+            mySimulation.applyLinearImpulse(100,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
+        }else{
+            mySimulation.applyLinearImpulse(-100,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
+        }
     }
 }
