@@ -181,6 +181,12 @@ public class ActConstants {
         PswDoorID = PswDoorID<<44;
     }
 
+    public static long BossID;
+    static{
+        BossID=1;
+        BossID=BossID<<45;
+    }
+
 
 
     public static ArrayList<PhysicalAction> physicalActionList;

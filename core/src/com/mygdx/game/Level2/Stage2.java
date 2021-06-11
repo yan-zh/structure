@@ -51,7 +51,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,59.9f,84f));//单位是米
+        this.addActor(new MainCharacter(world,194f,80f));//单位是米
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -217,6 +217,10 @@ public class Stage2 extends MyStage {
         this.addActor(new PswDoor(world,64f,82f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
         this.addActor(new SleepingBear(world,212,10,5f,3f,ActConstants.BearID,"sleepingBear"));
         this.addActor(new Bubbles(world,216,10,15,0.7f,ActConstants.BubbleID,"bubbles"));
+        this.addActor(new Boss(world,210f,88f,3f,5f,ActConstants.BossID,"boss"));
+
+
+
         new ThinSurfaceContact();
         new BallsContact();
         new BearWindContact();
