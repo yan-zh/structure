@@ -25,7 +25,7 @@ public abstract class AbstractItem {
      * @return
      */
     public Animation addAnimation(float fps, String name){
-        return addAnimation(fps,name, Animation.PlayMode.LOOP_PINGPONG);
+        return addAnimation(fps,name, Animation.PlayMode.LOOP);
     }
 
     /**

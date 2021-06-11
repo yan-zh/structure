@@ -41,6 +41,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
     public AssetCdboss cdboss;
     public AssetZj zj;
 
+
     // 资源扩展结束
 
     // 创建内部类变量

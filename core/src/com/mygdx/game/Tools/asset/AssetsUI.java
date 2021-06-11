@@ -28,6 +28,8 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     public AssetFrontPage frontPage;
     // 加载字体
     public AssetFonts fonts;
+    // 加载主角资源
+    public AssetMainUser mainUser;
 
     // 加载音乐
     public AssetSounds sounds;
@@ -107,6 +109,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
         // 创建关卡资源对象
         frontPage = new AssetFrontPage(atlas_ui);
+        mainUser = new AssetMainUser(atlas_ui);
 
     }
 
@@ -170,6 +173,31 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         public final Music bmg01;
         public AssetMusic(AssetManager am) {
             bmg01 = am.get("core/assets/music/bgm01.wav", Music.class);
+        }
+    }
+
+    public class AssetMainUser extends AbstractItem{
+        public final AtlasRegion main;
+        public final AtlasRegion isUp;
+        public final Animation animIdle;
+        public final Animation animAttack;
+        public final Animation animAttack2;
+        public final Animation animChangeSprite;
+        public final Animation animJump;
+        public final Animation animDown;
+        public final Animation animRun;
+
+        AssetMainUser(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("acter_main");
+            isUp = addAtlasRegion("acter_fly");
+            animIdle = addAnimation(AssetsConstent.animSpeed12,"acter_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed12,"acter_attack2", Animation.PlayMode.NORMAL);
+            animAttack2 = addAnimation(AssetsConstent.animSpeed12,"acter_change_sprite", Animation.PlayMode.NORMAL);
+            animChangeSprite = addAnimation(AssetsConstent.animSpeed12,"acter_attack1", Animation.PlayMode.NORMAL);
+            animJump = addAnimation(AssetsConstent.animSpeed12,"acter_jump",Animation.PlayMode.NORMAL);
+            animDown = addAnimation(AssetsConstent.animSpeed12,"acter_down",Animation.PlayMode.NORMAL);
+            animRun = addAnimation(AssetsConstent.animSpeed12,"acter_run");
         }
     }
 }

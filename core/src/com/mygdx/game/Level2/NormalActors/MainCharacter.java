@@ -13,6 +13,7 @@ import com.mygdx.game.Level2.PhysicalActions.AdjustPosition;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
 import org.graalvm.compiler.lir.LIRInstruction;
 
@@ -56,13 +57,13 @@ public class MainCharacter extends Actor {
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public MainCharacter(World world,float x,float y){
 
-        walkLeft = Assets.instance.bunny.getAnimCopterRotate;
-        hitLeft = Assets.instance.bunny.animNormal;
+        walkLeft = AssetsUI.instance.mainUser.animRun;
+        hitLeft = AssetsUI.instance.mainUser.animAttack;
 
-        walkRight = Assets.instance.bunny.animCopterTransformBack;
-        hitRight = Assets.instance.bunny.animNormal;
+        walkRight = AssetsUI.instance.mainUser.animRun;
+        hitRight = AssetsUI.instance.mainUser.animAttack;
 
-        reborn = Assets.instance.goldCoin.animGoldCoin;
+        reborn = AssetsUI.instance.mainUser.animJump;
 
         timeWalk = 0;
         timeHit = 0;
@@ -70,7 +71,7 @@ public class MainCharacter extends Actor {
 
         hurt = false;
 
-        goLeft=false;
+        goLeft= true;
 
         die=false;
         //获得物理世界引用
