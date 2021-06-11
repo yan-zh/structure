@@ -39,6 +39,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
     public AssetCdxgw cdxgw;
     public AssetCddpxgw cddpxgw;
     public AssetCdboss cdboss;
+    public AssetZj zj;
 
     // 资源扩展结束
 
@@ -147,6 +148,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         cddpxgw = new AssetCddpxgw(atlas_level01);
         cdboss = new AssetCdboss(atlas_level01);
         assetBall = new AssetBall(atlas_level01);
+        zj = new AssetZj(atlas_level01);
 
         // 测试对象
     }
@@ -434,6 +436,21 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
 
             regions = atlas.findRegions("cdBoss_damage");
             animDamage = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
+    }
+
+    public class AssetZj extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+
+        public AssetZj(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("zj_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed40,"zj_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"zj_attack");
+            animDead = addAnimation(AssetsConstent.animSpeed24,"zj_dead");
         }
     }
 }

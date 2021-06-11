@@ -8,7 +8,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 
 public class DesktopLauncher {
-	private static boolean rebuildAtlas = false;
+	private static boolean rebuildAtlas = true;
 	private static boolean drawDebugOutline = false;
 
 	public static LwjglApplication mygame;
@@ -24,7 +24,7 @@ public class DesktopLauncher {
 			// 加载通用资源管理
 //			TexturePacker.process(settings,"core/assets/level_normal","core/assets/images_level","level_normal");
 			// load level_1 characters
-//			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level","level1");
+			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level","level1");
 			// load level_2 characters
 			TexturePacker.process(settings,"core/assets/level2","core/assets/images_level","level2");
 			// load level_3 characters
