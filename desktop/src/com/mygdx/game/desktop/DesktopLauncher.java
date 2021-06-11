@@ -8,7 +8,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 
 public class DesktopLauncher {
-	private static boolean rebuildAtlas = true;
+	private static boolean rebuildAtlas = false;
 	private static boolean drawDebugOutline = false;
 
 	public static LwjglApplication mygame;
