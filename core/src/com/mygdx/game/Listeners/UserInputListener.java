@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level1.Stage1;
+import com.mygdx.game.Level0.Stage1;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;

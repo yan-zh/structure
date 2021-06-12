@@ -1,6 +1,5 @@
 package com.mygdx.game.Level2.NormalActors;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,13 +8,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level1.Stage1;
-import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
-import com.mygdx.game.Level2.Stage2;
-import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
 

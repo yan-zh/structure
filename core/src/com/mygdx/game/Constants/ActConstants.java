@@ -189,7 +189,11 @@ public class ActConstants {
         stillReflectiveStoneID = stillReflectiveStoneID<<48;
     }
 
-
+    public static long moveLauncherID;
+    static{
+        moveLauncherID = 1;
+        moveLauncherID = moveLauncherID << 50;
+    }
 
 
     public static ArrayList<PhysicalAction> physicalActionList;
@@ -311,7 +315,7 @@ public class ActConstants {
     public static long beaconID;
     static{
         beaconID = 1;
-        beaconID = beaconID << 45;
+        beaconID = beaconID << 49;
     }
     //****************郐洋
 
@@ -324,6 +328,12 @@ public class ActConstants {
     static{
         PswDoorID = 1;
         PswDoorID = PswDoorID<<44;
+    }
+
+    public static long BossID;
+    static{
+        BossID = 1;
+        BossID = BossID << 45;
     }
 
 }

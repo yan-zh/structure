@@ -29,7 +29,12 @@ public class Boss extends Actor {
     Timer timer;
     Timer.Task timerTask;
 
+    boolean fire;
+
     public Boss(World world, float x, float y,float width,float height,long actorId,String name) {
+
+        fire=false;
+
         this.world = world;
         this.name=name;
         setX(x);
@@ -53,8 +58,6 @@ public class Boss extends Actor {
 
         };
         start();
-
-
     }
 
     private void createBoss(){

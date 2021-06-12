@@ -54,7 +54,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,105,11));//单位是米 7 89初始位置 7 66
+        this.addActor(new MainCharacter(world,105,11));//单位是米 7 89初始位置 7 66  105 11
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -77,7 +77,7 @@ public class Stage2 extends MyStage {
 
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
-//        tiledMap = new TmxMapLoader().load("core/assets/woodMap/JX01.tmx");
+//        tiledMap = new TmxMapLoader().load("core/assets/JX03/JX03.tmx");
         tiledMap = new TmxMapLoader().load("core/assets/SL/SL01.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -197,9 +197,9 @@ public class Stage2 extends MyStage {
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
-        this.addActor(new BossLauncher(world,8,78));
-        new BossLauncherAndMainCharacter();
-        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+//        this.addActor(new BossLauncher(world,8,78));
+//        new BossLauncherAndMainCharacter();
+//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
 
@@ -209,6 +209,14 @@ public class Stage2 extends MyStage {
         this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,110*50, 12*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
         new ReflectiveStoneAndMain();
         new StillReflectiveStoneAndMain();
+
+
+        //this.addActor(new Boss(world,120f,15f,3f,5f,ActConstants.BossID,"boss"));
+
+
+        this.addActor(new MoveLauncher(world,100,15));
+        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
+
         //        new WindFairyAndMainCharacter();
 //
 
