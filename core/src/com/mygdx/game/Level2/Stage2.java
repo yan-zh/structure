@@ -43,6 +43,7 @@ public class Stage2 extends MyStage {
     public Stage2(InputMultiplexer inputMultiplexer){
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 
+        System.out.println("新建了一个Stage2");
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
         //一个舞台代表游戏的一个关，每关各自使用一个物理世界
@@ -318,7 +319,7 @@ public class Stage2 extends MyStage {
 //        this.addActor(new SandPlat( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 9033, 585, ActConstants.SandID, world, "SandPlat1"));
 //        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,8500,82,7500,82,ActConstants.portalID,world,"Portal",true,"Stage1"));
 //
-//        ActConstants.publicInformation.put("stage2", this);
+        ActConstants.publicInformation.put("stage2", this);
 //        //************************************郐洋
 
 
