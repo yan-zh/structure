@@ -21,7 +21,7 @@ public class SkillGroupWood implements SkillGroup {
     public void skill2(float mouseX, float mouseY){
 
 //        Attack attack = new Attack(mouseX,mouseY,3);
-        Attack attack = new Attack(mouseX,mouseY,4);
+        Attack attack = new Attack(mouseX,mouseY,3);
         ActConstants.physicalActionList.add(attack);
 
     }

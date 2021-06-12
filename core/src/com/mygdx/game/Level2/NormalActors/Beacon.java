@@ -68,6 +68,8 @@ public class Beacon extends Actor {
         this.name = name;
         ActConstants.publicInformation.put(name, this);
 
+        this.health = ActConstants.health;
+
     }
 
     @Override

@@ -66,7 +66,7 @@ public class ActConstants {
         currentSkillGroup=1;
     }
 
-    public static int health = 30000;
+    public static int health = 20;
 
 
 
