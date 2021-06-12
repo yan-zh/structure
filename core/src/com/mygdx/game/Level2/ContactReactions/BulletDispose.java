@@ -10,6 +10,7 @@ public class BulletDispose implements ContactReaction {
     public static long contactID2 = ActConstants.woodBulletID;
     public static long contactID3 = ActConstants.sandBulletID;
     public static long contactID4 = ActConstants.iceBulletID;
+    public static long contactID5 = ActConstants.laserID;
 
 
 
@@ -18,6 +19,7 @@ public class BulletDispose implements ContactReaction {
         ActConstants.contactList.put(contactID2,this);
         ActConstants.contactList.put(contactID3,this);
         ActConstants.contactList.put(contactID4,this);
+        ActConstants.contactList.put(contactID5,this);
 
     }
 
@@ -28,7 +30,8 @@ public class BulletDispose implements ContactReaction {
             if(userData1.contactId==ActConstants.windBulletID||
                     userData1.contactId==ActConstants.iceBulletID||
                     userData1.contactId==ActConstants.sandBulletID||
-                    userData1.contactId==ActConstants.woodBulletID){
+                    userData1.contactId==ActConstants.woodBulletID||
+                    userData1.contactId==ActConstants.laserID){
 
                     BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                     bulletSkill.dispose();

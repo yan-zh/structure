@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
@@ -28,8 +29,18 @@ public class ReflectiveStone extends Actor {
 
     World world;
 
-    public ReflectiveStone(int x, int y, long actorId, World world, String name)
+    static int number=0;
+    int myNumber;
+
+
+    int type;//1 left   2 right  3 up
+    public ReflectiveStone(int x, int y, long actorId, World world,int type)
     {
+
+        number++;
+        myNumber = number;
+
+        this.type = type;
         //Set position
         this.setX(x);
         this.setY(y);
@@ -39,10 +50,13 @@ public class ReflectiveStone extends Actor {
         image.setSize(1.0f, 1.0f);
         image.setOrigin(image.getWidth() / 2.0f, image.getHeight() / 2.0f);
         //Create the physical Entity
-        PhysicalEntityDefine.defineCharacter();
+        PhysicalEntityDefine.defineKinematic();
         myBodyDef = PhysicalEntityDefine.getBd();
-        myBodyDef.type = BodyDef.BodyType.DynamicBody;
+       // myBodyDef.type = BodyDef.BodyType.;
         myFixtureDef = PhysicalEntityDefine.getFd();
+
+        myFixtureDef.isSensor = false;
+
 
 
 
@@ -53,6 +67,7 @@ public class ReflectiveStone extends Actor {
 
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
+        myBodyDef.fixedRotation = true;
 
         this.world = world;
 
@@ -60,10 +75,9 @@ public class ReflectiveStone extends Actor {
         myFixture = mySimulation.createFixture(myFixtureDef);
         mySimulation.setFixedRotation(false);
         mySimulation.setUserData(image);
-        myFixture.setUserData(new UserData(actorId, "ReflectiveStone"));
+        myFixture.setUserData(new UserData(actorId, "ReflectiveStone"+myNumber));
         mySimulation.setGravityScale(1);
-        this.name = name;
-        ActConstants.publicInformation.put(name, this);
+        ActConstants.publicInformation.put("ReflectiveStone"+myNumber, this);
 
     }
 
@@ -83,8 +97,31 @@ public class ReflectiveStone extends Actor {
     }
     public void emmit()
     {
-        float[] direction = MyVector.getStandardVector(0,0,0,1);
+
+        float[] direction = new float[2];
+        if(type==1){
+            direction = MyVector.getStandardVector(0,0,-1,0);
+        }else if(type==2){
+            direction = MyVector.getStandardVector(0,0,1,0);
+        }else if(type==3){
+            direction = MyVector.getStandardVector(0,0,0,1);
+        }
+
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.iceBulletID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }
+
+    @Override
+    public boolean remove() {
+        ActConstants.publicInformation.remove(name);
+        return super.remove();
+    }
+
+
+    public void removeBody(){
+        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
+        deletePhysicalEntity.deleteBody(mySimulation,world);
+        ActConstants.physicalActionList.add(deletePhysicalEntity);
+    }
+
 }

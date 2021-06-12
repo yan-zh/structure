@@ -10,9 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.abstraction.MyStage;
 
 public class UserInputListener extends InputListener {
 
@@ -178,6 +180,12 @@ public class UserInputListener extends InputListener {
 
             if (event.getKeyCode() == Input.Keys.ESCAPE) {
                 Gdx.app.exit();
+            }
+
+            if(event.getKeyCode() == Input.Keys.R){
+                synchronized (ActConstants.physicalActionListLock){
+                    ActConstants.physicalActionList.add(new CreateStone(((MyStage)ActConstants.publicInformation.get("CurrentStage")).world));
+                }
             }
 
             //return false;//不知道干嘛的

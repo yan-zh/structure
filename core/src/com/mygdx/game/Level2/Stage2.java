@@ -54,7 +54,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,7,66));//单位是米 7 89初始位置 7 66
+        this.addActor(new MainCharacter(world,105,11));//单位是米 7 89初始位置 7 66
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -77,8 +77,8 @@ public class Stage2 extends MyStage {
 
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
-        tiledMap = new TmxMapLoader().load("core/assets/woodMap/JX01.tmx");
-       // tiledMap = new TmxMapLoader().load("core/assets/test/JX01.tmx");
+//        tiledMap = new TmxMapLoader().load("core/assets/woodMap/JX01.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/SL/SL01.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         //根据tiledmap中的object图层自动在物理世界中创建实体
@@ -102,7 +102,7 @@ public class Stage2 extends MyStage {
         //测试***********************************
         this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,8*50,66*50,ActConstants.windFairyID,world,"WindFairy"));
         this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,9*50,66*50,ActConstants.sandFairyID,world,"SandFairy"));
-        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,10*50,66*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,102*50,11*50,ActConstants.woodFairyID,world,"WoodFairy"));
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
         new BulletAndMonsterA();
@@ -197,15 +197,21 @@ public class Stage2 extends MyStage {
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
-//        this.addActor(new BossLauncher(world,8,78));
-//        new BossLauncherAndMainCharacter();
-//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
+        this.addActor(new BossLauncher(world,8,78));
+        new BossLauncherAndMainCharacter();
+        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
+
+//测试激光
+        new ReflectiveStoneAndBullet();
+        this.addActor(new StillReflectiveStone(100*50,12*50,ActConstants.stillReflectiveStoneID,world,1));
+        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,110*50, 12*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        new ReflectiveStoneAndMain();
+        new StillReflectiveStoneAndMain();
         //        new WindFairyAndMainCharacter();
 //
-//        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.windFairyID,world,"WindFairy"));
-//
+
 //
 //        new IceFairyAndMainCharacter();
 //

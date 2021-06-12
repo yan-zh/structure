@@ -66,7 +66,7 @@ public class ActConstants {
         currentSkillGroup=1;
     }
 
-    public static int health = 3;
+    public static int health = 30000;
 
 
 
@@ -176,6 +176,19 @@ public class ActConstants {
         bossLauncherID = 1;
         bossLauncherID = bossLauncherID<<42;
     }
+
+    public static long laserID;
+    static{
+        laserID = 1;
+        laserID = laserID<<47;
+    }
+
+    public static long stillReflectiveStoneID;
+    static{
+        stillReflectiveStoneID = 1;
+        stillReflectiveStoneID = stillReflectiveStoneID<<48;
+    }
+
 
 
 

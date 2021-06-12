@@ -71,19 +71,19 @@ public class laserTransmitter extends Actor {
         this.name = name;
         ActConstants.publicInformation.put(name, this);
 
-//        Timer timer = new Timer();
-//        Timer.Task timerTask = new Timer.Task() {
-//            @Override
-//
-//            public void run() {
-//
-//                laserTransmitter laserTransmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
-//                laserTransmitter.emmit();
-//                System.out.println("sssdfsdkjfjslkfjdsl");
-//            }
-//
-//        };
-//        timer.scheduleTask(timerTask, 1, 2, 20);// 0s之后执行，每次间隔1s，执行20次。
+        Timer timer = new Timer();
+        Timer.Task timerTask = new Timer.Task() {
+            @Override
+
+            public void run() {
+
+                laserTransmitter laserTransmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
+                laserTransmitter.emmit();
+                System.out.println("sssdfsdkjfjslkfjdsl");
+            }
+
+        };
+        timer.scheduleTask(timerTask, 1, 4, 20);// 0s之后执行，每次间隔1s，执行20次。
     }
 
     @Override
@@ -113,6 +113,6 @@ public class laserTransmitter extends Actor {
         MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
         float[] direction = MyVector.getStandardVector(-3,1,2,1);
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.iceBulletID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }
 }
