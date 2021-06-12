@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level0.Stage1;
+import com.mygdx.game.Level0.Stage0;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
@@ -74,7 +74,7 @@ public class UserInputListener extends InputListener {
                                         portal.state = true;
                                         if (portal.Stagetranto == "Stage1") {
                                             stage2.dispose();
-                                            MyGdxGame.currentStage = new Stage1(ActConstants.inputMultiplexer);
+                                            MyGdxGame.currentStage = new Stage0(ActConstants.inputMultiplexer);
                                         }
 
                                     }

@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.abstraction.MyStage;
 
 public class CameraFocus {
     OrthographicCamera camerab2d;
@@ -39,8 +41,16 @@ public class CameraFocus {
         // System.out.println("physics character y"+characterMain.getPositionInSimulation().y);
     }
 
+    public void directFocusOn(float x, float y){
+        camerab2d.translate((x-camerab2d.position.x),(y-camerab2d.position.y));
+        camera.position.set(camerab2d.position.x* ActConstants.worldSize_pAndPhysic,camerab2d.position.y* ActConstants.worldSize_pAndPhysic,0);
+
+    }
+
 
     public void innerBoundary(float width, float height, float positionX, float positionY){
+
+
         //前两个是矩形的宽高（物理世界坐标），后来两个事矩形中心在物理世界坐标下在相机框的相对位置
         Vector2 characterPosition  = mainCharacter.getPositionInSimulation();
         Vector2 cameraPosition = new Vector2(camerab2d.position.x,camerab2d.position.y);
@@ -50,17 +60,20 @@ public class CameraFocus {
         //     camerab2d.position.set(characterPosition.x,cameraPosition.y,0);
         // }
 
-        float upDifference = characterPosition.y-(height/2+positionY+cameraPosition.y-10);//主角位置-方形上边界
-        if(upDifference>0){
-            camerab2d.translate(0,upDifference);//调整物理世界摄像机
-            camera.position.set(camerab2d.position.x*50f,camerab2d.position.y*50f,0);//调整内存图片摄像机
+        if(!(((MyStage)MyGdxGame.currentStage).cUp<=cameraPosition.y||((MyStage)MyGdxGame.currentStage).cDown>=cameraPosition.y)) {
+            float upDifference = characterPosition.y - (height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形上边界
+            if (upDifference > 0) {
+                camerab2d.translate(0, upDifference);//调整物理世界摄像机
+                camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);//调整内存图片摄像机
+            }
+
+            float downDifference = characterPosition.y - (-height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形下边界
+            if (downDifference < 0) {
+                camerab2d.translate(0, downDifference);
+                camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);
+            }
         }
 
-        float downDifference = characterPosition.y-(-height/2+positionY+cameraPosition.y-10);//主角位置-方形下边界
-        if(downDifference<0){
-            camerab2d.translate(0,downDifference);
-            camera.position.set(camerab2d.position.x*50f,camerab2d.position.y*50f,0);
-        }
 
         float leftDifference = characterPosition.x-(cameraPosition.x-19+positionX-width/2);//主角位置-方形左边界
         if(leftDifference<0){
@@ -77,6 +90,8 @@ public class CameraFocus {
             //System.out.println("b2d x - camera/50  "+(camerab2d.position.x-camera.position.x/50f));
 
         }
+
+
 
 
 

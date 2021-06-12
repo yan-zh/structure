@@ -198,7 +198,7 @@ public class MainCharacter extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        if(goLeft==true) {
+        if(goLeft==false) {
             if (!currentFrame.isFlipX()) {
                 currentFrame.flip(true, false);
             }

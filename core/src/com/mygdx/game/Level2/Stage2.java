@@ -392,7 +392,7 @@ public class Stage2 extends MyStage {
         orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
-        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+        //boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
 
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 

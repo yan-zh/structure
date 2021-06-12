@@ -34,7 +34,16 @@ public class Stage1 extends MyStage {
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
 
 
+
+
+
     public Stage1(InputMultiplexer inputMultiplexer) {
+        cUp=740;
+        cDown=740;
+        cleft=960;
+        cright=2000000;
+
+
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
         //一个舞台代表游戏的一个关，每关各自使用一个物理世界
@@ -69,7 +78,7 @@ public class Stage1 extends MyStage {
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
 //        tiledMap = new TmxMapLoader().load("core/assets/JX03/JX03.tmx");
-        tiledMap = new TmxMapLoader().load("core/assets/SL/SL01.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/JX/JX.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         //根据tiledmap中的object图层自动在物理世界中创建实体
@@ -78,7 +87,7 @@ public class Stage1 extends MyStage {
         //这个是因为图本身很大，有些部分是透明的，所以看起来位置不对
 
         //调整两个个相机到起始位置
-        cameraFocus.focusOn(0,5,1);//这里单位是米
+        cameraFocus.directFocusOn(0,10.8f);//这里单位是米
 
         //把stage1加入公共域，用于之后的析构和交互
         ActConstants.publicInformation.replace("CurrentStage",this);
@@ -104,6 +113,8 @@ public class Stage1 extends MyStage {
                 ActConstants.physicalActionList.remove(i);
             }
         }
+
+
 
 
         cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
