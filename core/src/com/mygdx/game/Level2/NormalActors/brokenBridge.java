@@ -29,7 +29,7 @@ public class brokenBridge extends Actor {
 
    World world;
 
-   public brokenBridge(Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world, String name)
+   public brokenBridge(Animation animationWait, Animation animationAbsorb, int x, int y, float hx, float hy, long actorId, World world, String name)
    {
       //Set position
       this.setX(x);
@@ -47,10 +47,10 @@ public class brokenBridge extends Actor {
 
       //这里设定盒子的大小
       PolygonShape shape = new PolygonShape();
-      shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+      shape.setAsBox(hx/ ActConstants.worldSize_shapeAndPhysics,hy/ ActConstants.worldSize_shapeAndPhysics);
       myFixtureDef.shape = shape;
 
-      myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
+      myBodyDef.position.set(this.getX() , this.getY());
 
       this.world = world;
 

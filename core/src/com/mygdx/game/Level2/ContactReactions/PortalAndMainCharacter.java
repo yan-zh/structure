@@ -18,7 +18,13 @@ public class PortalAndMainCharacter implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
+        UserData userData;
+        if(userData1.contactId == ActConstants.portalID)
+            userData = userData1;
+        else
+            userData = userData2;
+        Portal portal =((Portal)ActConstants.publicInformation.get(userData.nameInPublicInformation));
+        ActConstants.currentPortal = userData.nameInPublicInformation;
         MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
         if(portal != null && (Gdx.input.isKeyPressed(Input.Keys.K))== true)
         {

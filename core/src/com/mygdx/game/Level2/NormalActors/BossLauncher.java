@@ -1,5 +1,6 @@
 package com.mygdx.game.Level2.NormalActors;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -57,6 +58,8 @@ public class BossLauncher extends Actor {
     FixtureDef sensorFixtureDef;
     BodyDef sensorBodyDef;
     CircleShape sensorShape;
+
+    Animation boss;
 
 
     public BossLauncher(World world,float physicalX, float physicalY) {

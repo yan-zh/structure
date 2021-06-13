@@ -2,7 +2,10 @@ package com.mygdx.game.Level1;
 
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapImageLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -10,14 +13,16 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.Beacon;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Level2.ContactReactions.*;
+import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
+import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
 
 public class Stage1 extends MyStage {
@@ -33,6 +38,8 @@ public class Stage1 extends MyStage {
     TiledMap tiledMap;
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
 
+    SpriteBatch spriteBatch;
+
 
 
 
@@ -42,6 +49,8 @@ public class Stage1 extends MyStage {
         cDown=740;
         cleft=960;
         cright=2000000;
+
+        spriteBatch = new SpriteBatch();
 
 
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
@@ -54,7 +63,7 @@ public class Stage1 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,105,11));//单位是米 7 89初始位置 7 66  105 11
+        this.addActor(new MainCharacter(world,27,6f));//单位是米 33 6.5
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -77,7 +86,7 @@ public class Stage1 extends MyStage {
 
 
         //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
-//        tiledMap = new TmxMapLoader().load("core/assets/JX03/JX03.tmx");
+        //tiledMap = new TmxMapLoader().load("core/assets/bing/bing.tmx");
         tiledMap = new TmxMapLoader().load("core/assets/JX/JX.tmx");
         //绘制tiledmap提供的背景用的类
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -96,6 +105,42 @@ public class Stage1 extends MyStage {
         //ActConstants.skillGroups[1]=new SkillGourpFire();
 
         //为这一关用到的物理碰撞监听添加一个函数
+
+
+
+
+
+        //*********************   public listen
+        new BulletAndMonsterA();
+        new MonsterASensorAndMainCharacter();
+
+        new BulletDispose();
+        new BulletAndMain();
+
+        new GroundAndMainCharacter();
+
+        new PortalAndMainCharacter();
+
+
+        //*********************  actors
+        //region1
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,37*50, (int) (6.2*50),ActConstants.windFairyID,world,"WindFairy"));
+        new WindFairyAndMainCharacter();
+
+        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA);
+
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
+
+
+        //Region two
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 286, 3,5f,0.26f, ActConstants.brokenBridgeID, world, "brokenBridge"));
+        new BridgeAndMainCharacter();
+
+        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(monsterA2);
+
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,18150,600,239,5,ActConstants.portalID,world,"Portal2",true,"none"));
 
     }
 
@@ -130,9 +175,18 @@ public class Stage1 extends MyStage {
     public void draw() {
 
 
+
         //绘制tiledmap的背景图
         orthogonalTiledMapRenderer.setView(this.stageCamera);
+
+
+//        orthogonalTiledMapRenderer.getBatch().begin();
+//        orthogonalTiledMapRenderer.renderTileLayer((TiledMapTileLayer) tiledMap.getLayers().get("L2"));
         orthogonalTiledMapRenderer.render();
+
+
+       // System.out.println(tiledMap.getLayers().get("L2")==null);
+//        orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
         boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
@@ -140,6 +194,9 @@ public class Stage1 extends MyStage {
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
+//        orthogonalTiledMapRenderer.renderTileLayer((TiledMapTileLayer) tiledMap.getLayers().get("L1"));
+//        orthogonalTiledMapRenderer.getBatch().end();
+
     }
 
     public World getWorld(){

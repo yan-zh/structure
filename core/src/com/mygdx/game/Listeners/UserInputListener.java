@@ -51,7 +51,7 @@ public class UserInputListener extends InputListener {
             //Portal Listener
             if (event.getKeyCode() == Input.Keys.K) {
 
-                Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
                 if (portal != null) {
                     MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                     if (portal.triggerState == true && portal.isActive == true) {
@@ -62,14 +62,14 @@ public class UserInputListener extends InputListener {
                             @Override
                             public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                                Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
                                 MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                                 mainCharacter.mySimulation.setTransform(new Vector2(portal.dstXPos, portal.dstYPos), 0);
                                 Action delayedAction = Actions.run(new Runnable() {
                                     @Override
                                     public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
-                                        Portal portal = (Portal) ActConstants.publicInformation.get("Portal");
+                                        Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
                                         Stage2 stage2 = (Stage2) ActConstants.publicInformation.get("stage2");
                                         portal.state = true;
                                         if (portal.Stagetranto == "Stage1") {

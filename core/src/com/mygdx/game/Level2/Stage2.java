@@ -154,7 +154,7 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,120f-1.2f,86f-23.4f,0.5f,12f));
         this.addActor(new Spine(world,125.5f-1.2f,89f-23.4f,0.5f,1f));
 //        this.addActor(new Spine(world,122.5f-1.2f,89f-23.4f,0.5f,1f));
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500-60, 5150-1170, ActConstants.brokenBridgeID, world, "brokenDoor"));
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500-60, 5150-1170, 3f,2f,ActConstants.brokenBridgeID, world, "brokenDoor"));
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 

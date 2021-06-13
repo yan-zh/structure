@@ -67,7 +67,7 @@ public class Portal extends Actor{
         mySimulation = world.createBody(myBodyDef);
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setSensor(true);
-        myFixture.setUserData(new UserData(actorId, "Portal"));
+        myFixture.setUserData(new UserData(actorId, name));
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);

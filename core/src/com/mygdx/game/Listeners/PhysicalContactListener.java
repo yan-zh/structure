@@ -39,7 +39,7 @@ public class PhysicalContactListener implements ContactListener{
 
         if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.portalID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.portalID)
         {
-            Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
+            Portal portal =((Portal)ActConstants.publicInformation.get(ActConstants.currentPortal));
             portal.triggerState = true;
             System.out.println("tRIGGER TRUE");
 
@@ -127,7 +127,7 @@ public class PhysicalContactListener implements ContactListener{
 ////    }
         if(((UserData)(contact.getFixtureA().getUserData())).contactId == ActConstants.portalID || ((UserData)(contact.getFixtureB().getUserData())).contactId == ActConstants.portalID)
         {
-            Portal portal =((Portal)ActConstants.publicInformation.get("Portal"));
+            Portal portal =((Portal)ActConstants.publicInformation.get(ActConstants.currentPortal));
             portal.triggerState = false;
             System.out.println("tRIGGER fALUSE");
         }
