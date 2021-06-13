@@ -7,9 +7,9 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
 public class Boss1 extends Actor {
@@ -37,7 +37,18 @@ public class Boss1 extends Actor {
     boolean actionState1;
     boolean actionState2;
 
+    float physicalX;
+    float physicalY;
+
+    float physicalBX;
+    float physicalBY;
+
+    boolean reBorn;
+
     public Boss1(World world, float x, float y) {
+
+        reBorn = false;
+
         //获得物理世界引用
         this.world = world;
 
@@ -52,10 +63,14 @@ public class Boss1 extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(12f/ ActConstants.worldSize_shapeAndPhysics,9f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        physicalX = x;
+        physicalY = y;
+        physicalBX = x;
+        physicalBY = y;
 
         mySimulation = world.createBody(myBodyDef);
 
@@ -81,7 +96,7 @@ public class Boss1 extends Actor {
         sensorshape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,5f/ ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorshape;
 
-        sensorBodyDef.position.set(x+10,y-7);//这个表示物理世界中的米
+        sensorBodyDef.position.set(x+10,y-10);//这个表示物理世界中的米
 
         sensorSimulation = world.createBody(sensorBodyDef);
 
@@ -95,9 +110,9 @@ public class Boss1 extends Actor {
         //交互注册
         ActConstants.publicInformation.put("Boss1",this);
 
-        rest = Assets.instance.bunny.getAnimCopterRotate;
-        purchase = Assets.instance.bunny.animNormal;
-        weakUp = Assets.instance.goldCoin.animGoldCoin;
+        rest = AssetsLevel1.instance.cdboss.animBreath;
+        purchase = AssetsLevel1.instance.cdboss.animAttackA;
+        weakUp = AssetsLevel1.instance.cdboss.animDamage;
 
         actionState1 = true;//true是等待，false是追逐
         actionState2 = false;//true是播放weakup
@@ -111,6 +126,9 @@ public class Boss1 extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
+
+        physicalX = mySimulation.getPosition().x;
+        physicalY = mySimulation.getPosition().y;
 
         statetime += delta;
 
@@ -129,15 +147,20 @@ public class Boss1 extends Actor {
             float mainCharacterX = mainCharacter.getPhysicalX();
             float mainCharacterY = mainCharacter.getPhysicalY();
             float myX = mySimulation.getPosition().x;
-            float myY = mySimulation.getPosition().y;
+            float myY = mySimulation.getPosition().y-3;
             float[] direction = MyVector.getStandardVector(myX,myY,mainCharacterX,mainCharacterY);
-            if((mainCharacterX-myX)<=6) {
+            if((mainCharacterX-myX)<=17) {
                 mySimulation.setLinearVelocity(direction[0] * 2, direction[1]);
             }else{
                 mySimulation.setLinearVelocity(direction[0]*10,direction[1]*5);
             }
 
 
+        }
+
+        if(reBorn ==true){
+            mySimulation.setTransform(physicalBX,physicalBY,0);
+            reBorn = false;
         }
 
 
@@ -149,11 +172,27 @@ public class Boss1 extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+
+
+        if(ActConstants.mainCharacter.getPhysicalX()>=this.physicalX) {
+            if (!currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }else{
+            if (currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-7.5f)*50f, (mySimulation.getPosition().y-5.5f)*50f);
     }
 
     public void active(){
         actionState1 = false;
         actionState2 = true;
+    }
+
+    public void setReBorn(boolean set){
+       reBorn = set;
     }
 }

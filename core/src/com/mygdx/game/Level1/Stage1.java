@@ -72,7 +72,7 @@ public class Stage1 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,27,6f));//单位是米 33 6.5
+        this.addActor(new MainCharacter(world,496,5f));//单位是米  27,6f
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 27, 6, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -138,7 +138,7 @@ public class Stage1 extends MyStage {
         this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
-        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsLevel1.instance.cdxgw.animBreath,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(monsterA);
 
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
@@ -155,7 +155,7 @@ public class Stage1 extends MyStage {
 
 
         //Region3
-        this.addActor(new Boss1(world,496,12));
+        this.addActor(new Boss1(world,499,15));
         new Boss1SensorContact();
         new Boss1AndMainCharacter();
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
@@ -219,7 +219,7 @@ public class Stage1 extends MyStage {
 //        orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
-//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
 
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
