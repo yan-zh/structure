@@ -74,8 +74,7 @@ public class UserInputListener extends InputListener {
                                         Stage1 stage1 = (Stage1) ActConstants.publicInformation.get("stage1");
                                         portal.state = true;
                                         if (portal.Stagetranto == "Stage2") {
-                                            stage1.dispose();
-                                            MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+                                          ActConstants.isChange = true;
                                         }
 
                                     }

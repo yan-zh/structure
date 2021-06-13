@@ -16,8 +16,10 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.NormalActors.Boss1;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
@@ -53,7 +55,7 @@ public class Stage1 extends MyStage {
 
         spriteBatch = new SpriteBatch();
 
-
+        ActConstants.isChange = false;
         inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
         //一个舞台代表游戏的一个关，每关各自使用一个物理世界
@@ -148,7 +150,8 @@ public class Stage1 extends MyStage {
         this.addActor(new Boss1(world,496,12));
         new Boss1SensorContact();
         new Boss1AndMainCharacter();
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
+//        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,47*50, (int) (6.2*50),505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 
     }
 
@@ -197,13 +200,17 @@ public class Stage1 extends MyStage {
 //        orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
-        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
 
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
 //        orthogonalTiledMapRenderer.renderTileLayer((TiledMapTileLayer) tiledMap.getLayers().get("L1"));
 //        orthogonalTiledMapRenderer.getBatch().end();
+        if(ActConstants.isChange) {
+            this.dispose();
+            MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+        }
 
     }
 
