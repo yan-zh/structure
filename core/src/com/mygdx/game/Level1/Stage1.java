@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.NormalActors.Boss1;
+import com.mygdx.game.Level1.NormalActors.ChangeCamera;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.Stage2;
@@ -45,9 +46,11 @@ public class Stage1 extends MyStage {
 
     InputMultiplexer inputMultiplexer;
 
+    public int x;
 
 
 
+    ChangeCamera changeCamera;
 
     public Stage1(InputMultiplexer inputMultiplexer) {
         cUp=740;
@@ -55,6 +58,7 @@ public class Stage1 extends MyStage {
         cleft=960;
         cright=2000000;
         this.inputMultiplexer = inputMultiplexer;
+        x=1;
 
 //        spriteBatch = new SpriteBatch();
 
@@ -84,6 +88,8 @@ public class Stage1 extends MyStage {
         cameraFocus = new CameraFocus(cameraPhysic, stageCamera);
 
 
+        changeCamera = new ChangeCamera(cameraPhysic,stageCamera);
+        ActConstants.publicInformation.put("changeCamera",changeCamera);
 
 
         //添加添加自定义的用户输入监听
@@ -180,6 +186,15 @@ public class Stage1 extends MyStage {
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
+
+        //测试地相机远近调整用的
+//        x++;
+//        if(x>=600){
+//            changeCamera.close();
+//            x=1;
+//        }else if(x>=300){
+//            changeCamera.leave();
+//        }
 
 
     }

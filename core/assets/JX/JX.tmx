@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="700" height="18" tilewidth="60" tileheight="60" infinite="0" nextlayerid="5" nextobjectid="89">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="700" height="18" tilewidth="60" tileheight="60" infinite="0" nextlayerid="5" nextobjectid="95">
  <tileset firstgid="1" source="JX01_ground.tsx"/>
  <tileset firstgid="2305" source="JX02_ground.tsx"/>
  <tileset firstgid="4609" source="JX03_ground.tsx"/>
@@ -92,5 +92,11 @@
   <object id="85" x="2049.33" y="417.333" width="349.333" height="120"/>
   <object id="86" x="24609.1" y="15.1515" width="54.5455" height="969.697"/>
   <object id="87" x="6596.97" y="6.06061" width="118.182" height="1000"/>
+  <object id="89" x="1009.09" y="-196.97" width="5709.09" height="193.939"/>
+  <object id="90" x="11287.9" y="-69.697" width="7196.97" height="63.6364"/>
+  <object id="91" x="11269.7" y="0" width="84.8485" height="109.091"/>
+  <object id="92" x="18436.4" y="854.545" width="57.5758" height="1593.94"/>
+  <object id="93" x="11303" y="2390.91" width="7133.33" height="60.6061"/>
+  <object id="94" x="11297" y="1084.85" width="233.333" height="1309.09"/>
  </objectgroup>
 </map>
