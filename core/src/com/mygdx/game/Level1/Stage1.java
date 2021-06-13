@@ -187,6 +187,8 @@ public class Stage1 extends MyStage {
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
 
+//        changeCamera.act();**************************这句一直需要
+
         //测试地相机远近调整用的
 //        x++;
 //        if(x>=600){
