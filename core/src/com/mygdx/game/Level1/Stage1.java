@@ -21,6 +21,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsStageChage;
 import com.mygdx.game.Tools.asset.AssetsUI;
 
 
@@ -119,6 +120,9 @@ public class Stage1 extends Stage {//有一些按钮和背景，是类似开始�
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
                 // 点击打开社渚窗口：还未写
+
+                MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
+                        new Stage1(ActConstants.inputMultiplexer));
 
                 return false;
             }

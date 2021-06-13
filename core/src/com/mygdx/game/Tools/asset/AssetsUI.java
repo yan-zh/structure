@@ -61,6 +61,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         public final BitmapFont defaultSmall;
         public final BitmapFont defaultNormal;
         public final BitmapFont defaultBig;
+        public final BitmapFont defaultBigUnFlip;
 
 
         public AssetFonts() {
@@ -71,11 +72,14 @@ public class AssetsUI implements Disposable, AssetErrorListener {
                     Gdx.files.internal("core/assets/images/arial-15.fnt"), true);
             defaultBig = new BitmapFont(
                     Gdx.files.internal("core/assets/images/arial-15.fnt"), true);
+            defaultBigUnFlip = new BitmapFont(
+                    Gdx.files.internal("core/assets/images/arial-15.fnt"), false);
 
             // 设置字体尺寸[新版本字体设置有改动]
             defaultSmall.getData().setScale(0.75f);
             defaultNormal.getData().setScale(1.0f);
             defaultBig.getData().setScale(2.0f);
+            defaultBigUnFlip.getData().setScale(2.0f);
             // 为字体激活线性纹理过滤模式
             defaultSmall.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
             defaultNormal.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -146,6 +150,8 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         sprite3 = mainPanel.windNull;
 
     }
+
+
 
     /**
      * 增加一个精灵，目前最大为3只。初始化后是0只
@@ -326,10 +332,10 @@ public class AssetsUI implements Disposable, AssetErrorListener {
 
 
         // 绘制血条
-        drawBar(batch, 10, 42, 230, 28, AssetsUI.instance.mainPanel.barBackground, AssetsUI.instance.mainPanel.barKnot);
+        drawBar(batch, 10, 42, 230, 28, AssetsUI.instance.mainPanel.bloodBackground, AssetsUI.instance.mainPanel.bloodKnot);
         // 绘制人物文字信息
-        Assets.instance.fonts.defaultBig.draw(batch, userName, 120, 10, 0, Align.center, false);
-        Assets.instance.fonts.defaultBig.draw(batch, mainUserLive + "/" + mainUserLiveMax, 120, 45, 0, Align.center, false);
+        AssetsUI.instance.fonts.defaultBig.draw(batch, userName, 120, 10, 0, Align.center, false);
+        AssetsUI.instance.fonts.defaultBig.draw(batch, mainUserLive + "/" + mainUserLiveMax, 120, 45, 0, Align.center, false);
     }
 
     private void drawBar(SpriteBatch batch, float x, float y, float width, float height, AtlasRegion backgroud, AtlasRegion knot) {
@@ -444,8 +450,19 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         public final AtlasRegion woodHas;
         public final AtlasRegion woodActive;
         // 血条的背景和前景
+        public final AtlasRegion bloodBackground;
+        public final AtlasRegion bloodKnot;
+
+        // 进度条的背景和前景
         public final AtlasRegion barBackground;
         public final AtlasRegion barKnot;
+        // 换场背景图
+        public final AtlasRegion backgroundForest1;
+        public final AtlasRegion backgroundForest2;
+        public final AtlasRegion backgroundForest3;
+        public final AtlasRegion backgroundIce1;
+        public final AtlasRegion backgroundDesert1;
+
 
 
 //        private Table table;
@@ -465,8 +482,15 @@ public class AssetsUI implements Disposable, AssetErrorListener {
             woodNull = addAtlasRegion("woodNull");
             woodHas = addAtlasRegion("woodHas");
             woodActive = addAtlasRegion("woodActive");
-            barBackground = addAtlasRegion("blood1");
-            barKnot = addAtlasRegion("blood2");
+            barBackground = addAtlasRegion("bar_background");
+            bloodBackground = addAtlasRegion("blood1");
+            barKnot = addAtlasRegion("bar_knot");
+            bloodKnot = addAtlasRegion("blood2");
+            backgroundForest1 = addAtlasRegion("forest1");
+            backgroundForest2 = addAtlasRegion("forest2");
+            backgroundForest3 = addAtlasRegion("forest3");
+            backgroundDesert1 = addAtlasRegion("desert1");
+            backgroundIce1 = addAtlasRegion("ice1");
         }
 
         public void update(int lives, SPRITE_TYPE type) {
