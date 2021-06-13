@@ -78,10 +78,10 @@ public class Boss1 extends Actor {
 
         sensorshape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        sensorshape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        sensorshape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,5f/ ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorshape;
 
-        sensorBodyDef.position.set(x+5,y+5);//这个表示物理世界中的米
+        sensorBodyDef.position.set(x+10,y-7);//这个表示物理世界中的米
 
         sensorSimulation = world.createBody(sensorBodyDef);
 
@@ -131,7 +131,7 @@ public class Boss1 extends Actor {
             float myX = mySimulation.getPosition().x;
             float myY = mySimulation.getPosition().y;
             float[] direction = MyVector.getStandardVector(myX,myY,mainCharacterX,mainCharacterY);
-            mySimulation.setLinearVelocity(direction[0],direction[1]);
+            mySimulation.setLinearVelocity(direction[0]*2,direction[1]*2);
         }
 
 
