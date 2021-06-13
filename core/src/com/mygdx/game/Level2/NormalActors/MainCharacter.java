@@ -190,6 +190,9 @@ public class MainCharacter extends Actor {
         }
 
 
+        if(mySimulation.getPosition().y<-50){
+            die();
+        }
 
 
         super.act(delta);

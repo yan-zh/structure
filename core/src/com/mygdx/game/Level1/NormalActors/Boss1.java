@@ -131,7 +131,13 @@ public class Boss1 extends Actor {
             float myX = mySimulation.getPosition().x;
             float myY = mySimulation.getPosition().y;
             float[] direction = MyVector.getStandardVector(myX,myY,mainCharacterX,mainCharacterY);
-            mySimulation.setLinearVelocity(direction[0]*5,direction[1]*5);
+            if((mainCharacterX-myX)<=6) {
+                mySimulation.setLinearVelocity(direction[0] * 2, direction[1]);
+            }else{
+                mySimulation.setLinearVelocity(direction[0]*10,direction[1]*5);
+            }
+
+
         }
 
 

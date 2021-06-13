@@ -17,6 +17,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.asset.AssetsUI;
 
@@ -159,5 +160,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         ImageButton imageButton = new ImageButton(new TextureRegionDrawable(region),new TextureRegionDrawable(region));
         imageButton.setPosition(position.x,position.y);
         return imageButton;
+
+
     }
 }

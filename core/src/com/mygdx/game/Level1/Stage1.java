@@ -129,7 +129,7 @@ public class Stage1 extends MyStage {
 
         //*********************  actors
         //region1
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,37*50, (int) (6.2*50),ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
         MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
