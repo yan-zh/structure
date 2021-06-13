@@ -152,8 +152,8 @@ public class Stage1 extends MyStage {
         this.addActor(new Boss1(world,496,12));
         new Boss1SensorContact();
         new Boss1AndMainCharacter();
-//        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,47*50, (int) (6.2*50),505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
+//        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,47*50, (int) (6.2*50),505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 
     }
 

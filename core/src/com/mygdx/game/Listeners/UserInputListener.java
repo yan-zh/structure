@@ -65,8 +65,10 @@ public class UserInputListener extends InputListener {
                             public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
                                 Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
-                                MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
-                                mainCharacter.mySimulation.setTransform(new Vector2(portal.dstXPos, portal.dstYPos), 0);
+                                if(portal.Stagetranto == "none") {
+                                    MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
+                                    mainCharacter.mySimulation.setTransform(new Vector2(portal.dstXPos, portal.dstYPos), 0);
+                                }
                                 Action delayedAction = Actions.run(new Runnable() {
                                     @Override
                                     public void run() {
@@ -74,6 +76,8 @@ public class UserInputListener extends InputListener {
                                         Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
                                         Stage1 stage1 = (Stage1) ActConstants.publicInformation.get("stage1");
                                         portal.state = true;
+                                        Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
+                                        beacon.setBeacon();
                                         if (portal.Stagetranto == "Stage2") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
@@ -86,6 +90,7 @@ public class UserInputListener extends InputListener {
                                 //一秒后回到之前的状态
                                 Action action = Actions.delay(1f, delayedAction);
                                 portal.addAction(action);
+
 
                             }
                         });
