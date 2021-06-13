@@ -184,13 +184,15 @@ public class BulletSkill extends Actor {
     }
 
     public void deleteBody(){
-//        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
-//        deletePhysicalEntity.deleteBody(mySimulation,world);
-//        synchronized (ActConstants.physicalActionListLock){
-//            ActConstants.physicalActionList.add(deletePhysicalEntity);
-//        }
+
 
         mySimulation.setActive(false);
+
+        DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
+        deletePhysicalEntity.deleteBody(mySimulation,world);
+        synchronized (ActConstants.physicalActionListLock){
+            ActConstants.physicalActionList.add(deletePhysicalEntity);
+        }
 
     }
 

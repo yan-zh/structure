@@ -1,6 +1,8 @@
 package com.mygdx.game.Level2.NormalActors;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -60,10 +62,21 @@ public class MoveLauncher extends Actor {
     BodyDef myBodyDef;
     PolygonShape shape;
 
-    Body sensorSimulation;
-    FixtureDef sensorFixtureDef;
-    BodyDef sensorBodyDef;
-    CircleShape sensorShape;
+
+    boolean die;
+    boolean canDamage;
+
+    int health;
+
+    Animation normal;
+    Animation goDie;
+
+    float normalStateTime;
+    float dieStateTime;
+
+    TextureRegion currentFrame;
+
+
 
 
     public MoveLauncher(World world,float physicalX, float physicalY) {
@@ -85,6 +98,13 @@ public class MoveLauncher extends Actor {
         startMove();
 
         //******************
+
+        canDamage = true;
+        die=false;
+        health=5;
+        normalStateTime = 0;
+        dieStateTime = 0;
+        this.world = world;
 
         //启动一个打的计时器，1秒动一下
 
@@ -135,26 +155,6 @@ public class MoveLauncher extends Actor {
 
 
 
-        //sensor body
-        PhysicalEntityDefine.defineStatic();
-        sensorBodyDef = PhysicalEntityDefine.getBd();
-        sensorFixtureDef = PhysicalEntityDefine.getFd();
-
-
-
-        sensorShape = new CircleShape();
-        sensorShape.setRadius(1f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-//        sensorShape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
-        sensorFixtureDef.shape = sensorShape;
-
-        sensorFixtureDef.isSensor=true;
-
-        sensorBodyDef.position.set(physicalX,physicalY-7);//这个表示物理世界中的米
-
-        sensorSimulation = world.createBody(sensorBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
-        sensorSimulation.createFixture(sensorFixtureDef).setUserData(new UserData(ActConstants.moveLauncherID,"moveLauncher"));
-
 
         this.physicalX = physicalX;
         this.physicalY = physicalY;
@@ -182,6 +182,12 @@ public class MoveLauncher extends Actor {
         launch=false;
 
 
+        normal = Assets.instance.bunny.animNormal;
+        goDie = Assets.instance.mainCharacter.animRun;
+
+        currentFrame = (TextureRegion) normal.getKeyFrame(0);
+
+
 
 
     }
@@ -191,7 +197,19 @@ public class MoveLauncher extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
+
+        if(die==false){
+            mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
+            normalStateTime += delta;
+            currentFrame = (TextureRegion) normal.getKeyFrame(normalStateTime,true);
+        }else{
+            dieStateTime += delta;
+            currentFrame = (TextureRegion) goDie.getKeyFrame(dieStateTime,false);
+            if(goDie.isAnimationFinished(dieStateTime)){
+                remove();
+            }
+        }
+
 
 //
 //        System.out.println(mySimulation.getPosition());
@@ -211,6 +229,9 @@ public class MoveLauncher extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+
 
     }
 
@@ -346,21 +367,15 @@ public class MoveLauncher extends Actor {
     @Override
     public boolean remove() {
         if(count==0){
-            synchronized (ActConstants.bossLauncherLock){
-                timerTask.cancel();
-                timer.clear();
 
-                MoveTimerTask.cancel();
-                MoveTimer.clear();
 
-                System.out.println("launcherremove");
-                DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
-                deletePhysicalEntity1.deleteBody(mySimulation,world);
-                ActConstants.physicalActionList.add(deletePhysicalEntity1);
+            DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
+            deletePhysicalEntity1.deleteBody(mySimulation,world);
+            ActConstants.physicalActionList.add(deletePhysicalEntity1);
 
-                ActConstants.publicInformation.remove("moveLauncher");
+            ActConstants.publicInformation.remove("moveLauncher");
 
-            }
+
         }
         count = 1;
         return super.remove();
@@ -394,5 +409,26 @@ public class MoveLauncher extends Actor {
 
     public void startMove(){
         MoveTimer.scheduleTask(MoveTimerTask, 0, 3, 100);
+    }
+
+    public void stopTimer(){
+
+        timerTask.cancel();
+        timer.clear();
+
+        MoveTimerTask.cancel();
+        MoveTimer.clear();
+    }
+
+    public void damage(int damage){
+        if(canDamage){
+            health = health-damage;
+            if(health<=0){
+                die=true;
+                canDamage = false;
+                stopTimer();
+            }
+        }
+
     }
 }
