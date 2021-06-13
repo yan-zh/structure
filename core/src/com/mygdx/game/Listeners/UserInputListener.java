@@ -2,6 +2,7 @@ package com.mygdx.game.Listeners;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -74,8 +75,11 @@ public class UserInputListener extends InputListener {
                                         Stage1 stage1 = (Stage1) ActConstants.publicInformation.get("stage1");
                                         portal.state = true;
                                         if (portal.Stagetranto == "Stage2") {
-                                          ActConstants.isChange = true;
+//                                          ActConstants.isChange = true;
+//                                            ActConstants.goStage2 = true;
+                                            ActConstants.changeStageTo=2;
                                         }
+
 
                                     }
                                 });

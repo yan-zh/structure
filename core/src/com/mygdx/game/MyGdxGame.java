@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level0.Stage0;
+import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 
@@ -119,6 +120,18 @@ public class MyGdxGame extends ApplicationAdapter {
 		//运行当前舞台
 		currentStage.act();
 		currentStage.draw();
+
+		if(ActConstants.changeStageTo!=0){
+			currentStage.dispose();
+			if(ActConstants.changeStageTo==2){
+				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+				ActConstants.changeStageTo = 0;
+			}else if(ActConstants.changeStageTo==3){
+				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+				ActConstants.changeStageTo = 0;
+			}
+		}
+
 
 	}
 

@@ -41,7 +41,9 @@ public class Stage1 extends MyStage {
     TiledMap tiledMap;
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
 
-    SpriteBatch spriteBatch;
+//    SpriteBatch spriteBatch;
+
+    InputMultiplexer inputMultiplexer;
 
 
 
@@ -52,11 +54,11 @@ public class Stage1 extends MyStage {
         cDown=740;
         cleft=960;
         cright=2000000;
+        this.inputMultiplexer = inputMultiplexer;
 
-        spriteBatch = new SpriteBatch();
+//        spriteBatch = new SpriteBatch();
 
-        ActConstants.isChange = false;
-        inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
+        this.inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
 
         //一个舞台代表游戏的一个关，每关各自使用一个物理世界
         world = new World(new Vector2(0,-10),true);
@@ -207,14 +209,20 @@ public class Stage1 extends MyStage {
         super.draw();//这个就是依次调用actor的draw
 //        orthogonalTiledMapRenderer.renderTileLayer((TiledMapTileLayer) tiledMap.getLayers().get("L1"));
 //        orthogonalTiledMapRenderer.getBatch().end();
-        if(ActConstants.isChange) {
-            this.dispose();
-            MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
-        }
+//        if(ActConstants.isChange) {
+//            this.dispose();
+//            MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+//        }
 
     }
 
     public World getWorld(){
         return world;
+    }
+
+    @Override
+    public void dispose() {
+
+        super.dispose();
     }
 }

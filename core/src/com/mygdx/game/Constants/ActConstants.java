@@ -13,7 +13,9 @@ import java.util.HashMap;
 public class ActConstants {
     //游戏界面大小
     public static String currentPortal;
-    public static boolean isChange = false;
+
+    public static float changeStageTo=0;
+
     public static final int SCREEN_WIDTH = 1920;
     public static final int SCREEN_HEIGHT = 1080;
 
