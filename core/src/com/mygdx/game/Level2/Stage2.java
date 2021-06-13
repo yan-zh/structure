@@ -116,13 +116,13 @@ public class Stage2 extends MyStage {
         new BulletAndMonsterA();
 
 
-        MonsterA monsterA = new MonsterA(world,30,66,1,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        MonsterA monsterA = new MonsterA(world,30,66,1,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
         this.addActor(monsterA);
 
-        MonsterA monsterA2 = new MonsterA(world,34,66,2,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        MonsterA monsterA2 = new MonsterA(world,34,66,2,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
         this.addActor(monsterA2);
 
-        MonsterA monsterA3 = new MonsterA(world,38,66,3,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
+        MonsterA monsterA3 = new MonsterA(world,38,66,3,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
         this.addActor(monsterA3);
 
         new MonsterASensorAndMainCharacter();

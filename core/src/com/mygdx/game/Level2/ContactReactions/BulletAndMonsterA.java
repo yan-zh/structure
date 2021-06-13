@@ -38,7 +38,7 @@ public class BulletAndMonsterA implements ContactReaction {
 
                     boolean isAlive = monsterA.damage(userData2.contactId, bulletSkill.getDamage());
                     if (!isAlive) {
-                        monsterA.remove();
+                        monsterA.remove = true;
                     }
                 }
 
@@ -55,7 +55,7 @@ public class BulletAndMonsterA implements ContactReaction {
 
                     boolean isAlive = monsterA.damage(userData1.contactId, bulletSkill.getDamage());
                     if (!isAlive) {
-                        monsterA.remove();
+                        monsterA.remove = true;
                     }
                 }
 

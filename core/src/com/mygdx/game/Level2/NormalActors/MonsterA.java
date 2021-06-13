@@ -42,16 +42,11 @@ public class MonsterA extends Actor {
 
     float statetime;//用于替换主角动作图片的标记
 
-    Animation walkLeft;
-    Animation walkRight;
-    Animation standRight;
-    Animation standLeft;
-    Animation dieLeft;
-    Animation dieRight;
+    Animation walk;
 
-    ArrayList<Animation> animationArrayListLeft;
-    ArrayList<Animation> animationArrayListRight;
-    ArrayList<ArrayList> arrayListArrayList;
+    Animation die;
+
+
 
     short action;//0 停 1 左 2 右移动方向
     short direction;//0 左 1 右 图片朝向   两个全是3就是die
@@ -73,10 +68,22 @@ public class MonsterA extends Actor {
 
     int type;
 
+    public boolean remove;
+
+    float dieTime;
+
+    float physicalX;
+    float physicalY;
 
 
-    public MonsterA(World world, float x, float y,int type,Animation walkLeft, Animation walkRight, Animation standLeft, Animation standRight,Animation dieLeft,Animation dieRight) {
 
+    public MonsterA(World world, float x, float y,int type,Animation walk, Animation die) {
+
+        this.physicalX = x;
+        this.physicalY = y;
+
+        this.dieTime = 0;
+        this.remove = false;
         this.type = type;
 
         timer = new Timer();
@@ -97,32 +104,12 @@ public class MonsterA extends Actor {
 
 
 
-        this.standLeft = standLeft;
-        this.standRight = standRight;
-        this.walkLeft = walkLeft;
-        this.walkRight = walkRight;
-        this.dieLeft = dieLeft;
-        this.dieRight = dieRight;
+        this.walk = walk;
+        this.die = die;
 
         life=5;
 
         count=0;
-
-        animationArrayListLeft = new ArrayList<>();
-
-        animationArrayListLeft.add(standLeft);
-        animationArrayListLeft.add(walkLeft);
-        animationArrayListLeft.add(dieLeft);
-
-        animationArrayListRight = new ArrayList<>();
-        animationArrayListRight.add(standRight);
-        animationArrayListRight.add(walkRight);
-        animationArrayListRight.add(dieRight);
-
-
-        arrayListArrayList = new ArrayList<>();
-        arrayListArrayList.add(animationArrayListLeft);
-        arrayListArrayList.add(animationArrayListRight);
 
         speed = 1;
 
@@ -198,24 +185,6 @@ public class MonsterA extends Actor {
 
 
 
-        //启动一个走的计时器，3秒动一下（内部再启动一个，0.5秒后停止）
-
-        //启动一个打的计时器，1秒动一下
-
-//        Timer timer = new Timer();
-//        Timer.Task timerTask = new Timer.Task() {
-//            @Override
-//
-//            public void run() {
-//
-//                MonsterA monsterA = (MonsterA)ActConstants.publicInformation.get("Monster"+number);
-//                monsterA.attack();
-//
-//            }
-//
-//        };
-//        timer.scheduleTask(timerTask, 3, 2, 20);// 0s之后执行，每次间隔1s，执行20次。
-
         number++;
     }
 
@@ -236,32 +205,35 @@ public class MonsterA extends Actor {
 
         statetime += delta;
 
-        //运动状态改变
-        if(action==1){
-            mySimulation.setLinearVelocity(-speed,mySimulation.getLinearVelocity().y);
-            
-
-        }else if(action==2){
-            mySimulation.setLinearVelocity(speed,mySimulation.getLinearVelocity().y);
-        }
-
-        sensorSimulation.setLinearVelocity(mySimulation.getLinearVelocity());
-
-
-        Animation currentAnimation = (Animation) (arrayListArrayList.get(direction).get(action));
-
-        currentFrame = (TextureRegion) currentAnimation.getKeyFrame(statetime,true);
+        this.physicalX = mySimulation.getPosition().x;
+        this.physicalY = mySimulation.getPosition().y;
 
         if(move){
             MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
             if(mySimulation.getPosition().x>=mainCharacter.getPhysicalX()){
-                action=1;
-                direction=0;
+                mySimulation.setLinearVelocity(-speed,mySimulation.getLinearVelocity().y);
             }else{
-                action=2;
-                direction=1;
+                mySimulation.setLinearVelocity(speed,mySimulation.getLinearVelocity().y);
             }
         }
+
+
+        sensorSimulation.setLinearVelocity(mySimulation.getLinearVelocity());
+
+
+        if(remove == false){
+            currentFrame = (TextureRegion) walk.getKeyFrame(statetime,true);
+        }else{
+            dieTime += delta;
+            currentFrame = (TextureRegion) die.getKeyFrame(dieTime,false);
+            if(die.isAnimationFinished(dieTime)){
+                remove();
+            }
+
+        }
+
+
+
 
     }
 
@@ -269,9 +241,17 @@ public class MonsterA extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
+        if(ActConstants.mainCharacter.getPhysicalX()<=this.physicalX) {
+            if (!currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }else{
+            if (currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }
 
-
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-0.5f)*50f, (mySimulation.getPosition().y-0.75f)*50f);
 
     }
 
