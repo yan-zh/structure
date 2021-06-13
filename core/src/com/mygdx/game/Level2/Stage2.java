@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -21,9 +23,10 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
-import jdk.tools.jaotc.Main;
+//import jdk.tools.jaotc.Main;
 
 
 public class Stage2 extends MyStage {
@@ -35,6 +38,9 @@ public class Stage2 extends MyStage {
 
     CameraFocus cameraFocus;
 
+    // GUI界面的相机
+    private OrthographicCamera cameraGUI;
+    private SpriteBatch batch;
 
     TiledMap tiledMap;
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
@@ -119,6 +125,19 @@ public class Stage2 extends MyStage {
         new MonsterASensorAndMainCharacter();
 
         //测试***********************************
+
+        // 测试GUI部分：史用
+        // 初始化batch
+        batch = new SpriteBatch();
+        // 创建GUI相机并配置参数
+        cameraGUI = new OrthographicCamera(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
+        cameraGUI.position.set(0,0,0);
+        cameraGUI.setToOrtho(true);
+        // 反转y轴
+        cameraGUI.update();
+
+
+
 
 
 
@@ -364,8 +383,8 @@ public class Stage2 extends MyStage {
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
-
-
+        // 应用GUI相机的位置更新
+        cameraGUI.update();
     }
 
     @Override
@@ -382,6 +401,19 @@ public class Stage2 extends MyStage {
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
+
+        // 尝试在此处绘制GUI图片
+        renderGui(batch);
+
+    }
+
+    public void renderGui(SpriteBatch batch){
+        batch.setProjectionMatrix(cameraGUI.combined);
+        batch.begin();
+        // 绘制人物的状态栏（左上角）
+        AssetsUI.instance.drawUpdate(batch);
+        batch.end();
+
     }
 
     public World getWorld(){

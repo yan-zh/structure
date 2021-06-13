@@ -13,6 +13,7 @@ import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.Tools.asset.AssetsUI;
 
 public class UserInputListener extends InputListener {
 
@@ -152,17 +153,38 @@ public class UserInputListener extends InputListener {
                     }
                 }
             }
+            // 调试用：用于减少生命值
+            if (event.getKeyCode() == Input.Keys.N) {
+                AssetsUI.instance.reduceLives(1);
+            }
+            // 调试用：用于添加生命值
+            if (event.getKeyCode() == Input.Keys.M) {
+                AssetsUI.instance.addLives(1);
+            }
+            // 调试用：用于减少生命上限
+            if (event.getKeyCode() == Input.Keys.H) {
+                AssetsUI.instance.reduceLivesLimit(1);
+            }
+            // 调试用：用于添加生命上限
+            if (event.getKeyCode() == Input.Keys.J) {
+                AssetsUI.instance.addLivesLimit(1);
+            }
+            // 调试用：用于添加精灵数量
+            if (event.getKeyCode() == Input.Keys.K) {
+                AssetsUI.instance.addSprit();
+            }
             if (event.getKeyCode() == Input.Keys.NUM_1) {
                 ActConstants.currentSkillGroup = 1;
-
+                AssetsUI.instance.changeToSprit(1);
             }
             if (event.getKeyCode() == Input.Keys.NUM_2) {
                 ActConstants.currentSkillGroup = 2;
-
+                AssetsUI.instance.changeToSprit(2);
             }
 
             if (event.getKeyCode() == Input.Keys.NUM_3) {
                 ActConstants.currentSkillGroup = 3;
+                AssetsUI.instance.changeToSprit(3);
 
             }
 

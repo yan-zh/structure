@@ -15,7 +15,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
-import org.graalvm.compiler.lir.LIRInstruction;
+//import org.graalvm.compiler.lir.LIRInstruction;
 
 
 public class MainCharacter extends Actor {

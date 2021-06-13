@@ -62,12 +62,24 @@ public class Stage1 extends Stage {//有一些按钮和背景，是类似开始�
 
         // 播放背景音乐
         AudioManager.instance.play(AssetsUI.instance.music.bmg01);
+
+
+        // 测试面板
+
+
         this.addActor(backGround);
         this.addActor(startButton);
         this.addActor(settingButton);
         this.addActor(exitButton);
       //  this.addListener(new MyInputListener1());//这个监听是对从最外层传入的输入信息的响应,可以多个舞台各自new一个同一个类的对象，都有效果
         //****************注意，这个监听就算这个舞台没运行act也有效果
+
+
+    }
+
+    @Override
+    public void act(){
+        super.act();
     }
 
 
