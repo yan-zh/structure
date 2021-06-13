@@ -34,6 +34,9 @@ public class Fairy extends Actor {
 
     String name;
 
+    float physicalX;
+    float physicalY;
+
     //输入的xy单位是像素
     public Fairy(int numberPosition, Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world,String name) {
        // this.skillGroup = skillGroup;
@@ -43,6 +46,8 @@ public class Fairy extends Actor {
 
         this.setX(x);
         this.setY(y);
+        this.physicalX = x/50;
+        this.physicalY = y/50;
 
         //这里把wait的动画和draw的动画准备好
         this.wait = animationWait;
@@ -55,7 +60,7 @@ public class Fairy extends Actor {
 
         PolygonShape shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(2.2f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor = false;
@@ -91,7 +96,17 @@ public class Fairy extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        if(ActConstants.mainCharacter.getPhysicalX()>=this.physicalX) {
+            if (!currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }else{
+            if (currentFrame.isFlipX()) {
+                currentFrame.flip(true, false);
+            }
+        }
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-1.1f)*50f, (mySimulation.getPosition().y-0.75f)*50f);
 
     }
 

@@ -63,7 +63,7 @@ public class Boss1 extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(12f/ ActConstants.worldSize_shapeAndPhysics,9f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(12f/ ActConstants.worldSize_shapeAndPhysics,4f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
@@ -184,7 +184,7 @@ public class Boss1 extends Actor {
             }
         }
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-7.5f)*50f, (mySimulation.getPosition().y-5.5f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-7.5f)*50f, (mySimulation.getPosition().y-2f)*50f);
     }
 
     public void active(){
