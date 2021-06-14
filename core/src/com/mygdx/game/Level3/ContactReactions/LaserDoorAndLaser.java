@@ -30,6 +30,7 @@ public class LaserDoorAndLaser implements ContactReaction {
         }
 
         laserTransmitter transmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
+        transmitter.stop();
 
 
     }
