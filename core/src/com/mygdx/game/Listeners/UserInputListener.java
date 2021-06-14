@@ -247,6 +247,8 @@ public class UserInputListener extends InputListener {
             }
         }
 
+        System.out.println("mousepoint   "+x/50+"   "+y/50);
+
 
 
         return super.touchDown(event, x, y, pointer, button);

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.Level1.NormalActors.ChangeCamera;
 import com.mygdx.game.Tools.Assets;
 
 public class fireBoll extends Actor {
@@ -22,6 +23,8 @@ public class fireBoll extends Actor {
 
 	private Array<ParticleEmitter> emitter;
 	private ParticleEffect effect;
+
+	ChangeCamera changeCamera;
 
 	
 	public fireBoll(float xo, float yo, float[] direction){
