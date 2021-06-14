@@ -63,7 +63,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,772f,42));//单位是米 35  60初始位置
+        this.addActor(new MainCharacter(world,653.89f,48.86f));//单位是米 35  60初始位置     最右 772 42  右2 653.895   48.868668
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
@@ -163,6 +163,31 @@ public class Stage3 extends MyStage {
         this.addActor(new Spine(world,421.37f,77.93f,3.72f,4.5f));
 
 
+        this.addActor(new Spine(world,498.25f,47f,3.72f,4.5f));
+        this.addActor(new Spine(world,499.34f,45.97f,3.72f,4.5f));
+        this.addActor(new Spine(world,504f,44.35f,3.72f,4.5f));
+        this.addActor(new Spine(world,508.3f,45.54f,3.72f,4.5f));
+        this.addActor(new Spine(world,511f,46.4f,3.72f,4.5f));
+
+
+        float deviation = (float) 23.52;
+
+
+        this.addActor(new Spine(world,499.34f+deviation,45.97f,3.72f,4.5f));
+        this.addActor(new Spine(world,504f+deviation,43.7f,3.72f,4.5f));
+        this.addActor(new Spine(world,508.3f+deviation,45.54f,3.72f,4.5f));
+        this.addActor(new Spine(world,510.5f+deviation,46.4f,3.72f,4.5f));
+
+        this.addActor(new Spine(world,632.81f,42.06f,4.64f,29.76f));
+
+        this.addActor(new Spine(world,658.24f,50.33f,3.72f,4.5f));
+        this.addActor(new Spine(world,659.32f,59.22f,3.72f,4.5f));
+
+        this.addActor(new Spine(world,656.8f,52.96f,1.98f,5.5f));
+
+        this.addActor(new Spine(world,511f,46.4f,3.72f,4.5f));//234241421432
+
+
         this.addActor(new SleepingBear(world,97f,65f,20f,12f,ActConstants.BearID,"sleepingBear"));
         new BearAndMainCharacter();
 
@@ -222,6 +247,23 @@ public class Stage3 extends MyStage {
 //        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
 //        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
         new MoveLauncherAndBullet();
+
+
+
+
+        //244.04076,78.68498
+//357.14578,99.2157
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,12200,3900,357,99,ActConstants.portalID,world,"Portal1",true,"none"));
+
+//机关的位置：422， 115
+//Portal的位置：436，80
+//Dst:515,49
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,21800,4000,515,49,ActConstants.portalID,world,"Portal2",false,"none"));
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 422f, 115f, ActConstants.switchID, world,"rotateSwitchPortal", "portal"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,30000,4000,537,66,ActConstants.portalID,world,"Portal4",true,"none"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"Portal6",true,"none"));
 
 //yzh***************************************************
 
