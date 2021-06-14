@@ -63,7 +63,7 @@ public class Bubbles extends Actor {
             Timer.Task timerTask = new Timer.Task() {
                 @Override
                 public void run() {
-                    if(numOfSpawned<20){
+                    if(numOfSpawned<40){
                         bubbles.add(createOneBubble(getX()+dis,bubbleIndex.toString() ));//这里把数组indedx加进去
 //                    System.out.println("index: "+bubbleIndex.toString());
                         bubbleIndex++;
@@ -72,7 +72,7 @@ public class Bubbles extends Actor {
 
                     //此处为自动销毁泡泡的代码
                     for(Body b:bubbles){
-                        if(b.getPosition().y>30f){
+                        if(b.getPosition().y>90f){
                             b.setTransform(b.getPosition().x,getY(),0);
 //                            System.out.println(b);
 //                           int index= bubbles.indexOf(b,true);

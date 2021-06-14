@@ -18,8 +18,8 @@ public class BubbleAndCharacter implements ContactReaction {
     }
     @Override
     public void react(UserData userData1, UserData userData2){
-        ActConstants.MainCharacterState.replace("onGround",true);
-        ActConstants.MainCharacterState.replace("repulse",false);
+//        ActConstants.MainCharacterState.replace("onGround",true);
+        ActConstants.mainCharacter.reFreshJump();
         String bubbleIndexStr;
         if(userData1.contactId==ActConstants.BubbleID){
             bubbleIndexStr=userData1.nameInPublicInformation;
