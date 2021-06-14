@@ -92,6 +92,7 @@ public class MainCharacter extends Actor {
         myFixtureDef.isSensor = false;
 
 
+
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
 
         mySimulation = world.createBody(myBodyDef);

@@ -36,6 +36,9 @@ public class laserTransmitter extends Actor {
     String name;
 
     World world;
+
+    Timer timer;
+    Timer.Task task;
     public laserTransmitter(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name)
     {
         //Set position
@@ -73,8 +76,8 @@ public class laserTransmitter extends Actor {
         this.name = name;
         ActConstants.publicInformation.put(name, this);
 
-        Timer timer = new Timer();
-        Timer.Task timerTask = new Timer.Task() {
+        timer = new Timer();
+        task = new Timer.Task() {
             @Override
 
             public void run() {
@@ -85,7 +88,7 @@ public class laserTransmitter extends Actor {
             }
 
         };
-        timer.scheduleTask(timerTask, 1, 8, 2000);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(task, 1, 8, 2000);// 0s之后执行，每次间隔1s，执行20次。
     }
 
     @Override
@@ -116,5 +119,10 @@ public class laserTransmitter extends Actor {
         float[] direction = MyVector.getStandardVector(0,0,-1,0);
         System.out.println("Emmit");
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+    }
+
+    public void stop(){
+        task.cancel();
+        timer.clear();
     }
 }

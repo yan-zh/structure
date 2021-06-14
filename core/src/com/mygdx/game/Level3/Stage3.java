@@ -13,6 +13,8 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.NormalActors.ChangeCamera;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.Level3.ContactReactions.LaserDoorAndLaser;
+import com.mygdx.game.Level3.NormalActors.LaserDoor;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.Assets;
@@ -63,7 +65,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,653.89f,48.86f));//单位是米 35  60初始位置     最右 772 42  右2 653.895   48.868668
+        this.addActor(new MainCharacter(world,653,95));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
@@ -185,7 +187,34 @@ public class Stage3 extends MyStage {
 
         this.addActor(new Spine(world,656.8f,52.96f,1.98f,5.5f));
 
-        this.addActor(new Spine(world,511f,46.4f,3.72f,4.5f));//234241421432
+        this.addActor(new Spine(world,775.1f,48.5f,3.72f,4.5f));
+        this.addActor(new Spine(world,776.1f,51.9f,3.72f,4.5f));
+        this.addActor(new Spine(world,777.71f,55.6f,3.72f,4.5f));
+        this.addActor(new Spine(world,777.4f,59.25f,3.72f,4.5f));
+        this.addActor(new Spine(world,775.5f,63.3f,3.72f,4.5f));
+        this.addActor(new Spine(world,777.2f,67.5f,3.72f,4.5f));
+        this.addActor(new Spine(world,777.78f,71.5f,3.72f,4.5f));
+        this.addActor(new Spine(world,777.66f,75.71f,3.72f,4.5f));
+        this.addActor(new Spine(world,776.19f,78.16f,3.72f,4.5f));
+        this.addActor(new Spine(world,764.79f,90.94f,3.72f,4.5f));
+        this.addActor(new Spine(world,759.09f,92.53f,3.72f,4.5f));
+        this.addActor(new Spine(world,753.9f,85.67f,3.72f,4.5f));
+        this.addActor(new Spine(world,753.73f,89.15f,3.72f,4.5f));
+        this.addActor(new Spine(world,749.11f,92f,3.72f,4.5f));
+        this.addActor(new Spine(world,745.45f,90.77f,3.72f,4.5f));
+        this.addActor(new Spine(world,745,85.98f,3.72f,4.5f));
+        this.addActor(new Spine(world,743.03f,82.39f,3.72f,4.5f));
+        this.addActor(new Spine(world,743.87f,78.93f,3.72f,4.5f));
+        this.addActor(new Spine(world,774.95f,75.82f,3.72f,4.5f));
+        this.addActor(new Spine(world,774.41f,73.87f,3.72f,4.5f));
+        this.addActor(new Spine(world,743.96f,78.16f,3.72f,4.5f));
+        this.addActor(new Spine(world,745.4f,74.63f,3.72f,4.5f));
+        this.addActor(new Spine(world,745.37f,70.9f,3.72f,4.5f));
+        this.addActor(new Spine(world,746.12f,66.84f,3.72f,4.5f));
+        this.addActor(new Spine(world,745.38f,63.14f,3.72f,4.5f));
+        this.addActor(new Spine(world,774.66f,60.49f,3.72f,4.5f));
+        this.addActor(new Spine(world,743.67f,56.71f,3.72f,4.5f));
+        this.addActor(new Spine(world,745.14f,53.22f,3.72f,4.5f));
 
 
         this.addActor(new SleepingBear(world,97f,65f,20f,12f,ActConstants.BearID,"sleepingBear"));
@@ -235,7 +264,7 @@ public class Stage3 extends MyStage {
         this.addActor(new StillReflectiveStone(652*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
         this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
         this.addActor(new StillReflectiveStone(631*50, (int) (67.5*50),ActConstants.stillReflectiveStoneID,world,2));
-        this.addActor(new StillReflectiveStone(656*50, (int) (74.1*50),ActConstants.stillReflectiveStoneID,world,1));
+        this.addActor(new StillReflectiveStone(656*50, (int) (73.3*50),ActConstants.stillReflectiveStoneID,world,1));
         this.addActor(new StillReflectiveStone(617*50, (int) (81.7*50),ActConstants.stillReflectiveStoneID,world,1));
 
         new ReflectiveStoneAndMain();
@@ -265,6 +294,10 @@ public class Stage3 extends MyStage {
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"Portal6",true,"none"));
 
+
+
+        this.addActor(new LaserDoor(world,610,83.5f));
+        new LaserDoorAndLaser();
 //yzh***************************************************
 
 //

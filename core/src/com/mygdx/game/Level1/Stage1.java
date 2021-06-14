@@ -161,6 +161,8 @@ public class Stage1 extends MyStage {
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 //        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,47*50, (int) (6.2*50),505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 
+
+        cameraFocus.directFocusOn(27,9.5f);
     }
 
     @Override
@@ -181,9 +183,10 @@ public class Stage1 extends MyStage {
 
 
 
-        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
+//        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
+        cameraFocus.LRBoundary(2,2,19,8);
 
-        //应用相机位置更新
+//应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
 

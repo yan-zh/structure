@@ -340,4 +340,10 @@ public class ActConstants {
         BossID = BossID << 45;
     }
 
+    public static long LaserDoorID;
+    static{
+        LaserDoorID = 1;
+        LaserDoorID = LaserDoorID << 51;
+    }
+
 }

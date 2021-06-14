@@ -116,6 +116,27 @@ public class CameraFocus {
 
     }
 
+    public void LRBoundary(float width, float height, float positionX, float positionY){
+        Vector2 characterPosition  = mainCharacter.getPositionInSimulation();
+        Vector2 cameraPosition = new Vector2(camerab2d.position.x,camerab2d.position.y);
+
+        float leftDifference = characterPosition.x-(cameraPosition.x-19+positionX-width/2);//主角位置-方形左边界
+        if(leftDifference<0){
+            camerab2d.translate(leftDifference,0);
+            camera.position.set(camerab2d.position.x*50f,camerab2d.position.y*50f,0);
+        }
+
+        float rightDifference = characterPosition.x-(cameraPosition.x-19+positionX+width/2);//主角位置-方形右边界
+        if(rightDifference>0){
+            //camera.translate(rightDifference*50f,0);
+            camerab2d.translate(rightDifference,0);
+            //System.out.println("b2d x - camera/50 1  "+(camerab2d.position.x-camera.position.x/50f));
+            camera.position.set(camerab2d.position.x*50f,camerab2d.position.y*50f,0);
+            //System.out.println("b2d x - camera/50  "+(camerab2d.position.x-camera.position.x/50f));
+
+        }
+    }
+
 
 
 
