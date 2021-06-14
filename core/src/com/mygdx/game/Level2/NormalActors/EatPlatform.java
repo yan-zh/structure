@@ -90,10 +90,12 @@ public class EatPlatform extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,1f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(3.87f/ ActConstants.worldSize_shapeAndPhysics,2f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
-        platformHeight = 1;
-        platformWidth = 3;
+        myFixtureDef.isSensor = false;
+
+        platformHeight = 2;
+        platformWidth = 3.87f;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
         physicalX = x;

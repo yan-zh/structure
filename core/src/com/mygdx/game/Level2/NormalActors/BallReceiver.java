@@ -47,7 +47,7 @@ public class BallReceiver extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(7.8f/ ActConstants.worldSize_shapeAndPhysics,0.7f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;

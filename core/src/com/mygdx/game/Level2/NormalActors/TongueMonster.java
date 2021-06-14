@@ -56,8 +56,8 @@ public class TongueMonster extends Actor {
 
         contact = false;
 
-        tongueHeight = 4/ActConstants.worldSize_shapeAndPhysics;
-        tongueWidth = 0.5f/ActConstants.worldSize_shapeAndPhysics;
+        tongueHeight = 13f/ActConstants.worldSize_shapeAndPhysics;
+        tongueWidth = 0.9f/ActConstants.worldSize_shapeAndPhysics;
 
         number++;
         myNumber = number;
@@ -75,14 +75,16 @@ public class TongueMonster extends Actor {
         tongueShape.setAsBox(tongueWidth,tongueHeight);
         tongueFixtureDef.shape = tongueShape;
         tongueFixtureDef.friction = 1;
+        tongueFixtureDef.isSensor = false;
 
         tongueBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+
 
         tongueSimulation = world.createBody(tongueBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         tongueSimulation.createFixture(tongueFixtureDef).setUserData(new UserData(ActConstants.tongueMonsterID,"TongueMonster"+myNumber));
 
-        spine = new Spine(world, physicalX, physicalY+tongueHeight, 0.5f, 3f);
+        spine = new Spine(world, physicalX, physicalY+tongueHeight, 0.5f, 3.68f);
 
         ActConstants.publicInformation.put("TongueMonster"+myNumber,this);
 
@@ -102,14 +104,14 @@ public class TongueMonster extends Actor {
             currentFrameTop = (TextureRegion) top.getKeyFrame(statetime,true);
             if(contact==true){
                 if(tongueSimulation.getPosition().y<=(physicalY+tongueHeight*2)) {
-                    tongueSimulation.setLinearVelocity(0, 1);
+                    tongueSimulation.setLinearVelocity(0, 2);
                 }else{
                     tongueSimulation.setLinearVelocity(0,0);
                 }
 
             }else{
                 if(tongueSimulation.getPosition().y>=physicalY){
-                    tongueSimulation.setLinearVelocity(0,-1);
+                    tongueSimulation.setLinearVelocity(0,-2);
                 }else{
                     tongueSimulation.setLinearVelocity(0,0);
                 }

@@ -9,7 +9,7 @@ import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
 public class BridgeAndIce implements ContactReaction {
-    public static long contactID = 0b100000000000000001000;
+    public static long contactID = ActConstants.IceID + ActConstants.brokenBridgeID;
 
     public BridgeAndIce()
     {
@@ -32,6 +32,7 @@ public class BridgeAndIce implements ContactReaction {
                 public void run() {
                 ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).state = true;
                 ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).remove();
+//                ((brokenBridge)ActConstants.publicInformation.get("brokenBridge")).removeBody();
                 }
             });
             Action action = Actions.delay(0.5f, delayedAction);

@@ -48,7 +48,7 @@ public class ReboundBall extends Actor {
         shape.setRadius(0.5f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
 
         myFixtureDef.shape = shape;
-        myFixtureDef.restitution = 1;
+        myFixtureDef.restitution = 0.7f;
         myFixtureDef.friction = 0;
 
         myFixtureDef.isSensor=false;

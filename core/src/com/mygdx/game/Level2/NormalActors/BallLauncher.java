@@ -49,7 +49,7 @@ public class BallLauncher extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(6.65f/ ActConstants.worldSize_shapeAndPhysics,6.1f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
@@ -97,9 +97,9 @@ public class BallLauncher extends Actor {
     }
 
     public void launch(){
-        ReboundBall reboundBall = new ReboundBall(world, Assets.instance.bunny.animCopterTransformBack,physicalX,physicalY+2);
+        ReboundBall reboundBall = new ReboundBall(world, Assets.instance.bunny.animCopterTransformBack,physicalX,physicalY+5);
         MyGdxGame.currentStage.addActor(reboundBall);
-        reboundBall.impulse(100,100);
+        reboundBall.impulse(1,0.1f);
     }
 
     public void realLaunch(){

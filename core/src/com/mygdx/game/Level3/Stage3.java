@@ -43,7 +43,7 @@ public class Stage3 extends MyStage {
     public Stage3(InputMultiplexer inputMultiplexer){
 
 
-        cUp=300000;
+        cUp=110;
         cDown=-300000;
         cleft=-300000;
         cright=300000;
@@ -63,7 +63,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,35,60));//单位是米 35  60初始位置
+        this.addActor(new MainCharacter(world,205.6f,80));//单位是米 35  60初始位置
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -96,7 +96,7 @@ public class Stage3 extends MyStage {
         //这个是因为图本身很大，有些部分是透明的，所以看起来位置不对
 
         //调整两个个相机到起始位置
-        cameraFocus.focusOn(0,5,1);//这里单位是米
+        cameraFocus.focusOn(205.6f,80,1);//这里单位是米
 
         //把stage1加入公共域，用于之后的析构和交互
         ActConstants.publicInformation.replace("CurrentStage",this);
@@ -108,7 +108,10 @@ public class Stage3 extends MyStage {
 
         changeCamera = new ChangeCamera(cameraPhysic,stageCamera);
 
-//        changeCamera.leave();
+        changeCamera.leave();
+
+
+        changeCamera.act();
 
 
 
@@ -157,7 +160,47 @@ public class Stage3 extends MyStage {
         this.addActor(new Spine(world,421.2f,84f,3.72f,4.5f));
 
 
+        this.addActor(new SleepingBear(world,97f,65f,20f,12f,ActConstants.BearID,"sleepingBear"));
+        new BearAndMainCharacter();
 
+        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,205.6f,85.5f);
+        this.addActor(tongueMonster);
+        new TongueMonsterAndMainCharacter();
+
+
+        new EatPlatformAndMainCharacter();
+        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform1);
+
+        EatPlatform eatPlatform2 = new EatPlatform(world,235.85f,94.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform2);
+
+        EatPlatform eatPlatform3 = new EatPlatform(world,231.38f,99.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform3);
+
+        EatPlatform eatPlatform4 = new EatPlatform(world,238.5f,104.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform4);
+
+        EatPlatform eatPlatform5 = new EatPlatform(world,238f,110.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform5);
+
+        EatPlatform eatPlatform6 = new EatPlatform(world,228f,114f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        this.addActor(eatPlatform6);
+
+
+        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,158.3f,41);
+        this.addActor(ballLauncher);
+        new BallLauncherAndMainCharacter();
+
+
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,207.3f,36f);
+        this.addActor(ballReceiver);
+        new BallAndBallReceiver();
+
+
+        this.addActor(new Ice(153,82,ActConstants.IceID,world,"ice"));
+        new BridgeAndIce();
+        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 157, 56, 3f,2f,ActConstants.brokenBridgeID, world, "brokenBridge"));
 
 
 
@@ -307,8 +350,6 @@ public class Stage3 extends MyStage {
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
-
-        changeCamera.act();
 
     }
 

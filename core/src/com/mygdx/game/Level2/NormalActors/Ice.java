@@ -28,8 +28,8 @@ public class Ice extends Actor {
     public Ice(int x, int y, long actorId, World world, String name)
     {
         //Set position
-        this.setX(x);
-        this.setY(y);
+        this.setX(x * ActConstants.worldSize_pAndPhysic);
+        this.setY(y * ActConstants.worldSize_pAndPhysic);
         TextureRegion texture = (TextureRegion) Assets.instance.mainCharacter.animRun.getKeyFrames()[0];
         //image = new Image(new Texture("D:\\structurenew\\core\\assets\\images\\anim_bunny_copter_01.png"));
         image = new Image(texture);
@@ -40,12 +40,13 @@ public class Ice extends Actor {
         myBodyDef = PhysicalEntityDefine.getBd();
         myBodyDef.type = BodyDef.BodyType.DynamicBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
+        myFixtureDef.isSensor = false;
 
 
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(1.5f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
 
@@ -58,7 +59,8 @@ public class Ice extends Actor {
         mySimulation.setFixedRotation(false);
         mySimulation.setUserData(image);
         myFixture.setUserData(new UserData(actorId, "ice"));
-        mySimulation.setGravityScale(1);
+
+        mySimulation.setGravityScale(3);
         this.name = name;
         ActConstants.publicInformation.put(name, this);
 

@@ -40,8 +40,8 @@ public class ChangeCamera {
                 cameraPhysic.setToOrtho(false, (ActConstants.SCREEN_WIDTH)/ ActConstants.worldSize_pAndPhysic,(ActConstants.SCREEN_HEIGHT)/ ActConstants.worldSize_pAndPhysic);//这个是摄像机的框的大小，摄像机取景后还要经过最外层界面的压缩得到最终效果
                 stageCamera.setToOrtho(false, ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
             }else if(state==0){
-                cameraPhysic.setToOrtho(false, (ActConstants.SCREEN_WIDTH*2)/ ActConstants.worldSize_pAndPhysic,(ActConstants.SCREEN_HEIGHT*2)/ ActConstants.worldSize_pAndPhysic);//这个是摄像机的框的大小，摄像机取景后还要经过最外层界面的压缩得到最终效果
-                stageCamera.setToOrtho(false, ActConstants.SCREEN_WIDTH*2, ActConstants.SCREEN_HEIGHT*2);
+                cameraPhysic.setToOrtho(false, (ActConstants.SCREEN_WIDTH*1.5f)/ ActConstants.worldSize_pAndPhysic,(ActConstants.SCREEN_HEIGHT*1.5f)/ ActConstants.worldSize_pAndPhysic);//这个是摄像机的框的大小，摄像机取景后还要经过最外层界面的压缩得到最终效果
+                stageCamera.setToOrtho(false, ActConstants.SCREEN_WIDTH*1.5f, ActConstants.SCREEN_HEIGHT*1.5f);
             }
 
             count=1;

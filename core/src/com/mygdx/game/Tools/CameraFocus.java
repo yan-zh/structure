@@ -60,19 +60,38 @@ public class CameraFocus {
         //     camerab2d.position.set(characterPosition.x,cameraPosition.y,0);
         // }
 
-        if(!(((MyStage)MyGdxGame.currentStage).cUp<=cameraPosition.y||((MyStage)MyGdxGame.currentStage).cDown>=cameraPosition.y)) {
+//        if(!(((MyStage)MyGdxGame.currentStage).cUp<cameraPosition.y||((MyStage)MyGdxGame.currentStage).cDown>cameraPosition.y)) {
+//            float upDifference = characterPosition.y - (height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形上边界
+//            if (upDifference > 0) {
+//                camerab2d.translate(0, upDifference);//调整物理世界摄像机
+//                camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);//调整内存图片摄像机
+//            }
+//
+//            float downDifference = characterPosition.y - (-height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形下边界
+//            if (downDifference < 0) {
+//                camerab2d.translate(0, downDifference);
+//                camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);
+//            }
+//        }
+
+
+        if(!(((MyStage)MyGdxGame.currentStage).cUp<cameraPosition.y)){
             float upDifference = characterPosition.y - (height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形上边界
             if (upDifference > 0) {
                 camerab2d.translate(0, upDifference);//调整物理世界摄像机
                 camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);//调整内存图片摄像机
             }
+        }
 
+        if(!(((MyStage)MyGdxGame.currentStage).cDown>cameraPosition.y)){
             float downDifference = characterPosition.y - (-height / 2 + positionY + cameraPosition.y - 10);//主角位置-方形下边界
             if (downDifference < 0) {
                 camerab2d.translate(0, downDifference);
                 camera.position.set(camerab2d.position.x * 50f, camerab2d.position.y * 50f, 0);
             }
         }
+
+
 
 
         float leftDifference = characterPosition.x-(cameraPosition.x-19+positionX-width/2);//主角位置-方形左边界

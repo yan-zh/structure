@@ -50,6 +50,7 @@ public class Spine extends Actor {
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(width/ ActConstants.worldSize_shapeAndPhysics,height/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
+        myFixtureDef.isSensor = false;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
 
