@@ -63,7 +63,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,490f,73));//单位是米 35  60初始位置
+        this.addActor(new MainCharacter(world,421f,80));//单位是米 35  60初始位置
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -157,9 +157,8 @@ public class Stage3 extends MyStage {
         this.addActor(new Spine(world,420.2f,107.5f,3.72f,4.5f));
         this.addActor(new Spine(world,423.2f,107.4f,3.72f,4.5f));
         this.addActor(new Spine(world,422.75f,103.3f,3.72f,4.5f));
-        this.addActor(new Spine(world,415f,85.1f,3.72f,4.5f));
-        this.addActor(new Spine(world,419.37f,84.65f,3.72f,4.5f));
-        this.addActor(new Spine(world,421.2f,84f,3.72f,4.5f));
+        this.addActor(new Spine(world,416f,77.69f,3.72f,4.5f));
+        this.addActor(new Spine(world,421.37f,77.93f,3.72f,4.5f));
 
 
         this.addActor(new SleepingBear(world,97f,65f,20f,12f,ActConstants.BearID,"sleepingBear"));
