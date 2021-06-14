@@ -232,13 +232,15 @@ public class UserInputListener extends InputListener {
 
     @Override
     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
+//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
+//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
         synchronized (ActConstants.physicalActionListLock){
             //button 0左键 1右键
             if(ActConstants.skillGroups[ActConstants.currentSkillGroup]!=null){
 
                 if(button==1){
                     ActConstants.skillGroups[ActConstants.currentSkillGroup].skill1(x,y);
+
                 }else{
                     ActConstants.skillGroups[ActConstants.currentSkillGroup].skill2(x,y);
                 }

@@ -65,6 +65,8 @@ public class laserTransmitter extends Actor {
         mySimulation.setGravityScale(5);
         myFixture = mySimulation.createFixture(myFixtureDef);
 
+        mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.groundID,"laserTransmitter"));
+
 
         myFixture.setUserData(new UserData(actorId, "laserTransmitter"));
 
@@ -83,7 +85,7 @@ public class laserTransmitter extends Actor {
             }
 
         };
-        timer.scheduleTask(timerTask, 1, 4, 20);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(timerTask, 1, 8, 2000);// 0s之后执行，每次间隔1s，执行20次。
     }
 
     @Override
@@ -111,7 +113,7 @@ public class laserTransmitter extends Actor {
     public void emmit()
     {
         MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
-        float[] direction = MyVector.getStandardVector(-3,1,2,1);
+        float[] direction = MyVector.getStandardVector(0,0,-1,0);
         System.out.println("Emmit");
         MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }

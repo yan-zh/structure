@@ -190,7 +190,7 @@ public class MainCharacter extends Actor {
         }
 
 
-        if(mySimulation.getPosition().y<-50){
+        if(mySimulation.getPosition().y<-1){
             die();
         }
 

@@ -81,6 +81,7 @@ public class MoveLauncher extends Actor {
 
     public MoveLauncher(World world,float physicalX, float physicalY) {
 
+
         range=5f;
         duration=0.5f;
 
@@ -95,7 +96,7 @@ public class MoveLauncher extends Actor {
             }
 
         };
-        startMove();
+//        startMove();
 
         //******************
 
@@ -198,6 +199,7 @@ public class MoveLauncher extends Actor {
         super.act(delta);
 
 
+
         if(die==false){
             mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
             normalStateTime += delta;
@@ -209,6 +211,8 @@ public class MoveLauncher extends Actor {
                 remove();
             }
         }
+
+
 
 
 //

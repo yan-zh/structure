@@ -63,7 +63,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,205.6f,80));//单位是米 35  60初始位置
+        this.addActor(new MainCharacter(world,490f,73));//单位是米 35  60初始位置
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -117,7 +117,9 @@ public class Stage3 extends MyStage {
 
         //public contact
 
-//        new MainCharacterAndSpine();
+//       new MainCharacterAndSpine();
+
+        new BulletDispose();//这句话应该删除、、、、、、、、、、、、、、、、、、、、
         new GroundAndMainCharacter();
 
 
@@ -198,12 +200,27 @@ public class Stage3 extends MyStage {
         new BallAndBallReceiver();
 
 
-        this.addActor(new Ice(153,82,ActConstants.IceID,world,"ice"));
+        this.addActor(new Ice(151,70,ActConstants.IceID,world,"ice"));
         new BridgeAndIce();
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 157, 56, 3f,2f,ActConstants.brokenBridgeID, world, "brokenBridge"));
 
 
+        new ReflectiveStoneAndBullet();
+        this.addActor(new StillReflectiveStone(652*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
+        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new StillReflectiveStone(631*50, (int) (67.5*50),ActConstants.stillReflectiveStoneID,world,2));
+        this.addActor(new StillReflectiveStone(656*50, (int) (74.1*50),ActConstants.stillReflectiveStoneID,world,1));
+        this.addActor(new StillReflectiveStone(617*50, (int) (81.7*50),ActConstants.stillReflectiveStoneID,world,1));
 
+        new ReflectiveStoneAndMain();
+        new StillReflectiveStoneAndMain();
+
+
+
+        this.addActor(new MoveLauncher(world,490.1f,77));
+//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
+//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
+        new MoveLauncherAndBullet();
 
 //yzh***************************************************
 
