@@ -71,6 +71,8 @@ public class Portal extends Actor{
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);
+
+        currentFrame = (TextureRegion) wait.getKeyFrame(0);
     }
 
     @Override

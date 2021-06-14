@@ -8,6 +8,9 @@ import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level2.PhysicalActions.CreatePortal;
+import com.mygdx.game.Level2.Stage2;
+import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.BodyBuilder;
 
 public class HangedBalls extends Actor {
@@ -73,6 +76,16 @@ public class HangedBalls extends Actor {
 
     private void pswCorrect(){
         System.out.println("psw correct!");
+//        HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
+        PswDoor door = (PswDoor) ActConstants.publicInformation.get("pswDoor");
+        door.move();
+//        MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
+//        mainCharacter.mySimulation.setTransform(new Vector2(64f-1.2f,85f-23.4f), 0);
+        CreatePortal createPortal = new CreatePortal();
+
+        ActConstants.physicalActionList.add(createPortal);
+        //从actcontants里获得横门的body让它消失
+        //调用横门对象的draw还是act让它向左移
     }
 
     @Override

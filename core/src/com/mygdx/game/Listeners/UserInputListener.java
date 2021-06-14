@@ -74,14 +74,23 @@ public class UserInputListener extends InputListener {
                                     public void run() {
 //                            ((Portal)ActConstants.publicInformation.get("Portal")).state = true;
                                         Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
-                                        Stage1 stage1 = (Stage1) ActConstants.publicInformation.get("stage1");
+
                                         portal.state = true;
-                                        Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
-                                        beacon.setBeacon();
+
                                         if (portal.Stagetranto == "Stage2") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
                                             ActConstants.changeStageTo=2;
+                                        }
+                                        if (portal.Stagetranto == "Stage3") {
+//                                          ActConstants.isChange = true;
+//                                            ActConstants.goStage2 = true;
+                                            ActConstants.changeStageTo=3;
+                                        }
+
+                                        if (portal.Stagetranto == "PortalFinal") {
+                                            ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
+                                            ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
                                         }
 
 
@@ -96,7 +105,8 @@ public class UserInputListener extends InputListener {
                         });
                         Action action = Actions.delay(3f, delayedAction);
                         portal.addAction(action);
-
+                        Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
+                        beacon.setBeacon();
 
                     }
                 }

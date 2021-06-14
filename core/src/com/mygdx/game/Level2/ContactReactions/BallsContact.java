@@ -7,19 +7,18 @@ import com.mygdx.game.abstraction.UserData;
 
 public class BallsContact implements ContactReaction {
     //  ballId: 0b10000000000000000
-//    public static long contactID1 = 0b10000000000+0b10000000000000000;
-//    public static long contactID2 = 0b100000000000+0b10000000000000000;
-//    public static long contactID3 = 0b1000000000000+0b10000000000000000;
-//    public static long contactID4 = 0b10000+0b10000000000000000;
-    public static long contactID = ActConstants.windBulletID+ActConstants.hangedBallsID;
-
+    public static long contactID1 = 0b10000000000+0b10000000000000000;
+    public static long contactID2 = 0b100000000000+0b10000000000000000;
+    public static long contactID3 = 0b1000000000000+0b10000000000000000;
+    public static long contactID4 = 0b10000+0b10000000000000000;
+        public static long contactID = 0b1+0b10000000000000000;
 
 
     public BallsContact(){
-//        ActConstants.contactList.put(contactID1, this);
-//        ActConstants.contactList.put(contactID2,this);
-//        ActConstants.contactList.put(contactID3,this);
-//        ActConstants.contactList.put(contactID4,this);
+        ActConstants.contactList.put(contactID1, this);
+        ActConstants.contactList.put(contactID2,this);
+        ActConstants.contactList.put(contactID3,this);
+        ActConstants.contactList.put(contactID4,this);
                 ActConstants.contactList.put(contactID,this);
 
 
@@ -35,7 +34,9 @@ public class BallsContact implements ContactReaction {
         }
       HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
         balls.hit(i);
-//        System.out.println("object "+balls);
+       System.out.println("object "+balls);
+        System.out.println(i);
+
 
     }
 

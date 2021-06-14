@@ -294,8 +294,7 @@ public class Stage3 extends MyStage {
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,30000,4000,537,66,ActConstants.portalID,world,"Portal4",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"Portal6",true,"none"));
-
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"PortalFinal",true,"none"));
 
 
         this.addActor(new LaserDoor(world,610,83.5f));

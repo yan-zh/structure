@@ -110,12 +110,15 @@ public class Stage2 extends MyStage {
 
 
         //测试***********************************
-        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
+//        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
+                this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (8*50),70*50,ActConstants.woodFairyID,world,"WoodFairy"));
+
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
         new BulletAndMonsterA();
         new MonsterASensorAndMainCharacter();
         new WindFairyAndMainCharacter();
+        new PortalAndMainCharacter();
 
         //测试***********************************
 
@@ -209,15 +212,15 @@ public class Stage2 extends MyStage {
         ActConstants.publicInformation.put("stage2", this);
 
 
-        this.addActor(new Platform(world,25-1.2f,88-23.4f,3f,5f,ActConstants.platformID,"Platform"));
+        this.addActor(new Platform(world,27-1.2f,88-23.4f,3f,5f,ActConstants.platformID,"Platform"));
         this.addActor(new Platform(world,84-1.2f,80-23.4f,3f,5f,ActConstants.platformID,"Platform"));
 
 
         this.addActor(new ThinSurface(world,54.1f-1.2f,65-23.4f,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
-        this.addActor(new HangedBalls(world,208-1.2f,30,"012",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new HangedBalls(world,203-1.2f,65,"10210",ActConstants.hangedBallsID,"hangedBalls"));
         this.addActor(new SleepingBear(world,212-1.2f,10-23.4f,5f,3f,ActConstants.BearID,"sleepingBear"));
-        this.addActor(new Bubbles(world,216-1.2f,10-23.4f,15,0.7f,ActConstants.BubbleID,"bubbles"));
+//        this.addActor(new Bubbles(world,216-1.2f,10-23.4f,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();
         new BallsContact();
         new BearWindContact();
@@ -226,7 +229,7 @@ public class Stage2 extends MyStage {
         new BubbleAndCharacter();
         this.addActor(new PswDoor(world,64f-1.2f,82f-23.4f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
         new PswDoorContact();
-
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,10750,2800,505,3,ActConstants.portalID,world,"Portal1",true,"Stage3"));
 
     }
 
