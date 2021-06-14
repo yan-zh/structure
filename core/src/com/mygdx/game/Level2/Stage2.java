@@ -111,7 +111,7 @@ public class Stage2 extends MyStage {
 
         //测试***********************************
 //        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
-                this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (8*50),70*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (8*50),70*50,ActConstants.woodFairyID,world,"WoodFairy"));
 
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
@@ -183,7 +183,7 @@ public class Stage2 extends MyStage {
 
 
 
-        Flower flower = new Flower(world,64-1.2f,13.4f,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
+        Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animDead,AssetsLevel1.instance.srh.animDead);
         this.addActor(flower);
         new FlowerAndMainCharacter();
 

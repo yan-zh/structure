@@ -17,7 +17,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 /**
  * @auther SHI Zhancheng
- * @create 2021-03-06 14:22
+ * @create 2021-05-06 14:22
  */
 public class AssetsLevel1 implements Disposable, AssetErrorListener {
     public static final String TAG = AssetsLevel1.class.getName();
@@ -40,6 +40,8 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
     public AssetCddpxgw cddpxgw;
     public AssetCdboss cdboss;
     public AssetZj zj;
+    public AssetSrh srh;
+    public AssetJiemi jiemi;
 
 
     // 资源扩展结束
@@ -150,11 +152,14 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         cdboss = new AssetCdboss(atlas_level01);
         assetBall = new AssetBall(atlas_level01);
         zj = new AssetZj(atlas_level01);
-
+        srh = new AssetSrh(atlas_level01);
+        jiemi = new AssetJiemi(atlas_level01);
         // 测试对象
     }
 
-
+    public float getProgress(){
+        return assetManager.getProgress();
+    }
 
     @Override
     public void dispose() {
@@ -410,33 +415,15 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         }
     }
 
-    public class AssetCdboss {
+    public class AssetCdboss extends AbstractItem{
         public final AtlasRegion main;
         public final Animation animBreath;
-        public final Animation animAttackA;
-        public final Animation animAttackB;
-        public final Animation animAttackC;
-        public final Animation animDamage;
+        public final Animation animAttack;
         public AssetCdboss(TextureAtlas atlas){
-            main = atlas.findRegion("cdBoss_idle");
-
-            Array<AtlasRegion> regions = null;
-            AtlasRegion region = null;
-
-            regions = atlas.findRegions("cdBoss_idle");
-            animBreath = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdBoss_attackA");
-            animAttackA = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdBoss_attackB");
-            animAttackB = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdBoss_attackC");
-            animAttackC = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdBoss_damage");
-            animDamage = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
+            super(atlas);
+            main = addAtlasRegion("cdBoss_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"cdBoss_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"cdBoss_attack");
         }
     }
 
@@ -452,6 +439,36 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
             animBreath = addAnimation(AssetsConstent.animSpeed40,"zj_idle");
             animAttack = addAnimation(AssetsConstent.animSpeed30,"zj_attack");
             animDead = addAnimation(AssetsConstent.animSpeed24,"zj_dead");
+        }
+    }
+
+    public class AssetJiemi extends AbstractItem{
+        public final AtlasRegion qiuqian;
+        public final AtlasRegion miDuan;
+        public final AtlasRegion miZhong;
+        public final AtlasRegion miChang;
+        public final AtlasRegion fuzi;
+        public final AtlasRegion thinSurface;
+        AssetJiemi(TextureAtlas atlas) {
+            super(atlas);
+            qiuqian = addAtlasRegion("qiuqian");
+            miDuan = addAtlasRegion("miDuan");
+            miZhong = addAtlasRegion("miZhong");
+            miChang = addAtlasRegion("miChang");
+            fuzi = addAtlasRegion("fuzi");
+            thinSurface = addAtlasRegion("thinSurface");
+        }
+    }
+
+    public class AssetSrh extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animDead;
+        AssetSrh(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("srh_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"srh_idle");
+            animDead = addAnimation(AssetsConstent.animSpeed30,"srh_dead");
         }
     }
 }

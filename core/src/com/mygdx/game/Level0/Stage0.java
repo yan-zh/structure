@@ -81,7 +81,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 AudioManager.instance.stopMusic();
                 Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
                 stage0.dispose();
-                MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+                MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;
             }

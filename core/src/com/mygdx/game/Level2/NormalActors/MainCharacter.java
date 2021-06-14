@@ -57,13 +57,13 @@ public class MainCharacter extends Actor {
     TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
     public MainCharacter(World world,float x,float y){
 
-        walkLeft = AssetsUI.instance.mainUser.animRun;
-        hitLeft = AssetsUI.instance.mainUser.animAttack;
+        walkLeft = AssetsUI.instance.zj.animBreath;
+        hitLeft = AssetsUI.instance.zj.animDead;
 
-        walkRight = AssetsUI.instance.mainUser.animRun;
-        hitRight = AssetsUI.instance.mainUser.animAttack;
+        walkRight = AssetsUI.instance.zj.animBreath;
+        hitRight = AssetsUI.instance.zj.animDead;
 
-        reborn = AssetsUI.instance.mainUser.animJump;
+        reborn = AssetsUI.instance.zj.animDead;
 
         timeWalk = 0;
         timeHit = 0;

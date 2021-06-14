@@ -22,6 +22,7 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
 
@@ -67,7 +68,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,653,95));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
+        this.addActor(new MainCharacter(world,225,95));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
@@ -228,7 +229,7 @@ public class Stage3 extends MyStage {
 
 
         new EatPlatformAndMainCharacter();
-        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90, Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.goldCoin.animGoldCoin,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(eatPlatform1);
 
         EatPlatform eatPlatform2 = new EatPlatform(world,235.85f,94.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
