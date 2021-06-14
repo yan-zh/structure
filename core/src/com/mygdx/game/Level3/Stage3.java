@@ -45,6 +45,8 @@ public class Stage3 extends MyStage {
     public Stage3(InputMultiplexer inputMultiplexer){
 
 
+        ActConstants.changeStageTo = 0;
+
         cUp=110;
         cDown=-300000;
         cleft=-300000;

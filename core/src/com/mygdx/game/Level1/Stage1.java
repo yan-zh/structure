@@ -53,6 +53,11 @@ public class Stage1 extends MyStage {
     ChangeCamera changeCamera;
 
     public Stage1(InputMultiplexer inputMultiplexer) {
+
+
+
+        ActConstants.changeStageTo = 0;
+
         cUp=740;
         cDown=740;
         cleft=960;

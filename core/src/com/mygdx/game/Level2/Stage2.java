@@ -42,6 +42,8 @@ public class Stage2 extends MyStage {
 
     public Stage2(InputMultiplexer inputMultiplexer){
 
+        ActConstants.changeStageTo = 0;
+
         cUp=300000;
         cDown=-300000;
         cleft=-300000;
@@ -62,7 +64,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,105,11));//单位是米 7 89初始位置 7 66  105 11
+        this.addActor(new MainCharacter(world,7,66));//单位是米 7 89初始位置 7 66  105 11
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -108,23 +110,10 @@ public class Stage2 extends MyStage {
 
 
         //测试***********************************
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,8*50,66*50,ActConstants.windFairyID,world,"WindFairy"));
-        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,9*50,66*50,ActConstants.sandFairyID,world,"SandFairy"));
         this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,102*50,11*50,ActConstants.woodFairyID,world,"WoodFairy"));
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
         new BulletAndMonsterA();
-
-
-        MonsterA monsterA = new MonsterA(world,30,66,1,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
-        this.addActor(monsterA);
-
-        MonsterA monsterA2 = new MonsterA(world,34,66,2,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
-        this.addActor(monsterA2);
-
-        MonsterA monsterA3 = new MonsterA(world,38,66,3,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
-        this.addActor(monsterA3);
-
         new MonsterASensorAndMainCharacter();
 
         //测试***********************************
@@ -212,19 +201,19 @@ public class Stage2 extends MyStage {
 
 
 //测试激光
-        new ReflectiveStoneAndBullet();
-        this.addActor(new StillReflectiveStone(100*50,12*50,ActConstants.stillReflectiveStoneID,world,1));
-        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,110*50, 12*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-        new ReflectiveStoneAndMain();
-        new StillReflectiveStoneAndMain();
+//        new ReflectiveStoneAndBullet();
+//        this.addActor(new StillReflectiveStone(100*50,12*50,ActConstants.stillReflectiveStoneID,world,1));
+//        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,110*50, 12*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+//        new ReflectiveStoneAndMain();
+//        new StillReflectiveStoneAndMain();
 
 
         //this.addActor(new Boss(world,120f,15f,3f,5f,ActConstants.BossID,"boss"));
 
-
-        this.addActor(new MoveLauncher(world,100,15));
-        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
-        new MoveLauncherAndBullet();
+//
+//        this.addActor(new MoveLauncher(world,100,15));
+//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
+//        new MoveLauncherAndBullet();
 
         //        new WindFairyAndMainCharacter();
 //
