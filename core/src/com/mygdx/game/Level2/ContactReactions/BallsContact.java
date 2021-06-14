@@ -11,7 +11,8 @@ public class BallsContact implements ContactReaction {
 //    public static long contactID2 = 0b100000000000+0b10000000000000000;
 //    public static long contactID3 = 0b1000000000000+0b10000000000000000;
 //    public static long contactID4 = 0b10000+0b10000000000000000;
-        public static long contactID = 0b1+0b10000000000000000;
+    public static long contactID = ActConstants.windBulletID+ActConstants.hangedBallsID;
+
 
 
     public BallsContact(){
