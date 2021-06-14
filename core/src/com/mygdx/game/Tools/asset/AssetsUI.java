@@ -49,8 +49,10 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     // 加载字体
     public AssetFonts fonts;
     // 加载主角资源
-    public AssetMainUser mainUser;
     public AssetMainPanel mainPanel;
+    public AssetMainUser mainUser;
+    public AssetZj zj;
+    public AssetJiguan jiguan;
 
     // 加载音乐
     public AssetSounds sounds;
@@ -135,8 +137,10 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
         // 创建关卡资源对象
         frontPage = new AssetFrontPage(atlas_ui);
-        mainUser = new AssetMainUser(atlas_ui);
         mainPanel = new AssetMainPanel(atlas_ui);
+        mainUser = new AssetMainUser(atlas_ui);
+        zj = new AssetZj(atlas_ui);
+        jiguan = new AssetJiguan(atlas_ui);
 
         // 初始化主角信息
         mainUserLive = 20;
@@ -406,30 +410,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
-    public class AssetMainUser extends AbstractItem{
-        public final AtlasRegion main;
-        public final AtlasRegion isUp;
-        public final Animation animIdle;
-        public final Animation animAttack;
-        public final Animation animAttack2;
-        public final Animation animChangeSprite;
-        public final Animation animJump;
-        public final Animation animDown;
-        public final Animation animRun;
 
-        AssetMainUser(TextureAtlas atlas) {
-            super(atlas);
-            main = addAtlasRegion("acter_main");
-            isUp = addAtlasRegion("acter_fly");
-            animIdle = addAnimation(AssetsConstent.animSpeed12, "acter_idle");
-            animAttack = addAnimation(AssetsConstent.animSpeed12, "acter_attack2", Animation.PlayMode.NORMAL);
-            animAttack2 = addAnimation(AssetsConstent.animSpeed12, "acter_change_sprite", Animation.PlayMode.NORMAL);
-            animChangeSprite = addAnimation(AssetsConstent.animSpeed12, "acter_attack1", Animation.PlayMode.NORMAL);
-            animJump = addAnimation(AssetsConstent.animSpeed12, "acter_jump", Animation.PlayMode.NORMAL);
-            animDown = addAnimation(AssetsConstent.animSpeed12, "acter_down", Animation.PlayMode.NORMAL);
-            animRun = addAnimation(AssetsConstent.animSpeed12, "acter_run");
-        }
-    }
 
     public class AssetMainPanel extends AbstractItem {
         // 无精灵的面板
@@ -496,6 +477,55 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         public void update(int lives, SPRITE_TYPE type) {
             mainUserLive = lives;
             currentSprite = type;
+        }
+    }
+
+    public class AssetMainUser extends AbstractItem{
+        public final AtlasRegion main;
+        public final AtlasRegion isUp;
+        public final Animation animIdle;
+        public final Animation animAttack;
+        public final Animation animAttack2;
+        public final Animation animChangeSprite;
+        public final Animation animJump;
+        public final Animation animDown;
+        public final Animation animRun;
+
+        AssetMainUser(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("acter_main");
+            isUp = addAtlasRegion("acter_fly");
+            animIdle = addAnimation(AssetsConstent.animSpeed12, "acter_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed12, "acter_attack2", Animation.PlayMode.NORMAL);
+            animAttack2 = addAnimation(AssetsConstent.animSpeed12, "acter_change_sprite", Animation.PlayMode.NORMAL);
+            animChangeSprite = addAnimation(AssetsConstent.animSpeed12, "acter_attack1", Animation.PlayMode.NORMAL);
+            animJump = addAnimation(AssetsConstent.animSpeed12, "acter_jump", Animation.PlayMode.NORMAL);
+            animDown = addAnimation(AssetsConstent.animSpeed12, "acter_down", Animation.PlayMode.NORMAL);
+            animRun = addAnimation(AssetsConstent.animSpeed12, "acter_run");
+        }
+    }
+
+    public class AssetZj extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+        AssetZj(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("zj_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed60,"zj_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed60,"zj_attack");
+            animDead = addAnimation(AssetsConstent.animSpeed24,"zj_dead");
+        }
+    }
+
+    public class AssetJiguan extends AbstractItem{
+        public final AtlasRegion jg0;
+        public final AtlasRegion jg1;
+        AssetJiguan(TextureAtlas atlas) {
+            super(atlas);
+            jg0 = addAtlasRegion("jg0");
+            jg1 = addAtlasRegion("jg1");
         }
     }
 }

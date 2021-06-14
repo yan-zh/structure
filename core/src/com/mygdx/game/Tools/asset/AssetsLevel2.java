@@ -25,7 +25,9 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
     private AssetManager assetManager;
 
     // 测试扩展资源
-    public AssetTestItem assetTestItem;
+    public AssetDaoju daoju;
+    public AssetPingtaiguai pingtaiguai;
+    public AssetZboos zboos;
 
     // 加载字体
     public AssetFonts fonts;
@@ -106,7 +108,9 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
         }
 
         // 创建关卡资源对象
-        assetTestItem = new AssetTestItem(atlas_level02);
+        daoju = new AssetDaoju(atlas_level02);
+        pingtaiguai = new AssetPingtaiguai(atlas_level02);
+        zboos = new AssetZboos(atlas_level02);
     }
 
 
@@ -158,4 +162,37 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
         }
     }
 
+    public class AssetDaoju extends AbstractItem{
+        public final AtlasRegion bingtai;
+        public final AtlasRegion bingkuai;
+        AssetDaoju(TextureAtlas atlas) {
+            super(atlas);
+            bingtai = addAtlasRegion("bingtai");
+            bingkuai = addAtlasRegion("bingkuai");
+        }
+    }
+
+    public class AssetPingtaiguai extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        AssetPingtaiguai(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("pingtaiguai_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed24,"pingtaiguai_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed24,"pingtaiguai_attack");
+        }
+    }
+
+    public class AssetZboos extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        AssetZboos(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("zBoss_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"zBoss_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"zBoss_attack");
+        }
+    }
 }

@@ -17,6 +17,7 @@ public class AssetsConstent {
     // 纹理集描述文件路径
     public static final String TEXTURE_ATLAS_NORMAL = "core/assets/images-out/canyonBunny.atlas";
     // 第一关资源
+    public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_0 = "core/assets/images_level/level0.atlas";
     public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_1 = "core/assets/images_level/level1.atlas";
     // 第二关资源
     public static final String TEXTURE_ATLAS_OBJECTS_LEVEL_2 = "core/assets/images_level/level2.atlas";
