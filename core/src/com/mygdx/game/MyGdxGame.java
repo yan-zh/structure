@@ -129,7 +129,7 @@ public class MyGdxGame extends ApplicationAdapter {
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
 				ActConstants.changeStageTo = 0;
 			}else if(ActConstants.changeStageTo==3){
-				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+				MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
 				ActConstants.changeStageTo = 0;
 			}
 		}

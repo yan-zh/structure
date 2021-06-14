@@ -110,11 +110,12 @@ public class Stage2 extends MyStage {
 
 
         //测试***********************************
-        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,102*50,11*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
         new BulletAndMonsterA();
         new MonsterASensorAndMainCharacter();
+        new WindFairyAndMainCharacter();
 
         //测试***********************************
 
@@ -128,53 +129,60 @@ public class Stage2 extends MyStage {
         new BulletAndMain();
 
 
-//8.5-7.3=1.2
-        //木系荆棘 * 区域1
-        this.addActor(new Spine(world,7.3f,84.5f-23.4f,5,0.5f));
-        this.addActor(new Spine(world,14f-1.2f,82.5f-23.4f,0.5f,11f));
-        this.addActor(new Spine(world,20.5f-1.2f,85f-23.4f,5.5f,3f));
-        this.addActor(new Spine(world,26.5f-1.2f,82.5f-23.4f,0.5f,10f));
-        this.addActor(new Spine(world,49.5f-1.2f,82.5f-23.4f,0.5f,15f));
-        this.addActor(new Spine(world,71.2f-1.2f,82.3f-23.4f,0.5f,3.5f));
-        //缺一个lyq的平台和可以上下的桥@lyq
+        //荆棘》》》》》》》》》》》》》》》》》》》》》
+        this.addActor(new Spine(world,10.4f,59.34f,3.72f,4.5f));
+        this.addActor(new Spine(world,14.98f,58.59f,3.72f,4.5f));
+        this.addActor(new Spine(world,17.98f,61.2f,3.72f,4.5f));
+        this.addActor(new Spine(world,18.9f,64f,3.72f,4.5f));
+        this.addActor(new Spine(world,20.04f,65.13f,3.72f,4.5f));
+        this.addActor(new Spine(world,20.2f,62.18f,3.72f,4.5f));
+
+        this.addActor(new Spine(world,26.45f,59.09f,3.72f,4.5f));
+        this.addActor(new Spine(world,45.81f,58.82f,3.72f,4.5f));
+        this.addActor(new Spine(world,50.41f,59.17f,3.72f,4.5f));
+        this.addActor(new Spine(world,54.72f,58.83f,3.72f,4.5f));
 
 
-        //区域2
-        this.addActor(new Spine(world,101.4f-1.2f,84.6f-23.4f,5f,0.5f));
-        this.addActor(new Spine(world,120f-1.2f,86f-23.4f,0.5f,12f));
-        this.addActor(new Spine(world,125.5f-1.2f,89f-23.4f,0.5f,1f));
-//        this.addActor(new Spine(world,122.5f-1.2f,89f-23.4f,0.5f,1f));
+
+
+        this.addActor(new Spine(world,68.17f,59.12f,2f,2f));
+        this.addActor(new Spine(world,69.3f,60.32f,2f,2f));
+        this.addActor(new Spine(world,70.04f,59.45f,2f,2f));
+        this.addActor(new Spine(world,101.18f,63.77f,2f,2f));
+        this.addActor(new Spine(world,101.27f,61f,2f,2f));
+        this.addActor(new Spine(world,102.62f,60.2f,2f,2f));
+        this.addActor(new Spine(world,110.65f,62.15f,2f,2f));
+        this.addActor(new Spine(world,112.37f,61.74f,2f,2f));
+        this.addActor(new Spine(world,114.17f,61.36f,2f,2f));
+        this.addActor(new Spine(world,116.05f,61.12f,2f,2f));
+
+        this.addActor(new Spine(world,118.15f,61.05f,2f,2f));
+        this.addActor(new Spine(world,120.15f,61.40f,2f,2f));
+
+
+        this.addActor(new Spine(world,122.25f,62f,2f,2f));
+        this.addActor(new Spine(world,124.6f,62.29f,2f,2f));
+        this.addActor(new Spine(world,125.62f,63f,2f,2f));
+        this.addActor(new Spine(world,126.2f,65.63f,2f,2f));
+
+        this.addActor(new Spine(world,66.11f,51.74f,2f,2f));
+        this.addActor(new Spine(world,63.85f,49.93f,2f,2f));
+        this.addActor(new Spine(world,61.39f,48.02f,2f,2f));
+        this.addActor(new Spine(world,60.45f,47.51f,2f,2f));
+        this.addActor(new Spine(world,57.95f,45.78f,2f,2f));
+        this.addActor(new Spine(world,56.86f,43.94f,2f,2f));
+        this.addActor(new Spine(world,55.64f,42.62f,2f,2f));
+        this.addActor(new Spine(world,54.49f,41.52f,2f,2f));
+
+
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500-60, 5150-1170, 3f,2f,ActConstants.brokenBridgeID, world, "brokenDoor"));
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
-
-        //区域3
-        this.addActor(new Spine(world,69f-1.2f,73.5f-23.4f,1f,1f));
-        this.addActor(new Spine(world,68f-1.2f,73f-23.4f,1f,1f));
-        this.addActor(new Spine(world,67f-1.2f,72.5f-23.4f,1f,1f));
-        this.addActor(new Spine(world,66f-1.2f,72f-23.4f,1f,1f));
-        this.addActor(new Spine(world,65-1.2f,71f-23.4f,1f,1f));
-        this.addActor(new Spine(world,64-1.2f,70f-23.4f,1f,1f));
-        this.addActor(new Spine(world,63-1.2f,69.5f-23.4f,1f,1f));
-        this.addActor(new Spine(world,62-1.2f,69f-23.4f,1f,1f));
-        this.addActor(new Spine(world,61-1.2f,68.5f-23.4f,1f,1f));
-        this.addActor(new Spine(world,60-1.2f,67.5f-23.4f,1f,1f));
-        this.addActor(new Spine(world,59-1.2f,67f-23.4f,1f,1f));
-        this.addActor(new Spine(world,58-1.2f,66.5f-23.4f,1f,1f));
 
 
         Flower flower = new Flower(world,64-1.2f,13.4f,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
         this.addActor(flower);
         new FlowerAndMainCharacter();
-
-        //64 36.8-13.4=23.4
-
-
-        new WindFairyAndMainCharacter();
-       // this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,35*50,ActConstants.windFairyID,world,"WindFairy"));
-
-       // this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,30*50,10*50,ActConstants.windFairyID,world,"WindFairy"));
-//147 48
 
 
         this.addActor(new ReverberateAxe(world,86.5f-1.2f,45.5f-23.4f));
@@ -194,153 +202,17 @@ public class Stage2 extends MyStage {
         this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
-//        this.addActor(new BossLauncher(world,8,78));
-//        new BossLauncherAndMainCharacter();
-//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
 
 
 
-//测试激光
-//        new ReflectiveStoneAndBullet();
-//        this.addActor(new StillReflectiveStone(100*50,12*50,ActConstants.stillReflectiveStoneID,world,1));
-//        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,110*50, 12*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-//        new ReflectiveStoneAndMain();
-//        new StillReflectiveStoneAndMain();
 
-
-        //this.addActor(new Boss(world,120f,15f,3f,5f,ActConstants.BossID,"boss"));
-
-//
-//        this.addActor(new MoveLauncher(world,100,15));
-//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
-//        new MoveLauncherAndBullet();
-
-        //        new WindFairyAndMainCharacter();
-//
-
-//
-//        new IceFairyAndMainCharacter();
-//
-//        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate,300,500,ActConstants.iceFairyID,world,"IceFairy"));
-//
-//        this.addActor(new Spine(world,60,10,1,3));
-//        new MainCharacterAndSpine();
-//
-//
-//        this.addActor(new Boss1(world,50,8));
-//        new Boss1SensorContact();
-//        new Boss1AndMainCharacter();
-//
-//
-//        this.addActor(new Axe(world,40,15));
-//        new AxeAndMainCharacter();
-//        new AxeSensorContact();
-//
-//        this.addActor(new Frag(world,30,8));
-//
-//        new HeatFragEye();
-//
-//
-//        new BulletAndMonsterA();
-//        MonsterA monsterA = new MonsterA(world,20,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(monsterA);
-//
-//
-//        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(monsterA2);
-//
-//        new MonsterASensorAndMainCharacter();
-//
-//        Flower flower = new Flower(world,10,10,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,Assets.instance.mainCharacter.animRun);
-//        this.addActor(flower);
-//        new FlowerAndMainCharacter();
-//
-//
-//        EatPlatform eatPlatform1 = new EatPlatform(world,70,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(eatPlatform1);
-//
-//        EatPlatform eatPlatform2 = new EatPlatform(world,80,10,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
-//        this.addActor(eatPlatform2);
-//
-//
-//        new EatPlatformAndMainCharacter();
-//
-//
-//        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,85,13);
-//        this.addActor(tongueMonster);
-//
-//
-//        TongueMonster tongueMonster2 = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,90,13);
-//        this.addActor(tongueMonster2);
-//
-//        new TongueMonsterAndMainCharacter();
-//
-//
-//        Blower blower = new Blower(world,6,10,3,10,Assets.instance.bunny.animNormal);
-//        this.addActor(blower);
-//
-//        new BlowerAndMainCharacter();
-//
-//
-//
-//
-//
-//
-//        this.addActor(new BossLauncher(world,45,15));
-//        new BossLauncherAndMainCharacter();
-//        ((BossLauncher)ActConstants.publicInformation.get("BossLauncher")).start();
-//
-////
-////        new BulletAndMonsterA();
-////        MonsterA monsterA2 = new MonsterA(world,25,10,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animCopterTransformBack,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,Assets.instance.goldCoin.animGoldCoin);
-////        this.addActor(monsterA2);
-//
-//
-//
-//        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,20,10);
-//        this.addActor(ballLauncher);
-//        new BallLauncherAndMainCharacter();
-
-//        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,25,10);
-//        this.addActor(ballReceiver);
-//        new BallAndBallReceiver();
-
-
-//
-//        this.addActor(new ReverberateAxe(world,40,15));
-//        new AxeAndMainCharacter();
-//        new AxeSensorContact();
-
-//yzh***************************************************************
-
-
-//        //************************************郐洋
-//        new BridgeAndMainCharacter();
-//        new PortalAndMainCharacter();
-//        new BridgeAndIce();
-//        new SensorAndMainCharacter();
-//        new ReflectiveStoneAndBullet();
-//        new SandAndMainCharacter();
-//        this.addActor(new rotateSwitch( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6580, 82, ActConstants.switchID, world, "rotateSwitch", "door"));
-//        this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 6980, 82, ActConstants.switchID, world, "door"));
-//        this.addActor(new Ice(5600,650,ActConstants.IceID,world,"ice"));
-//        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 500, 4500, ActConstants.brokenBridgeID, world, "brokenBridge"));
-//        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,7500, 82, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-//        this.addActor(new Sensor(7300,82,ActConstants.SensorID,world,"Sensor"));
-//        this.addActor(new ReflectiveStone(8080,82,ActConstants.ReflectiveStoneID,world,"ReflectiveStone1"));
-//        this.addActor(new SandPlat( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 9033, 585, ActConstants.SandID, world, "SandPlat1"));
-//        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,8500,82,7500,82,ActConstants.portalID,world,"Portal",true,"Stage1"));
-//
         ActConstants.publicInformation.put("stage2", this);
-//        //************************************郐洋
 
-
-        //****************************林韫奇 主角9600
 
         this.addActor(new Platform(world,25-1.2f,88-23.4f,3f,5f,ActConstants.platformID,"Platform"));
         this.addActor(new Platform(world,84-1.2f,80-23.4f,3f,5f,ActConstants.platformID,"Platform"));
 
-//        this.addActor(new HangedBalls(world,"012",10200));
+
         this.addActor(new ThinSurface(world,54.1f-1.2f,65-23.4f,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
         this.addActor(new HangedBalls(world,208-1.2f,30,"012",ActConstants.hangedBallsID,"hangedBalls"));
@@ -354,6 +226,8 @@ public class Stage2 extends MyStage {
         new BubbleAndCharacter();
         this.addActor(new PswDoor(world,64f-1.2f,82f-23.4f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
         new PswDoorContact();
+
+
     }
 
     @Override
