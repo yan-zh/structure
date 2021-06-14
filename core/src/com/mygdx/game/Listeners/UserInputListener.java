@@ -244,6 +244,10 @@ public class UserInputListener extends InputListener {
     @Override
     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
+//        MoveLauncher moveLauncher = (MoveLauncher) ActConstants.publicInformation.get("moveLauncher");
+//        moveLauncher.startMove();
+//        moveLauncher.start();
+
         synchronized (ActConstants.physicalActionListLock){
             //button 0左键 1右键
             if(ActConstants.skillGroups[ActConstants.currentSkillGroup]!=null){

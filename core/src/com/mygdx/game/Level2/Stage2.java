@@ -64,7 +64,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,7,66));//单位是米 7 89初始位置 7 66  105 11
+        this.addActor(new MainCharacter(world,66,14));//单位是米 7 89初始位置 7 66  105 11
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -111,7 +111,7 @@ public class Stage2 extends MyStage {
 
         //测试***********************************
 //        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
-        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (8*50),70*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        //this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (8*50),70*50,ActConstants.woodFairyID,world,"WoodFairy"));
 
         new SandFairyAndMainCharacter();
         new WoodFairyAndMainCharacter();
@@ -186,6 +186,9 @@ public class Stage2 extends MyStage {
         Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animDead,AssetsLevel1.instance.srh.animDead);
         this.addActor(flower);
         new FlowerAndMainCharacter();
+        //配给检测食人花的
+        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (66*50),14*50,ActConstants.windFairyID,world,"WindFairy"));
+
 
 
         this.addActor(new ReverberateAxe(world,86.5f-1.2f,45.5f-23.4f));

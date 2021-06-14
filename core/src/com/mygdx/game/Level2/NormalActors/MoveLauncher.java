@@ -16,6 +16,7 @@ import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.UserData;
 
 public class MoveLauncher extends Actor {
@@ -70,17 +71,22 @@ public class MoveLauncher extends Actor {
 
     Animation normal;
     Animation goDie;
+    Animation attack;
 
     float normalStateTime;
     float dieStateTime;
-
+    float attackStateTime;
     TextureRegion currentFrame;
+
+    boolean active;
+
 
 
 
 
     public MoveLauncher(World world,float physicalX, float physicalY) {
 
+        active = false;
 
         range=5f;
         duration=0.5f;
@@ -105,6 +111,7 @@ public class MoveLauncher extends Actor {
         health=5;
         normalStateTime = 0;
         dieStateTime = 0;
+        attackStateTime = 0;
         this.world = world;
 
         //启动一个打的计时器，1秒动一下
@@ -184,7 +191,8 @@ public class MoveLauncher extends Actor {
 
 
         normal = Assets.instance.bunny.animNormal;
-        goDie = Assets.instance.mainCharacter.animRun;
+        goDie = Assets.instance.bunny.getAnimCopterRotate;
+        attack = Assets.instance.mainCharacter.animRun;
 
         currentFrame = (TextureRegion) normal.getKeyFrame(0);
 
@@ -201,9 +209,16 @@ public class MoveLauncher extends Actor {
 
 
         if(die==false){
-            mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
-            normalStateTime += delta;
-            currentFrame = (TextureRegion) normal.getKeyFrame(normalStateTime,true);
+            if(active==true){
+                mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
+                attackStateTime += delta;
+                currentFrame = (TextureRegion) attack.getKeyFrame(attackStateTime,true);
+            }else{
+                mySimulation.setTransform(new Vector2(getX()/50,getY()/50),0);
+                normalStateTime += delta;
+                currentFrame = (TextureRegion) normal.getKeyFrame(normalStateTime,true);
+            }
+
         }else{
             dieStateTime += delta;
             currentFrame = (TextureRegion) goDie.getKeyFrame(dieStateTime,false);
@@ -389,6 +404,7 @@ public class MoveLauncher extends Actor {
     public void start(){
 
         timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
+        active = true;
     }
 
 //    public void stop(){
