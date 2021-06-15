@@ -16,7 +16,11 @@ import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.SkillGroupManager.SkillGroupSand;
+import com.mygdx.game.SkillGroupManager.SkillGroupWind;
+import com.mygdx.game.SkillGroupManager.SkillGroupWood;
 import com.mygdx.game.Tools.asset.AssetsUI;
+import com.mygdx.game.abstraction.MyStage;
 
 public class UserInputListener extends InputListener {
 

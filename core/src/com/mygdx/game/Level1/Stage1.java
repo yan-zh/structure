@@ -28,6 +28,7 @@ import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
 
@@ -50,13 +51,21 @@ public class Stage1 extends MyStage {
 
     public int x;
 
+    // GUI界面的相机
+    private OrthographicCamera cameraGUI;
+    private SpriteBatch batch;
+
+
+
 
 
     ChangeCamera changeCamera;
 
     public Stage1(InputMultiplexer inputMultiplexer) {
 
-        AssetsLevel0.instance.instance.init(new AssetManager());
+
+
+        AssetsLevel1.instance.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 
@@ -125,6 +134,16 @@ public class Stage1 extends MyStage {
         //为这一关用到的物理碰撞监听添加一个函数
 
 
+
+        // 测试GUI部分：史用
+// 初始化batch
+        batch = new SpriteBatch();
+// 创建GUI相机并配置参数
+        cameraGUI = new OrthographicCamera(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
+        cameraGUI.position.set(0,0,0);
+        cameraGUI.setToOrtho(true);
+// 反转y轴
+        cameraGUI.update();
 
 
 
@@ -209,6 +228,9 @@ public class Stage1 extends MyStage {
 //        }
 
 
+        // 应用GUI相机的位置更新
+        cameraGUI.update();
+
     }
 
     @Override
@@ -241,6 +263,9 @@ public class Stage1 extends MyStage {
 //            MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
 //        }
 
+
+        // 尝试在此处绘制GUI图片
+        renderGui(batch);
     }
 
     public World getWorld(){
@@ -251,5 +276,14 @@ public class Stage1 extends MyStage {
     public void dispose() {
 
         super.dispose();
+    }
+
+    public void renderGui(SpriteBatch batch){
+        batch.setProjectionMatrix(cameraGUI.combined);
+        batch.begin();
+        // 绘制人物的状态栏（左上角）
+        AssetsUI.instance.drawUpdate(batch);
+        batch.end();
+
     }
 }

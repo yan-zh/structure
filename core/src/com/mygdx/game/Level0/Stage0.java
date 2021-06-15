@@ -3,6 +3,9 @@ package com.mygdx.game.Level0;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -13,13 +16,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Null;
+import com.badlogic.gdx.utils.Scaling;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.Stage2;
-import com.mygdx.game.Level3.Stage3;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsStageChage;
 import com.mygdx.game.Tools.asset.AssetsUI;
 
 
@@ -61,13 +64,24 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
 
         // 播放背景音乐
         AudioManager.instance.play(AssetsUI.instance.music.bmg01);
+
+
+        // 测试面板
+
+
         this.addActor(backGround);
         this.addActor(startButton);
         this.addActor(settingButton);
         this.addActor(exitButton);
       //  this.addListener(new MyInputListener1());//这个监听是对从最外层传入的输入信息的响应,可以多个舞台各自new一个同一个类的对象，都有效果
         //****************注意，这个监听就算这个舞台没运行act也有效果
-        ActConstants.publicInformation.put("stage0", this);
+
+
+    }
+
+    @Override
+    public void act(){
+        super.act();
     }
 
 
@@ -79,9 +93,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 // 在适当的条件（这里是按钮被按下），切换舞台，用下一个舞台换掉MyGdxGame的currentStage
                 AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
                 AudioManager.instance.stopMusic();
-                Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
-                stage0.dispose();
-                MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
+                MyGdxGame.currentStage = new Stage1(ActConstants.inputMultiplexer);
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;
             }
@@ -109,6 +121,9 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
                 // 点击打开社渚窗口：还未写
+
+                MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
+                        new Stage0(ActConstants.inputMultiplexer));
 
                 return false;
             }
@@ -161,7 +176,5 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         ImageButton imageButton = new ImageButton(new TextureRegionDrawable(region),new TextureRegionDrawable(region));
         imageButton.setPosition(position.x,position.y);
         return imageButton;
-
-
     }
 }

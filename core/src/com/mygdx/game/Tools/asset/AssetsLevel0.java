@@ -97,15 +97,15 @@ public class AssetsLevel0 implements Disposable, AssetErrorListener {
         music = new AssetMusic(assetManager);
 
         // 加载测试纹理集 第一关
-        TextureAtlas atlas_level02 = assetManager.get(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_2);
+        TextureAtlas atlas_level0 = assetManager.get(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_0);
         // 激活平滑纹理过滤
         for (Texture t :
-                atlas_level02.getTextures()) {
+                atlas_level0.getTextures()) {
             t.setFilter(TextureFilter.Linear,TextureFilter.Linear);
         }
 
         // 创建关卡资源对象
-        xianjing = new AssetXianjing(atlas_level02);
+        xianjing = new AssetXianjing(atlas_level0);
     }
 
 
