@@ -12,44 +12,47 @@ import com.mygdx.game.Tools.PhysicalEntityDefine;
 
 public class BulletSkill extends Actor {
 
+    //the physical simulation of the bullet body
     public Body mySimulation;
     FixtureDef myFixtureDef;
     BodyDef myBodyDef;
     Fixture myFixture;
+    World world;
 
+
+    //Animations
     Animation prepare;
     Animation fly;
     Animation contact;
 
+    //frames
     TextureRegion currentFramePrepare;
     TextureRegion currentFrameFly;
     TextureRegion currentFrameContact;
 
-
-    public boolean state;//true就是存在
-
+    //flags for control animation play
     boolean fireMark;
     public boolean flyMark;
     public boolean contactMark;
 
+    //stateTimes for animation play
     float stateTime;
     float stateTimeContact;
 
-    World world;
-
+    //used to distinguish each bullet
     static int bulletMark=0;
-
     public int myMark;
 
-    short count;
-
+    //pixel position
     float drawX;
     float drawY;
 
+    //the direction of fire
     float[] direction;
 
     int damage;
 
+    //flag for deleting
     boolean delete;
 
     public long actorId;
@@ -109,7 +112,7 @@ public class BulletSkill extends Actor {
 
         stateTime=0;
         stateTimeContact=0;
-        count=0;
+
         currentFrameContact = (TextureRegion) contact.getKeyFrames()[0];
         currentFramePrepare = (TextureRegion) prepare.getKeyFrame(0);
         currentFrameFly = (TextureRegion) fly.getKeyFrame(0);
@@ -180,7 +183,6 @@ public class BulletSkill extends Actor {
         if(flyMark==true) batch.draw(currentFrameFly,drawX, drawY);
 
         if(contactMark==true) batch.draw(currentFrameContact,drawX, drawY);
-
     }
 
     public void deleteBody(){

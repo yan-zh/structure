@@ -1,6 +1,7 @@
 package com.mygdx.game.Level1;
 
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -25,6 +26,7 @@ import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
@@ -54,7 +56,7 @@ public class Stage1 extends MyStage {
 
     public Stage1(InputMultiplexer inputMultiplexer) {
 
-
+        AssetsLevel0.instance.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 

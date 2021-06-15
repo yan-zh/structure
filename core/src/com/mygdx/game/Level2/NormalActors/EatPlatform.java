@@ -66,6 +66,10 @@ public class EatPlatform extends Actor {
         this.release = release;
         this.frozen = frozen;
 
+        wait.setFrameDuration(0.1f);
+        release.setFrameDuration(0.1f);
+        frozen.setFrameDuration(0.1f);
+
 
         contact = false;
         state = State.wait;

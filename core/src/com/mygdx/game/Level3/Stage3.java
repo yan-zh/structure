@@ -47,7 +47,7 @@ public class Stage3 extends MyStage {
 
     public Stage3(InputMultiplexer inputMultiplexer){
 
-//        AssetsUI.instance.init(new AssetManager());
+        AssetsLevel2.instance.instance.init(new AssetManager());
 
 
         ActConstants.changeStageTo = 0;
@@ -257,7 +257,7 @@ public class Stage3 extends MyStage {
 
 //AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animAttack,AssetsLevel2.instance.pingtaiguai.animBreath
         new EatPlatformAndMainCharacter();
-        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90, Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
+        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90, AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animAttack,AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animBreath);
         this.addActor(eatPlatform1);
 
         EatPlatform eatPlatform2 = new EatPlatform(world,235.85f,94.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);

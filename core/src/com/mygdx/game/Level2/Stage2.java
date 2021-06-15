@@ -22,6 +22,7 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
@@ -44,7 +45,7 @@ public class Stage2 extends MyStage {
 
     public Stage2(InputMultiplexer inputMultiplexer){
 
-
+        AssetsLevel1.instance.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 
