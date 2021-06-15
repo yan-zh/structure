@@ -42,7 +42,7 @@ public class Portal extends Actor{
         this.isActive = isActive;
         //Set position
         this.setX(x);
-        this.setY(y);
+        this.setY(y+40);
 
         //Set the destination position
         this.dstXPos = dstX;

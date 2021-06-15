@@ -154,7 +154,7 @@ public class ActConstants {
     public static long BearID;
     static{
         BearID=1;
-        BearID=BearID<<35;
+        BearID=BearID<<36;
     }
 
     public static long BubbleID;
