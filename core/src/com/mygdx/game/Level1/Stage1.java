@@ -89,7 +89,7 @@ public class Stage1 extends MyStage {
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
         this.addActor(new MainCharacter(world,27,6f));//单位是米  27,6f  496 5
-        this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 27, 6, ActConstants.beaconID, world, "Beacon"));
+        this.addActor(new Beacon( 27, 6, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -167,24 +167,23 @@ public class Stage1 extends MyStage {
 //        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsUI.instance.cdxgw.animBreath,AssetsUI.instance.cdxgw.animDead);
 //        this.addActor(monsterA);
 
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
+        this.addActor(new Portal(5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
 
 
         //Region two
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 286, 3,5f,0.26f, ActConstants.brokenBridgeID, world, "brokenBridge"));
-        new BridgeAndMainCharacter();
+        this.addActor(new brokenBridge( AssetsLevel0.instance.xianjing.main,AssetsLevel0.instance.xianjing.main, 286, 3,5f,0.26f, ActConstants.brokenBridgeID, world, "brokenBridge"));        new BridgeAndMainCharacter();
 //
 //        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,AssetsUI.instance.cddpxgw.animBreath,AssetsUI.instance.cddpxgw.animDead);
 //        this.addActor(monsterA2);
 
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,18150,600,505,3,ActConstants.portalID,world,"Portal2",true,"none"));
+        this.addActor(new Portal(18150,600,505,3,ActConstants.portalID,world,"Portal2",true,"none"));
 
 
         //Region3
         this.addActor(new Boss1(world,499,13));
         new Boss1SensorContact();
         new Boss1AndMainCharacter();
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
+        this.addActor(new Portal(37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 //        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,47*50, (int) (6.2*50),505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));
 
 

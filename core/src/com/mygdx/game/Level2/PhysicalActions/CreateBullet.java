@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.PhysicalAction;
@@ -20,8 +21,9 @@ public class CreateBullet implements PhysicalAction {
     float[] direction;
     long actorId;
     int damage;
+    int type;
 
-    public CreateBullet(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
+    public CreateBullet(float x, float y, float[] direction, long actorId, int damage,int type) {
         this.prepare = prepare;
         this.fly = fly;
         this.contact = contact;
@@ -30,10 +32,11 @@ public class CreateBullet implements PhysicalAction {
         this.direction = direction;
         this.actorId = actorId;
         this.damage = damage;
+        this.type = type;
     }
 
     @Override
     public void act() {
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,x,y,direction,actorId,damage));
+        MyGdxGame.currentStage.addActor(new BulletSkill(AssetsUI.instance.spriteAttack.fzd,AssetsUI.instance.spriteAttack.animFhit,x,y,direction,actorId,damage,type));
     }
 }

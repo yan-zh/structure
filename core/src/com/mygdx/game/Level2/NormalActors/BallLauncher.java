@@ -70,6 +70,12 @@ public class BallLauncher extends Actor {
     public void act(float delta) {
         super.act(delta);
 
+        if(launch==true){
+
+            realLaunch();
+            launch=false;
+
+        }
 
 
     }

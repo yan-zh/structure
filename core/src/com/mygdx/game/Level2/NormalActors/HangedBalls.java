@@ -1,6 +1,7 @@
 package com.mygdx.game.Level2.NormalActors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -9,9 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreatePortal;
-import com.mygdx.game.Level2.Stage2;
-import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.BodyBuilder;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class HangedBalls extends Actor {
     String password;
@@ -25,9 +26,31 @@ public class HangedBalls extends Actor {
 
     World world;
     String name;
+    TextureRegion tr0;
+    TextureRegion tr1;
+    TextureRegion tr2;
+    Image img0;
+    Image img1;
+    Image img2;
+
+    Array<Body> bodies;
+    Array<Vector2> positions;
+
 
 
     public HangedBalls(World world, float x, float y,String password,long actorId,String name){
+       tr0 =(TextureRegion) AssetsLevel1.instance.jiemi.miZhong;
+        tr1 =(TextureRegion) AssetsLevel1.instance.jiemi.miDuan;
+        tr2 =(TextureRegion) AssetsLevel1.instance.jiemi.miChang;
+        img0 =new Image(tr0);
+        img1 =new Image(tr1);
+        img2 =new Image(tr2);
+//
+
+
+
+
+
         setPassword(password);
         this.world=world;
         this.name=name;
@@ -44,9 +67,9 @@ public class HangedBalls extends Actor {
     }
 
     public void createBalls(){
-        Array<Body> bodies= new Array<Body>();
+        bodies= new Array<Body>();
         Array<Body> vertices=new Array<Body>();
-        Array<Vector2> positions=new Array<>();
+        positions=new Array<>();
 
         Array<Vector2> vertexPos=new Array<>();
         vertexPos.add(new Vector2(216f, 69f));
@@ -106,8 +129,15 @@ public class HangedBalls extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        batch.draw(tr1,(bodies.get(0).getPosition().x-1f)*50,(bodies.get(0).getPosition().y-1.5f)*50,
+                2.5f*50f,5*50f);
+        batch.draw(tr2,(bodies.get(1).getPosition().x-1f)*50,(bodies.get(1).getPosition().y-1.5f)*50,
+                2*50f,5*50f);
+        batch.draw(tr0,(bodies.get(2).getPosition().x-1f)*50,(bodies.get(2).getPosition().y-1.5f)*50,
+                2*50f,5*50f);
+//        System.out.println(180*bodies.get(0).getAngle()/3.14);
 
-//        batch.draw(region,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+
     }
 
 }

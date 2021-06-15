@@ -63,7 +63,7 @@ public class MainCharacter extends Actor {
         walkRight = AssetsUI.instance.zj.animBreath;
         hitRight = AssetsUI.instance.zj.animDead;
 
-        reborn = AssetsUI.instance.zj.animDead;
+        reborn = AssetsUI.instance.decoration.animChongsheng;
 
         timeWalk = 0;
         timeHit = 0;

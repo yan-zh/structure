@@ -71,8 +71,8 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,490,73));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
-        this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 35, 66, ActConstants.beaconID, world, "Beacon"));
+        this.addActor(new MainCharacter(world,172,41));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
+        this.addActor(new Beacon(35, 66, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
 
@@ -252,7 +252,7 @@ public class Stage3 extends MyStage {
         this.addActor(new SleepingBear(world,97f,64f,20f,10f,ActConstants.BearID,"sleepingBear"));
         new BearAndMainCharacter();
 
-        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.head,Assets.instance.mainCharacter.main,205.6f,85.5f);
+        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.daoju.bingkuai,AssetsLevel2.instance.decoration.csg1,205.6f,85.5f);
         this.addActor(tongueMonster);
         new TongueMonsterAndMainCharacter();
 
@@ -278,24 +278,23 @@ public class Stage3 extends MyStage {
         this.addActor(eatPlatform6);
 
 
-        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.head,158.3f,41);
+        BallLauncher ballLauncher = new BallLauncher(world,AssetsLevel2.instance.decoration.huolu,158.3f,41);
         this.addActor(ballLauncher);
         new BallLauncherAndMainCharacter();
 
 
-        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.head,207.3f,36f);
+        BallReceiver ballReceiver = new BallReceiver(world,AssetsLevel2.instance.decoration.huoqiujieshouqi,207.3f,36f);
         this.addActor(ballReceiver);
         new BallAndBallReceiver();
 
 
         this.addActor(new Ice(151,70,ActConstants.IceID,world,"ice"));
         new BridgeAndIce();
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 157, 56, 3f,2f,ActConstants.brokenBridgeID, world, "brokenBridge"));
-
+        this.addActor(new brokenBridge( AssetsLevel2.instance.daoju.bingtai,AssetsLevel2.instance.daoju.bingtai, 157, 56, 3f,2f,ActConstants.brokenBridgeID, world, "brokenIce"));
 
         new ReflectiveStoneAndBullet();
         this.addActor(new StillReflectiveStone(650*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
-        this.addActor(new laserTransmitter(Assets.instance.bunny.head, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new laserTransmitter((int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
         this.addActor(new StillReflectiveStone(631*50, (int) (67.5*50),ActConstants.stillReflectiveStoneID,world,2));
         this.addActor(new StillReflectiveStone(656*50, (int) (73.3*50),ActConstants.stillReflectiveStoneID,world,1));
         this.addActor(new StillReflectiveStone(617*50, (int) (81.7*50),ActConstants.stillReflectiveStoneID,world,1));
@@ -313,35 +312,36 @@ public class Stage3 extends MyStage {
 
         //244.04076,78.68498
 //357.14578,99.2157
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,12200,3900,357,99,ActConstants.portalID,world,"PortalIceTriggered",false,"none"));
+        this.addActor(new Portal(12200,3900,357,99,ActConstants.portalID,world,"PortalIceTriggered",false,"none"));
 
 //机关的位置：422， 115
 //Portal的位置：436，80
 //Dst:515,49
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,21800,4000,515,49,ActConstants.portalID,world,"Portal2",false,"none"));
-        this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 422f, 115f, ActConstants.switchID, world,"rotateSwitchPortal", "portal"));        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,30000,4000,537,66,ActConstants.portalID,world,"Portal4",true,"none"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"PortalFinal",true,"none"));
+        this.addActor(new Portal(21800,4000,515,49,ActConstants.portalID,world,"Portal2",false,"none"));
+        this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 422f, 115f, ActConstants.switchID, world,"rotateSwitchPortal", "portal"));
+        this.addActor(new Portal(27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
+        this.addActor(new Portal(30000,4000,537,66,ActConstants.portalID,world,"Portal4",true,"none"));
+        this.addActor(new Portal(24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
+        this.addActor(new Portal(38950,4100,485,65,ActConstants.portalID,world,"PortalFinal",true,"none"));
 
 
         this.addActor(new LaserDoor(world,610,83.5f));
         new LaserDoorAndLaser();
 
 
-        Blower blower = new Blower(world,155.6f,48.7f,1.5f,15,Assets.instance.bunny.animNormal);
+        Blower blower = new Blower(world,155.6f,48.7f,1.5f,15,AssetsLevel2.instance.decoration.animCf);
         this.addActor(blower);
 
-        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,645f,51f,ActConstants.SandID,world,"sandPlat1"));
+        this.addActor(new SandPlat(AssetsLevel2.instance.decoration.sand,Assets.instance.bunny.getAnimCopterRotate,645f,51f,ActConstants.SandID,world,"sandPlat1"));
         new SandAndMainCharacter();
 //mousepoint   645.78735   53.93447
 //        639.74365,71.87999
 //        385.1166,94.39422  diyige futukui
 //        243.1743,78.68498
 
-        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,639.7f,69.9f,ActConstants.SandID,world,"sandPlat2"));
+        this.addActor(new SandPlat(AssetsLevel2.instance.decoration.sand,Assets.instance.bunny.getAnimCopterRotate,639.7f,69.9f,ActConstants.SandID,world,"sandPlat2"));
 //385.9601,91.62201
-        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,385.9f,89.6f,ActConstants.SandID,world,"sandPlat3"));
+        this.addActor(new SandPlat(AssetsLevel2.instance.decoration.sand,Assets.instance.bunny.getAnimCopterRotate,385.9f,89.6f,ActConstants.SandID,world,"sandPlat3"));
 
         new BlowerAndMainCharacter();
 //yzh***************************************************

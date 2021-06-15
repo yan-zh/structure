@@ -21,20 +21,17 @@ import java.util.Random;
  * @create 2021-06-13 21:41
  */
 public class AssetsStageChage extends Stage implements Disposable {
-    //按钮和背景
-//    private ProgressBar bar;
-//    private ProgressBarStyle style;
     private float progressMax = 100;
     private float progressNow = 1;
     private float stateTime;
     private Image backGround;
-    private Stage nextStage;
+    private float nextStage;
 
     private float timeToTurn=10.0f;
 
     private SpriteBatch batch;
 
-    public AssetsStageChage(AtlasRegion background,Stage nextStage){
+    public AssetsStageChage(AtlasRegion background,float nextStage){
         this.nextStage = nextStage;
         this.setDebugAll(true);
         batch = new SpriteBatch();
@@ -45,7 +42,7 @@ public class AssetsStageChage extends Stage implements Disposable {
         backGround.setPosition(0, 0);//舞台坐标是左下角
 
         // 播放背景音乐
-        AudioManager.instance.play(AssetsUI.instance.music.bmg01);
+//        AudioManager.instance.play(AssetsUI.instance.music.mainTheme);
 
         this.addActor(backGround);
     }
@@ -58,7 +55,7 @@ public class AssetsStageChage extends Stage implements Disposable {
         float middle = random.nextInt(14);
         progressNow += (stateTime-middle)*(stateTime-middle)/70;
         if (progressNow>= progressMax){
-            MyGdxGame.currentStage = nextStage;
+            ActConstants.changeStageTo = nextStage;
         }
     }
 

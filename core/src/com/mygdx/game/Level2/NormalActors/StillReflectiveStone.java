@@ -12,6 +12,8 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.UserData;
 
@@ -47,11 +49,9 @@ public class StillReflectiveStone extends Actor{
         //Set position
         this.setX(x);
         this.setY(y);
-        TextureRegion texture = (TextureRegion) Assets.instance.mainCharacter.animRun.getKeyFrames()[0];
+
         //image = new Image(new Texture("D:\\structurenew\\core\\assets\\images\\anim_bunny_copter_01.png"));
-        image = new Image(texture);
-        image.setSize(1.0f, 1.0f);
-        image.setOrigin(image.getWidth() / 2.0f, image.getHeight() / 2.0f);
+
         //Create the physical Entity
         PhysicalEntityDefine.defineKinematic();
         myBodyDef = PhysicalEntityDefine.getBd();
@@ -83,7 +83,7 @@ public class StillReflectiveStone extends Actor{
         ActConstants.publicInformation.put("stillReflectiveStone"+myNumber, this);
 
         //用这种方式克隆
-        currentFrame = new TextureRegion(Assets.instance.bunny.head);
+        currentFrame = new TextureRegion(AssetsLevel2.instance.decoration.pianzhuanqi);
 
     }
 
@@ -104,7 +104,7 @@ public class StillReflectiveStone extends Actor{
             }
         }
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-1.25f)*50f, (mySimulation.getPosition().y-1.35f)*50f,100,100);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-1f)*50f, (mySimulation.getPosition().y-1f)*50f,100,100);
 
     }
     public void emmit()
@@ -120,7 +120,7 @@ public class StillReflectiveStone extends Actor{
         }
 
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(AssetsLevel2.instance.decoration.jiguang, AssetsUI.instance.spriteAttack.animFhit,this.getX(),this.getY(),direction,ActConstants.laserID,1,4));
     }
 
 }

@@ -70,9 +70,11 @@ public class AssetsLevel0 implements Disposable, AssetErrorListener {
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_NORMAL, TextureAtlas.class);
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_0, TextureAtlas.class);
         // 预加载声音
-        assetManager.load("core/assets/sounds/jump.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound0/tortoise_Angry.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound0/wood_Broken.wav", Sound.class);
         // 预加载音乐
-        assetManager.load("core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
+        assetManager.load("core/assets/music/Music0/StartBoss.wav", Music.class);
+        assetManager.load("core/assets/music/Music0/StartTheme.wav", Music.class);
         // 开始加载资源，阻塞进程，等待加载完成【此处后期更新进度条】
         assetManager.finishLoading();
 
@@ -141,17 +143,21 @@ public class AssetsLevel0 implements Disposable, AssetErrorListener {
 
     // 资源内部类：音效
     public class AssetSounds {
-        public final Sound jump;
+        public final Sound wood_Broken;
+        public final Sound tortoise_Angry;
         public AssetSounds (AssetManager am) {
-            jump = am.get("core/assets/sounds/jump.wav", Sound.class);
+            wood_Broken = am.get("core/assets/sounds/Sound0/wood_Broken.wav", Sound.class);
+            tortoise_Angry = am.get("core/assets/sounds/Sound0/tortoise_Angry.wav", Sound.class);
         }
     }
 
     // 资源内部类：音效
     public class AssetMusic {
-        public final Music song01;
+        public final Music startBoss;
+        public final Music startTheme;
         public AssetMusic(AssetManager am) {
-            song01 = am.get("core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
+            startBoss = am.get("core/assets/music/Music0/StartBoss.wav", Music.class);
+            startTheme = am.get("core/assets/music/Music0/StartTheme.wav", Music.class);
         }
     }
 

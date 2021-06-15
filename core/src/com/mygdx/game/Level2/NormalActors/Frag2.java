@@ -44,6 +44,10 @@ public class Frag2 extends Actor {
 
     boolean direction;
 
+    TextureRegion[] textureRegions;
+
+    int count;
+
     public Frag2(World world, float x, float y){
         physicalX = x;
         physicalY = y;
@@ -53,6 +57,7 @@ public class Frag2 extends Actor {
         activeTime = 0;
         //获得眼镜世界引用
         this.world = world;
+        count=0;
 
         //创建眼镜物理模拟
         PhysicalEntityDefine.defineStatic();
@@ -80,8 +85,13 @@ public class Frag2 extends Actor {
 
         tongueMark = false;
 
-        currentFrame = Assets.instance.bunny.head;
-        out = Assets.instance.bunny.animCopterTransform;
+        textureRegions = new TextureRegion[3];
+        textureRegions[0] = AssetsLevel1.instance.qingwa.qingwa;
+        textureRegions[1] = AssetsLevel1.instance.qingwa.qingwa1;
+        textureRegions[2] = AssetsLevel1.instance.qingwa.qingwa2;
+
+        out = new Animation(0.25f,textureRegions);
+        currentFrame = AssetsLevel1.instance.qingwa.qingwa;
 
 
     }
@@ -91,8 +101,16 @@ public class Frag2 extends Actor {
         super.act(delta);
         stateTime += delta;
 
+
+
         if(tongueMark==true){
-            currentFrame = (TextureRegion) out.getKeyFrame(stateTime,true);
+            if(count==0){
+                stateTime = 0;
+                count=1;
+            }
+
+            currentFrame = (TextureRegion) out.getKeyFrame(stateTime,false);
+
         }
 
     }
@@ -101,7 +119,8 @@ public class Frag2 extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(eyeSimulation.getPosition().x-0.7f)*50f, (eyeSimulation.getPosition().y-0.45f)*50f,300,300);
+        batch.draw(currentFrame,(eyeSimulation.getPosition().x-3.25f)*50f, (eyeSimulation.getPosition().y-1.5f)*50f,500/2,300/2);
+
     }
 
     public void active(){
@@ -113,7 +132,7 @@ public class Frag2 extends Actor {
 
 
                 synchronized (ActConstants.physicalActionListLock){
-                    ActConstants.physicalActionList.add(new CreateTongue(direction,world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX,physicalY));
+                    ActConstants.physicalActionList.add(new CreateTongue(direction,world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX-0.75f,physicalY+1.2f));
                 }
 
 

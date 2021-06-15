@@ -10,9 +10,11 @@ import com.badlogic.gdx.physics.box2d.joints.RopeJoint;
 import com.badlogic.gdx.physics.box2d.joints.RopeJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
 public class Platform extends Actor {
@@ -27,14 +29,22 @@ public class Platform extends Actor {
     Texture texture;
     TextureRegion region;
     String name;
-
+    Image image;
+    TextureRegion textureRegion;
+    float width;
+    float height;
 
 
     public Platform(World world, float x, float y,float width, float height, long actorId,String name) {
         this.setX(x);
         this.setY(y);
-        texture = new Texture(Gdx.files.internal("badlogic.jpg"));
-        region = new TextureRegion(texture);
+        this.width=width;
+        this.height=height;
+        textureRegion = (TextureRegion) AssetsLevel1.instance.jiemi.qiuqian;
+        image = new Image(textureRegion);
+
+
+
         this.world=world;
 //        PhysicalEntityDefine.defineCharacter();
 //        myBodyDef = PhysicalEntityDefine.getBd();
@@ -87,6 +97,8 @@ height / ActConstants.worldSize_shapeAndPhysics,true,actorId,name
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        batch.draw(textureRegion,(mySimulation.getPosition().x-width/2f)*50f,(mySimulation.getPosition().y)*50f,width*50f,height*50f);
+
 
 //       batch.draw(region,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
     }

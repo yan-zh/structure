@@ -96,13 +96,16 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_NORMAL, TextureAtlas.class);
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_1, TextureAtlas.class);
         // 预加载声音
-        assetManager.load("core/assets/sounds/jump.wav", Sound.class);
-        assetManager.load("core/assets/sounds/jump_with_feather.wav", Sound.class);
-        assetManager.load("core/assets/sounds/pickup_coin.wav", Sound.class);
-        assetManager.load("core/assets/sounds/pickup_feather.wav", Sound.class);
-        assetManager.load("core/assets/sounds/live_lost.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/ball_Triggered.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/door_Disappear.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/follower_Accept.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/follower_Refuse.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/frog_Triggered.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/success_Triggered.wav", Sound.class);
+        assetManager.load("core/assets/sounds/Sound1/wood_HitfromHigh.wav", Sound.class);
+
         // 预加载音乐
-        assetManager.load("core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
+        assetManager.load("core/assets/music/Music1/ForestTheme.wav", Music.class);
         // 开始加载资源，阻塞进程，等待加载完成
         assetManager.finishLoading();
         Gdx.app.debug(TAG,"# of assets loaded:"+assetManager.getAssetNames().size);
@@ -243,26 +246,30 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
 
     // 资源内部类：音乐
     public class AssetSounds {
-        public final Sound jump;
-        public final Sound jump2;
-        public final Sound pickupObject1;
-        public final Sound pickupObject2;
-        public final Sound liveLost;
+        public final Sound ball_Triggered;
+        public final Sound door_Disappear;
+        public final Sound follower_Accept;
+        public final Sound follower_Refuse;
+        public final Sound frog_Triggered;
+        public final Sound success_Triggered;
+        public final Sound wood_HitfromHigh;
 
         public AssetSounds (AssetManager am) {
-            jump = am.get("core/assets/sounds/jump.wav", Sound.class);
-            jump2 = am.get("core/assets/sounds/jump_with_feather.wav", Sound.class);
-            pickupObject1 = am.get("core/assets/sounds/pickup_coin.wav", Sound.class);
-            pickupObject2 = am.get("core/assets/sounds/pickup_feather.wav", Sound.class);
-            liveLost = am.get("core/assets/sounds/live_lost.wav", Sound.class);
+            ball_Triggered = am.get("core/assets/sounds/Sound1/ball_Triggered.wav", Sound.class);
+            door_Disappear = am.get("core/assets/sounds/Sound1/door_Disappear.wav", Sound.class);
+            follower_Accept = am.get("core/assets/sounds/Sound1/follower_Accept.wav", Sound.class);
+            follower_Refuse = am.get("core/assets/sounds/Sound1/follower_Refuse.wav", Sound.class);
+            frog_Triggered = am.get("core/assets/sounds/Sound1/frog_Triggered.wav", Sound.class);
+            success_Triggered = am.get("core/assets/sounds/Sound1/success_Triggered.wav", Sound.class);
+            wood_HitfromHigh = am.get("core/assets/sounds/Sound1/wood_HitfromHigh.wav", Sound.class);
         }
     }
 
     public class AssetMusic {
-        public final Music song01;
+        public final Music foresttheme;
 
         public AssetMusic(AssetManager am) {
-            song01 = am.get("core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
+            foresttheme = am.get("core/assets/music/Music1/ForestTheme.wav", Music.class);
         }
     }
 
@@ -430,7 +437,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetQingwa extends AbstractItem{
+  public class AssetQingwa extends AbstractItem{
         public final AtlasRegion qingwa;
         public final AtlasRegion qingwa1;
         public final AtlasRegion qingwa2;

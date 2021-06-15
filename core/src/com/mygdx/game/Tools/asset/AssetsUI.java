@@ -110,10 +110,28 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_NORMAL, TextureAtlas.class);
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_OBJECTS_UI, TextureAtlas.class);
         // 预加载声音
-        assetManager.load("core/assets/sounds/select.wav", Sound.class);
-        assetManager.load("core/assets/sounds/confirm.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/beacon.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Monster_Emmit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Monster_Hit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Sand_Emmit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Sand_Hit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Wind_Emmit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Wind_Hit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Wood_Emmit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/bullet_Wood_Hit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/fiary_Absorb.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/jump_MainCharacter.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/newTest.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/run_Forest.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/run_Grass.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/run_Ground.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/seinDeathLaserA.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/seinHurtRegularA.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/transmit.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/confirm.wav", Sound.class);
+        assetManager.load("core/assets/sounds/UI/select.wav", Sound.class);
         // 预加载音乐
-        assetManager.load("core/assets/music/bgm01.wav", Music.class);
+        assetManager.load("core/assets/music/UI/Main Theme.wav", Music.class);
         // 开始加载资源，阻塞进程，等待加载完成【此处后期更新进度条】
         assetManager.finishLoading();
 
@@ -410,19 +428,56 @@ public class AssetsUI implements Disposable, AssetErrorListener {
 
     // 资源内部类：音效
     public class AssetSounds {
+
+        public final Sound beacon;
+        public final Sound confirm;
         public final Sound select;
-        public final Sound comfirm;
+        public final Sound bullet_Monster_Emmit;
+        public final Sound bullet_Monster_Hit;
+        public final Sound bullet_Sand_Emmit;
+        public final Sound bullet_Sand_Hit;
+        public final Sound bullet_Wind_Emmit;
+        public final Sound bullet_Wind_Hit;
+        public final Sound bullet_Wood_Emmit;
+        public final Sound bullet_Wood_Hit;
+        public final Sound fiary_Absorb;
+        public final Sound jump_MainCharacter;
+        public final Sound rotateSwitch_Trigger;
+        public final Sound run_Forest;
+        public final Sound run_Grass;
+        public final Sound run_Ground;
+        public final Sound seinDeathLaserA;
+        public final Sound seinHurtRegularA;
+        public final Sound transmit;
         public AssetSounds (AssetManager am) {
-            select = am.get("core/assets/sounds/select.wav", Sound.class);
-            comfirm = am.get("core/assets/sounds/confirm.wav", Sound.class);
+            beacon = am.get("core/assets/sounds/UI/beacon.wav", Sound.class);
+            bullet_Monster_Emmit = am.get("core/assets/sounds/UI/bullet_Monster_Emmit.wav", Sound.class);
+            bullet_Monster_Hit = am.get("core/assets/sounds/UI/bullet_Monster_Hit.wav", Sound.class);
+            bullet_Sand_Emmit = am.get("core/assets/sounds/UI/bullet_Sand_Emmit.wav", Sound.class);
+            bullet_Sand_Hit = am.get("core/assets/sounds/UI/bullet_Sand_Hit.wav", Sound.class);
+            bullet_Wind_Emmit = am.get("core/assets/sounds/UI/bullet_Wind_Emmit.wav", Sound.class);
+            bullet_Wind_Hit = am.get("core/assets/sounds/UI/bullet_Wind_Hit.wav", Sound.class);
+            bullet_Wood_Emmit = am.get("core/assets/sounds/UI/bullet_Wood_Emmit.wav", Sound.class);
+            bullet_Wood_Hit = am.get("core/assets/sounds/UI/bullet_Wood_Hit.wav", Sound.class);
+            fiary_Absorb = am.get("core/assets/sounds/UI/fiary_Absorb.wav", Sound.class);
+            jump_MainCharacter = am.get("core/assets/sounds/UI/jump_MainCharacter.wav", Sound.class);
+            rotateSwitch_Trigger = am.get("core/assets/sounds/UI/newTest.wav", Sound.class);
+            run_Forest = am.get("core/assets/sounds/UI/run_Forest.wav", Sound.class);
+            run_Grass = am.get("core/assets/sounds/UI/run_Grass.wav", Sound.class);
+            run_Ground = am.get("core/assets/sounds/UI/run_Ground.wav", Sound.class);
+            seinDeathLaserA = am.get("core/assets/sounds/UI/seinDeathLaserA.wav", Sound.class);
+            seinHurtRegularA = am.get("core/assets/sounds/UI/seinHurtRegularA.wav", Sound.class);
+            transmit = am.get("core/assets/sounds/UI/transmit.wav", Sound.class);
+            confirm = am.get("core/assets/sounds/UI/confirm.wav", Sound.class);
+            select = am.get("core/assets/sounds/UI/select.wav", Sound.class);
         }
     }
 
     // 资源内部类：音效
     public class AssetMusic {
-        public final Music bmg01;
+        public final Music mainTheme;
         public AssetMusic(AssetManager am) {
-            bmg01 = am.get("core/assets/music/bgm01.wav", Music.class);
+            mainTheme = am.get("core/assets/music/UI/Main Theme.wav", Music.class);
         }
     }
 
@@ -582,7 +637,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetFxjling extends AbstractItem{
+    public class AssetFxjling extends AbstractItem{
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
@@ -594,19 +649,19 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetTxjling extends AbstractItem{
+    public class AssetTxjling extends AbstractItem{
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
         AssetTxjling(TextureAtlas atlas) {
             super(atlas);
-            main = addAtlasRegion("fxJling_idle");
-            animBreath = addAnimation(AssetsConstent.animSpeed30,"fxJling_idle");
-            animAttack = addAnimation(AssetsConstent.animSpeed30,"fxJling_attack");
+            main = addAtlasRegion("txJling_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"txJling_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"txJling_attack");
         }
     }
 
-    private class AssetMxjling extends AbstractItem{
+    public class AssetMxjling extends AbstractItem{
         public final AtlasRegion main;
         public final Animation animBreath;
         public final Animation animAttack;
@@ -618,11 +673,11 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetSpriteAttack extends AbstractItem{
+    public class AssetSpriteAttack extends AbstractItem{
         public final AtlasRegion huoqui;
         public final AtlasRegion tzd;
         public final AtlasRegion mzd;
-        public final AtlasRegion fad;
+        public final AtlasRegion fzd;
         public final AtlasRegion mhit;
         public final Animation animMhit;
         public final AtlasRegion thit;
@@ -634,7 +689,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
             huoqui = addAtlasRegion("huoqui");
             tzd = addAtlasRegion("tzd");
             mzd = addAtlasRegion("mzd");
-            fad = addAtlasRegion("fad");
+            fzd = addAtlasRegion("fad");
             mhit = addAtlasRegion("mhit_idle");
             thit = addAtlasRegion("thit_idle");
             fhit = addAtlasRegion("fhit_idle");
@@ -644,7 +699,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
-    private class AssetDecoration extends AbstractItem{
+    public class AssetDecoration extends AbstractItem{
         public final AtlasRegion chuansong;
         public final Animation animChuansong;
         public final AtlasRegion chongsheng;

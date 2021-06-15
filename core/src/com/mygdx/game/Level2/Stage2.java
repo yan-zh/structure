@@ -71,8 +71,8 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,89.8f,25.5f));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
-        this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
+        this.addActor(new MainCharacter(world,110f,17.5f));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
+        this.addActor(new Beacon(7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
         boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
@@ -186,7 +186,6 @@ public class Stage2 extends MyStage {
         this.addActor(new Spine(world,54.49f,41.52f,2f,2f));
 
 
-        this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500-60, 5150-1170, 3f,2f,ActConstants.brokenBridgeID, world, "brokenDoor"));
 
 
 
@@ -217,31 +216,36 @@ public class Stage2 extends MyStage {
 
         AssetsLevel2.instance.instance.init(new AssetManager());
 
-        this.addActor(new Frag2(world,89.5f,35f));
+//        this.addActor(new Frag2(world,89.5f,35f));
+//
+//        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.daoju.bingkuai,AssetsLevel2.instance.decoration.csg1,75f,40f);
+//        this.addActor(tongueMonster);
+//        new TongueMonsterAndMainCharacter();
 
-        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.daoju.bingkuai,AssetsLevel2.instance.decoration.csg1,75f,40f);
-        this.addActor(tongueMonster);
-        new TongueMonsterAndMainCharacter();
-
-        BallLauncher ballLauncher = new BallLauncher(world,AssetsLevel2.instance.decoration.huolu,61f,24);
-        this.addActor(ballLauncher);
-        new BallLauncherAndMainCharacter();
-
-
-        BallReceiver ballReceiver = new BallReceiver(world,AssetsLevel2.instance.decoration.huoqiujieshouqi,71f,24f);
-        this.addActor(ballReceiver);
-        new BallAndBallReceiver();
-
-        this.addActor(new LaserDoor(world,89.5f,20f));
-        new LaserDoorAndLaser();
-
-        Blower blower = new Blower(world,95f,28f,1.5f,15,AssetsLevel2.instance.decoration.animCf);
-        this.addActor(blower);
+//        BallLauncher ballLauncher = new BallLauncher(world,AssetsLevel2.instance.decoration.huolu,61f,24);
+//        this.addActor(ballLauncher);
+//        new BallLauncherAndMainCharacter();
 
 
-        this.addActor(new laserTransmitter(Assets.instance.bunny.head, (int) (105.85*50), 28*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
-        this.addActor(new StillReflectiveStone(105*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,2));
-        this.addActor(new StillReflectiveStone(110*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,1));
+//        BallReceiver ballReceiver = new BallReceiver(world,AssetsLevel2.instance.decoration.huoqiujieshouqi,71f,24f);
+//        this.addActor(ballReceiver);
+//        new BallAndBallReceiver();
+
+//        this.addActor(new LaserDoor(world,89.5f,20f));
+//        new LaserDoorAndLaser();
+
+//        Blower blower = new Blower(world,95f,28f,1.5f,15,AssetsLevel2.instance.decoration.animCf);
+//        this.addActor(blower);
+
+
+//        this.addActor(new laserTransmitter((int) (115.85*50), 20*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+//        this.addActor(new StillReflectiveStone(105*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,2));
+//        this.addActor(new StillReflectiveStone(110*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,1));
+
+//        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (105*50),17*50,ActConstants.woodFairyID,world,"WoodFairy"));
+//        this.addActor(new Fairy(2, AssetsUI.instance.mxjling.animBreath,AssetsUI.instance.mxjling.animBreath, (int) (100*50),17*50,ActConstants.woodFairyID,world,"WoodFairy"));
+//        this.addActor(new Fairy(3, AssetsUI.instance.txjling.animBreath,AssetsUI.instance.txjling.animAttack, (int) (95*50),17*50,ActConstants.woodFairyID,world,"WoodFairy"));
+
 
 
 //*****************************************
@@ -266,7 +270,7 @@ public class Stage2 extends MyStage {
         new BubbleAndCharacter();
         this.addActor(new PswDoor(world,64f-1.2f,82f-23.4f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
         new PswDoorContact();
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,14000,1200,505,3,ActConstants.portalID,world,"Portal1",true,"Stage3"));
+        this.addActor(new Portal(14000,1200,505,3,ActConstants.portalID,world,"Portal1",true,"Stage3"));
     }
 
     @Override

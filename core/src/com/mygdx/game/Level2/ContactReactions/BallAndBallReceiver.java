@@ -34,11 +34,13 @@ public class BallAndBallReceiver implements ContactReaction {
                 reboundBall.remove();
                 BallReceiver ballReceiver = (BallReceiver) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 ballReceiver.hit = true;
+                ballReceiver.fire = true;
             }else{
                 ReboundBall reboundBall = (ReboundBall) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 reboundBall.remove();
                 BallReceiver ballReceiver = (BallReceiver) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                 ballReceiver.hit = true;
+                ballReceiver.fire = true;
             }
         }
 

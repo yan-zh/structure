@@ -66,7 +66,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
 
 
         // 播放背景音乐
-        AudioManager.instance.play(AssetsUI.instance.music.bmg01);
+        AudioManager.instance.play(AssetsUI.instance.music.mainTheme);
 
 
         // 测试面板
@@ -96,11 +96,11 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 // 在适当的条件（这里是按钮被按下），切换舞台，用下一个舞台换掉MyGdxGame的currentStage
-                AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
+                AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
                 AudioManager.instance.stopMusic();
                 Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
                 stage0.dispose();
-                MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+                MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;
             }
@@ -126,11 +126,11 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         button.addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
+                AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
                 // 点击打开社渚窗口：还未写
 
                 MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
-                        new Stage0(ActConstants.inputMultiplexer));
+                        2f);
 
                 return false;
             }
@@ -156,7 +156,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         button.addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
+                AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
                 // 点击退出游戏
                 Gdx.app.exit();
                 return false;

@@ -42,9 +42,8 @@ public class SandAndMainCharacter implements ContactReaction {
             Action delayedAction = Actions.run(new Runnable() {
                 @Override
                 public void run() {
-                    ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation)).state = true;
-                    ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation)).removeBody();
                     ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation)).state = false;
+                    ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation)).removeBody();
 
 
                     Timer timer = new Timer();
@@ -53,16 +52,18 @@ public class SandAndMainCharacter implements ContactReaction {
 
                         public void run() {
                             SandPlat sandPlat = ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation));
+                            ((SandPlat)ActConstants.publicInformation.get(userData.nameInPublicInformation)).state = false;
+
                             sandPlat.createBody();
 
                         }
 
                     };
-                    timer.scheduleTask(timerTask, 1, 1, 1);// 0s之后执行，每次间隔1s，执行20次。
+                    timer.scheduleTask(timerTask, 2, 1, 1);// 0s之后执行，每次间隔1s，执行20次。
 
                 }
             });
-            Action action = Actions.delay(0.5f, delayedAction);
+            Action action = Actions.delay(1f, delayedAction);
             sandPlat.addAction(action);
         }
     }

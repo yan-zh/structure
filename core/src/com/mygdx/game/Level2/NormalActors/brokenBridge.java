@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.UserData;
 
@@ -16,8 +17,11 @@ public class brokenBridge extends Actor {
    BodyDef myBodyDef;
    Fixture myFixture;
 
-   Animation wait;
-   Animation broken;
+   float hx;
+   float hy;
+
+   TextureRegion wait;
+   TextureRegion broken;
 
    TextureRegion currentFrame;
 
@@ -29,15 +33,17 @@ public class brokenBridge extends Actor {
 
    World world;
 
-   public brokenBridge(Animation animationWait, Animation animationAbsorb, int x, int y, float hx, float hy, long actorId, World world, String name)
+   public brokenBridge(TextureRegion animationWait, TextureRegion animationAbsorb, int x, int y, float hx, float hy, long actorId, World world, String name)
    {
       //Set position
       this.setX(x);
       this.setY(y);
 
+      this.hx = hx;
+      this.hy = hy;
       //Set the animation of the wait state and absorb
-      this.wait = animationWait;
-      this.broken = animationAbsorb;
+      this.wait = (TextureRegion) animationWait;
+      this.broken = (TextureRegion)animationAbsorb;
 
       //Create the physical Entity
       PhysicalEntityDefine.defineCharacter();
@@ -71,16 +77,23 @@ public class brokenBridge extends Actor {
 
       statetime += delta;
 
-      if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
+      if(state == true) currentFrame = wait;
 
-      else currentFrame = (TextureRegion) broken.getKeyFrame(statetime, true);
+      else currentFrame = broken;
 
    }
    @Override
    public void draw(Batch batch, float parentAlpha) {
       super.draw(batch, parentAlpha);
 
-      batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
+         if(this.name == "brokenIce")
+         {
+            batch.draw(currentFrame, (mySimulation.getPosition().x - (hx/2)-3f)* 50f, (mySimulation.getPosition().y - hy/2)*50f);
+         }
+
+     if(this.name == "brokenBridge") batch.draw(currentFrame, (mySimulation.getPosition().x - (hx/2))* 50f, (mySimulation.getPosition().y -(hy/2)-3f)*50f);
+
+
 
    }
 

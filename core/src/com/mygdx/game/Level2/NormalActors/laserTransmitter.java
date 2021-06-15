@@ -12,6 +12,8 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.UserData;
 
@@ -22,13 +24,11 @@ public class laserTransmitter extends Actor {
     Fixture myFixture;
 
 
-    TextureRegion currentFrame;
 
     public boolean state = true;
 
     public boolean triggerState = false;
 
-    float statetime;
 
     String name;
 
@@ -36,12 +36,11 @@ public class laserTransmitter extends Actor {
 
     Timer timer;
     Timer.Task task;
-    public laserTransmitter(TextureRegion currentFrame, int x, int y, long actorId, World world, String name)
+    public laserTransmitter( int x, int y, long actorId, World world, String name)
     {
         //Set position
         this.setX(x);
         this.setY(y);
-        this.currentFrame = currentFrame;
 
 
         //Create the physical Entity
@@ -83,7 +82,7 @@ public class laserTransmitter extends Actor {
             }
 
         };
-        timer.scheduleTask(task, 1, 8, 2000);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(task, 1, 1, 2000);// 0s之后执行，每次间隔1s，执行20次。
     }
 
     @Override
@@ -96,7 +95,6 @@ public class laserTransmitter extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
 
     }
 
@@ -105,7 +103,7 @@ public class laserTransmitter extends Actor {
         MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
         float[] direction = MyVector.getStandardVector(0,0,-1,0);
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(AssetsLevel2.instance.decoration.jiguang, AssetsUI.instance.spriteAttack.animFhit,this.getX(),this.getY(),direction,ActConstants.laserID,1,4));
     }
 
     public void stop(){

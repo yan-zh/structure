@@ -280,13 +280,13 @@ public class BossLauncher extends Actor {
         System.out.println(direction.x+"  "+direction.y);
 
 
-        CreateBullet createBullet1 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position1.x*50,position1.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet2 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet3 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet4 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position4.x*50,position4.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet5 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet6 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1);
-        CreateBullet createBullet7 = new CreateBullet(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.bunny.getAnimCopterRotate,position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1);
+        CreateBullet createBullet1 = new CreateBullet(position1.x*50,position1.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet2 = new CreateBullet(position2.x*50,position2.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet3 = new CreateBullet(position3.x*50,position3.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet4 = new CreateBullet(position4.x*50,position4.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet5 = new CreateBullet(position5.x*50,position5.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet6 = new CreateBullet(position6.x*50,position6.y*50,launchDirection,ActConstants.windBulletID,1,3);
+        CreateBullet createBullet7 = new CreateBullet(position7.x*50,position7.y*50,launchDirection,ActConstants.windBulletID,1,3);
 
         synchronized (ActConstants.physicalActionListLock){
             ActConstants.physicalActionList.add(createBullet1);

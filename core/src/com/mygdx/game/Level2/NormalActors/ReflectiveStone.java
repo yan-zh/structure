@@ -12,6 +12,8 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.UserData;
 
@@ -21,7 +23,6 @@ public class ReflectiveStone extends Actor {
     BodyDef myBodyDef;
     Fixture myFixture;
 
-    Image image;
 
     public boolean state = true;
 
@@ -31,6 +32,8 @@ public class ReflectiveStone extends Actor {
 
     static int number=0;
     int myNumber;
+
+    TextureRegion texture;
 
 
     int type;//1 left   2 right  3 up
@@ -44,11 +47,8 @@ public class ReflectiveStone extends Actor {
         //Set position
         this.setX(x);
         this.setY(y);
-        TextureRegion texture = (TextureRegion) Assets.instance.mainCharacter.animRun.getKeyFrames()[0];
-        //image = new Image(new Texture("D:\\structurenew\\core\\assets\\images\\anim_bunny_copter_01.png"));
-        image = new Image(texture);
-        image.setSize(1.0f, 1.0f);
-        image.setOrigin(image.getWidth() / 2.0f, image.getHeight() / 2.0f);
+        texture = AssetsLevel2.instance.decoration.pianzhuanqi;
+
         //Create the physical Entity
         PhysicalEntityDefine.defineKinematic();
         myBodyDef = PhysicalEntityDefine.getBd();
@@ -74,7 +74,6 @@ public class ReflectiveStone extends Actor {
         mySimulation = world.createBody(myBodyDef);
         myFixture = mySimulation.createFixture(myFixtureDef);
         mySimulation.setFixedRotation(false);
-        mySimulation.setUserData(image);
         myFixture.setUserData(new UserData(actorId, "ReflectiveStone"+myNumber));
         mySimulation.setGravityScale(1);
         ActConstants.publicInformation.put("ReflectiveStone"+myNumber, this);
@@ -91,8 +90,8 @@ public class ReflectiveStone extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        TextureRegion textureRegion = new TextureRegion(new Texture("images/anim_bunny_copter_01.png"));
-        batch.draw(textureRegion, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f,(float)0.5*textureRegion.getRegionWidth(),(float)0.5*textureRegion.getRegionHeight(), textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
+
+        batch.draw(texture, (mySimulation.getPosition().x - 2f)* 50f, (mySimulation.getPosition().y - 2.8f)*50f,(float)0.5*texture.getRegionWidth(),(float)0.5*texture.getRegionHeight(), texture.getRegionWidth()/2, texture.getRegionHeight()/2,(float) 0.5,(float) 0.5, -50,true);
 
     }
     public void emmit()
@@ -108,7 +107,7 @@ public class ReflectiveStone extends Actor {
         }
 
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(AssetsLevel2.instance.decoration.jiguang, AssetsUI.instance.spriteAttack.animFhit,this.getX(),this.getY(),direction,ActConstants.laserID,1,4));
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
 
 public class Portal extends Actor{
@@ -15,7 +16,7 @@ public class Portal extends Actor{
     BodyDef myBodyDef;
     Fixture myFixture;
 
-    Animation wait;
+    TextureRegion wait;
     Animation trigger;
 
     TextureRegion currentFrame;
@@ -36,7 +37,7 @@ public class Portal extends Actor{
 
     World world;
 
-    public Portal(Animation animationWait, Animation animationTrigger, int x, int y, int dstX, int dstY, long actorId, World world, String name, Boolean isActive, String Stagetranto)
+    public Portal(int x, int y, int dstX, int dstY, long actorId, World world, String name, Boolean isActive, String Stagetranto)
     {
         this.Stagetranto = Stagetranto;
         this.isActive = isActive;
@@ -48,8 +49,8 @@ public class Portal extends Actor{
         this.dstXPos = dstX;
         this.dstYPos = dstY;
         //Set the animation of the wait state and absorb
-        this.wait = animationWait;
-        this.trigger = animationTrigger;
+        this.wait = AssetsUI.instance.decoration.chuansong;
+        this.trigger = AssetsUI.instance.decoration.animChuansong;
         //Create the physical Entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
@@ -57,7 +58,7 @@ public class Portal extends Actor{
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(5f/ ActConstants.worldSize_shapeAndPhysics,5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
@@ -72,14 +73,14 @@ public class Portal extends Actor{
         this.name = name;
         ActConstants.publicInformation.put(name, this);
 
-        currentFrame = (TextureRegion) wait.getKeyFrame(0);
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
+        batch.draw(currentFrame, (mySimulation.getPosition().x - 3.5f)* 50f, (mySimulation.getPosition().y - 3f)*50f);
     }
 
     @Override
@@ -88,7 +89,7 @@ public class Portal extends Actor{
 
         statetime += delta;
 
-        if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
+        if(state == true) currentFrame = wait;
 
         else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
     }

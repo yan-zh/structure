@@ -9,6 +9,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 
 public class BulletSkill extends Actor {
 
@@ -53,11 +54,13 @@ public class BulletSkill extends Actor {
 
     public long actorId;
 
-    public BulletSkill(TextureRegion fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
+    int type;//1 feng  2 mu 3 tu 4 jiguang
+
+    public BulletSkill(TextureRegion fly, Animation contact, float x, float y, float[] direction, long actorId, int damage,int type) {
 //这里输入的x y是像素
         this.damage = damage;
         this.delete = false;
-
+        this.type =type;
         this.direction = direction;
 
         this.actorId = actorId;
@@ -159,9 +162,31 @@ public class BulletSkill extends Actor {
         super.draw(batch, parentAlpha);
 
 
-        if(flyMark==true) batch.draw(currentFrame,drawX, drawY);
+        if(type==1){
 
-        if(contactMark==true) batch.draw(currentFrameContact,drawX, drawY);
+            if(flyMark==true) batch.draw(currentFrame,drawX+18, drawY);
+
+            if(contactMark==true) batch.draw(currentFrameContact,drawX-20, drawY-45);
+
+        }else if(type==2){
+
+            if(flyMark==true) batch.draw(currentFrame,drawX+7, drawY-7);
+
+            if(contactMark==true) batch.draw(currentFrameContact,drawX-21, drawY-46);
+
+        }else if(type==3){
+
+            if(flyMark==true) batch.draw(currentFrame,drawX+7, drawY-7);
+
+            if(contactMark==true) batch.draw(currentFrameContact,drawX-21, drawY-46);
+
+        }else if(type==4){
+
+            if(flyMark==true) batch.draw(currentFrame,drawX-190, drawY-120);
+
+            if(contactMark==true) batch.draw(currentFrameContact,drawX-40, drawY-55);
+
+        }
     }
 
     public void deleteBody(){

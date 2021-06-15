@@ -25,7 +25,7 @@ public class KeyBulletCreate implements PhysicalAction {
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction;
         direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
-        currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID,1));
+        currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID,1,2));
 
     }
 }

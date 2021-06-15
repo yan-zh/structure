@@ -16,7 +16,7 @@ public class SandPlat extends Actor {
     BodyDef myBodyDef;
     Fixture myFixture;
 
-    Animation wait;
+    TextureRegion wait;
     Animation broken;
 
     TextureRegion currentFrame;
@@ -29,7 +29,7 @@ public class SandPlat extends Actor {
 
     World world;
 
-    public SandPlat(Animation animationWait, Animation animationAbsorb, float x, float y, long actorId, World world, String name)
+    public SandPlat(TextureRegion animationWait, Animation animationAbsorb, float x, float y, long actorId, World world, String name)
     {
         //Set position
         this.setX(x * ActConstants.worldSize_pAndPhysic);
@@ -49,7 +49,7 @@ public class SandPlat extends Actor {
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,0.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(6f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);
@@ -73,15 +73,15 @@ public class SandPlat extends Actor {
 
         statetime += delta;
 
-        if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
+       currentFrame = wait;
 
-        else currentFrame = (TextureRegion) broken.getKeyFrame(statetime, true);
+//        else currentFrame = (TextureRegion) broken.getKeyFrame(statetime, false);
 
     }
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f);
+        if(state == true)  batch.draw(currentFrame, (mySimulation.getPosition().x - 5f)* 50f, (mySimulation.getPosition().y - 3.5f)*50f);
     }
 
 

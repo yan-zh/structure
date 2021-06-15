@@ -1,7 +1,9 @@
 package com.mygdx.game.Level2.NormalActors;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -26,6 +28,11 @@ public class BallReceiver extends Actor {
     float stateTime;
 
     public boolean hit;
+
+    ParticleEffect effect;
+    float effectTime;
+
+    public boolean fire;
 
 
 
@@ -61,12 +68,25 @@ public class BallReceiver extends Actor {
 
         stateTime = 0;
         hit=false;
+
+        effectTime = 0;
+
+        effect = new ParticleEffect();
+        effect.load(Gdx.files.internal("core/assets/particle3.p"),Gdx.files.internal("core/assets/"));
+
+        effect.setPosition(physicalX*ActConstants.worldSize_pAndPhysic,physicalY*ActConstants.worldSize_pAndPhysic);
+
+
+
+        fire=false;
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
+        effectTime += delta;
+        effect.setPosition(physicalX*ActConstants.worldSize_pAndPhysic,physicalY*ActConstants.worldSize_pAndPhysic);
 
 
     }
@@ -76,5 +96,10 @@ public class BallReceiver extends Actor {
         super.draw(batch, parentAlpha);
 
         batch.draw(currentFrame,(mySimulation.getPosition().x-5.5f)*50f, (mySimulation.getPosition().y-2.8f)*50f);
+
+        if(fire ==true){
+            effect.draw(batch,Gdx.graphics.getDeltaTime());
+        }
+
     }
 }
