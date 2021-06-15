@@ -256,6 +256,7 @@ public class UserInputListener extends InputListener {
                 }
             }
 
+
             //return false;//不知道干嘛的
         }
         return super.keyUp(event, keycode);
@@ -295,6 +296,10 @@ public class UserInputListener extends InputListener {
 //        MoveLauncher moveLauncher = (MoveLauncher) ActConstants.publicInformation.get("moveLauncher");
 //        moveLauncher.startMove();
 //        moveLauncher.start();
+
+        if(button==1){
+            ActConstants.mainCharacter.reFreshJump();
+        }
 
         synchronized (ActConstants.physicalActionListLock){
             //button 0左键 1右键

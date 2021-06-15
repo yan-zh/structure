@@ -66,9 +66,9 @@ public class EatPlatform extends Actor {
         this.release = release;
         this.frozen = frozen;
 
-        wait.setFrameDuration(0.1f);
-        release.setFrameDuration(0.1f);
-        frozen.setFrameDuration(0.1f);
+        wait.setFrameDuration(0.3f);
+        release.setFrameDuration(0.3f);
+        frozen.setFrameDuration(0.3f);
 
 
         contact = false;
@@ -94,12 +94,12 @@ public class EatPlatform extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(3.87f/ ActConstants.worldSize_shapeAndPhysics,2f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(6f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
         myFixtureDef.isSensor = false;
 
-        platformHeight = 2;
-        platformWidth = 3.87f;
+        platformHeight = 1.5f;
+        platformWidth = 6f;
 
         myBodyDef.position.set(x,y);//这个表示物理世界中的米
         physicalX = x;
@@ -195,7 +195,7 @@ public class EatPlatform extends Actor {
 
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-3.5f)*50f, (mySimulation.getPosition().y-3.3f)*50f);
     }
 
 

@@ -190,9 +190,9 @@ public class MoveLauncher extends Actor {
         launch=false;
 
 
-        normal = Assets.instance.bunny.animNormal;
-        goDie = Assets.instance.bunny.getAnimCopterRotate;
-        attack = Assets.instance.mainCharacter.animRun;
+        normal = AssetsLevel2.instance.zboos.animBreath;
+        goDie = AssetsLevel2.instance.zboos.animBreath;
+        attack = AssetsLevel2.instance.zboos.animAttack;
 
         currentFrame = (TextureRegion) normal.getKeyFrame(0);
 
