@@ -74,16 +74,16 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
         // 预加载纹理集资源
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_NORMAL, TextureAtlas.class);
         assetManager.load(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_2, TextureAtlas.class);
-        // 预加载声音
+//        // 预加载声音
 //        assetManager.load("core/assets/sounds/Sound2/bubble_Emmit.wav", Sound.class);
-        assetManager.load("core/assets/sounds/Sound2/bubbleBound.wav", Sound.class);
+//        assetManager.load("core/assets/sounds/Sound2/bubbleBound.wav", Sound.class);
 //        assetManager.load("core/assets/sounds/Sound2/clap.wav", Sound.class);
-        assetManager.load("core/assets/sounds/Sound2/ice_Broken.wav", Sound.class);
-        assetManager.load("core/assets/sounds/Sound2/Light.wav", Sound.class);
-        assetManager.load("core/assets/sounds/Sound2/Zboss.wav", Sound.class);
-        // 预加载音乐
-        assetManager.load("core/assets/music/Music2/FinalBoss.wav", Music.class);
-        assetManager.load("core/assets/music/Music2/IceTheme.wav", Music.class);
+//        assetManager.load("core/assets/sounds/Sound2/ice_Broken.wav", Sound.class);
+//        assetManager.load("core/assets/sounds/Sound2/Light.wav", Sound.class);
+//        assetManager.load("core/assets/sounds/Sound2/Zboss.wav", Sound.class);
+//        // 预加载音乐
+//        assetManager.load("core/assets/music/Music2/FinalBoss.wav", Music.class);
+//        assetManager.load("core/assets/music/Music2/IceTheme.wav", Music.class);
         // 开始加载资源，阻塞进程，等待加载完成【此处后期更新进度条】
         assetManager.finishLoading();
 
@@ -104,8 +104,8 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
 
         // 创建通用资源对象
         fonts = new AssetFonts();
-        sounds = new AssetSounds(assetManager);
-        music = new AssetMusic(assetManager);
+//        sounds = new AssetSounds(assetManager);
+//        music = new AssetMusic(assetManager);
 
         // 加载测试纹理集 第一关
         TextureAtlas atlas_level02 = assetManager.get(AssetsConstent.TEXTURE_ATLAS_OBJECTS_LEVEL_2);
@@ -159,29 +159,29 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
     // 资源内部类：音效
     public class AssetSounds {
 //        public final Sound bubble_Emmit;
-        public final Sound bubbleBound;
+//        public final Sound bubbleBound;
 //        public final Sound clap;
-        public final Sound ice_Broken;
-        public final Sound Light;
-        public final Sound Zboss;
-        public AssetSounds (AssetManager am) {
+//        public final Sound ice_Broken;
+//        public final Sound Light;
+//        public final Sound Zboss;
+//        public AssetSounds (AssetManager am) {
 //            bubble_Emmit = am.get("core/assets/sounds/Sound2/bubble_Emmit.wav", Sound.class);
-            bubbleBound = am.get("core/assets/sounds/Sound2/bubbleBound.wav", Sound.class);
+//            bubbleBound = am.get("core/assets/sounds/Sound2/bubbleBound.wav", Sound.class);
 //            clap = am.get("core/assets/sounds/Sound2/clap.wav", Sound.class);
-            ice_Broken = am.get("core/assets/sounds/Sound2/ice_Broken.wav", Sound.class);
-            Light = am.get("core/assets/sounds/Sound2/Light.wav", Sound.class);
-            Zboss = am.get("core/assets/sounds/Sound2/Zboss.wav", Sound.class);
-        }
+//            ice_Broken = am.get("core/assets/sounds/Sound2/ice_Broken.wav", Sound.class);
+//            Light = am.get("core/assets/sounds/Sound2/Light.wav", Sound.class);
+//            Zboss = am.get("core/assets/sounds/Sound2/Zboss.wav", Sound.class);
+//        }
     }
 
     // 资源内部类：音效
     public class AssetMusic {
-        public final Music FinalBoss;
-        public final Music IceTheme;
-        public AssetMusic(AssetManager am) {
-            FinalBoss = am.get("core/assets/music/Music2/FinalBoss.wav", Music.class);
-            IceTheme = am.get("core/assets/music/Music2/IceTheme.wav", Music.class);
-        }
+//        public final Music FinalBoss;
+//        public final Music IceTheme;
+//        public AssetMusic(AssetManager am) {
+//            FinalBoss = am.get("core/assets/music/Music2/FinalBoss.wav", Music.class);
+//            IceTheme = am.get("core/assets/music/Music2/IceTheme.wav", Music.class);
+//        }
     }
 
     public class AssetDaoju extends AbstractItem{

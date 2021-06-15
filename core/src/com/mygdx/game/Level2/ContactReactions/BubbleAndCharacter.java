@@ -43,6 +43,7 @@ public class BubbleAndCharacter implements ContactReaction {
         float posX=body.getPosition().x;
         float posY=bubbles.getY();
         deleteBody(body,posX,posY);
+        //这里加音效!!!!!!!
 //        body.setTransform(posX,posY,0);
 //        bubbles.bubbles.removeIndex(index);
 //        deleteBody(body,world);

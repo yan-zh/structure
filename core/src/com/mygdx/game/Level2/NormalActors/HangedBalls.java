@@ -111,6 +111,7 @@ public class HangedBalls extends Actor {
         System.out.println("psw correct!");
 //        HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
         PswDoor door = (PswDoor) ActConstants.publicInformation.get("pswDoor");
+//这里加音效！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
         door.move();
 //        MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
 //        mainCharacter.mySimulation.setTransform(new Vector2(64f-1.2f,85f-23.4f), 0);

@@ -193,7 +193,7 @@ public class Stage2 extends MyStage {
         this.addActor(flower);
         new FlowerAndMainCharacter();
 
-        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (30*50),10*50,ActConstants.woodFairyID,world,"WoodFairy"));
+        this.addActor(new Fairy(2, AssetsUI.instance.mxjling.animBreath,AssetsUI.instance.mxjling.animBreath, (int) (30*50),10*50,ActConstants.woodFairyID,world,"WoodFairy"));
         new WoodFairyAndMainCharacter();
 
 

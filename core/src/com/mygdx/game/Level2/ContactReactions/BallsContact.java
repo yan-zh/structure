@@ -36,6 +36,7 @@ public class BallsContact implements ContactReaction {
         balls.hit(i);
        System.out.println("object "+balls);
         System.out.println(i);
+        //这里加音效
 
 
     }

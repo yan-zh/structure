@@ -156,7 +156,7 @@ public class Stage3 extends MyStage {
         //region 1
 
 
-        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (182*50),38*50,ActConstants.sandFairyID,world,"SandFairy"));
+        this.addActor(new Fairy(3, AssetsUI.instance.txjling.animBreath,AssetsUI.instance.txjling.animAttack, (int) (182*50),38*50,ActConstants.sandFairyID,world,"SandFairy"));
         new SandFairyAndMainCharacter();
 
 
