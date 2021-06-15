@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.game.Tools.Assets;
 
@@ -53,6 +54,14 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     public AssetMainUser mainUser;
     public AssetZj zj;
     public AssetJiguan jiguan;
+    public AssetFxjling fxjling;
+    public AssetTxjling txjling;
+    public AssetMxjling mxjling;
+    public AssetCdxgw cdxgw;
+    public AssetCddpxgw cddpxgw;
+    public AssetSpriteAttack spriteAttack;
+    public AssetDecoration decoration;
+
 
     // 加载音乐
     public AssetSounds sounds;
@@ -141,6 +150,13 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         mainUser = new AssetMainUser(atlas_ui);
         zj = new AssetZj(atlas_ui);
         jiguan = new AssetJiguan(atlas_ui);
+        fxjling = new AssetFxjling(atlas_ui);
+        txjling = new AssetTxjling(atlas_ui);
+        mxjling = new AssetMxjling(atlas_ui);
+        cdxgw = new AssetCdxgw(atlas_ui);
+        cddpxgw = new AssetCddpxgw(atlas_ui);
+        spriteAttack = new AssetSpriteAttack(atlas_ui);
+        decoration = new AssetDecoration(atlas_ui);
 
         // 初始化主角信息
         mainUserLive = 20;
@@ -526,6 +542,124 @@ public class AssetsUI implements Disposable, AssetErrorListener {
             super(atlas);
             jg0 = addAtlasRegion("jg0");
             jg1 = addAtlasRegion("jg1");
+        }
+    }
+
+    public class AssetCdxgw extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+        public AssetCdxgw(TextureAtlas atlas){
+            super(atlas);
+            main = atlas.findRegion("cdXgw_idle");
+
+            Array<AtlasRegion> regions = null;
+            AtlasRegion region = null;
+
+            regions = atlas.findRegions("cdXgw_idle");
+            animBreath = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdXgw_attack");
+            animAttack = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
+
+            regions = atlas.findRegions("cdXgw_dead");
+            animDead = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
+        }
+    }
+
+    public class AssetCddpxgw extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        public final Animation animDead;
+        public AssetCddpxgw(TextureAtlas atlas){
+            super(atlas);
+            main = addAtlasRegion("cdDpxgw_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"cdDpxgw_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"cdDpxgw_attack");
+            animDead = addAnimation(AssetsConstent.animSpeed30,"cdDpxgw_dead");
+        }
+    }
+
+    private class AssetFxjling extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        AssetFxjling(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("fxJling_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"fxJling_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"fxJling_attack");
+        }
+    }
+
+    private class AssetTxjling extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        AssetTxjling(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("fxJling_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"fxJling_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"fxJling_attack");
+        }
+    }
+
+    private class AssetMxjling extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        public final Animation animAttack;
+        AssetMxjling(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("mxJling_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"mxJling_idle");
+            animAttack = addAnimation(AssetsConstent.animSpeed30,"mxJling_attack");
+        }
+    }
+
+    private class AssetSpriteAttack extends AbstractItem{
+        public final AtlasRegion huoqui;
+        public final AtlasRegion tzd;
+        public final AtlasRegion mzd;
+        public final AtlasRegion fad;
+        public final AtlasRegion mhit;
+        public final Animation animMhit;
+        public final AtlasRegion thit;
+        public final Animation animThit;
+        public final AtlasRegion fhit;
+        public final Animation animFhit;
+        AssetSpriteAttack(TextureAtlas atlas) {
+            super(atlas);
+            huoqui = addAtlasRegion("huoqui");
+            tzd = addAtlasRegion("tzd");
+            mzd = addAtlasRegion("mzd");
+            fad = addAtlasRegion("fad");
+            mhit = addAtlasRegion("mhit_idle");
+            thit = addAtlasRegion("thit_idle");
+            fhit = addAtlasRegion("fhit_idle");
+            animMhit = addAnimation(AssetsConstent.animSpeed12,"mhit_idle");
+            animThit = addAnimation(AssetsConstent.animSpeed12,"thit_idle");
+            animFhit = addAnimation(AssetsConstent.animSpeed12,"fhit_idle");
+        }
+    }
+
+    private class AssetDecoration extends AbstractItem{
+        public final AtlasRegion chuansong;
+        public final Animation animChuansong;
+        public final AtlasRegion chongsheng;
+        public final Animation animChongsheng;
+
+        public final AtlasRegion xb;
+        public final Animation animXb;
+        AssetDecoration(TextureAtlas atlas) {
+            super(atlas);
+            chuansong = addAtlasRegion("chuansong_idle");
+            animChuansong = addAnimation(AssetsConstent.animSpeed24,"chuansong_idle", Animation.PlayMode.NORMAL);
+            chongsheng = addAtlasRegion("chongsheng_idle");
+            animChongsheng = addAnimation(AssetsConstent.animSpeed5,"chongsheng_idle",Animation.PlayMode.NORMAL);
+            xb = addAtlasRegion("xb_idle");
+            animXb = addAnimation(AssetsConstent.animSpeed12,"xb_idle",Animation.PlayMode.NORMAL);
         }
     }
 }
