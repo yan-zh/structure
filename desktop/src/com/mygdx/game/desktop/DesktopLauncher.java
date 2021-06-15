@@ -23,6 +23,8 @@ public class DesktopLauncher {
 
 			// 加载通用资源管理
 //			TexturePacker.process(settings,"core/assets/level_normal","core/assets/images_level","level_normal");
+			// load level_0 characters
+//			TexturePacker.process(settings,"core/assets/level0","core/assets/images_leve0","level0");
 			// load level_1 characters
 //			TexturePacker.process(settings,"core/assets/level1","core/assets/images_level","level1");
 			// load level_2 characters
