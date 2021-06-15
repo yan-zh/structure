@@ -36,12 +36,13 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
 
     // 从这里开始进行资源扩展；后期考虑将他们分开初始化；
     public AssetFijling fijling;
-    public AssetCdxgw cdxgw;
-    public AssetCddpxgw cddpxgw;
-    public AssetCdboss cdboss;
+
     public AssetZj zj;
-    public AssetSrh srh;
+
     public AssetJiemi jiemi;
+    public AssetSrh srh;
+    public AssetCdboss cdboss;
+    public AssetQingwa qingwa;
 
 
     // 资源扩展结束
@@ -147,13 +148,12 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         characrer01 = new AssetCharacter01(atlas_level01);
         characrer02 = new AssetCharacter02(atlas_level01);
         fijling = new AssetFijling(atlas_level01);
-        cdxgw = new AssetCdxgw(atlas_level01);
-        cddpxgw = new AssetCddpxgw(atlas_level01);
         cdboss = new AssetCdboss(atlas_level01);
         assetBall = new AssetBall(atlas_level01);
         zj = new AssetZj(atlas_level01);
         srh = new AssetSrh(atlas_level01);
         jiemi = new AssetJiemi(atlas_level01);
+        qingwa = new AssetQingwa(atlas_level01);
         // 测试对象
     }
 
@@ -371,49 +371,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
     }
 
 
-    public class AssetCdxgw {
-        public final AtlasRegion main;
-        public final Animation animBreath;
-        public final Animation animAttack;
-        public final Animation animDead;
-        public AssetCdxgw(TextureAtlas atlas){
-            main = atlas.findRegion("cdXgw_idle");
 
-            Array<AtlasRegion> regions = null;
-            AtlasRegion region = null;
-
-            regions = atlas.findRegions("cdXgw_idle");
-            animBreath = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdXgw_attack");
-            animAttack = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdXgw_dead");
-            animDead = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
-        }
-    }
-
-    public class AssetCddpxgw {
-        public final AtlasRegion main;
-        public final Animation animBreath;
-        public final Animation animAttack;
-        public final Animation animDead;
-        public AssetCddpxgw(TextureAtlas atlas){
-            main = atlas.findRegion("cdDpxgw_idle");
-
-            Array<AtlasRegion> regions = null;
-            AtlasRegion region = null;
-
-            regions = atlas.findRegions("cdDpxgw_idle");
-            animBreath = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdDpxgw_attack");
-            animAttack = new Animation(AssetsConstent.animSpeed30,regions,Animation.PlayMode.LOOP_PINGPONG);
-
-            regions = atlas.findRegions("cdDpxgw_dead");
-            animDead = new Animation(AssetsConstent.animSpeed24,regions,Animation.PlayMode.LOOP_PINGPONG);
-        }
-    }
 
     public class AssetCdboss extends AbstractItem{
         public final AtlasRegion main;
@@ -469,6 +427,18 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
             main = addAtlasRegion("srh_idle");
             animBreath = addAnimation(AssetsConstent.animSpeed30,"srh_idle");
             animDead = addAnimation(AssetsConstent.animSpeed30,"srh_dead");
+        }
+    }
+
+    private class AssetQingwa extends AbstractItem{
+        public final AtlasRegion qingwa;
+        public final AtlasRegion qingwa1;
+        public final AtlasRegion qingwa2;
+        AssetQingwa(TextureAtlas atlas) {
+            super(atlas);
+            qingwa = addAtlasRegion("qingwa");
+            qingwa1 = addAtlasRegion("qingwa1");
+            qingwa2 = addAtlasRegion("qingwa2");
         }
     }
 }

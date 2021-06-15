@@ -54,6 +54,7 @@ public class AssetsConstent {
 
     // 图片切换的帧率
     public static final float animSpeed = 1.0f;
+    public static final float animSpeed5 = animSpeed/5.0f;
     public static final float animSpeed12 = animSpeed/12.0f;
     public static final float animSpeed24 = animSpeed/24.0f;
     public static final float animSpeed20 = animSpeed/20.0f;

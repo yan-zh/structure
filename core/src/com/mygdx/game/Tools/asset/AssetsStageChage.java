@@ -1,29 +1,17 @@
 package com.mygdx.game.Tools.asset;
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Disposable;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level1.Stage1;
-import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.AudioManager;
-import com.mygdx.game.abstraction.Fairy;
 
 import java.util.Random;
 
@@ -40,17 +28,15 @@ public class AssetsStageChage extends Stage implements Disposable {
     private float progressNow = 1;
     private float stateTime;
     private Image backGround;
-    private float stagenNumber;
+    private Stage nextStage;
 
     private float timeToTurn=10.0f;
-    private float speed = 14;
 
     private SpriteBatch batch;
 
-    public AssetsStageChage(AtlasRegion background,float stagenNumber,float speed){
-        this.stagenNumber = stagenNumber;
+    public AssetsStageChage(AtlasRegion background,Stage nextStage){
+        this.nextStage = nextStage;
         this.setDebugAll(true);
-        this.speed =speed;
         batch = new SpriteBatch();
         // 初始化ui资源
         AssetsUI.instance.init(new AssetManager());
@@ -69,10 +55,10 @@ public class AssetsStageChage extends Stage implements Disposable {
         super.act();
         stateTime += Gdx.graphics.getDeltaTime();
         Random random = new Random();
-        float middle = random.nextInt((int)speed);
+        float middle = random.nextInt(14);
         progressNow += (stateTime-middle)*(stateTime-middle)/70;
         if (progressNow>= progressMax){
-            ActConstants.changeStageTo = stagenNumber;
+            MyGdxGame.currentStage = nextStage;
         }
     }
 

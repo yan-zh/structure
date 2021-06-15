@@ -23,6 +23,7 @@ import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Level3.Stage3;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsStageChage;
 import com.mygdx.game.Tools.asset.AssetsUI;
 
@@ -44,6 +45,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         this.setDebugAll(true);
         // 初始化ui资源
         AssetsUI.instance.init(new AssetManager());
+        AssetsLevel0.instance.init(new AssetManager());
         inputMultiplexer.addProcessor(this);//通过这个接受来自用户的操作信号
         //做了个背景和按钮（以后所有的素材，包括音乐，图片，动画都通过Asset类获取，后面会有Asset类的例子）
         // 添加首页背景图
@@ -128,7 +130,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 // 点击打开社渚窗口：还未写
 
                 MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
-                        0,14);
+                        new Stage0(ActConstants.inputMultiplexer));
 
                 return false;
             }

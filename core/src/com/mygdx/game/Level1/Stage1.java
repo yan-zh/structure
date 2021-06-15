@@ -164,8 +164,8 @@ public class Stage1 extends MyStage {
         this.addActor(new Fairy(1, AssetsLevel1.instance.fijling.animBreath,AssetsLevel1.instance.fijling.animAttack, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
-        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cdxgw.animDead);
-        this.addActor(monsterA);
+//        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsUI.instance.cdxgw.animBreath,AssetsUI.instance.cdxgw.animDead);
+//        this.addActor(monsterA);
 
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
 
@@ -173,9 +173,9 @@ public class Stage1 extends MyStage {
         //Region two
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 286, 3,5f,0.26f, ActConstants.brokenBridgeID, world, "brokenBridge"));
         new BridgeAndMainCharacter();
-
-        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,AssetsLevel1.instance.cddpxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
-        this.addActor(monsterA2);
+//
+//        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,AssetsUI.instance.cddpxgw.animBreath,AssetsUI.instance.cddpxgw.animDead);
+//        this.addActor(monsterA2);
 
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,18150,600,505,3,ActConstants.portalID,world,"Portal2",true,"none"));
 

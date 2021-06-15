@@ -28,6 +28,8 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
     public AssetDaoju daoju;
     public AssetPingtaiguai pingtaiguai;
     public AssetZboos zboos;
+    public AssetPangxie pangxie;
+    public AssetDecoration decoration;
 
     // 加载字体
     public AssetFonts fonts;
@@ -111,6 +113,8 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
         daoju = new AssetDaoju(atlas_level02);
         pingtaiguai = new AssetPingtaiguai(atlas_level02);
         zboos = new AssetZboos(atlas_level02);
+        decoration = new AssetDecoration(atlas_level02);
+        pangxie = new AssetPangxie(atlas_level02);
     }
 
 
@@ -180,7 +184,7 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
             super(atlas);
             main = addAtlasRegion("pingtaiguai_idle");
             animBreath = addAnimation(AssetsConstent.animSpeed24,"pingtaiguai_idle");
-            animAttack = addAnimation(AssetsConstent.animSpeed24,"pingtaiguai_attack");
+            animAttack = addAnimation(AssetsConstent.animSpeed24,"pingtaiguai_attack", Animation.PlayMode.NORMAL);
         }
     }
 
@@ -193,6 +197,44 @@ public class AssetsLevel2 implements Disposable, AssetErrorListener {
             main = addAtlasRegion("zBoss_idle");
             animBreath = addAnimation(AssetsConstent.animSpeed30,"zBoss_idle");
             animAttack = addAnimation(AssetsConstent.animSpeed30,"zBoss_attack");
+        }
+    }
+
+    public class AssetDecoration extends AbstractItem{
+        public final AtlasRegion huolu;
+        public final AtlasRegion qipao;
+        public final AtlasRegion csg1;
+        public final AtlasRegion sand;
+        public final AtlasRegion jieshouqi;
+        public final AtlasRegion jiguang;
+        public final AtlasRegion huoqiujieshouqi;
+        public final AtlasRegion pianzhuanqi;
+        public final Animation animSand;
+        public final AtlasRegion cf;
+        public final Animation animCf;
+        AssetDecoration(TextureAtlas atlas) {
+            super(atlas);
+            huolu = addAtlasRegion("huolu");
+            qipao = addAtlasRegion("qipao");
+            csg1 = addAtlasRegion("csg1");
+            sand = addAtlasRegion("sand_idle");
+            cf = addAtlasRegion("cf_idle");
+            jieshouqi = addAtlasRegion("jieshouqi");
+            jiguang = addAtlasRegion("jiguang");
+            huoqiujieshouqi = addAtlasRegion("huoqiujieshouqi");
+            pianzhuanqi = addAtlasRegion("pianzhuanqi");
+            animSand = addAnimation(AssetsConstent.animSpeed45,"sand_idle", Animation.PlayMode.LOOP_REVERSED);
+            animCf = addAnimation(AssetsConstent.animSpeed5,"cf_idle");
+        }
+    }
+
+    public class AssetPangxie extends AbstractItem{
+        public final AtlasRegion main;
+        public final Animation animBreath;
+        AssetPangxie(TextureAtlas atlas) {
+            super(atlas);
+            main = addAtlasRegion("px_idle");
+            animBreath = addAnimation(AssetsConstent.animSpeed30,"px_idle");
         }
     }
 }

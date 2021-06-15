@@ -214,9 +214,12 @@ public class Stage2 extends MyStage {
         this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 92f, 24f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 //测试专用青蛙
+
+        AssetsLevel2.instance.instance.init(new AssetManager());
+
         this.addActor(new Frag2(world,89.5f,35f));
 
-        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.head,Assets.instance.mainCharacter.main,75f,40f);
+        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.decoration.csg1,AssetsLevel2.instance.decoration.csg1,75f,40f);
         this.addActor(tongueMonster);
         new TongueMonsterAndMainCharacter();
 
