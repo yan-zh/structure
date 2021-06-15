@@ -75,6 +75,6 @@ public class BallReceiver extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-5.5f)*50f, (mySimulation.getPosition().y-2.8f)*50f);
     }
 }

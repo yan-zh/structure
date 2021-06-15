@@ -11,6 +11,7 @@ import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.DieAction;
 import com.mygdx.game.abstraction.UserData;
 
@@ -57,7 +58,7 @@ public class LaserDoor extends Actor {
 
         ActConstants.publicInformation.put("LaserDoor",this);
 
-        currentFrame = (TextureRegion) Assets.instance.bunny.animCopterTransform.getKeyFrame(0);
+        currentFrame = AssetsLevel2.instance.decoration.jieshouqi;
     }
 
 
@@ -78,7 +79,7 @@ public class LaserDoor extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-2.7f)*50f, (mySimulation.getPosition().y-4.5f)*50f,300,450);
 
     }
 

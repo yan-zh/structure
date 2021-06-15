@@ -219,23 +219,23 @@ public class Stage2 extends MyStage {
 
         this.addActor(new Frag2(world,89.5f,35f));
 
-        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.decoration.csg1,AssetsLevel2.instance.decoration.csg1,75f,40f);
+        TongueMonster tongueMonster = new TongueMonster(world,AssetsLevel2.instance.daoju.bingkuai,AssetsLevel2.instance.decoration.csg1,75f,40f);
         this.addActor(tongueMonster);
         new TongueMonsterAndMainCharacter();
 
-        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.head,61f,24);
+        BallLauncher ballLauncher = new BallLauncher(world,AssetsLevel2.instance.decoration.huolu,61f,24);
         this.addActor(ballLauncher);
         new BallLauncherAndMainCharacter();
 
 
-        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.head,71f,24f);
+        BallReceiver ballReceiver = new BallReceiver(world,AssetsLevel2.instance.decoration.huoqiujieshouqi,71f,24f);
         this.addActor(ballReceiver);
         new BallAndBallReceiver();
 
         this.addActor(new LaserDoor(world,89.5f,20f));
         new LaserDoorAndLaser();
 
-        Blower blower = new Blower(world,95f,28f,1.5f,15,Assets.instance.bunny.animNormal);
+        Blower blower = new Blower(world,95f,28f,1.5f,15,AssetsLevel2.instance.decoration.animCf);
         this.addActor(blower);
 
 

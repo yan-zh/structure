@@ -116,7 +116,7 @@ public class TongueMonster extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrameTongue, (tongueSimulation.getPosition().x-0.7f)*50f, (tongueSimulation.getPosition().y-0.45f)*50f);//把模拟物体的坐标拿出来，转换一下画上去
+        batch.draw(currentFrameTongue, (tongueSimulation.getPosition().x-0.88f)*50f, (tongueSimulation.getPosition().y-6.5f)*50f,90,650);//把模拟物体的坐标拿出来，转换一下画上去
 
         batch.draw(currentFrameTop,(spine.getPhysicalX()-0.7f)*50f, (spine.getPhysicalY()-0.45f)*50f);
 

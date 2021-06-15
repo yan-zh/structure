@@ -78,7 +78,7 @@ public class BallLauncher extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-5.75f)*50f, (mySimulation.getPosition().y-4f)*50f,575f,375f);
     }
 
     public void launch(){

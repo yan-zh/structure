@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
 public class ReverberateAxe extends Actor {
@@ -125,7 +126,7 @@ public class ReverberateAxe extends Actor {
         ActConstants.publicInformation.put("Axe", this);
 
 
-        this.picutre = (TextureRegion) Assets.instance.bunny.animNormal.getKeyFrames()[0];
+        this.picutre = AssetsLevel1.instance.jiemi.fuzi;
 
     }
 
@@ -155,6 +156,6 @@ public class ReverberateAxe extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(picutre,(mySimulation.getPosition().x-(float)(0.5*physicalWidth))*50f, (mySimulation.getPosition().y-(float)(0.5*physicalHeight))*50f);
+        batch.draw(picutre,(mySimulation.getPosition().x-(float)(0.5*physicalWidth))*50f, (mySimulation.getPosition().y-0.5f)*50f,105,125);
     }
 }
