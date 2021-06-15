@@ -17,13 +17,11 @@ public class BallReceiver extends Actor {
     BodyDef myBodyDef;
     PolygonShape shape;
 
-    Animation receive;
-    Animation wait;
+    TextureRegion currentFrame;
 
     float physicalX;
     float physicalY;
 
-    TextureRegion currentFrame;
 
     float stateTime;
 
@@ -32,10 +30,9 @@ public class BallReceiver extends Actor {
 
 
 
-    public BallReceiver(World world, Animation receive, Animation wait, float physicalX, float physicalY) {
+    public BallReceiver(World world, TextureRegion currentFrame, float physicalX, float physicalY) {
         this.world = world;
-        this.receive = receive;
-        this.wait = wait;
+        this.currentFrame = currentFrame;
         this.physicalX = physicalX;
         this.physicalY = physicalY;
 
@@ -61,7 +58,6 @@ public class BallReceiver extends Actor {
 
         ActConstants.publicInformation.put("ballReceiver",this);
 
-        currentFrame = (TextureRegion) wait.getKeyFrame(0);
 
         stateTime = 0;
         hit=false;
@@ -71,14 +67,8 @@ public class BallReceiver extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        stateTime += delta;
 
 
-        if(hit==false){
-            currentFrame = (TextureRegion) wait.getKeyFrame(stateTime,true);
-        }else{
-            currentFrame = (TextureRegion) receive.getKeyFrame(stateTime,false);
-        }
     }
 
     @Override

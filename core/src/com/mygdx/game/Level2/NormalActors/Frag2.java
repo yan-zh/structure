@@ -26,11 +26,7 @@ public class Frag2 extends Actor {
     BodyDef tongueBodyDef;
     PolygonShape tongueShape;
 
-
     Animation out;
-    Animation wait;
-
-
 
     static short number=0;
 
@@ -84,9 +80,8 @@ public class Frag2 extends Actor {
 
         tongueMark = false;
 
-       // currentFrame = (TextureRegion) wait.getKeyFrames()[0];
-
-        //out.setFrameDuration(0.7f);
+        currentFrame = Assets.instance.bunny.head;
+        out = Assets.instance.bunny.animCopterTransform;
 
 
     }
@@ -97,7 +92,7 @@ public class Frag2 extends Actor {
         stateTime += delta;
 
         if(tongueMark==true){
-       //     currentFrame = (TextureRegion) out.getKeyFrame(stateTime,false);
+            currentFrame = (TextureRegion) out.getKeyFrame(stateTime,true);
         }
 
     }
@@ -106,7 +101,7 @@ public class Frag2 extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        //batch.draw(currentFrame,(eyeSimulation.getPosition().x-0.7f)*50f, (eyeSimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(eyeSimulation.getPosition().x-0.7f)*50f, (eyeSimulation.getPosition().y-0.45f)*50f,300,300);
     }
 
     public void active(){

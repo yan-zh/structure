@@ -252,7 +252,7 @@ public class Stage3 extends MyStage {
         this.addActor(new SleepingBear(world,97f,64f,20f,10f,ActConstants.BearID,"sleepingBear"));
         new BearAndMainCharacter();
 
-        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,205.6f,85.5f);
+        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.head,Assets.instance.mainCharacter.main,205.6f,85.5f);
         this.addActor(tongueMonster);
         new TongueMonsterAndMainCharacter();
 
@@ -278,12 +278,12 @@ public class Stage3 extends MyStage {
         this.addActor(eatPlatform6);
 
 
-        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,158.3f,41);
+        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.head,158.3f,41);
         this.addActor(ballLauncher);
         new BallLauncherAndMainCharacter();
 
 
-        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.animCopterTransform,Assets.instance.bunny.animNormal,207.3f,36f);
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.head,207.3f,36f);
         this.addActor(ballReceiver);
         new BallAndBallReceiver();
 
@@ -295,7 +295,7 @@ public class Stage3 extends MyStage {
 
         new ReflectiveStoneAndBullet();
         this.addActor(new StillReflectiveStone(650*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
-        this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new laserTransmitter(Assets.instance.bunny.head, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
         this.addActor(new StillReflectiveStone(631*50, (int) (67.5*50),ActConstants.stillReflectiveStoneID,world,2));
         this.addActor(new StillReflectiveStone(656*50, (int) (73.3*50),ActConstants.stillReflectiveStoneID,world,1));
         this.addActor(new StillReflectiveStone(617*50, (int) (81.7*50),ActConstants.stillReflectiveStoneID,world,1));

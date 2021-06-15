@@ -20,7 +20,7 @@ public class ReboundBall extends Actor {
     BodyDef myBodyDef;
     CircleShape shape;
 
-    Animation ball;
+    TextureRegion ball;
     ParticleEffect effect;
 
     float physicalX;
@@ -32,7 +32,7 @@ public class ReboundBall extends Actor {
 
     float effectStateTime;
 
-    public ReboundBall(World world, Animation ball, float physicalX, float physicalY) {
+    public ReboundBall(World world, TextureRegion ball, float physicalX, float physicalY) {
         this.world = world;
         this.ball = ball;
         this.physicalX = physicalX;
@@ -64,7 +64,7 @@ public class ReboundBall extends Actor {
 
         ActConstants.publicInformation.put("ReboundBall",this);
 
-        currentFrame = (TextureRegion) ball.getKeyFrame(0);
+        currentFrame = ball;
 
         stateTime = 0;
         effectStateTime = 0;
@@ -91,7 +91,6 @@ public class ReboundBall extends Actor {
         physicalX = mySimulation.getPosition().x;
         physicalY = mySimulation.getPosition().y;
 
-        currentFrame = (TextureRegion) ball.getKeyFrame(delta,true);
 
         effect.setPosition(physicalX*ActConstants.worldSize_pAndPhysic,physicalY*ActConstants.worldSize_pAndPhysic);
 

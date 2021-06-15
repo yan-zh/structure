@@ -22,11 +22,6 @@ public class TongueMonster extends Actor {
 
     float statetime;//用于替换主角动作图片的标记
 
-    Animation top;//这个就是
-    Animation tongue;
-
-    Animation topFrozen;//这个就是
-    Animation tongueFrozen;
 
 
     TextureRegion currentFrameTop;//当前该播放的图片（这个类是从texture中切一块出来）
@@ -45,12 +40,10 @@ public class TongueMonster extends Actor {
 
     boolean contact;
 
-    public TongueMonster(World world, Animation topFrozen, Animation tongueFrozen, Animation top, Animation tongue, float physicalX, float physicalY) {
+    public TongueMonster(World world, TextureRegion currentFrameTop,TextureRegion currentFrameTongue, float physicalX, float physicalY) {
         this.world = world;
-        this.top = top;
-        this.tongue = tongue;
-        this.tongueFrozen = tongueFrozen;
-        this.topFrozen = topFrozen;
+        this.currentFrameTongue = currentFrameTongue;
+        this.currentFrameTop = currentFrameTop;
         this.physicalX = physicalX;
         this.physicalY = physicalY;
 
@@ -99,27 +92,23 @@ public class TongueMonster extends Actor {
 
         statetime += delta;
 
-        if(ActConstants.isFrozen==false){
-            currentFrameTongue = (TextureRegion) tongue.getKeyFrame(statetime,true);
-            currentFrameTop = (TextureRegion) top.getKeyFrame(statetime,true);
-            if(contact==true){
-                if(tongueSimulation.getPosition().y<=(physicalY+tongueHeight*2)) {
-                    tongueSimulation.setLinearVelocity(0, 2);
-                }else{
-                    tongueSimulation.setLinearVelocity(0,0);
-                }
 
+
+        if(contact==true){
+            if(tongueSimulation.getPosition().y<=(physicalY+tongueHeight*2)) {
+                tongueSimulation.setLinearVelocity(0, 2);
             }else{
-                if(tongueSimulation.getPosition().y>=physicalY){
-                    tongueSimulation.setLinearVelocity(0,-2);
-                }else{
-                    tongueSimulation.setLinearVelocity(0,0);
-                }
+                tongueSimulation.setLinearVelocity(0,0);
             }
+
         }else{
-            currentFrameTongue = (TextureRegion) tongueFrozen.getKeyFrame(statetime,true);
-            currentFrameTop = (TextureRegion) topFrozen.getKeyFrame(statetime,true);
+            if(tongueSimulation.getPosition().y>=physicalY){
+                tongueSimulation.setLinearVelocity(0,-2);
+            }else{
+                tongueSimulation.setLinearVelocity(0,0);
+            }
         }
+
 
     }
 
@@ -130,6 +119,7 @@ public class TongueMonster extends Actor {
         batch.draw(currentFrameTongue, (tongueSimulation.getPosition().x-0.7f)*50f, (tongueSimulation.getPosition().y-0.45f)*50f);//把模拟物体的坐标拿出来，转换一下画上去
 
         batch.draw(currentFrameTop,(spine.getPhysicalX()-0.7f)*50f, (spine.getPhysicalY()-0.45f)*50f);
+
     }
 
     public void setContact(boolean contact){

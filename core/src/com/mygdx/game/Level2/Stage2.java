@@ -15,6 +15,8 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.Level3.ContactReactions.LaserDoorAndLaser;
+import com.mygdx.game.Level3.NormalActors.LaserDoor;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.Assets;
@@ -69,7 +71,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,138,12));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
+        this.addActor(new MainCharacter(world,89.8f,25.5f));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -211,9 +213,35 @@ public class Stage2 extends MyStage {
 
         this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 92f, 24f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
+//测试专用青蛙
+        this.addActor(new Frag2(world,89.5f,35f));
+
+        TongueMonster tongueMonster = new TongueMonster(world,Assets.instance.bunny.head,Assets.instance.mainCharacter.main,75f,40f);
+        this.addActor(tongueMonster);
+        new TongueMonsterAndMainCharacter();
+
+        BallLauncher ballLauncher = new BallLauncher(world,Assets.instance.bunny.head,61f,24);
+        this.addActor(ballLauncher);
+        new BallLauncherAndMainCharacter();
 
 
+        BallReceiver ballReceiver = new BallReceiver(world,Assets.instance.bunny.head,71f,24f);
+        this.addActor(ballReceiver);
+        new BallAndBallReceiver();
 
+        this.addActor(new LaserDoor(world,89.5f,20f));
+        new LaserDoorAndLaser();
+
+        Blower blower = new Blower(world,95f,28f,1.5f,15,Assets.instance.bunny.animNormal);
+        this.addActor(blower);
+
+
+        this.addActor(new laserTransmitter(Assets.instance.bunny.head, (int) (105.85*50), 28*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
+        this.addActor(new StillReflectiveStone(105*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,2));
+        this.addActor(new StillReflectiveStone(110*50, (int) (35*50),ActConstants.stillReflectiveStoneID,world,1));
+
+
+//*****************************************
 
         ActConstants.publicInformation.put("stage2", this);
 

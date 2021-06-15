@@ -29,13 +29,13 @@ public class Attack implements PhysicalAction {
         float[] direction;
         direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
         if(type==1){
-            currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID,10));
+            currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.windBulletID,10));
         }else if(type==2){
-            currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.sandBulletID,10));
+            currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.sandBulletID,10));
         }else if(type==3){
-            currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.woodBulletID,10));
+            currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.woodBulletID,10));
         }else if(type==4){
-            currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.laserID,10));
+            currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,(int)mainCharacter.getX(),(int)mainCharacter.getY(),direction,ActConstants.laserID,10));
         }
 
     }

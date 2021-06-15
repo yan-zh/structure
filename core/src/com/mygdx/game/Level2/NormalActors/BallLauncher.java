@@ -20,26 +20,24 @@ public class BallLauncher extends Actor {
     BodyDef myBodyDef;
     PolygonShape shape;
 
-    Animation push;
-    Animation wait;
+    TextureRegion currentFrame;
 
     float physicalX;
     float physicalY;
 
-    TextureRegion currentFrame;
 
     public boolean launch;
 
-    float stateTimeWait;
-    float stateTimeLaunch;
 
-    public BallLauncher(World world, Animation push, Animation wait, float physicalX, float physicalY) {
+
+
+    public BallLauncher(World world,TextureRegion currentFrame, float physicalX, float physicalY) {
         this.world = world;
-        this.push = push;
-        this.wait = wait;
+
         this.physicalX = physicalX;
         this.physicalY = physicalY;
         this.launch = false;
+        this.currentFrame = currentFrame;
 
         //创建主角物理模拟
         PhysicalEntityDefine.defineStatic();
@@ -63,28 +61,15 @@ public class BallLauncher extends Actor {
 
         ActConstants.publicInformation.put("BallLauncher",this);
 
-        currentFrame = (TextureRegion) wait.getKeyFrame(0);
 
-        stateTimeLaunch = 0;
-        stateTimeWait = 0;
+
+
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
-
-        if(launch==false){
-            stateTimeWait += delta;
-            currentFrame = (TextureRegion) wait.getKeyFrame(stateTimeLaunch,true);
-        }else{
-            stateTimeLaunch += delta;
-            currentFrame = (TextureRegion) push.getKeyFrame(stateTimeLaunch,false);
-            if(push.isAnimationFinished(stateTimeLaunch)){
-                realLaunch();
-                launch=false;
-            }
-        }
 
 
     }
@@ -97,7 +82,7 @@ public class BallLauncher extends Actor {
     }
 
     public void launch(){
-        ReboundBall reboundBall = new ReboundBall(world, Assets.instance.bunny.animCopterTransformBack,physicalX,physicalY+5);
+        ReboundBall reboundBall = new ReboundBall(world, Assets.instance.bunny.head,physicalX,physicalY+5);
         MyGdxGame.currentStage.addActor(reboundBall);
         reboundBall.impulse(1,0.1f);
     }

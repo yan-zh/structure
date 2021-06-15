@@ -28,11 +28,11 @@ public class MonsterAttack implements PhysicalAction {
         MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         float[] direction = MyVector.getStandardVector(mySimulation.getPosition().x,mySimulation.getPosition().y,mainCharacter.getPhysicalX(),mainCharacter.getPhysicalY());
         if(type==1){
-            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,thisX,thisY,direction,ActConstants.windBulletID,10));
+            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,thisX,thisY,direction,ActConstants.windBulletID,10));
         }else if(type==2){
-            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,thisX,thisY,direction,ActConstants.windBulletID,10));
+            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,thisX,thisY,direction,ActConstants.windBulletID,10));
         }else if(type==3){
-            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animCopterTransformBack,Assets.instance.mainCharacter.animRun,thisX,thisY,direction,ActConstants.windBulletID,10));
+            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,thisX,thisY,direction,ActConstants.windBulletID,10));
         }
 
     }

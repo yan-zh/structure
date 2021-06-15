@@ -108,7 +108,7 @@ public class ReflectiveStone extends Actor {
         }
 
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }
 
     @Override

@@ -16,11 +16,11 @@ public class SkillGroupIce implements SkillGroup {
     }
 
     public void skill2(float mouseX, float mouseY){
-        Stage currentStage = (Stage) ActConstants.publicInformation.get("CurrentStage");
-        MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
-        float[] direction;
-        direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
-        currentStage.addActor(new fireBoll(mainCharacter.getX(),mainCharacter.getY(),direction));
+//        Stage currentStage = (Stage) ActConstants.publicInformation.get("CurrentStage");
+//        MainCharacter mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
+//        float[] direction;
+//        direction = MyVector.getStandardVector(mainCharacter.getX(),mainCharacter.getY(),mouseX,mouseY);
+//        currentStage.addActor(new fireBoll(mainCharacter.getX(),mainCharacter.getY(),direction));
 
 
     }

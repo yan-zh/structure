@@ -26,12 +26,13 @@ public class StillReflectiveStone extends Actor{
 
     public boolean state = true;
 
-    String name;
 
     World world;
 
     static int number=0;
     int myNumber;
+
+    TextureRegion currentFrame;
 
 
     int type;//1 left   2 right  3 up
@@ -81,6 +82,9 @@ public class StillReflectiveStone extends Actor{
         mySimulation.setGravityScale(1);
         ActConstants.publicInformation.put("stillReflectiveStone"+myNumber, this);
 
+        //用这种方式克隆
+        currentFrame = new TextureRegion(Assets.instance.bunny.head);
+
     }
 
     @Override
@@ -93,8 +97,14 @@ public class StillReflectiveStone extends Actor{
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        TextureRegion textureRegion = new TextureRegion(new Texture("images/anim_bunny_copter_01.png"));
-        batch.draw(textureRegion, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f,(float)0.5*textureRegion.getRegionWidth(),(float)0.5*textureRegion.getRegionHeight(), textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
+
+        if(type==2){
+            if(!currentFrame.isFlipX()){
+                currentFrame.flip(true,false);
+            }
+        }
+
+        batch.draw(currentFrame,(mySimulation.getPosition().x-1.25f)*50f, (mySimulation.getPosition().y-1.35f)*50f,100,100);
 
     }
     public void emmit()
@@ -110,7 +120,7 @@ public class StillReflectiveStone extends Actor{
         }
 
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }
 
 }

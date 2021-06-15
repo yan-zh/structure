@@ -21,13 +21,9 @@ public class BulletSkill extends Actor {
 
 
     //Animations
-    Animation prepare;
-    Animation fly;
+    TextureRegion currentFrame;
     Animation contact;
-
     //frames
-    TextureRegion currentFramePrepare;
-    TextureRegion currentFrameFly;
     TextureRegion currentFrameContact;
 
     //flags for control animation play
@@ -57,7 +53,7 @@ public class BulletSkill extends Actor {
 
     public long actorId;
 
-    public BulletSkill(Animation prepare, Animation fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
+    public BulletSkill(TextureRegion fly, Animation contact, float x, float y, float[] direction, long actorId, int damage) {
 //这里输入的x y是像素
         this.damage = damage;
         this.delete = false;
@@ -72,8 +68,7 @@ public class BulletSkill extends Actor {
         this.setX(x+80*direction[0]);
         this.setY(y+80*direction[1]);
 
-        this.prepare = prepare;
-        this.fly = fly;
+        this.currentFrame = fly;
         this.contact = contact;
 
 
@@ -114,8 +109,6 @@ public class BulletSkill extends Actor {
         stateTimeContact=0;
 
         currentFrameContact = (TextureRegion) contact.getKeyFrames()[0];
-        currentFramePrepare = (TextureRegion) prepare.getKeyFrame(0);
-        currentFrameFly = (TextureRegion) fly.getKeyFrame(0);
 
         drawX = (mySimulation.getPosition().x-0.7f)*50f;
         drawY = (mySimulation.getPosition().y-0.45f)*50f;
@@ -133,10 +126,7 @@ public class BulletSkill extends Actor {
 
 
         super.act(delta);
-        if(fireMark==true) currentFramePrepare = (TextureRegion) prepare.getKeyFrame(stateTime,false);
-        if(prepare.isAnimationFinished(stateTime)) fireMark=false;
 
-        if(flyMark==true) currentFrameFly = (TextureRegion) fly.getKeyFrame(stateTime,true);
 
         if(contactMark==true){
             stateTimeContact +=delta;
@@ -167,20 +157,9 @@ public class BulletSkill extends Actor {
     public void draw(Batch batch, float parentAlpha) {
 
         super.draw(batch, parentAlpha);
-        if(fireMark==true){
-        float cos = MyVector.countAngle(0,1,direction[0],direction[1]);
-        float angle = (float)Math.acos(cos);
-        if(direction[0]<0){
-            angle = -angle;
-        }
-            batch.draw(currentFramePrepare,
-                    drawX,drawY,
-                    (float)0.5*currentFramePrepare.getRegionWidth(),(float)0.5*currentFramePrepare.getRegionHeight(),currentFramePrepare.getRegionWidth(),
-                    currentFramePrepare.getRegionWidth(),(float)1.0,(float)1.0,angle,true);
-        }
 
 
-        if(flyMark==true) batch.draw(currentFrameFly,drawX, drawY);
+        if(flyMark==true) batch.draw(currentFrame,drawX, drawY);
 
         if(contactMark==true) batch.draw(currentFrameContact,drawX, drawY);
     }

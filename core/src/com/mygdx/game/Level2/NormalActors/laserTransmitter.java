@@ -22,9 +22,6 @@ public class laserTransmitter extends Actor {
     Fixture myFixture;
 
 
-    Animation wait;
-    Animation trigger;
-
     TextureRegion currentFrame;
 
     public boolean state = true;
@@ -39,15 +36,13 @@ public class laserTransmitter extends Actor {
 
     Timer timer;
     Timer.Task task;
-    public laserTransmitter(Animation animationWait, Animation animationTrigger, int x, int y, long actorId, World world, String name)
+    public laserTransmitter(TextureRegion currentFrame, int x, int y, long actorId, World world, String name)
     {
         //Set position
         this.setX(x);
         this.setY(y);
+        this.currentFrame = currentFrame;
 
-        //Set the animation of the wait state and absorb
-        this.wait = animationWait;
-        this.trigger = animationTrigger;
 
         //Create the physical Entity
         PhysicalEntityDefine.defineCharacter();
@@ -95,14 +90,6 @@ public class laserTransmitter extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        statetime += delta;
-
-        if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
-
-        else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
-
-
-
 
     }
     @Override
@@ -118,7 +105,7 @@ public class laserTransmitter extends Actor {
         MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
         float[] direction = MyVector.getStandardVector(0,0,-1,0);
         System.out.println("Emmit");
-        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.laserID,1));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,this.getX(),this.getY(),direction,ActConstants.laserID,1));
     }
 
     public void stop(){

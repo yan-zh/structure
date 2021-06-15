@@ -34,6 +34,6 @@ public class CreateBullet implements PhysicalAction {
 
     @Override
     public void act() {
-        MyGdxGame.currentStage.addActor(new BulletSkill(prepare,fly,contact,x,y,direction,actorId,damage));
+        MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.head,Assets.instance.bunny.getAnimCopterRotate,x,y,direction,actorId,damage));
     }
 }
