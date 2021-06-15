@@ -1,6 +1,7 @@
 package com.mygdx.game.Level3;
 
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -23,6 +24,7 @@ import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
 
@@ -44,6 +46,8 @@ public class Stage3 extends MyStage {
     ChangeCamera changeCamera;
 
     public Stage3(InputMultiplexer inputMultiplexer){
+
+//        AssetsUI.instance.init(new AssetManager());
 
 
         ActConstants.changeStageTo = 0;
@@ -228,8 +232,9 @@ public class Stage3 extends MyStage {
         new TongueMonsterAndMainCharacter();
 
 
+//AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animBreath,AssetsLevel2.instance.pingtaiguai.animAttack,AssetsLevel2.instance.pingtaiguai.animBreath
         new EatPlatformAndMainCharacter();
-        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90, Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.goldCoin.animGoldCoin,Assets.instance.goldCoin.animGoldCoin);
+        EatPlatform eatPlatform1 = new EatPlatform(world,225.75f,90, Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);
         this.addActor(eatPlatform1);
 
         EatPlatform eatPlatform2 = new EatPlatform(world,235.85f,94.5f,Assets.instance.mainCharacter.animRun,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animBreath,Assets.instance.goldCoin.animGoldCoin);

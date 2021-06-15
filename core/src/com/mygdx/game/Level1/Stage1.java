@@ -143,7 +143,7 @@ public class Stage1 extends MyStage {
         this.addActor(new Fairy(1, AssetsLevel1.instance.fijling.animBreath,AssetsLevel1.instance.fijling.animAttack, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
-        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cddpxgw.animDead);
+        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsLevel1.instance.cdxgw.animBreath,AssetsLevel1.instance.cdxgw.animDead);
         this.addActor(monsterA);
 
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
@@ -160,7 +160,7 @@ public class Stage1 extends MyStage {
 
 
         //Region3
-        this.addActor(new Boss1(world,499,15));
+        this.addActor(new Boss1(world,499,13));
         new Boss1SensorContact();
         new Boss1AndMainCharacter();
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,37860,148,505,3,ActConstants.portalID,world,"Portal3",true,"Stage2"));

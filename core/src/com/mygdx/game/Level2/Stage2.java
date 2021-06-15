@@ -2,6 +2,7 @@ package com.mygdx.game.Level2;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -21,6 +22,7 @@ import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
 import jdk.tools.jaotc.Main;
@@ -41,6 +43,8 @@ public class Stage2 extends MyStage {
 
 
     public Stage2(InputMultiplexer inputMultiplexer){
+
+
 
         ActConstants.changeStageTo = 0;
 
@@ -64,7 +68,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,66,14));//单位是米 7 89初始位置 7 66  105 11
+        this.addActor(new MainCharacter(world,7,66));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -179,7 +183,6 @@ public class Stage2 extends MyStage {
 
 
         this.addActor(new brokenBridge( Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 8500-60, 5150-1170, 3f,2f,ActConstants.brokenBridgeID, world, "brokenDoor"));
-        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
 
@@ -187,7 +190,7 @@ public class Stage2 extends MyStage {
         this.addActor(flower);
         new FlowerAndMainCharacter();
         //配给检测食人花的
-        this.addActor(new Fairy(1, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (66*50),14*50,ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(2, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (50*50),14*50,ActConstants.woodFairyID,world,"WoodFairy"));
 
 
 
@@ -205,7 +208,7 @@ public class Stage2 extends MyStage {
 
         this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 193f-1.2f, 39.5f-23.4f,1f/ ActConstants.worldSize_shapeAndPhysics, 7f/ ActConstants.worldSize_shapeAndPhysics, ActConstants.switchID, world, "door"));
 
-        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 94.8f-1.2f, 49.4f-23.4f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
+        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 92f, 24f, ActConstants.switchID, world,"rotateSwitchFrag", "frag"));
 
 
 
@@ -232,8 +235,7 @@ public class Stage2 extends MyStage {
         new BubbleAndCharacter();
         this.addActor(new PswDoor(world,64f-1.2f,82f-23.4f,11f,1f,ActConstants.PswDoorID,"pswDoor"));
         new PswDoorContact();
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,10750,2800,505,3,ActConstants.portalID,world,"Portal1",true,"Stage3"));
-
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,14000,1200,505,3,ActConstants.portalID,world,"Portal1",true,"Stage3"));
     }
 
     @Override

@@ -88,6 +88,7 @@ public class MainCharacter extends Actor {
         shape = new PolygonShape();
        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        //2.5  2.2还可以
         myFixtureDef.shape = shape;
         myFixtureDef.isSensor = false;
 
@@ -146,6 +147,7 @@ public class MainCharacter extends Actor {
 //        Action action = Actions.delay(20f,delayedAction);//这个数就是20s
 //
 //        this.addAction(Actions.sequence(action));
+
 
     }
 
@@ -214,7 +216,7 @@ public class MainCharacter extends Actor {
         }
 
 
-        batch.draw(currentFrame, (mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);//把模拟物体的坐标拿出来，转换一下画上去
+        batch.draw(currentFrame, (mySimulation.getPosition().x-1.25f)*50f, (mySimulation.getPosition().y-1.35f)*50f);//把模拟物体的坐标拿出来，转换一下画上去
 
     }
 

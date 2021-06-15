@@ -77,6 +77,9 @@ public class UserInputListener extends InputListener {
 
                                         portal.state = true;
 
+                                        Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
+                                        beacon.setBeacon();
+
                                         if (portal.Stagetranto == "Stage2") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
@@ -88,16 +91,27 @@ public class UserInputListener extends InputListener {
                                             ActConstants.changeStageTo=3;
                                         }
 
-                                        if (portal.Stagetranto == "PortalFinal") {
+                                        if (portal.getName() == "PortalFinal") {
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
                                         }
 
 
+                                        Action delayedAction = Actions.run(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
+                                                beacon.setBeacon();
+
+                                            }
+                                        });
+                                        //一秒后回到之前的状态
+                                        Action action = Actions.delay(1f, delayedAction);
+                                        portal.addAction(action);
                                     }
                                 });
                                 //一秒后回到之前的状态
-                                Action action = Actions.delay(1f, delayedAction);
+                                Action action = Actions.delay(0.01f, delayedAction);
                                 portal.addAction(action);
 
 
@@ -105,8 +119,6 @@ public class UserInputListener extends InputListener {
                         });
                         Action action = Actions.delay(3f, delayedAction);
                         portal.addAction(action);
-                        Beacon beacon = (Beacon) ActConstants.publicInformation.get("Beacon");
-                        beacon.setBeacon();
 
                     }
                 }

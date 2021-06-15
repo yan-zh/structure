@@ -21,8 +21,9 @@ public class CreatePortal implements PhysicalAction {
 
     @Override
     public void act() {
+
         Stage2 stage2 = ((Stage2) ActConstants.publicInformation.get("stage2"));
-        stage2.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,14150,1325,505,3,ActConstants.portalID, ((MyStage)MyGdxGame.currentStage).world,"Portal2",true,"none"));
+        stage2.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,10750,2800,40,60,ActConstants.portalID, ((MyStage)MyGdxGame.currentStage).world,"Portal2",true,"none"));
 
 
 

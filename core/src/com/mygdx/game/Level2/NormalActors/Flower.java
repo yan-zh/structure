@@ -61,7 +61,7 @@ public class Flower extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,8f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(6f/ ActConstants.worldSize_shapeAndPhysics,8f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor = false;
@@ -127,7 +127,7 @@ public class Flower extends Actor {
         super.draw(batch, parentAlpha);
 
         if(isDelete==false){
-            batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+            batch.draw(currentFrame,(mySimulation.getPosition().x-3f)*50f, (mySimulation.getPosition().y-4f)*50f);
         }
     }
 

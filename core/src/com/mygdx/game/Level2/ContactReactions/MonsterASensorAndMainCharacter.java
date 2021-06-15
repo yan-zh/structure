@@ -16,11 +16,16 @@ public class MonsterASensorAndMainCharacter implements ContactReaction {
     @Override
     public void react(UserData userData1, UserData userData2) {
         if(userData1.contactId==ActConstants.monsterSensorID){
+
             MonsterA monsterA = (MonsterA) ActConstants.publicInformation.get(userData1.nameInPublicInformation);
-            monsterA.start();
+            if(monsterA!=null){
+                monsterA.start();
+            }
         }else{
             MonsterA monsterA = (MonsterA) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
-            monsterA.start();
+            if(monsterA!=null){
+                monsterA.start();
+            }
         }
     }
 }
