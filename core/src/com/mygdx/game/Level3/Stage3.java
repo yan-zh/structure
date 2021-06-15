@@ -319,8 +319,7 @@ public class Stage3 extends MyStage {
 //Portal的位置：436，80
 //Dst:515,49
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,21800,4000,515,49,ActConstants.portalID,world,"Portal2",false,"none"));
-        this.addActor(new rotateSwitch(Assets.instance.goldCoin.animGoldCoin, Assets.instance.bunny.getAnimCopterRotate, 422f, 115f, ActConstants.switchID, world,"rotateSwitchPortal", "portal"));
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
+        this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 422f, 115f, ActConstants.switchID, world,"rotateSwitchPortal", "portal"));        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,27050,2400,604,51,ActConstants.portalID,world,"Portal3",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,30000,4000,537,66,ActConstants.portalID,world,"Portal4",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,24300,2435,771,42,ActConstants.portalID,world,"Portal5",true,"none"));
         this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,38950,4100,485,65,ActConstants.portalID,world,"PortalFinal",true,"none"));

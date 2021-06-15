@@ -144,7 +144,7 @@ public class UserInputListener extends InputListener {
                                 @Override
                                 public void run() {
                                     rotateSwitch rotateSwitch = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
-                                    rotateSwitch.state = true;
+
                                 }
                             });
                             Action action = Actions.delay(3f, delayedAction);
@@ -166,7 +166,7 @@ public class UserInputListener extends InputListener {
                                     Door door = ((Door) ActConstants.publicInformation.get("door"));
                                     door.state = true;
                                     rotateSwitch rotateSwitch = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
-                                    rotateSwitch.state = true;
+
                                 }
                             });
                             Action action = Actions.delay(3f, delayedAction);

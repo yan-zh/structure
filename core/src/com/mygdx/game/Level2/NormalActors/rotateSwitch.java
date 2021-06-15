@@ -15,8 +15,8 @@ public class rotateSwitch extends Actor {
     BodyDef myBodyDef;
     Fixture myFixture;
 
-    Animation wait;
-    Animation trigger;
+    TextureRegion wait;
+    TextureRegion trigger;
 
     TextureRegion currentFrame;
 
@@ -31,7 +31,7 @@ public class rotateSwitch extends Actor {
 
 
 
-    public rotateSwitch(Animation animationWait, Animation animationTrigger, float x, float y, long actorId, World world, String name, String controlType)
+    public rotateSwitch(TextureRegion wait, TextureRegion trigger, float x, float y, long actorId, World world, String name, String controlType)
     {
         this.ControlType = controlType;
         //Set position
@@ -39,8 +39,8 @@ public class rotateSwitch extends Actor {
         this.setY(y * ActConstants.worldSize_pAndPhysic);
 
         //Set the animation of the wait state and absorb
-        this.wait = animationWait;
-        this.trigger = animationTrigger;
+        this.wait = wait;
+        this.trigger = trigger;
         //Create the physical Entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
@@ -72,9 +72,9 @@ public class rotateSwitch extends Actor {
 
         statetime += delta;
 
-        if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
+        if(state == true) currentFrame = wait;
 
-        else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
+        else currentFrame = trigger;
 
     }
     @Override

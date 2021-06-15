@@ -128,6 +128,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		currentStage.draw();
 
 		if(ActConstants.changeStageTo!=0){
+			System.out.println("qieguanle");
 			currentStage.dispose();
 			if(ActConstants.changeStageTo==2){
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
