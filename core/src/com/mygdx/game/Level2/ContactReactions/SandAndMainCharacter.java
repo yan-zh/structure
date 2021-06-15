@@ -33,8 +33,7 @@ public class SandAndMainCharacter implements ContactReaction {
         MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
 
         //Refresh the state of jump
-        ActConstants.MainCharacterState.replace("onGround",true);
-        ActConstants.MainCharacterState.replace("repulse",false);
+        ActConstants.mainCharacter.reFreshJump();
         if(sandPlat != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
         {
 

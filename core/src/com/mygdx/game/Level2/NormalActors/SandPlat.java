@@ -29,11 +29,11 @@ public class SandPlat extends Actor {
 
     World world;
 
-    public SandPlat(Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world, String name)
+    public SandPlat(Animation animationWait, Animation animationAbsorb, float x, float y, long actorId, World world, String name)
     {
         //Set position
-        this.setX(x);
-        this.setY(y);
+        this.setX(x * ActConstants.worldSize_pAndPhysic);
+        this.setY(y * ActConstants.worldSize_pAndPhysic);
 
         //Set the animation of the wait state and absorb
         this.wait = animationWait;
@@ -44,10 +44,11 @@ public class SandPlat extends Actor {
         myBodyDef = PhysicalEntityDefine.getBd();
         myBodyDef.type = BodyDef.BodyType.StaticBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
+        myFixtureDef.friction = 1;
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,0.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myBodyDef.position.set(this.getX() / ActConstants.worldSize_pAndPhysic, this.getY() / ActConstants.worldSize_pAndPhysic);

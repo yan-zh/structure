@@ -54,7 +54,7 @@ public class ReverberateAxe extends Actor {
         //获得物理世界引用
         this.world = world;
 
-        physicalWidth = 4f;
+        physicalWidth = 2f;
         physicalHeight = 3.5f;
 
         //创建主角物理模拟

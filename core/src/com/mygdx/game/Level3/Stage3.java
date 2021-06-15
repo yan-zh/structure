@@ -57,23 +57,6 @@ public class Stage3 extends MyStage {
         cleft=-300000;
         cright=300000;
 
-        new SandFairyAndMainCharacter();
-        new WoodFairyAndMainCharacter();
-        new BulletAndMonsterA();
-        new MonsterASensorAndMainCharacter();
-        new WindFairyAndMainCharacter();
-        new PortalAndMainCharacter();
-
-        //测试***********************************
-
-
-
-//yzh***************************************************
-        new BulletDispose();
-        new GroundAndMainCharacter();
-        new MainCharacterAndSpine();
-        new BridgeAndMainCharacter();
-        new BulletAndMain();
 
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 
@@ -88,7 +71,7 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,490,70));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
+        this.addActor(new MainCharacter(world,164,70));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
@@ -146,11 +129,35 @@ public class Stage3 extends MyStage {
 
 //       new MainCharacterAndSpine();
 
-        new BulletDispose();//这句话应该删除、、、、、、、、、、、、、、、、、、、、
+        new BulletAndMonsterA();
+        new MonsterASensorAndMainCharacter();
+        new PortalAndMainCharacter();
+
         new GroundAndMainCharacter();
+        new MainCharacterAndSpine();
+
+
+        new BulletAndMonsterA();
+        new MonsterASensorAndMainCharacter();
+
+        new BulletDispose();
+        new BulletAndMain();
+
+        //测试***********************************
+
+
+
+//yzh***************************************************
+
 
 
         //region 1
+
+
+        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (182*50),38*50,ActConstants.sandFairyID,world,"SandFairy"));
+        new SandFairyAndMainCharacter();
+
+
 
         this.addActor(new Spine(world,154.3f,56.75f,3.5f,1f));
         this.addActor(new Spine(world,159.8f,55.3f,6.4f,1f));
@@ -285,7 +292,7 @@ public class Stage3 extends MyStage {
 
 
         new ReflectiveStoneAndBullet();
-        this.addActor(new StillReflectiveStone(652*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
+        this.addActor(new StillReflectiveStone(650*50, (int) (59.8*50),ActConstants.stillReflectiveStoneID,world,1));
         this.addActor(new laserTransmitter(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, (int) (655.85*50), 49*50, ActConstants.laserTransmitterID, world, "laserTransmitter"));
         this.addActor(new StillReflectiveStone(631*50, (int) (67.5*50),ActConstants.stillReflectiveStoneID,world,2));
         this.addActor(new StillReflectiveStone(656*50, (int) (73.3*50),ActConstants.stillReflectiveStoneID,world,1));
@@ -297,8 +304,6 @@ public class Stage3 extends MyStage {
 
 
         this.addActor(new MoveLauncher(world,490.1f,77));
-//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
-//        ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
         new MoveLauncherAndBullet();
 
 
@@ -306,7 +311,7 @@ public class Stage3 extends MyStage {
 
         //244.04076,78.68498
 //357.14578,99.2157
-        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,12200,3900,357,99,ActConstants.portalID,world,"Portal1",true,"none"));
+        this.addActor(new Portal(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,12200,3900,357,99,ActConstants.portalID,world,"PortalIceTriggered",false,"none"));
 
 //机关的位置：422， 115
 //Portal的位置：436，80
@@ -321,6 +326,23 @@ public class Stage3 extends MyStage {
 
         this.addActor(new LaserDoor(world,610,83.5f));
         new LaserDoorAndLaser();
+
+
+        Blower blower = new Blower(world,155.6f,48.7f,1.5f,15,Assets.instance.bunny.animNormal);
+        this.addActor(blower);
+
+        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,645f,51f,ActConstants.SandID,world,"sandPlat1"));
+        new SandAndMainCharacter();
+//mousepoint   645.78735   53.93447
+//        639.74365,71.87999
+//        385.1166,94.39422  diyige futukui
+//        243.1743,78.68498
+
+        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,639.7f,69.9f,ActConstants.SandID,world,"sandPlat2"));
+//385.9601,91.62201
+        this.addActor(new SandPlat(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate,385.9f,89.6f,ActConstants.SandID,world,"sandPlat3"));
+
+        new BlowerAndMainCharacter();
 //yzh***************************************************
 
 //

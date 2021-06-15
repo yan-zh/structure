@@ -129,7 +129,7 @@ public class MonsterA extends Actor {
 
         shape = new PolygonShape();
         // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-        shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        shape.setAsBox(2.5f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
@@ -251,7 +251,7 @@ public class MonsterA extends Actor {
             }
         }
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.5f)*50f, (mySimulation.getPosition().y-0.75f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-1.25f)*50f, (mySimulation.getPosition().y-0.75f)*50f);
 
     }
 
@@ -329,9 +329,9 @@ public class MonsterA extends Actor {
 
     public void repulse(float x, float y){
         if(x<=mySimulation.getPosition().x){
-            mySimulation.applyLinearImpulse(100,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
+            mySimulation.applyLinearImpulse(200,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
         }else{
-            mySimulation.applyLinearImpulse(-100,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
+            mySimulation.applyLinearImpulse(-200,400,mySimulation.getPosition().x,mySimulation.getPosition().y,true);
         }
     }
 }

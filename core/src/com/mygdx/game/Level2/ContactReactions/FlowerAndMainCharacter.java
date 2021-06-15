@@ -14,7 +14,7 @@ public class FlowerAndMainCharacter implements ContactReaction {
 
     @Override
     public void react(UserData userData1, UserData userData2) {
-        if(ActConstants.skillGroups[2]!=null){
+        if(ActConstants.skillGroups[3]!=null){
             if(userData1.contactId==ActConstants.flowerID){
                 Flower flower = (Flower)ActConstants.publicInformation.get(userData1.nameInPublicInformation);
                 flower.contact();

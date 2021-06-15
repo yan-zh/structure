@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="700" height="108" tilewidth="60" tileheight="60" infinite="0" nextlayerid="7" nextobjectid="154">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="700" height="108" tilewidth="60" tileheight="60" infinite="0" nextlayerid="7" nextobjectid="155">
  <tileset firstgid="1" source="bing01_ground.tsx"/>
  <tileset firstgid="4609" source="bing01_front.tsx"/>
  <tileset firstgid="9217" source="bing03_ground.tsx"/>
@@ -357,7 +357,7 @@
   <object id="12" x="7244.95" y="2865.52" width="220.178" height="59" rotation="32.6207"/>
   <object id="13" x="7088.48" y="2801.23" width="120" height="166"/>
   <object id="14" x="732" y="2656" width="116" height="1056"/>
-  <object id="15" x="8040" y="3544" width="3148" height="236"/>
+  <object id="15" x="8040" y="3532" width="3148" height="248"/>
   <object id="17" x="8236" y="1944" width="1012" height="276"/>
   <object id="18" x="8188" y="2224" width="320" height="220"/>
   <object id="19" x="8510" y="2220.33" width="186.333" height="119"/>
@@ -392,10 +392,10 @@
   <object id="48" x="9898" y="4566" width="206.702" height="21.75" rotation="26.4287"/>
   <object id="49" x="11048.7" y="3780.82" width="80" height="953.528" rotation="19.5017"/>
   <object id="50" x="10803" y="2712.12" width="112.121" height="139.394"/>
-  <object id="51" x="11436" y="2592" width="496" height="120"/>
+  <object id="51" x="11412" y="2592" width="520" height="120"/>
   <object id="52" x="11708" y="2728" width="126" height="490"/>
   <object id="53" x="11310" y="3138" width="406" height="88"/>
-  <object id="54" x="11336" y="3086" width="64" height="214"/>
+  <object id="54" x="11317.3" y="3086" width="82.6667" height="214"/>
   <object id="55" x="11311" y="3227" width="48" height="74"/>
   <object id="56" x="9918" y="1572" width="762" height="296"/>
   <object id="57" x="10688" y="1466" width="348" height="290"/>
@@ -466,7 +466,6 @@
   <object id="127" x="32227.3" y="4631.58" width="120" height="76" rotation="180"/>
   <object id="128" x="32449.1" y="4471.48" width="288.521" height="74.2705" rotation="147.131"/>
   <object id="129" x="32974" y="3442" width="170" height="634"/>
-  <object id="130" x="32876" y="3744" width="176" height="336"/>
   <object id="131" x="32548" y="3168" width="676" height="256"/>
   <object id="132" x="32458" y="3247" width="88" height="49"/>
   <object id="133" x="32466.4" y="3260.04" width="116.403" height="20.6667" rotation="316.714"/>
@@ -490,5 +489,6 @@
   <object id="151" x="20281" y="487" width="301" height="55"/>
   <object id="152" x="20212.1" y="534.081" width="98" height="34" rotation="325.114"/>
   <object id="153" x="20518.8" y="492.997" width="480.34" height="64" rotation="37.2408"/>
+  <object id="154" x="29352" y="1928" width="128" height="624"/>
  </objectgroup>
 </map>

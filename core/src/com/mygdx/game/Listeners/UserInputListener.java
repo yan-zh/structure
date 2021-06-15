@@ -16,6 +16,9 @@ import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.SkillGroupManager.SkillGroupSand;
+import com.mygdx.game.SkillGroupManager.SkillGroupWind;
+import com.mygdx.game.SkillGroupManager.SkillGroupWood;
 import com.mygdx.game.abstraction.MyStage;
 
 public class UserInputListener extends InputListener {
@@ -217,6 +220,14 @@ public class UserInputListener extends InputListener {
             if(event.getKeyCode() == Input.Keys.R){
                 synchronized (ActConstants.physicalActionListLock){
                     ActConstants.physicalActionList.add(new CreateStone(((MyStage)ActConstants.publicInformation.get("CurrentStage")).world));
+                }
+            }
+
+            if(event.getKeyCode() == Input.Keys.NUM_9){
+                synchronized (ActConstants.publicInformationLock){
+                    ActConstants.skillGroups[1] = new SkillGroupWind();
+                    ActConstants.skillGroups[2] = new SkillGroupWood();
+                    ActConstants.skillGroups[3] = new SkillGroupSand();
                 }
             }
 
