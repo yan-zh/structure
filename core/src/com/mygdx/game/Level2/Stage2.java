@@ -69,7 +69,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,51,10));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
+        this.addActor(new MainCharacter(world,138,12));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
         this.addActor(new Beacon(AssetsLevel1.instance.zj.animBreath, AssetsLevel1.instance.zj.animAttack, 7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -201,10 +201,10 @@ public class Stage2 extends MyStage {
         new AxeSensorContact();
 
 
-        this.addActor(new Frag(world,142-1.2f,32-23.4f));
+        this.addActor(new Frag2(world,142-1.2f,32-23.4f));
         new HeatFragEye();
-        this.addActor(new Frag(world,147-1.2f,45-23.4f));
-        this.addActor(new Frag(world,165-1.2f,65-23.4f));
+        this.addActor(new Frag2(world,147-1.2f,45-23.4f));
+        this.addActor(new Frag2(world,165-1.2f,65-23.4f));
 
         this.addActor(new rotateSwitch(AssetsUI.instance.jiguan.jg0, AssetsUI.instance.jiguan.jg1, 183f-1.2f, 64f-23.4f, ActConstants.switchID, world,"rotateSwitchDoor", "door"));
         this.addActor(new Door(Assets.instance.goldCoin.animGoldCoin,Assets.instance.bunny.getAnimCopterRotate, 193f-1.2f, 39.5f-23.4f,1f/ ActConstants.worldSize_shapeAndPhysics, 7f/ ActConstants.worldSize_shapeAndPhysics, ActConstants.switchID, world, "door"));
@@ -224,7 +224,7 @@ public class Stage2 extends MyStage {
 
         this.addActor(new ThinSurface(world,54.1f-1.2f,65-23.4f,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
-        this.addActor(new HangedBalls(world,203-1.2f,65,"10210",ActConstants.hangedBallsID,"hangedBalls"));
+        this.addActor(new HangedBalls(world,203-1.2f,65,"01201",ActConstants.hangedBallsID,"hangedBalls"));
         this.addActor(new SleepingBear(world,212-1.2f,10-23.4f,5f,3f,ActConstants.BearID,"sleepingBear"));
 //        this.addActor(new Bubbles(world,216-1.2f,10-23.4f,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();

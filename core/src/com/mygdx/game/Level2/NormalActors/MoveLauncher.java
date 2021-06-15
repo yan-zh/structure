@@ -249,7 +249,7 @@ public class MoveLauncher extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        batch.draw(currentFrame,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
+        batch.draw(currentFrame,(mySimulation.getPosition().x-3f)*50f, (mySimulation.getPosition().y-6f)*50f);
 
 
     }

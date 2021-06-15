@@ -132,12 +132,12 @@ public class MyGdxGame extends ApplicationAdapter {
 			currentStage.dispose();
 			if(ActConstants.changeStageTo==2){
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
-				AssetsLevel1.instance.dispose();
+//				AssetsLevel1.instance.dispose();
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==3){
 				MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
-				AssetsLevel2.instance.dispose();
+//				AssetsLevel2.instance.dispose();
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==1.5){

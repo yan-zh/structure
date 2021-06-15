@@ -78,6 +78,8 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         //****************注意，这个监听就算这个舞台没运行act也有效果
 
 
+
+        ActConstants.publicInformation.put("stage0", this);
     }
 
     @Override
@@ -94,6 +96,8 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 // 在适当的条件（这里是按钮被按下），切换舞台，用下一个舞台换掉MyGdxGame的currentStage
                 AudioManager.instance.play(AssetsUI.instance.sounds.comfirm);
                 AudioManager.instance.stopMusic();
+                Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
+                stage0.dispose();
                 MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;

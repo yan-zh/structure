@@ -45,6 +45,7 @@ public class SandPlat extends Actor {
         myBodyDef.type = BodyDef.BodyType.StaticBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
         myFixtureDef.friction = 1;
+        myFixtureDef.isSensor = false;
 
         //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();

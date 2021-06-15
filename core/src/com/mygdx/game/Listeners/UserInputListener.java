@@ -136,7 +136,7 @@ public class UserInputListener extends InputListener {
                 rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
                 if (rotateSwitchPortal != null) {
                     if (rotateSwitchPortal.triggerState == true) {
-                        Portal portal = (Portal) ActConstants.publicInformation.get(ActConstants.currentPortal);
+                        Portal portal = (Portal) ActConstants.publicInformation.get("Portal2");
                         if (portal != null && rotateSwitchPortal.ControlType == "portal") {
                             rotateSwitchPortal.state = false;
                             portal.turnOn();

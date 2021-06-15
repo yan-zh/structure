@@ -49,7 +49,7 @@ public class BodyBuilder {
         shape.setRadius(radius);
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.density = 40;
+        fixtureDef.density = 4;
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(new UserData(actorId, name));
         // Shape is the only disposable of the lot, so get rid of it

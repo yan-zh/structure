@@ -48,16 +48,26 @@ public class HangedBalls extends Actor {
         Array<Body> vertices=new Array<Body>();
         Array<Vector2> positions=new Array<>();
 
+        Array<Vector2> vertexPos=new Array<>();
+        vertexPos.add(new Vector2(216f, 69f));
+        vertexPos.add(new Vector2(219f, 69f));
+        vertexPos.add(new Vector2(222f, 69f));
+
+        float[] ropeLength= {4f,3f,5f};
+
+
+
+
         for (Integer i = 0; i < 3; i++) {//注意这里改坐标的话三行代码都得改
-            vertices.add(BodyBuilder.createBox(world, x+i*2 , y+2f, 0.05f, 0.05f, false, 0b10, "vertex"));
-            positions.add(new Vector2(x+i*2  , y+2f));
-            bodies.add(BodyBuilder.createCircle(world, x+i*2 , y, 0.5f, true,
+            vertices.add(BodyBuilder.createBox(world, vertexPos.get(i).x , vertexPos.get(i).y, 0.05f, 0.05f, false, 0b10, "vertex"));
+            positions.add(new Vector2(vertexPos.get(i).x  , vertexPos.get(i).y));
+            bodies.add(BodyBuilder.createCircle(world, vertexPos.get(i).x , vertexPos.get(i).y-ropeLength[i], 0.5f, true,
                     actorId, name+i.toString()));
             RevoluteJointDef rDef= new RevoluteJointDef();
             rDef.initialize(vertices.get(i),bodies.get(i),positions.get(i));
-            rDef.enableLimit=true;
-            rDef.lowerAngle=-(float)Math.PI/12;
-            rDef.upperAngle=(float)Math.PI/12;
+//            rDef.enableLimit=true;
+//            rDef.lowerAngle=-(float)Math.PI/12;
+//            rDef.upperAngle=(float)Math.PI/12;
             world.createJoint(rDef);
         }
 
