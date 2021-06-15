@@ -108,6 +108,9 @@ public class Bubbles extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        for (Body body : bubbles) {
+            batch.draw(textureRegion,(body.getPosition().x-radius)*50,(body.getPosition().y-radius)*50,2*radius*50f,2*radius*50f);
+        }
 
 //        batch.draw(region,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f);
     }

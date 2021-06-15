@@ -14,6 +14,7 @@ import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Level3.Stage3;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsStageChage;
@@ -138,6 +139,7 @@ public class MyGdxGame extends ApplicationAdapter {
 				ActConstants.changeStageTo = 0;
 			}else if(ActConstants.changeStageTo==2){
 				ActConstants.spriteNumber = 1;
+				AudioManager.instance.play(AssetsUI.instance.music.mainTheme);
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
 //				AssetsLevel0.instance.dispose();
 				ActConstants.changeStageTo = 0;
