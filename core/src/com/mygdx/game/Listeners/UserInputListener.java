@@ -91,7 +91,7 @@ public class UserInputListener extends InputListener {
                                             ActConstants.changeStageTo=3;
                                         }
 
-                                        if (portal.getName() == "PortalFinal") {
+                                        if (portal.name == "PortalFinal") {
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
                                         }

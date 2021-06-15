@@ -57,7 +57,23 @@ public class Stage3 extends MyStage {
         cleft=-300000;
         cright=300000;
 
+        new SandFairyAndMainCharacter();
+        new WoodFairyAndMainCharacter();
+        new BulletAndMonsterA();
+        new MonsterASensorAndMainCharacter();
+        new WindFairyAndMainCharacter();
+        new PortalAndMainCharacter();
 
+        //测试***********************************
+
+
+
+//yzh***************************************************
+        new BulletDispose();
+        new GroundAndMainCharacter();
+        new MainCharacterAndSpine();
+        new BridgeAndMainCharacter();
+        new BulletAndMain();
 
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 

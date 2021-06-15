@@ -26,7 +26,7 @@ public class Portal extends Actor{
 
     float statetime;
 
-    String name;
+    public String name;
 
     public String Stagetranto;
 
