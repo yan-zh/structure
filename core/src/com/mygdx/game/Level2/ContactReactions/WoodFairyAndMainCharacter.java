@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.SkillGroupManager.SkillGroupWood;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.UserData;
@@ -22,6 +23,8 @@ public class WoodFairyAndMainCharacter implements ContactReaction {
             ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupWood();
             fairy.removeBody();
             fairy.state=false;
+
+            AssetsUI.instance.addSprit();
 
 
             Action delayedAction = Actions.run(new Runnable() {

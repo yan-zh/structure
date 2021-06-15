@@ -127,6 +127,7 @@ public class Stage2 extends MyStage {
         new MainCharacterAndSpine();
         new BridgeAndMainCharacter();
         new BulletAndMain();
+        new MainCharacterAndBullet();
         //测试***********************************
 
 

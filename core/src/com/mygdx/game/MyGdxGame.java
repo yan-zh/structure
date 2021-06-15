@@ -15,6 +15,9 @@ import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Level3.Stage3;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsStageChage;
+import com.mygdx.game.Tools.asset.AssetsUI;
 
 /* *这*************************************************这个是监听换舞台的版本
 public class MyGdxGame extends ApplicationAdapter {
@@ -128,9 +131,24 @@ public class MyGdxGame extends ApplicationAdapter {
 			currentStage.dispose();
 			if(ActConstants.changeStageTo==2){
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
+				AssetsLevel1.instance.dispose();
 				ActConstants.changeStageTo = 0;
+
 			}else if(ActConstants.changeStageTo==3){
 				MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
+				AssetsLevel2.instance.dispose();
+				ActConstants.changeStageTo = 0;
+
+			}else if(ActConstants.changeStageTo==1.5){
+				MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,2,14);
+				ActConstants.changeStageTo = 0;
+
+			}else if(ActConstants.changeStageTo== -1){
+				MyGdxGame.currentStage = new Stage0(ActConstants.inputMultiplexer);
+				ActConstants.changeStageTo = 0;
+
+			}else if(ActConstants.changeStageTo==2.5){
+				MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundIce1,3,14);
 				ActConstants.changeStageTo = 0;
 			}
 		}

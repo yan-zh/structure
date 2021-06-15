@@ -40,15 +40,17 @@ public class AssetsStageChage extends Stage implements Disposable {
     private float progressNow = 1;
     private float stateTime;
     private Image backGround;
-    private Stage nextStage;
+    private float stagenNumber;
 
     private float timeToTurn=10.0f;
+    private float speed = 14;
 
     private SpriteBatch batch;
 
-    public AssetsStageChage(AtlasRegion background,Stage nextStage){
-        this.nextStage = nextStage;
+    public AssetsStageChage(AtlasRegion background,float stagenNumber,float speed){
+        this.stagenNumber = stagenNumber;
         this.setDebugAll(true);
+        this.speed =speed;
         batch = new SpriteBatch();
         // 初始化ui资源
         AssetsUI.instance.init(new AssetManager());
@@ -67,10 +69,10 @@ public class AssetsStageChage extends Stage implements Disposable {
         super.act();
         stateTime += Gdx.graphics.getDeltaTime();
         Random random = new Random();
-        float middle = random.nextInt(14);
+        float middle = random.nextInt((int)speed);
         progressNow += (stateTime-middle)*(stateTime-middle)/70;
         if (progressNow>= progressMax){
-            MyGdxGame.currentStage = nextStage;
+            ActConstants.changeStageTo = stagenNumber;
         }
     }
 

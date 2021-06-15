@@ -292,7 +292,7 @@ public class MainCharacter extends Actor {
         Beacon beacon = ((Beacon) ActConstants.publicInformation.get("Beacon"));
         float[] data = beacon.returnState();
         resetPosition(data[0],data[1]);
-        ActConstants.health = (int)data[2];
+        AssetsUI.instance.addLives(20);
     }
 
     public void reFreshJump(){

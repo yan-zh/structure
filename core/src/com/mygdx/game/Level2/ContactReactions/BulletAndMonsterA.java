@@ -3,6 +3,7 @@ package com.mygdx.game.Level2.ContactReactions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.MonsterA;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
@@ -30,8 +31,8 @@ public class BulletAndMonsterA implements ContactReaction {
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 if(monsterA!=null){
 
-                    if(bulletSkill.actorId==ActConstants.woodBulletID&&ActConstants.health<=20){
-                        ActConstants.health++;
+                    if(bulletSkill.actorId==ActConstants.woodBulletID){
+                        AssetsUI.instance.addLives(1);//
                     }else if(bulletSkill.actorId==ActConstants.windBulletID){
                         monsterA.repulse(bulletSkill.mySimulation.getPosition().x,bulletSkill.mySimulation.getPosition().y);
                     }

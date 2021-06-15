@@ -143,6 +143,8 @@ public class Stage3 extends MyStage {
         new BulletDispose();
         new BulletAndMain();
 
+        new MainCharacterAndBullet();
+
         //测试***********************************
 
 

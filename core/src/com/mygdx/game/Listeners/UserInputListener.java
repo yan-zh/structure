@@ -193,11 +193,13 @@ public class UserInputListener extends InputListener {
             }
             // 调试用：用于减少生命值
             if (event.getKeyCode() == Input.Keys.N) {
+                ActConstants.changeStageTo = 1.5f;
                 AssetsUI.instance.reduceLives(1);
             }
             // 调试用：用于添加生命值
             if (event.getKeyCode() == Input.Keys.M) {
-                AssetsUI.instance.addLives(1);
+//                AssetsUI.instance.addLives(1);
+                ActConstants.changeStageTo = 2.5f;
             }
             // 调试用：用于减少生命上限
             if (event.getKeyCode() == Input.Keys.H) {

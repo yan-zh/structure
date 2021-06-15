@@ -157,7 +157,7 @@ public class Stage1 extends MyStage {
         new GroundAndMainCharacter();
 
         new PortalAndMainCharacter();
-
+        new MainCharacterAndBullet();
 
         //*********************  actors
         //region1

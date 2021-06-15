@@ -149,9 +149,9 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         userName = "Alibaba";
         currentSprite = null;
         currentFrame = mainPanel.paneFrame;
-        sprite1 = mainPanel.woodNull;
-        sprite2 = mainPanel.sandNull;
-        sprite3 = mainPanel.windNull;
+        sprite1 = mainPanel.windNull;
+        sprite2 = mainPanel.woodNull;
+        sprite3 = mainPanel.sandNull;
 
     }
 
@@ -164,14 +164,14 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         if (spriteNumber < 3) {
             spriteNumber++;
             if (spriteNumber == 1) {
-                sprite1 = mainPanel.woodHas;
+                sprite1 = mainPanel.windHas;
                 if (currentSprite == null) {
-                    currentSprite = SPRITE_TYPE.WOOD;
-                    sprite1 = mainPanel.woodActive;
+                    currentSprite = SPRITE_TYPE.WIND;
+                    sprite1 = mainPanel.windActive;
                 }
             } else if (spriteNumber == 2)
-                sprite2 = mainPanel.sandHas;
-            else sprite3 = mainPanel.windHas;
+                sprite2 = mainPanel.woodHas;
+            else sprite3 = mainPanel.sandHas;
         }
     }
 
@@ -265,14 +265,14 @@ public class AssetsUI implements Disposable, AssetErrorListener {
      */
     private void activeSprite(SPRITE_TYPE type) {
         switch (type) {
+            case WIND:
+                sprite1 = mainPanel.windActive;
+                break;
             case WOOD:
-                sprite1 = mainPanel.woodActive;
+                sprite2 = mainPanel.woodActive;
                 break;
             case SAND:
-                sprite2 = mainPanel.sandActive;
-                break;
-            case WIND:
-                sprite3 = mainPanel.windActive;
+                sprite3 = mainPanel.sandActive;
                 break;
         }
 
@@ -285,14 +285,14 @@ public class AssetsUI implements Disposable, AssetErrorListener {
      */
     private void unActiveSprite(SPRITE_TYPE type) {
         switch (type) {
+            case WIND:
+                sprite1 = mainPanel.windHas;
+                break;
             case WOOD:
-                sprite1 = mainPanel.woodHas;
+                sprite2 = mainPanel.woodHas;
                 break;
             case SAND:
-                sprite2 = mainPanel.sandHas;
-                break;
-            case WIND:
-                sprite3 = mainPanel.windHas;
+                sprite3 = mainPanel.sandHas;
                 break;
         }
     }
@@ -306,13 +306,13 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         if (currentSprite != null)
             switch (currentSprite) {
                 case SAND:
-                    currentFrame = mainPanel.paneFrameSand;
-                    break;
-                case WIND:
                     currentFrame = mainPanel.paneFrameWind;
                     break;
-                case WOOD:
+                case WIND:
                     currentFrame = mainPanel.paneFrameWood;
+                    break;
+                case WOOD:
+                    currentFrame = mainPanel.paneFrameSand;
                     break;
             }
         return currentFrame;

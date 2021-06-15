@@ -123,7 +123,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 // 点击打开社渚窗口：还未写
 
                 MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
-                        new Stage0(ActConstants.inputMultiplexer));
+                        0,14);
 
                 return false;
             }
