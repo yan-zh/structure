@@ -9,7 +9,10 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreateBall;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
 
 public class BallLauncher extends Actor {
@@ -91,6 +94,7 @@ public class BallLauncher extends Actor {
         ReboundBall reboundBall = new ReboundBall(world, Assets.instance.bunny.head,physicalX,physicalY+5);
         MyGdxGame.currentStage.addActor(reboundBall);
         reboundBall.impulse(1,0.1f);
+        AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Monster_Hit);
     }
 
     public void realLaunch(){
@@ -98,6 +102,7 @@ public class BallLauncher extends Actor {
         synchronized (ActConstants.physicalActionListLock){
             ActConstants.physicalActionList.add(createBall);
         }
+
 
     }
 }

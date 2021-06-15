@@ -42,6 +42,7 @@ public class AssetsStageChage extends Stage implements Disposable {
         backGround.setPosition(0, 0);//舞台坐标是左下角
 
         // 播放背景音乐
+        AudioManager.instance.stopMusic();
 //        AudioManager.instance.play(AssetsUI.instance.music.mainTheme);
 
         this.addActor(backGround);

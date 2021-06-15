@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreateTongue;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
@@ -135,12 +136,14 @@ public class Frag2 extends Actor {
                     ActConstants.physicalActionList.add(new CreateTongue(direction,world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX-0.75f,physicalY+1.2f));
                 }
 
-
+                AudioManager.instance.play(AssetsLevel1.instance.sounds.frog_Triggered);
             }
 
             activeTime++;
 
+
         }
+
 
 
     }

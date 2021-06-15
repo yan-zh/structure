@@ -7,7 +7,10 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsUI;
 
 public class Fairy extends Actor {
 
@@ -120,5 +123,7 @@ public class Fairy extends Actor {
         DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
         deletePhysicalEntity.deleteBody(mySimulation,world);
         ActConstants.physicalActionList.add(deletePhysicalEntity);
+
+        AudioManager.instance.play(AssetsUI.instance.sounds.fiary_Absorb);
     }
 }

@@ -14,6 +14,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreateBullet;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
@@ -108,7 +109,7 @@ public class MoveLauncher extends Actor {
 
         canDamage = true;
         die=false;
-        health=5;
+        health=10;
         normalStateTime = 0;
         dieStateTime = 0;
         attackStateTime = 0;
@@ -405,6 +406,8 @@ public class MoveLauncher extends Actor {
 
         timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
         active = true;
+
+        AudioManager.instance.play(AssetsLevel2.instance.sounds.Zboss);
     }
 
 //    public void stop(){

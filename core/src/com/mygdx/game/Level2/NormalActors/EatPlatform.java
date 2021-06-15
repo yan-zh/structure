@@ -10,7 +10,12 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreateSpine;
 import com.mygdx.game.Level2.PhysicalActions.CreateTongue;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
 
 public class EatPlatform extends Actor {
@@ -206,6 +211,8 @@ public class EatPlatform extends Actor {
         synchronized (ActConstants.physicalActionListLock){
             ActConstants.physicalActionList.add(createSpine);
         }
+
+        AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Monster_Hit);
 
 
     }

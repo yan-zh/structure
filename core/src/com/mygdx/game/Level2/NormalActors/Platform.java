@@ -14,7 +14,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
 
 public class Platform extends Actor {
@@ -40,7 +42,8 @@ public class Platform extends Actor {
         this.setY(y);
         this.width=width;
         this.height=height;
-        textureRegion = (TextureRegion) AssetsLevel1.instance.jiemi.qiuqian;
+
+        textureRegion = AssetsLevel0.instance.xianjing.main;
         image = new Image(textureRegion);
 
 

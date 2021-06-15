@@ -4,7 +4,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.PhysicalActions.Attack;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.SkillGroup;
 
 public class SkillGroupSand implements SkillGroup {
@@ -22,6 +24,7 @@ public class SkillGroupSand implements SkillGroup {
 
         Attack attack = new Attack(mouseX,mouseY,2);
         ActConstants.physicalActionList.add(attack);
+        AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Sand_Emmit);
 
     }
 }

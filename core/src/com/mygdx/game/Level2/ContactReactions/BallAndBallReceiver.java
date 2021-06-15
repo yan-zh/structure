@@ -5,6 +5,10 @@ import com.mygdx.game.Level2.NormalActors.BallLauncher;
 import com.mygdx.game.Level2.NormalActors.BallReceiver;
 import com.mygdx.game.Level2.NormalActors.Portal;
 import com.mygdx.game.Level2.NormalActors.ReboundBall;
+import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
@@ -27,6 +31,8 @@ public class BallAndBallReceiver implements ContactReaction {
         if(portal!=null) {
             portal.turnOn();
         }
+
+        AudioManager.instance.play(AssetsLevel1.instance.sounds.follower_Refuse);
 
         if(number==0){
             if(userData1.contactId==ActConstants.reboundBallID){

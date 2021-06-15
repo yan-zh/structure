@@ -7,8 +7,10 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
@@ -190,6 +192,7 @@ public class Boss1 extends Actor {
     public void active(){
         actionState1 = false;
         actionState2 = true;
+        AudioManager.instance.play(AssetsLevel0.instance.sounds.tortoise_Angry);
     }
 
     public void setReBorn(boolean set){

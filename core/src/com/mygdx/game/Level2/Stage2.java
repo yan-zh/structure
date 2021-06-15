@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -39,6 +40,9 @@ public class Stage2 extends MyStage {
     OrthographicCamera stageCamera;//舞台用的摄像机
 
     CameraFocus cameraFocus;
+    // GUI界面的相机
+    private OrthographicCamera cameraGUI;
+    private SpriteBatch batch;
 
 
     TiledMap tiledMap;
@@ -47,7 +51,8 @@ public class Stage2 extends MyStage {
 
     public Stage2(InputMultiplexer inputMultiplexer){
 
-        AssetsLevel1.instance.instance.init(new AssetManager());
+        AssetsLevel1.instance.init(new AssetManager());
+//        AssetsLevel2.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 
@@ -71,7 +76,7 @@ public class Stage2 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,110f,17.5f));//单位是米 7 89初始位置 7 66  105 11   测试食人花66 14
+        this.addActor(new MainCharacter(world,7, 66));//单位是米 7 66初始位置 7 66  105 11   测试食人花66 14
         this.addActor(new Beacon(7, 66, ActConstants.beaconID, world, "Beacon"));
 
         //每个舞台自己准备摄像机
@@ -114,7 +119,14 @@ public class Stage2 extends MyStage {
 
         //为这一关用到的物理碰撞监听添加一个函数
 
-
+// 初始化batch
+        batch = new SpriteBatch();
+// 创建GUI相机并配置参数
+        cameraGUI = new OrthographicCamera(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
+        cameraGUI.position.set(0,0,0);
+        cameraGUI.setToOrtho(true);
+// 反转y轴
+        cameraGUI.update();
 
         //测试***********************************
 //        this.addActor(new Fairy(3, Assets.instance.mainCharacter.animBreath,Assets.instance.bunny.getAnimCopterRotate, (int) (29.89*50),11*50,ActConstants.woodFairyID,world,"WoodFairy"));
@@ -214,7 +226,7 @@ public class Stage2 extends MyStage {
 
 //测试专用青蛙
 
-        AssetsLevel2.instance.instance.init(new AssetManager());
+//        AssetsLevel2.instance.instance.init(new AssetManager());
 
 //        this.addActor(new Frag2(world,89.5f,35f));
 //
@@ -260,7 +272,7 @@ public class Stage2 extends MyStage {
         this.addActor(new ThinSurface(world,54.1f-1.2f,65-23.4f,6.3f,0.5f,
                 ActConstants.thinSurfaceID,"thinSurface"));
         this.addActor(new HangedBalls(world,203-1.2f,65,"01201",ActConstants.hangedBallsID,"hangedBalls"));
-        this.addActor(new SleepingBear(world,212-1.2f,10-23.4f,5f,3f,ActConstants.BearID,"sleepingBear"));
+//        this.addActor(new SleepingBear(world,212-1.2f,10-23.4f,5f,3f,ActConstants.BearID,"sleepingBear"));
 //        this.addActor(new Bubbles(world,216-1.2f,10-23.4f,15,0.7f,ActConstants.BubbleID,"bubbles"));
         new ThinSurfaceContact();
         new BallsContact();
@@ -294,8 +306,8 @@ public class Stage2 extends MyStage {
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
-
-
+        // 应用GUI相机的位置更新
+        cameraGUI.update();
     }
 
     @Override
@@ -312,8 +324,17 @@ public class Stage2 extends MyStage {
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
-    }
 
+        // 尝试在此处绘制GUI图片
+        renderGui(batch);
+    }
+    public void renderGui(SpriteBatch batch){
+        batch.setProjectionMatrix(cameraGUI.combined);
+        batch.begin();
+        // 绘制人物的状态栏（左上角）
+        AssetsUI.instance.drawUpdate(batch);
+        batch.end();
+    }
     public World getWorld(){
         return world;
     }

@@ -1,6 +1,9 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
@@ -27,6 +30,15 @@ public class BulletDispose implements ContactReaction {
     public void react(UserData userData1, UserData userData2) {
 
         if(userData1.contactId!=ActConstants.monsterSensorID&&userData2.contactId!=ActConstants.monsterSensorID&&userData1.contactId!=ActConstants.blowerID&&userData2.contactId!=ActConstants.blowerID){
+
+            if(userData1.contactId==ActConstants.windBulletID||userData2.contactId==ActConstants.windBulletID){
+                AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Wind_Hit);
+            }else if(userData1.contactId==ActConstants.woodBulletID||userData2.contactId==ActConstants.woodBulletID){
+                AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Wood_Hit);
+            }else if(userData1.contactId==ActConstants.sandBulletID||userData2.contactId==ActConstants.sandBulletID){
+                AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Sand_Hit);
+            }
+
             if(userData1.contactId==ActConstants.windBulletID||
                     userData1.contactId==ActConstants.iceBulletID||
                     userData1.contactId==ActConstants.sandBulletID||

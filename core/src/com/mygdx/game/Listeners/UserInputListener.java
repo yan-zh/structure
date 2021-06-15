@@ -19,6 +19,10 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.SkillGroupManager.SkillGroupSand;
 import com.mygdx.game.SkillGroupManager.SkillGroupWind;
 import com.mygdx.game.SkillGroupManager.SkillGroupWood;
+import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsStageChage;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.MyStage;
 
@@ -33,6 +37,7 @@ public class UserInputListener extends InputListener {
                 ActConstants.MainCharacterState.replace("goRight", true);
                 ActConstants.MainCharacterState.replace("goLeft", false);
                 //ActConstants.MainCharacterState.replace("noControl",false);
+
             }
             if (event.getKeyCode() == Input.Keys.A) {
                 ActConstants.MainCharacterState.replace("goRight", false);
@@ -61,6 +66,7 @@ public class UserInputListener extends InputListener {
                 if (portal != null) {
                     MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
                     if (portal.triggerState == true && portal.isActive == true) {
+                        AudioManager.instance.play(AssetsUI.instance.sounds.transmit);
 
                         portal.state = false;
 
@@ -87,12 +93,17 @@ public class UserInputListener extends InputListener {
                                         if (portal.Stagetranto == "Stage2") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
-                                            ActConstants.changeStageTo=2;
+                                            AudioManager.instance.stopMusic();
+                                            AudioManager.instance.play(AssetsLevel1.instance.music.foresttheme);
+                                            MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,2);
                                         }
                                         if (portal.Stagetranto == "Stage3") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
-                                            ActConstants.changeStageTo=3;
+                                            AudioManager.instance.stopMusic();
+                                            AudioManager.instance.play(AssetsLevel2.instance.music.IceTheme);
+                                            MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundIce1,3);
+//                                            ActConstants.changeStageTo=3;
                                         }
 
                                         if (portal.name == "PortalFinal") {
@@ -129,6 +140,7 @@ public class UserInputListener extends InputListener {
                 }
 
             }
+
             //rotateSwitch
             if (event.getKeyCode() == Input.Keys.E) {
                 rotateSwitch rotateSwitchDoor = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchDoor"));
@@ -136,6 +148,7 @@ public class UserInputListener extends InputListener {
                 rotateSwitch rotateSwitchPortal = ((rotateSwitch) ActConstants.publicInformation.get("rotateSwitchPortal"));
                 if (rotateSwitchPortal != null) {
                     if (rotateSwitchPortal.triggerState == true) {
+                        AudioManager.instance.play(AssetsUI.instance.sounds.rotateSwitch_Trigger);
                         Portal portal = (Portal) ActConstants.publicInformation.get("Portal2");
                         if (portal != null && rotateSwitchPortal.ControlType == "portal") {
                             rotateSwitchPortal.state = false;
@@ -155,6 +168,7 @@ public class UserInputListener extends InputListener {
 
                 if (rotateSwitchDoor != null) {
                     if (rotateSwitchDoor.triggerState == true) {
+                        AudioManager.instance.play(AssetsUI.instance.sounds.rotateSwitch_Trigger);
                         Door door = ((Door) ActConstants.publicInformation.get("door"));
                         if (door != null) {
                             rotateSwitchDoor.state = false;
@@ -176,6 +190,7 @@ public class UserInputListener extends InputListener {
                 }
                 if (rotateSwitchFrag != null) {
                     if (rotateSwitchFrag.triggerState == true) {
+                        AudioManager.instance.play(AssetsUI.instance.sounds.rotateSwitch_Trigger);
                         ActConstants.fragState = true;
                         rotateSwitchFrag.state = false;
 
@@ -210,9 +225,9 @@ public class UserInputListener extends InputListener {
                 AssetsUI.instance.addLivesLimit(1);
             }
             // 调试用：用于添加精灵数量
-            if (event.getKeyCode() == Input.Keys.K) {
-                AssetsUI.instance.addSprit();
-            }
+//            if (event.getKeyCode() == Input.Keys.K) {
+//                AssetsUI.instance.addSprit();
+//            }
             if (event.getKeyCode() == Input.Keys.NUM_1) {
                 ActConstants.currentSkillGroup = 1;
                 AssetsUI.instance.changeToSprit(1);

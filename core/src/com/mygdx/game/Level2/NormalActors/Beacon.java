@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
@@ -114,6 +116,7 @@ public class Beacon extends Actor {
 
             this.mySimulation.setTransform(new Vector2(mainCharacter.mySimulation.getPosition().x , mainCharacter.mySimulation.getPosition().y), 0);
             this.health = ActConstants.health;
+            AudioManager.instance.play(AssetsUI.instance.sounds.beacon);
             System.out.println("The game is saved");
         }
 

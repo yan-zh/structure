@@ -2374,14 +2374,14 @@ cdBoss_idle
   size: 790, 530
   orig: 790, 530
   offset: 0, 0
-  index: 0
+  index: 60
 cdBoss_idle
   rotate: false
   xy: 1586, 3554
   size: 790, 530
   orig: 790, 530
   offset: 0, 0
-  index: 60
+  index: 0
 cdBoss_idle
   rotate: false
   xy: 2, 1883
@@ -3710,14 +3710,14 @@ ygg_Attack A
   size: 200, 110
   orig: 200, 110
   offset: 0, 0
-  index: 0
+  index: 55
 ygg_Attack A
   rotate: false
   xy: 3711, 17
   size: 200, 110
   orig: 200, 110
   offset: 0, 0
-  index: 55
+  index: 0
 zj_attack
   rotate: false
   xy: 2, 3207

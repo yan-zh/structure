@@ -33,6 +33,7 @@ public class MainCharacterAndBullet implements ContactReaction {
             BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
 
 
+
             boolean isDead = AssetsUI.instance.reduceLives(bulletSkill.getDamage());
 
             if (isDead==true) {

@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
@@ -82,7 +83,7 @@ public class laserTransmitter extends Actor {
             }
 
         };
-        timer.scheduleTask(task, 1, 1, 2000);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(task, 1, 8, 20000);// 0s之后执行，每次间隔1s，执行20次。
     }
 
     @Override
@@ -104,6 +105,11 @@ public class laserTransmitter extends Actor {
         float[] direction = MyVector.getStandardVector(0,0,-1,0);
         System.out.println("Emmit");
         MyGdxGame.currentStage.addActor(new BulletSkill(AssetsLevel2.instance.decoration.jiguang, AssetsUI.instance.spriteAttack.animFhit,this.getX(),this.getY(),direction,ActConstants.laserID,1,4));
+
+        if(mainCharacter.getPhysicalX()>=600){
+            AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Monster_Hit);
+        }
+
     }
 
     public void stop(){

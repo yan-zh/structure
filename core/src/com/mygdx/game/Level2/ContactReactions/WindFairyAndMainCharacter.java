@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.SkillGroupManager.SkillGroupWind;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.Fairy;
@@ -22,7 +23,7 @@ public class WindFairyAndMainCharacter implements ContactReaction {
     public void react(UserData userData1,UserData userData2) {
         Fairy fairy= ((Fairy)ActConstants.publicInformation.get("WindFairy"));
         if(fairy!=null){
-            ActConstants.skillGroups[fairy.numberPosition] = new SkillGroupWind();
+            ActConstants.skillGroups[1] = new SkillGroupWind();
             fairy.removeBody();
             fairy.state=false;
             AssetsUI.instance.addSprit();

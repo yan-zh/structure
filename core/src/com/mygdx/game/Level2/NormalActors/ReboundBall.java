@@ -107,7 +107,7 @@ public class ReboundBall extends Actor {
         super.draw(batch, parentAlpha);
 
 
-        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f,(float)0.5*currentFrame.getRegionWidth(),(float)0.5*currentFrame.getRegionHeight(), currentFrame.getRegionWidth(), currentFrame.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
+//        batch.draw(currentFrame, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f,(float)0.5*currentFrame.getRegionWidth(),(float)0.5*currentFrame.getRegionHeight(), currentFrame.getRegionWidth(), currentFrame.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
         effect.draw(batch,Gdx.graphics.getDeltaTime());
 
     }

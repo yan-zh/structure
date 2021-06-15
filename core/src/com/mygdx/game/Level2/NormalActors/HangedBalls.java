@@ -1,5 +1,6 @@
 package com.mygdx.game.Level2.NormalActors;
 
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -10,9 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.CreatePortal;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.BodyBuilder;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.mygdx.game.Tools.asset.AssetsUI;
 
 public class HangedBalls extends Actor {
     String password;
@@ -39,6 +42,7 @@ public class HangedBalls extends Actor {
 
 
     public HangedBalls(World world, float x, float y,String password,long actorId,String name){
+        AssetsUI.instance.instance.init(new AssetManager());
        tr0 =(TextureRegion) AssetsLevel1.instance.jiemi.miZhong;
         tr1 =(TextureRegion) AssetsLevel1.instance.jiemi.miDuan;
         tr2 =(TextureRegion) AssetsLevel1.instance.jiemi.miChang;
@@ -118,6 +122,7 @@ public class HangedBalls extends Actor {
         CreatePortal createPortal = new CreatePortal();
 
         ActConstants.physicalActionList.add(createPortal);
+        AudioManager.instance.play(AssetsLevel1.instance.sounds.success_Triggered);
         //从actcontants里获得横门的body让它消失
         //调用横门对象的draw还是act让它向左移
     }

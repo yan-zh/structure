@@ -72,6 +72,7 @@ public class Portal extends Actor{
 
         this.name = name;
         ActConstants.publicInformation.put(name, this);
+        currentFrame = AssetsUI.instance.decoration.chuansong;
 
 
     }

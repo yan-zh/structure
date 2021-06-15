@@ -82,11 +82,7 @@ public class Door extends Actor {
 
         if(state == true) currentFrame = (TextureRegion)wait.getKeyFrame(statetime, true);
 
-        else currentFrame = (TextureRegion) trigger.getKeyFrame(statetime, true);
-        if(mySimulation.getPosition().y - this.originY>= 8)
-        {
-            mySimulation.setLinearVelocity(new Vector2(0,0));
-        }
+
 
     }
     @Override

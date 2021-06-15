@@ -12,8 +12,10 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.BodyBuilder;
 import com.mygdx.game.Tools.MyVector;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.abstraction.BulletSkill;
 
 public class Boss extends Actor {

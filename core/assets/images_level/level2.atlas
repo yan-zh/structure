@@ -108,14 +108,14 @@ px_idle
   size: 1294, 756
   orig: 1294, 756
   offset: 0, 0
-  index: 60
+  index: 0
 px_idle
   rotate: false
   xy: 2, 3336
   size: 1294, 756
   orig: 1294, 756
   offset: 0, 0
-  index: 0
+  index: 60
 px_idle
   rotate: false
   xy: 2, 2578
@@ -345,6 +345,20 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
+  index: 5
+pingtaiguai_attack
+  rotate: false
+  xy: 3713, 3673
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 17
+pingtaiguai_attack
+  rotate: false
+  xy: 3713, 3673
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
   index: 25
 pingtaiguai_attack
   rotate: false
@@ -359,27 +373,6 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 5
-pingtaiguai_attack
-  rotate: false
-  xy: 3713, 3673
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 9
-pingtaiguai_attack
-  rotate: false
-  xy: 3713, 3673
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 17
-pingtaiguai_attack
-  rotate: false
-  xy: 3713, 3673
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
   index: 1
 pingtaiguai_attack
   rotate: false
@@ -388,20 +381,13 @@ pingtaiguai_attack
   orig: 368, 399
   offset: 0, 0
   index: 13
-pingtaiguai_idle
+pingtaiguai_attack
   rotate: false
   xy: 3713, 3673
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 21
-pingtaiguai_idle
-  rotate: false
-  xy: 3713, 3673
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 13
+  index: 9
 pingtaiguai_idle
   rotate: false
   xy: 3713, 3673
@@ -415,6 +401,20 @@ pingtaiguai_idle
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
+  index: 13
+pingtaiguai_idle
+  rotate: false
+  xy: 3713, 3673
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 0
+pingtaiguai_idle
+  rotate: false
+  xy: 3713, 3673
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
   index: 5
 pingtaiguai_idle
   rotate: false
@@ -436,7 +436,7 @@ pingtaiguai_idle
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 0
+  index: 21
 pingtaiguai_attack
   rotate: false
   xy: 3364, 93
@@ -450,7 +450,7 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 4
+  index: 12
 pingtaiguai_attack
   rotate: false
   xy: 3364, 93
@@ -464,7 +464,28 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
+  index: 18
+pingtaiguai_attack
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 6
+pingtaiguai_attack
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
   index: 22
+pingtaiguai_attack
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 4
 pingtaiguai_attack
   rotate: false
   xy: 3364, 93
@@ -478,28 +499,7 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 18
-pingtaiguai_attack
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
   index: 24
-pingtaiguai_attack
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 14
-pingtaiguai_attack
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 6
 pingtaiguai_attack
   rotate: false
   xy: 3364, 93
@@ -513,42 +513,21 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 8
-pingtaiguai_attack
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 12
-pingtaiguai_attack
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
   index: 16
-pingtaiguai_idle
+pingtaiguai_attack
   rotate: false
   xy: 3364, 93
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 10
-pingtaiguai_idle
+  index: 14
+pingtaiguai_attack
   rotate: false
   xy: 3364, 93
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 18
-pingtaiguai_idle
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 22
+  index: 8
 pingtaiguai_idle
   rotate: false
   xy: 3364, 93
@@ -569,28 +548,7 @@ pingtaiguai_idle
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 16
-pingtaiguai_idle
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 14
-pingtaiguai_idle
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 1
-pingtaiguai_idle
-  rotate: false
-  xy: 3364, 93
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 6
+  index: 18
 pingtaiguai_idle
   rotate: false
   xy: 3364, 93
@@ -598,6 +556,13 @@ pingtaiguai_idle
   orig: 368, 399
   offset: 0, 0
   index: 4
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 1
 pingtaiguai_idle
   rotate: false
   xy: 3364, 93
@@ -612,6 +577,41 @@ pingtaiguai_idle
   orig: 368, 399
   offset: 0, 0
   index: 20
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 6
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 16
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 10
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 22
+pingtaiguai_idle
+  rotate: false
+  xy: 3364, 93
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 14
 px_idle
   rotate: false
   xy: 2, 3316
@@ -779,175 +779,7 @@ sand_idle
   size: 500, 350
   orig: 500, 350
   offset: 0, 0
-  index: 29
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 31
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 4
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 37
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 39
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 21
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 26
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 33
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 16
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
   index: 1
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 27
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 11
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 49
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 13
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 34
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 2
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 22
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 48
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 5
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 12
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 46
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 32
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 10
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 38
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 35
 sand_idle
   rotate: false
   xy: 2068, 2
@@ -961,119 +793,7 @@ sand_idle
   size: 500, 350
   orig: 500, 350
   offset: 0, 0
-  index: 44
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
   index: 14
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 18
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 45
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 30
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 24
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 28
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 25
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 42
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 15
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 8
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 0
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 3
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 23
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 19
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 41
-sand_idle
-  rotate: false
-  xy: 2068, 2
-  size: 500, 350
-  orig: 500, 350
-  offset: 0, 0
-  index: 7
 sand_idle
   rotate: false
   xy: 2068, 2
@@ -1087,21 +807,126 @@ sand_idle
   size: 500, 350
   orig: 500, 350
   offset: 0, 0
-  index: 40
+  index: 25
 sand_idle
   rotate: false
   xy: 2068, 2
   size: 500, 350
   orig: 500, 350
   offset: 0, 0
-  index: 43
+  index: 33
 sand_idle
   rotate: false
   xy: 2068, 2
   size: 500, 350
   orig: 500, 350
   offset: 0, 0
-  index: 20
+  index: 26
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 39
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 35
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 4
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 7
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 8
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 46
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 49
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 44
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 10
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 45
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 31
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 3
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 11
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 27
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 19
 sand_idle
   rotate: false
   xy: 2068, 2
@@ -1116,6 +941,181 @@ sand_idle
   orig: 500, 350
   offset: 0, 0
   index: 6
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 5
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 24
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 16
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 37
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 15
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 42
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 41
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 30
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 13
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 2
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 48
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 32
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 43
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 0
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 12
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 40
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 18
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 28
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 29
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 22
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 20
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 34
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 21
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 38
+sand_idle
+  rotate: false
+  xy: 2068, 2
+  size: 500, 350
+  orig: 500, 350
+  offset: 0, 0
+  index: 23
 zBoss_attack
   rotate: false
   xy: 1298, 1109
@@ -1212,14 +1212,7 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 27
-pingtaiguai_attack
-  rotate: false
-  xy: 772, 11
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 23
+  index: 11
 pingtaiguai_attack
   rotate: false
   xy: 772, 11
@@ -1233,14 +1226,14 @@ pingtaiguai_attack
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 11
+  index: 23
 pingtaiguai_attack
   rotate: false
   xy: 772, 11
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
-  index: 15
+  index: 27
 pingtaiguai_attack
   rotate: false
   xy: 772, 11
@@ -1248,13 +1241,20 @@ pingtaiguai_attack
   orig: 368, 399
   offset: 0, 0
   index: 7
-pingtaiguai_idle
+pingtaiguai_attack
   rotate: false
   xy: 772, 11
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
   index: 15
+pingtaiguai_idle
+  rotate: false
+  xy: 772, 11
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 7
 pingtaiguai_idle
   rotate: false
   xy: 772, 11
@@ -1262,20 +1262,6 @@ pingtaiguai_idle
   orig: 368, 399
   offset: 0, 0
   index: 23
-pingtaiguai_idle
-  rotate: false
-  xy: 772, 11
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 7
-pingtaiguai_idle
-  rotate: false
-  xy: 772, 11
-  size: 368, 399
-  orig: 368, 399
-  offset: 0, 0
-  index: 11
 pingtaiguai_idle
   rotate: false
   xy: 772, 11
@@ -1289,7 +1275,21 @@ pingtaiguai_idle
   size: 368, 399
   orig: 368, 399
   offset: 0, 0
+  index: 15
+pingtaiguai_idle
+  rotate: false
+  xy: 772, 11
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
   index: 19
+pingtaiguai_idle
+  rotate: false
+  xy: 772, 11
+  size: 368, 399
+  orig: 368, 399
+  offset: 0, 0
+  index: 11
 pingtaiguai_attack
   rotate: false
   xy: 3565, 2

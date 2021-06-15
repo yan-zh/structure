@@ -5,6 +5,9 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.NormalActors.brokenBridge;
+import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
@@ -34,10 +37,11 @@ public class BridgeAndMainCharacter implements ContactReaction {
         if(userData.nameInPublicInformation == "brokenBridge")
         {
             //Refresh the state of jump
-            ActConstants.MainCharacterState.replace("onGround",true);
-            ActConstants.MainCharacterState.replace("repulse",false);
+            ActConstants.mainCharacter.reFreshJump();
             if(brokenBridge != null && mainCharacter.mySimulation.getLinearVelocity().y<0)
             {
+                AudioManager.instance.play(AssetsLevel0.instance.sounds.wood_Broken);
+
                 brokenBridge.removeBody();
                 brokenBridge.state = false;
 

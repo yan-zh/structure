@@ -7,9 +7,11 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
+import com.mygdx.game.Tools.asset.AssetsUI;
 
 public class BulletSkill extends Actor {
 
@@ -167,6 +169,7 @@ public class BulletSkill extends Actor {
             if(flyMark==true) batch.draw(currentFrame,drawX+18, drawY);
 
             if(contactMark==true) batch.draw(currentFrameContact,drawX-20, drawY-45);
+
 
         }else if(type==2){
 

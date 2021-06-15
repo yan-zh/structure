@@ -142,9 +142,7 @@ public class AssetsLevel1 implements Disposable, AssetErrorListener {
         rock = new AssetRock(atlas_level01);
         goldCoin = new AssetGoldCoin(atlas_level01);
         feather = new AssetFeather(atlas_level01);
-        levelDecoration = new AssetLevelDecoration(atlas);
-        sounds = new AssetSounds(assetManager);
-        music = new AssetMusic(assetManager);
+        levelDecoration = new AssetLevelDecoration(atlas_level01);
 
         // 主角类
         mainCharacter = new AssetMainCharacter(atlas_level01);

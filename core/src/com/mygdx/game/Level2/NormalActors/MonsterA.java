@@ -12,8 +12,10 @@ import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Level2.PhysicalActions.MonsterAttack;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.DieAction;
 import com.mygdx.game.abstraction.UserData;
@@ -96,6 +98,7 @@ public class MonsterA extends Actor {
                     if(monsterA!=null){
                         monsterA.attack();
                         monsterA.move=true;
+                        AudioManager.instance.play(AssetsUI.instance.sounds.bullet_Monster_Emmit);
                     }
                 }
             }
@@ -259,7 +262,7 @@ public class MonsterA extends Actor {
     @Override
     public boolean remove() {
         synchronized (ActConstants.MonsterActionLock){
-            MyGdxGame.currentStage.addActor(new DieAction(Assets.instance.bunny.animNormal,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
+            MyGdxGame.currentStage.addActor(new DieAction(AssetsUI.instance.cdxgw.animDead,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
             //消除自身，要锁
 
             DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();

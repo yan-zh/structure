@@ -22,12 +22,10 @@ import com.mygdx.game.Level2.Stage2;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.MyGdxGame;
-import com.mygdx.game.Tools.Assets;
-import com.mygdx.game.Tools.CameraFocus;
-import com.mygdx.game.Tools.LoadTiledMap;
-import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.*;
 import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
@@ -56,16 +54,15 @@ public class Stage1 extends MyStage {
     private SpriteBatch batch;
 
 
-
-
-
     ChangeCamera changeCamera;
 
     public Stage1(InputMultiplexer inputMultiplexer) {
 
 
 
-        AssetsLevel1.instance.instance.init(new AssetManager());
+        AssetsLevel0.instance.init(new AssetManager());
+        AssetsLevel1.instance.init(new AssetManager());
+//        AssetsLevel2.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 
@@ -133,7 +130,8 @@ public class Stage1 extends MyStage {
 
         //为这一关用到的物理碰撞监听添加一个函数
 
-
+        // 播放背景音乐
+        AudioManager.instance.play(AssetsLevel0.instance.music.startTheme);
 
         // 测试GUI部分：史用
 // 初始化batch
@@ -164,8 +162,8 @@ public class Stage1 extends MyStage {
         this.addActor(new Fairy(1, AssetsLevel1.instance.fijling.animBreath,AssetsLevel1.instance.fijling.animAttack, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
-//        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsUI.instance.cdxgw.animBreath,AssetsUI.instance.cdxgw.animDead);
-//        this.addActor(monsterA);
+        MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsUI.instance.cdxgw.animBreath,AssetsUI.instance.cdxgw.animDead);
+        this.addActor(monsterA);
 
         this.addActor(new Portal(5690,104,239,5,ActConstants.portalID,world,"Portal1",true,"none"));
 
@@ -173,8 +171,8 @@ public class Stage1 extends MyStage {
         //Region two
         this.addActor(new brokenBridge( AssetsLevel0.instance.xianjing.main,AssetsLevel0.instance.xianjing.main, 286, 3,5f,0.26f, ActConstants.brokenBridgeID, world, "brokenBridge"));        new BridgeAndMainCharacter();
 //
-//        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,AssetsUI.instance.cddpxgw.animBreath,AssetsUI.instance.cddpxgw.animDead);
-//        this.addActor(monsterA2);
+        MonsterA monsterA2 = new MonsterA(world,350f,13f,1,AssetsUI.instance.cddpxgw.animBreath,AssetsUI.instance.cddpxgw.animDead);
+        this.addActor(monsterA2);
 
         this.addActor(new Portal(18150,600,505,3,ActConstants.portalID,world,"Portal2",true,"none"));
 
@@ -273,8 +271,8 @@ public class Stage1 extends MyStage {
 
     @Override
     public void dispose() {
-
         super.dispose();
+//        AudioManager.instance.stopMusic();
     }
 
     public void renderGui(SpriteBatch batch){
@@ -283,6 +281,5 @@ public class Stage1 extends MyStage {
         // 绘制人物的状态栏（左上角）
         AssetsUI.instance.drawUpdate(batch);
         batch.end();
-
     }
 }

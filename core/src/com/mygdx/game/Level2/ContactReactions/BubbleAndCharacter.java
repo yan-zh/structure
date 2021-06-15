@@ -8,6 +8,8 @@ import com.mygdx.game.Level2.NormalActors.Bubbles;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.PhysicalActions.DeleteBubble;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
+import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 
@@ -43,7 +45,7 @@ public class BubbleAndCharacter implements ContactReaction {
         float posX=body.getPosition().x;
         float posY=bubbles.getY();
         deleteBody(body,posX,posY);
-        //这里加音效!!!!!!!
+        AudioManager.instance.play(AssetsLevel2.instance.sounds.bubbleBound);
 //        body.setTransform(posX,posY,0);
 //        bubbles.bubbles.removeIndex(index);
 //        deleteBody(body,world);

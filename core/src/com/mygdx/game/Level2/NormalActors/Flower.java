@@ -10,6 +10,7 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
@@ -145,6 +146,8 @@ public class Flower extends Actor {
     public void contact(){
         isContact = true;
         isRest = false;
+
+        AudioManager.instance.play(AssetsLevel1.instance.sounds.follower_Accept);
     }
 
 }

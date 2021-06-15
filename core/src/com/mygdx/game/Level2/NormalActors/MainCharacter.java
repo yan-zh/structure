@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Level2.PhysicalActions.AdjustPosition;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.UserData;
@@ -234,6 +235,8 @@ public class MainCharacter extends Actor {
             jumpNumber--;
         }
 
+        AudioManager.instance.play(AssetsUI.instance.sounds.jump_MainCharacter);
+
 
     }
 
@@ -277,6 +280,8 @@ public class MainCharacter extends Actor {
             mySimulation.applyLinearImpulse(100,400,myX,myY,true);
         }
 
+        AudioManager.instance.play(AssetsUI.instance.sounds.seinHurtRegularA);
+
 
     }
 
@@ -285,6 +290,7 @@ public class MainCharacter extends Actor {
 
         System.out.println("die");
         die=true;
+        AudioManager.instance.play(AssetsUI.instance.sounds.seinDeathLaserA);
 
     }
 

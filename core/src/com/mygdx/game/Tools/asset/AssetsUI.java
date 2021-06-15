@@ -689,7 +689,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
             huoqui = addAtlasRegion("huoqui");
             tzd = addAtlasRegion("tzd");
             mzd = addAtlasRegion("mzd");
-            fzd = addAtlasRegion("fad");
+            fzd = addAtlasRegion("fzd");
             mhit = addAtlasRegion("mhit_idle");
             thit = addAtlasRegion("thit_idle");
             fhit = addAtlasRegion("fhit_idle");

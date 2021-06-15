@@ -3,6 +3,7 @@ package com.mygdx.game.Level3;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -37,7 +38,9 @@ public class Stage3 extends MyStage {
     OrthographicCamera stageCamera;//舞台用的摄像机
 
     CameraFocus cameraFocus;
-
+    // GUI界面的相机
+    private OrthographicCamera cameraGUI;
+    private SpriteBatch batch;
 
     TiledMap tiledMap;
     OrthogonalTiledMapRenderer orthogonalTiledMapRenderer;
@@ -47,7 +50,8 @@ public class Stage3 extends MyStage {
 
     public Stage3(InputMultiplexer inputMultiplexer){
 
-        AssetsLevel2.instance.instance.init(new AssetManager());
+        AssetsLevel2.instance.init(new AssetManager());
+        AssetsLevel1.instance.init(new AssetManager());
 
 
         ActConstants.changeStageTo = 0;
@@ -71,8 +75,8 @@ public class Stage3 extends MyStage {
 
         //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
         //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,172,41));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
-        this.addActor(new Beacon(35, 66, ActConstants.beaconID, world, "Beacon"));
+        this.addActor(new MainCharacter(world,35,60));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
+        this.addActor(new Beacon(35, 60, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
 
@@ -147,7 +151,14 @@ public class Stage3 extends MyStage {
 
         //测试***********************************
 
-
+// 初始化batch
+        batch = new SpriteBatch();
+// 创建GUI相机并配置参数
+        cameraGUI = new OrthographicCamera(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
+        cameraGUI.position.set(0,0,0);
+        cameraGUI.setToOrtho(true);
+// 反转y轴
+        cameraGUI.update();
 
 //yzh***************************************************
 
@@ -489,6 +500,8 @@ public class Stage3 extends MyStage {
         //应用相机位置更新
         cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
 
+        // 应用GUI相机的位置更新
+        cameraGUI.update();
 
     }
 
@@ -517,9 +530,16 @@ public class Stage3 extends MyStage {
 
         //绘制物理实体
         boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
-
+        // 尝试在此处绘制GUI图片
+        renderGui(batch);
     }
-
+    public void renderGui(SpriteBatch batch){
+        batch.setProjectionMatrix(cameraGUI.combined);
+        batch.begin();
+        // 绘制人物的状态栏（左上角）
+        AssetsUI.instance.drawUpdate(batch);
+        batch.end();
+    }
     public World getWorld(){
         return world;
     }

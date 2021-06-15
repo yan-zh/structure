@@ -100,7 +100,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 		//加载全部资源
 		Assets.instance.init(new AssetManager());
-		AssetsLevel1.instance.init(new AssetManager());
+		AssetsUI.instance.init(new AssetManager());
+//		AssetsLevel1.instance.init(new AssetManager());
 
 
 		//准备分发监听
@@ -111,7 +112,8 @@ public class MyGdxGame extends ApplicationAdapter {
 
 
 		//设置当前舞台为stage1
-		currentStage = new Stage0(inputMultiplexer);
+		currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest3,1);
+
 
 
 
@@ -130,14 +132,21 @@ public class MyGdxGame extends ApplicationAdapter {
 		if(ActConstants.changeStageTo!=0){
 			System.out.println("qieguanle");
 			currentStage.dispose();
-			if(ActConstants.changeStageTo==2){
+
+			if(ActConstants.changeStageTo==1){
+				currentStage = new Stage0(ActConstants.inputMultiplexer);
+				ActConstants.changeStageTo = 0;
+			}else if(ActConstants.changeStageTo==2){
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
-//				AssetsLevel1.instance.dispose();
+				AssetsLevel1.instance.dispose();
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==3){
 				MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
-//				AssetsLevel2.instance.dispose();
+				ActConstants.changeStageTo = 0;
+
+			}else if(ActConstants.changeStageTo==4){
+				MyGdxGame.currentStage = new Stage1(ActConstants.inputMultiplexer);
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==1.5){
