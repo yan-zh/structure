@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.UserData;
 
 public class Ice extends Actor {
@@ -24,15 +25,15 @@ public class Ice extends Actor {
     String name;
 
     World world;
+    TextureRegion textureRegion;
 
     public Ice(int x, int y, long actorId, World world, String name)
     {
         //Set position
         this.setX(x * ActConstants.worldSize_pAndPhysic);
         this.setY(y * ActConstants.worldSize_pAndPhysic);
-        TextureRegion texture = (TextureRegion) Assets.instance.mainCharacter.animRun.getKeyFrames()[0];
-        //image = new Image(new Texture("D:\\structurenew\\core\\assets\\images\\anim_bunny_copter_01.png"));
-        image = new Image(texture);
+        textureRegion = (TextureRegion) AssetsLevel2.instance.daoju.bingkuai;
+        image = new Image(textureRegion);
         image.setSize(1.0f, 1.0f);
         image.setOrigin(image.getWidth() / 2.0f, image.getHeight() / 2.0f);
         //Create the physical Entity
@@ -76,9 +77,7 @@ public class Ice extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        TextureRegion textureRegion = new TextureRegion(new Texture("images/anim_bunny_copter_01.png"));
-
-        batch.draw(textureRegion, (mySimulation.getPosition().x - 0.7f)* 50f, (mySimulation.getPosition().y - 0.45f)*50f,(float)0.5*textureRegion.getRegionWidth(),(float)0.5*textureRegion.getRegionHeight(), textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
+        batch.draw(textureRegion, (mySimulation.getPosition().x - 0.75f)* 50f, (mySimulation.getPosition().y - 0.75f)*50f,(float)0.5*textureRegion.getRegionWidth(),(float)0.5*textureRegion.getRegionHeight(), textureRegion.getRegionWidth(), textureRegion.getRegionHeight(),(float) 1.0,(float) 1.0, (float) (180*mySimulation.getAngle()/3.14),true);
 
     }
 }

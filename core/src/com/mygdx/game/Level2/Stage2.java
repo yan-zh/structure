@@ -188,7 +188,7 @@ public class Stage2 extends MyStage {
 
 
 
-        Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animDead,AssetsLevel1.instance.srh.animDead);
+        Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animBreath);
         this.addActor(flower);
         new FlowerAndMainCharacter();
 
