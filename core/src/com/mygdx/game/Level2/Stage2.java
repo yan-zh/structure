@@ -24,6 +24,7 @@ import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.CameraFocus;
 import com.mygdx.game.Tools.LoadTiledMap;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
@@ -51,7 +52,7 @@ public class Stage2 extends MyStage {
 
     public Stage2(InputMultiplexer inputMultiplexer){
 
-        AssetsLevel1.instance.init(new AssetManager());
+//        AssetsLevel1.instance.init(new AssetManager());
 //        AssetsLevel2.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
@@ -92,7 +93,7 @@ public class Stage2 extends MyStage {
         cameraFocus = new CameraFocus(cameraPhysic, stageCamera);
 
 
-
+        AssetsUI.instance.addSprit();
 
         //添加添加自定义的用户输入监听
         this.addListener(new UserInputListener());//这个监听是对从最外层传入的输入信息的响应
@@ -201,7 +202,7 @@ public class Stage2 extends MyStage {
 
 
 
-        Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animBreath,AssetsLevel1.instance.srh.animBreath);
+        Flower flower = new Flower(world,64-1.2f,13.4f,AssetsLevel0.instance.srh.animBreath, AssetsLevel0.instance.srh.animBreath,AssetsLevel0.instance.srh.animBreath);
         this.addActor(flower);
         new FlowerAndMainCharacter();
 
@@ -319,13 +320,14 @@ public class Stage2 extends MyStage {
         orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
-        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
 
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 
         super.draw();//这个就是依次调用actor的draw
 
         // 尝试在此处绘制GUI图片
+        AssetsUI.instance.updateSprite();
         renderGui(batch);
     }
     public void renderGui(SpriteBatch batch){

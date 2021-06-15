@@ -137,11 +137,13 @@ public class MyGdxGame extends ApplicationAdapter {
 				currentStage = new Stage0(ActConstants.inputMultiplexer);
 				ActConstants.changeStageTo = 0;
 			}else if(ActConstants.changeStageTo==2){
+				ActConstants.spriteNumber = 1;
 				MyGdxGame.currentStage = new Stage2(ActConstants.inputMultiplexer);
-				AssetsLevel1.instance.dispose();
+//				AssetsLevel0.instance.dispose();
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==3){
+				ActConstants.spriteNumber = 2;
 				MyGdxGame.currentStage = new Stage3(ActConstants.inputMultiplexer);
 				ActConstants.changeStageTo = 0;
 
@@ -150,7 +152,11 @@ public class MyGdxGame extends ApplicationAdapter {
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo==1.5){
-				//MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,2,14);
+				MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,2);
+				ActConstants.changeStageTo = 0;
+
+			}else if(ActConstants.changeStageTo==2.5){
+				MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundIce1,3);
 				ActConstants.changeStageTo = 0;
 
 			}else if(ActConstants.changeStageTo== -1){

@@ -20,10 +20,7 @@ import com.mygdx.game.SkillGroupManager.SkillGroupSand;
 import com.mygdx.game.SkillGroupManager.SkillGroupWind;
 import com.mygdx.game.SkillGroupManager.SkillGroupWood;
 import com.mygdx.game.Tools.AudioManager;
-import com.mygdx.game.Tools.asset.AssetsLevel1;
-import com.mygdx.game.Tools.asset.AssetsLevel2;
-import com.mygdx.game.Tools.asset.AssetsStageChage;
-import com.mygdx.game.Tools.asset.AssetsUI;
+import com.mygdx.game.Tools.asset.*;
 import com.mygdx.game.abstraction.MyStage;
 
 public class UserInputListener extends InputListener {
@@ -94,21 +91,22 @@ public class UserInputListener extends InputListener {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
                                             AudioManager.instance.stopMusic();
-                                            AudioManager.instance.play(AssetsLevel1.instance.music.foresttheme);
-                                            MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,2);
+                                            AudioManager.instance.play(AssetsLevel0.instance.music.foresttheme);
+                                            ActConstants.changeStageTo = 1.5f;
                                         }
                                         if (portal.Stagetranto == "Stage3") {
 //                                          ActConstants.isChange = true;
 //                                            ActConstants.goStage2 = true;
                                             AudioManager.instance.stopMusic();
-                                            AudioManager.instance.play(AssetsLevel2.instance.music.IceTheme);
-                                            MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundIce1,3);
-//                                            ActConstants.changeStageTo=3;
+//                                            AudioManager.instance.play(AssetsLevel2.instance.music.IceTheme);
+                                            ActConstants.changeStageTo=2.5f;
                                         }
 
                                         if (portal.name == "PortalFinal") {
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).start();
                                             ((MoveLauncher)ActConstants.publicInformation.get("moveLauncher")).startMove();
+                                            AudioManager.instance.stopMusic();
+//                                            AudioManager.instance.play(AssetsLevel2.instance.music.FinalBoss);
                                         }
 
 
@@ -209,11 +207,12 @@ public class UserInputListener extends InputListener {
             // 调试用：用于减少生命值
             if (event.getKeyCode() == Input.Keys.N) {
                 ActConstants.changeStageTo = 1.5f;
-                AssetsUI.instance.reduceLives(1);
+//                AssetsUI.instance.reduceLives(1);
             }
             // 调试用：用于添加生命值
             if (event.getKeyCode() == Input.Keys.M) {
 //                AssetsUI.instance.addLives(1);
+//                AssetsUI.instance.addSprit();
                 ActConstants.changeStageTo = 2.5f;
             }
             // 调试用：用于减少生命上限
@@ -230,16 +229,16 @@ public class UserInputListener extends InputListener {
 //            }
             if (event.getKeyCode() == Input.Keys.NUM_1) {
                 ActConstants.currentSkillGroup = 1;
-                AssetsUI.instance.changeToSprit(1);
+//                AssetsUI.instance.changeToSprit(1);
             }
             if (event.getKeyCode() == Input.Keys.NUM_2) {
                 ActConstants.currentSkillGroup = 2;
-                AssetsUI.instance.changeToSprit(2);
+//                AssetsUI.instance.changeToSprit(2);
             }
 
             if (event.getKeyCode() == Input.Keys.NUM_3) {
                 ActConstants.currentSkillGroup = 3;
-                AssetsUI.instance.changeToSprit(3);
+//                AssetsUI.instance.changeToSprit(3);
 
             }
 

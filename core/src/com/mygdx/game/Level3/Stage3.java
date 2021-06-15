@@ -19,10 +19,8 @@ import com.mygdx.game.Level3.ContactReactions.LaserDoorAndLaser;
 import com.mygdx.game.Level3.NormalActors.LaserDoor;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
-import com.mygdx.game.Tools.Assets;
-import com.mygdx.game.Tools.CameraFocus;
-import com.mygdx.game.Tools.LoadTiledMap;
-import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.*;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
@@ -51,8 +49,7 @@ public class Stage3 extends MyStage {
     public Stage3(InputMultiplexer inputMultiplexer){
 
         AssetsLevel2.instance.init(new AssetManager());
-        AssetsLevel1.instance.init(new AssetManager());
-
+//        AssetsLevel0.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
 
@@ -61,6 +58,8 @@ public class Stage3 extends MyStage {
         cleft=-300000;
         cright=300000;
 
+        AssetsUI.instance.addSprit();
+        AssetsUI.instance.addSprit();
 
         //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 
@@ -127,7 +126,7 @@ public class Stage3 extends MyStage {
 
         changeCamera.act();
 
-
+//        AudioManager.instance.play(AssetsLevel1.instance.music.foresttheme);
 
         //public contact
 
@@ -529,9 +528,10 @@ public class Stage3 extends MyStage {
         orthogonalTiledMapRenderer.getBatch().end();
 
         //绘制物理实体
-        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
         // 尝试在此处绘制GUI图片
-        renderGui(batch);
+        AssetsUI.instance.updateSprite();
+//        renderGui(batch);
     }
     public void renderGui(SpriteBatch batch){
         batch.setProjectionMatrix(cameraGUI.combined);

@@ -159,7 +159,7 @@ public class Stage1 extends MyStage {
 
         //*********************  actors
         //region1
-        this.addActor(new Fairy(1, AssetsLevel1.instance.fijling.animBreath,AssetsLevel1.instance.fijling.animAttack, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
+        this.addActor(new Fairy(1, AssetsLevel0.instance.fijling.animBreath,AssetsLevel0.instance.fijling.animAttack, (int) (44.5*50), (int) (14*50),ActConstants.windFairyID,world,"WindFairy"));
         new WindFairyAndMainCharacter();
 
         MonsterA monsterA = new MonsterA(world,123.6f,2.2f,1,AssetsUI.instance.cdxgw.animBreath,AssetsUI.instance.cdxgw.animDead);
@@ -203,7 +203,7 @@ public class Stage1 extends MyStage {
             }
         }
 
-
+        AssetsUI.instance.updateSprite();
 
 
 //        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
@@ -248,7 +248,7 @@ public class Stage1 extends MyStage {
 //        orthogonalTiledMapRenderer.render();
 
         //绘制物理实体
-        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
+//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
 
         //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
 

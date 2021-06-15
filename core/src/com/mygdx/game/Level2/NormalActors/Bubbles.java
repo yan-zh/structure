@@ -2,14 +2,17 @@ package com.mygdx.game.Level2.NormalActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
+import com.mygdx.game.Tools.asset.AssetsLevel2;
 //import org.graalvm.compiler.loop.MathUtil;
 
 
@@ -24,9 +27,14 @@ public class Bubbles extends Actor {
     Integer bubbleIndex;
    public int numOfDestroyed;
    public int numOfSpawned;
+    Image image;
+    TextureRegion textureRegion;
+
 
 
     public Bubbles(World world, float x, float y, float range, float radius, long actorId, String name) {
+        textureRegion = (TextureRegion) AssetsLevel2.instance.decoration.qipao;
+        image = new Image(textureRegion);
         this.world = world;
         setX(x);//气泡场起始位置
         setY(y);

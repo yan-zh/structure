@@ -407,7 +407,7 @@ public class MoveLauncher extends Actor {
         timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
         active = true;
 
-        AudioManager.instance.play(AssetsLevel2.instance.sounds.Zboss);
+//        AudioManager.instance.play(AssetsLevel2.instance.sounds.Zboss);
     }
 
 //    public void stop(){

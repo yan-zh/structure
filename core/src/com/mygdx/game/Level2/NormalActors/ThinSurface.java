@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.BodyBuilder;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 
@@ -27,7 +28,7 @@ public class ThinSurface extends Actor {
 
     public ThinSurface(World world, float x, float y,float width,float height,long actorId,String name){
 
-        textureRegion = (TextureRegion) AssetsLevel1.instance.jiemi.thinSurface;
+        textureRegion = (TextureRegion) AssetsLevel0.instance.jiemi.thinSurface;
         image = new Image(textureRegion);
 
         this.world = world;

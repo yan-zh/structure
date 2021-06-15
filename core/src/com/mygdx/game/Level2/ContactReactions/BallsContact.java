@@ -3,6 +3,7 @@ package com.mygdx.game.Level2.ContactReactions;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.HangedBalls;
 import com.mygdx.game.Tools.AudioManager;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.ContactReaction;
@@ -39,7 +40,7 @@ public class BallsContact implements ContactReaction {
         balls.hit(i);
        System.out.println("object "+balls);
         System.out.println(i);
-        AudioManager.instance.play(AssetsLevel1.instance.sounds.ball_Triggered);
+        AudioManager.instance.play(AssetsLevel0.instance.sounds.ball_Triggered);
 
 
 

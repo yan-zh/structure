@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
@@ -126,7 +127,7 @@ public class ReverberateAxe extends Actor {
         ActConstants.publicInformation.put("Axe", this);
 
 
-        this.picutre = AssetsLevel1.instance.jiemi.fuzi;
+        this.picutre = AssetsLevel0.instance.jiemi.fuzi;
 
     }
 

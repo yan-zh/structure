@@ -28,9 +28,12 @@ public class ActConstants {
     public static MainCharacter mainCharacter;
 
     public static float MainCharacterUpImpulse = 450f;
-    public static float MainCharacterSpeed = 15;
+    public static float MainCharacterSpeed = 7;
 
     public static int CameraCharacterControl=5;
+    public static int spriteNumber = 1 ;
+    public static int mainUserLive = 20 ;
+    public static int mainUserLiveMax = 20 ;
 
     public static HashMap<String,Boolean> MainCharacterState;
     static

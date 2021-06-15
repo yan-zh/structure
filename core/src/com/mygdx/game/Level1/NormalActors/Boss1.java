@@ -112,9 +112,9 @@ public class Boss1 extends Actor {
         //交互注册
         ActConstants.publicInformation.put("Boss1",this);
 
-        rest = AssetsLevel1.instance.cdboss.animBreath;
-        purchase = AssetsLevel1.instance.cdboss.animAttack;
-        weakUp = AssetsLevel1.instance.cdboss.animAttack;
+        rest = AssetsLevel0.instance.cdboss.animBreath;
+        purchase = AssetsLevel0.instance.cdboss.animAttack;
+        weakUp = AssetsLevel0.instance.cdboss.animAttack;
 
         actionState1 = true;//true是等待，false是追逐
         actionState2 = false;//true是播放weakup

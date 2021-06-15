@@ -43,7 +43,7 @@ public class Platform extends Actor {
         this.width=width;
         this.height=height;
 
-        textureRegion = AssetsLevel0.instance.xianjing.main;
+        textureRegion = AssetsLevel0.instance.jiemi.qiuqian;
         image = new Image(textureRegion);
 
 

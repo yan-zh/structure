@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Tools.Assets;
 
 /**
@@ -37,6 +38,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     private static int mainUserLive;
     private static int mainUserLiveMax;
     private static int spriteNumber;
+
     private static String userName;
     private static SPRITE_TYPE currentSprite;
     private static AtlasRegion currentFrame;
@@ -132,6 +134,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         assetManager.load("core/assets/sounds/UI/select.wav", Sound.class);
         // 预加载音乐
         assetManager.load("core/assets/music/UI/Main Theme.wav", Music.class);
+        assetManager.load("core/assets/music/Music2/IceTheme.wav", Music.class);
         // 开始加载资源，阻塞进程，等待加载完成【此处后期更新进度条】
         assetManager.finishLoading();
 
@@ -177,9 +180,9 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         decoration = new AssetDecoration(atlas_ui);
 
         // 初始化主角信息
-        mainUserLive = 20;
-        mainUserLiveMax = 20;
-        spriteNumber = 0;
+        mainUserLive = ActConstants.mainUserLive;
+        mainUserLiveMax = ActConstants.mainUserLiveMax;
+        spriteNumber = 1;
         userName = "Alibaba";
         currentSprite = null;
         currentFrame = mainPanel.paneFrame;
@@ -209,6 +212,28 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         }
     }
 
+    public void updateSprite(){
+        if (spriteNumber == 1) {
+            sprite1 = mainPanel.woodHas;
+            if (currentSprite == null) {
+                currentSprite = SPRITE_TYPE.WOOD;
+                sprite1 = mainPanel.woodActive;
+            }
+        } else if (spriteNumber == 2)
+            sprite2 = mainPanel.sandHas;
+        else sprite3 = mainPanel.windHas;
+    }
+
+    public void setSprit(int number){
+        if (spriteNumber <3&&spriteNumber>=0)
+            spriteNumber = number;
+    }
+
+
+    public int sgetSprit(){
+        return spriteNumber;
+    }
+
     /**
      * 生命值增加,最大不超过生命上限
      *
@@ -216,6 +241,8 @@ public class AssetsUI implements Disposable, AssetErrorListener {
      */
     public void addLives(int num) {
         mainUserLive = mainUserLive + num > mainUserLiveMax ? mainUserLiveMax : mainUserLive + num;
+        ActConstants.mainUserLive = mainUserLive;
+
     }
 
     /**
@@ -226,6 +253,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
      */
     public boolean reduceLives(int num) {
         mainUserLive = mainUserLive - num < 0 ? 0 : mainUserLive - num;
+        ActConstants.mainUserLive = mainUserLive;
         return mainUserLive == 0;
     }
 
@@ -237,6 +265,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     public void addLivesLimit(int num) {
         mainUserLiveMax += num;
         addLives(num);
+        ActConstants.mainUserLive = mainUserLiveMax;
     }
 
     /**
@@ -248,6 +277,7 @@ public class AssetsUI implements Disposable, AssetErrorListener {
         mainUserLiveMax = mainUserLiveMax - num < 1 ? 1 : mainUserLiveMax - num;
         if (mainUserLiveMax < mainUserLive)
             mainUserLive = mainUserLiveMax;
+        ActConstants.mainUserLive = mainUserLiveMax;
     }
 
     /**
@@ -476,8 +506,10 @@ public class AssetsUI implements Disposable, AssetErrorListener {
     // 资源内部类：音效
     public class AssetMusic {
         public final Music mainTheme;
+        public final Music iceTheme;
         public AssetMusic(AssetManager am) {
             mainTheme = am.get("core/assets/music/UI/Main Theme.wav", Music.class);
+            iceTheme = am.get("core/assets/music/Music2/IceTheme.wav", Music.class);
         }
     }
 

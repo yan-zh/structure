@@ -40,10 +40,9 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
 
 
     public Stage0(InputMultiplexer inputMultiplexer){
-        this.setDebugAll(true);
+//        this.setDebugAll(true);
         // 初始化ui资源
         AssetsLevel0.instance.init(new AssetManager());
-        AssetsLevel1.instance.init(new AssetManager());
 //        AssetsLevel0.instance.init(new AssetManager());
         inputMultiplexer.addProcessor(this);//通过这个接受来自用户的操作信号
         //做了个背景和按钮（以后所有的素材，包括音乐，图片，动画都通过Asset类获取，后面会有Asset类的例子）
@@ -98,7 +97,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
                 AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
                 AudioManager.instance.stopMusic();
                 Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
-                MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,2);
+                MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,4);
                 stage0.dispose();
                 //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
                 return false;

@@ -12,6 +12,7 @@ import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.abstraction.DieAction;
@@ -97,7 +98,7 @@ public class Flower extends Actor {
 
                 if(count==0){
                     this.deleteBody();
-                    MyGdxGame.currentStage.addActor(new DieAction(AssetsLevel1.instance.srh.animDead,(mySimulation.getPosition().x-5f)*50f, (mySimulation.getPosition().y-4f)*50f));
+                    MyGdxGame.currentStage.addActor(new DieAction(AssetsLevel0.instance.srh.animDead,(mySimulation.getPosition().x-5f)*50f, (mySimulation.getPosition().y-4f)*50f));
                     isDelete = true;
 
                     Timer timer = new Timer();
@@ -147,7 +148,7 @@ public class Flower extends Actor {
         isContact = true;
         isRest = false;
 
-        AudioManager.instance.play(AssetsLevel1.instance.sounds.follower_Accept);
+        AudioManager.instance.play(AssetsLevel0.instance.sounds.follower_Accept);
     }
 
 }

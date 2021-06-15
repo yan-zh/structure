@@ -10,6 +10,7 @@ import com.mygdx.game.Level2.PhysicalActions.CreateTongue;
 import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.abstraction.UserData;
 
@@ -87,12 +88,12 @@ public class Frag2 extends Actor {
         tongueMark = false;
 
         textureRegions = new TextureRegion[3];
-        textureRegions[0] = AssetsLevel1.instance.qingwa.qingwa;
-        textureRegions[1] = AssetsLevel1.instance.qingwa.qingwa1;
-        textureRegions[2] = AssetsLevel1.instance.qingwa.qingwa2;
+        textureRegions[0] = AssetsLevel0.instance.qingwa.qingwa;
+        textureRegions[1] = AssetsLevel0.instance.qingwa.qingwa1;
+        textureRegions[2] = AssetsLevel0.instance.qingwa.qingwa2;
 
         out = new Animation(0.25f,textureRegions);
-        currentFrame = AssetsLevel1.instance.qingwa.qingwa;
+        currentFrame = AssetsLevel0.instance.qingwa.qingwa;
 
 
     }
@@ -136,7 +137,7 @@ public class Frag2 extends Actor {
                     ActConstants.physicalActionList.add(new CreateTongue(direction,world,tongueSimulation,tongueFixtureDef,tongueBodyDef,tongueShape,physicalX-0.75f,physicalY+1.2f));
                 }
 
-                AudioManager.instance.play(AssetsLevel1.instance.sounds.frog_Triggered);
+                AudioManager.instance.play(AssetsLevel0.instance.sounds.frog_Triggered);
             }
 
             activeTime++;
