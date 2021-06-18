@@ -1,7 +1,6 @@
 package com.mygdx.game.Constants;
 
 import com.badlogic.gdx.InputMultiplexer;
-import com.mygdx.game.Level2.NormalActors.Bubbles;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.PhysicalAction;

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.Portal;
+import com.mygdx.game.abstraction.Portal;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

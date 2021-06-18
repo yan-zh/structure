@@ -1,15 +1,11 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.BallLauncher;
-import com.mygdx.game.Level2.NormalActors.BallReceiver;
-import com.mygdx.game.Level2.NormalActors.Portal;
-import com.mygdx.game.Level2.NormalActors.ReboundBall;
+import com.mygdx.game.Level3.NormalActors.BallReceiver;
+import com.mygdx.game.abstraction.Portal;
+import com.mygdx.game.Level3.NormalActors.ReboundBall;
 import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.asset.AssetsLevel0;
-import com.mygdx.game.Tools.asset.AssetsLevel1;
-import com.mygdx.game.Tools.asset.AssetsLevel2;
-import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

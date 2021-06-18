@@ -2,8 +2,8 @@ package com.mygdx.game.Level2.PhysicalActions;
 
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.EatPlatform;
-import com.mygdx.game.Level2.NormalActors.Spine;
+import com.mygdx.game.Level3.NormalActors.EatPlatform;
+import com.mygdx.game.abstraction.Spine;
 import com.mygdx.game.abstraction.PhysicalAction;
 
 public class CreateSpine implements PhysicalAction {

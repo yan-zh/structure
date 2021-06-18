@@ -1,8 +1,7 @@
 package com.mygdx.game.Level3.ContactReactions;
 
-import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.laserTransmitter;
+import com.mygdx.game.Level3.NormalActors.laserTransmitter;
 import com.mygdx.game.Level3.NormalActors.LaserDoor;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;

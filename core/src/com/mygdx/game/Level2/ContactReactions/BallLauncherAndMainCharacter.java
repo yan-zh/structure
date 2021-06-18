@@ -1,8 +1,7 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.BallLauncher;
-import com.mygdx.game.Level2.PhysicalActions.CreateBall;
+import com.mygdx.game.Level3.NormalActors.BallLauncher;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

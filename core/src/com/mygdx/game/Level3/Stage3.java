@@ -16,8 +16,7 @@ import com.mygdx.game.Level1.NormalActors.ChangeCamera;
 import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level3.ContactReactions.LaserDoorAndLaser;
-import com.mygdx.game.Level3.NormalActors.Blower;
-import com.mygdx.game.Level3.NormalActors.LaserDoor;
+import com.mygdx.game.Level3.NormalActors.*;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.*;
@@ -25,6 +24,8 @@ import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.Fairy;
 import com.mygdx.game.abstraction.MyStage;
+import com.mygdx.game.abstraction.Portal;
+import com.mygdx.game.abstraction.Spine;
 
 
 public class Stage3 extends MyStage {

@@ -3,7 +3,7 @@ package com.mygdx.game.Level2.ContactReactions;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.ReflectiveStone;
+import com.mygdx.game.Level3.NormalActors.ReflectiveStone;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

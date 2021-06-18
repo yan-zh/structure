@@ -2,26 +2,23 @@ package com.mygdx.game.Listeners;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level0.Stage0;
-import com.mygdx.game.Level1.Stage1;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level2.PhysicalActions.CreateStone;
 import com.mygdx.game.Level2.PhysicalActions.ReverseMainCharacterGravity;
-import com.mygdx.game.Level2.Stage2;
-import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.Level3.NormalActors.MoveLauncher;
 import com.mygdx.game.SkillGroupManager.SkillGroupSand;
 import com.mygdx.game.SkillGroupManager.SkillGroupWind;
 import com.mygdx.game.SkillGroupManager.SkillGroupWood;
 import com.mygdx.game.Tools.AudioManager;
 import com.mygdx.game.Tools.asset.*;
 import com.mygdx.game.abstraction.MyStage;
+import com.mygdx.game.abstraction.Portal;
 
 public class UserInputListener extends InputListener {
 

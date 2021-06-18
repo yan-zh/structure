@@ -6,6 +6,9 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.Level3.NormalActors.TongueMonster;
+import com.mygdx.game.Level3.NormalActors.laserTransmitter;
+import com.mygdx.game.abstraction.Portal;
 import com.mygdx.game.abstraction.UserData;
 
 public class PhysicalContactListener implements ContactListener{

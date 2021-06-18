@@ -1,8 +1,8 @@
 package com.mygdx.game.Level2.PhysicalActions;
 
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.ReflectiveStone;
-import com.mygdx.game.Level2.NormalActors.StillReflectiveStone;
+import com.mygdx.game.Level3.NormalActors.ReflectiveStone;
+import com.mygdx.game.Level3.NormalActors.StillReflectiveStone;
 import com.mygdx.game.abstraction.PhysicalAction;
 
 public class CreateBulletForREF  implements PhysicalAction {

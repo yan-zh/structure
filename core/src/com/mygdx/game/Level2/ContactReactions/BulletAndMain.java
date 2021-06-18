@@ -1,7 +1,6 @@
 package com.mygdx.game.Level2.ContactReactions;
 
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MonsterA;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;

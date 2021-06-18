@@ -1,14 +1,7 @@
 package com.mygdx.game.Level2.ContactReactions;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.Portal;
-import com.mygdx.game.Level2.NormalActors.ReflectiveStone;
-import com.mygdx.game.Level2.NormalActors.laserTransmitter;
-import com.mygdx.game.Level2.PhysicalActions.CreateBullet;
 import com.mygdx.game.Level2.PhysicalActions.CreateBulletForREF;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
