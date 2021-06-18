@@ -1,11 +1,6 @@
 package com.mygdx.game.Level2.ContactReactions;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Level2.NormalActors.ThinSurface;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

@@ -3,7 +3,7 @@ package com.mygdx.game.Tools;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.abstraction.MainCharacter;
 import com.mygdx.game.MyGdxGame;
 import com.mygdx.game.abstraction.MyStage;
 

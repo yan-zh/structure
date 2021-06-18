@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
+import com.mygdx.game.abstraction.MainCharacter;
 import com.mygdx.game.Level2.PhysicalActions.DeletePhysicalEntity;
 import com.mygdx.game.Level2.PhysicalActions.MonsterAttack;
 import com.mygdx.game.MyGdxGame;

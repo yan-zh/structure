@@ -2,8 +2,7 @@ package com.mygdx.game.Level2.PhysicalActions;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
-import com.mygdx.game.Tools.Assets;
+import com.mygdx.game.abstraction.MainCharacter;
 import com.mygdx.game.Tools.MyVector;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;

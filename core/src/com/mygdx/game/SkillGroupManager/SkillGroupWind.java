@@ -1,12 +1,8 @@
 package com.mygdx.game.SkillGroupManager;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.MainCharacter;
 import com.mygdx.game.Level2.PhysicalActions.Attack;
 import com.mygdx.game.Tools.AudioManager;
-import com.mygdx.game.Tools.MyVector;
-import com.mygdx.game.Tools.asset.AssetsLevel2;
 import com.mygdx.game.Tools.asset.AssetsUI;
 import com.mygdx.game.abstraction.SkillGroup;
 

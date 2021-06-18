@@ -8,8 +8,10 @@ import com.mygdx.game.Constants.ActConstants;
 import com.mygdx.game.Level2.NormalActors.*;
 import com.mygdx.game.Level3.NormalActors.TongueMonster;
 import com.mygdx.game.Level3.NormalActors.laserTransmitter;
+import com.mygdx.game.abstraction.MainCharacter;
 import com.mygdx.game.abstraction.Portal;
 import com.mygdx.game.abstraction.UserData;
+import com.mygdx.game.abstraction.rotateSwitch;
 
 public class PhysicalContactListener implements ContactListener{
     @Override

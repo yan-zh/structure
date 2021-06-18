@@ -11,20 +11,19 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.game.Constants.ActConstants;
+import com.mygdx.game.Level1.ContactReactions.*;
 import com.mygdx.game.Level1.NormalActors.Boss1;
 import com.mygdx.game.Level1.NormalActors.ChangeCamera;
 import com.mygdx.game.Level1.NormalActors.MonsterA;
-import com.mygdx.game.Level2.ContactReactions.*;
 import com.mygdx.game.Level2.NormalActors.*;
+import com.mygdx.game.PublicContactReaction.*;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
 import com.mygdx.game.Tools.*;
 import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsUI;
-import com.mygdx.game.abstraction.Fairy;
-import com.mygdx.game.abstraction.MyStage;
-import com.mygdx.game.abstraction.Portal;
+import com.mygdx.game.abstraction.*;
 
 public class Stage1 extends MyStage {
 
