@@ -1,4 +1,4 @@
-package com.mygdx.game.Level2.NormalActors;
+package com.mygdx.game.Level3.NormalActors;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;

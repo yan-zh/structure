@@ -20,10 +20,7 @@ import com.mygdx.game.Level3.ContactReactions.LaserDoorAndLaser;
 import com.mygdx.game.Level3.NormalActors.LaserDoor;
 import com.mygdx.game.Listeners.PhysicalContactListener;
 import com.mygdx.game.Listeners.UserInputListener;
-import com.mygdx.game.Tools.Assets;
-import com.mygdx.game.Tools.CameraFocus;
-import com.mygdx.game.Tools.LoadTiledMap;
-import com.mygdx.game.Tools.PhysicalEntityDefine;
+import com.mygdx.game.Tools.*;
 import com.mygdx.game.Tools.asset.AssetsLevel0;
 import com.mygdx.game.Tools.asset.AssetsLevel1;
 import com.mygdx.game.Tools.asset.AssetsLevel2;
@@ -52,11 +49,11 @@ public class Stage2 extends MyStage {
 
     public Stage2(InputMultiplexer inputMultiplexer){
 
-//        AssetsLevel1.instance.init(new AssetManager());
+        AssetsLevel0.instance.init(new AssetManager());
 //        AssetsLevel2.instance.init(new AssetManager());
 
         ActConstants.changeStageTo = 0;
-
+        AudioManager.instance.play(AssetsLevel0.instance.music.foresttheme);
         cUp=300000;
         cDown=-300000;
         cleft=-300000;
