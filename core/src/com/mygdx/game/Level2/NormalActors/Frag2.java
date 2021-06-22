@@ -35,6 +35,7 @@ public class Frag2 extends Actor {
     TextureRegion currentFrame;
 
 
+
     float stateTime;
 
     boolean tongueMark;

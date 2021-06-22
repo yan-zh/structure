@@ -51,7 +51,6 @@ public class brokenBridge extends Actor {
       myBodyDef.type = BodyDef.BodyType.StaticBody;
       myFixtureDef = PhysicalEntityDefine.getFd();
 
-      //这里设定盒子的大小
       PolygonShape shape = new PolygonShape();
       shape.setAsBox(hx/ ActConstants.worldSize_shapeAndPhysics,hy/ ActConstants.worldSize_shapeAndPhysics);
       myFixtureDef.shape = shape;

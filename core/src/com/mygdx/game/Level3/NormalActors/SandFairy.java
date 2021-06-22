@@ -37,7 +37,7 @@ public class SandFairy implements ContactReaction {
                 }
             });
 
-            Action action = Actions.delay(0.5f, delayedAction);//这个数就是1s
+            Action action = Actions.delay(0.5f, delayedAction);
             fairy.addAction(action);
         }
 

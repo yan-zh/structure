@@ -47,7 +47,6 @@ public class SandPlat extends Actor {
         myFixtureDef.friction = 1;
         myFixtureDef.isSensor = false;
 
-        //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(6f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;

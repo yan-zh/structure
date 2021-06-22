@@ -36,7 +36,6 @@ public class LaserDoor extends Actor {
         this.physicalY = physicalY;
         this.world = world;
 
-        //创建物理模拟
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();

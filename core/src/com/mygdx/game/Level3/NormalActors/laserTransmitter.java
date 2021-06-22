@@ -47,8 +47,7 @@ public class laserTransmitter extends Actor {
         myBodyDef.type = BodyDef.BodyType.StaticBody;
         myFixtureDef = PhysicalEntityDefine.getFd();
 
-        //这里设定盒子的大小
-        PolygonShape shape = new PolygonShape();
+       PolygonShape shape = new PolygonShape();
         shape.setAsBox(2f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
@@ -76,7 +75,6 @@ public class laserTransmitter extends Actor {
 
                 laserTransmitter laserTransmitter = (laserTransmitter) ActConstants.publicInformation.get("laserTransmitter");
                 laserTransmitter.emmit();
-                System.out.println("sssdfsdkjfjslkfjdsl");
             }
 
         };

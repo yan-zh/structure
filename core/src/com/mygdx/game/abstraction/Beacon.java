@@ -1,3 +1,4 @@
+
 package com.mygdx.game.abstraction;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -51,7 +52,6 @@ public class Beacon extends Actor {
         myFixtureDef = PhysicalEntityDefine.getFd();
         myFixtureDef.isSensor = true;
 
-        //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
@@ -108,7 +108,7 @@ public class Beacon extends Actor {
 
                 }
             });
-            //一秒后回到之前的状态
+
             Action action = Actions.delay(0.5f, delayedAction);
             this.addAction(action);
 

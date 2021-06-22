@@ -53,7 +53,6 @@ public class Door extends Actor {
         myFixtureDef = PhysicalEntityDefine.getFd();
         myFixtureDef.isSensor = false;
 
-        //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(hx,hy);
         myFixtureDef.shape = shape;

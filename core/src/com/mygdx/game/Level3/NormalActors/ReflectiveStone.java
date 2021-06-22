@@ -60,7 +60,6 @@ public class ReflectiveStone extends Actor {
 
 
 
-        //这里设定盒子的大小
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;

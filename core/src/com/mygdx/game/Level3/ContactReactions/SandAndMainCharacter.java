@@ -57,8 +57,7 @@ public class SandAndMainCharacter implements ContactReaction {
                         }
 
                     };
-                    timer.scheduleTask(timerTask, 2, 1, 1);// 0s之后执行，每次间隔1s，执行20次。
-
+                    timer.scheduleTask(timerTask, 2, 1, 1);
                 }
             });
             Action action = Actions.delay(1f, delayedAction);
