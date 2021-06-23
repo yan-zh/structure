@@ -28,7 +28,6 @@ import com.mygdx.game.Tools.asset.*;
 
 public class Stage0 extends Stage {//有一些按钮和背景，是类似开始界面
 
-    //按钮和背景
     private ImageButton startButton;
     private ImageButton settingButton;
     private ImageButton exitButton;
@@ -41,41 +40,38 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
 
     public Stage0(InputMultiplexer inputMultiplexer){
 //        this.setDebugAll(true);
-        // 初始化ui资源
+
         AssetsLevel0.instance.init(new AssetManager());
 //        AssetsLevel0.instance.init(new AssetManager());
-        inputMultiplexer.addProcessor(this);//通过这个接受来自用户的操作信号
-        //做了个背景和按钮（以后所有的素材，包括音乐，图片，动画都通过Asset类获取，后面会有Asset类的例子）
-        // 添加首页背景图
+        inputMultiplexer.addProcessor(this);
+
         TextureRegion temp2 = AssetsUI.instance.frontPage.background;//textureRegion就是切割texture用的,好像图片坐标系起点是左上角
-        backGround = new Image(temp2);//image和texture区别？？
+        backGround = new Image(temp2);
 
         backGround.setSize(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
 
-        backGround.setPosition(0, 0);//舞台坐标是左下角
+        backGround.setPosition(0, 0);
 
 
-        // 添加开始按钮
+
         startButton = addButton_Starting(AssetsUI.instance.frontPage.buttonStart,AssetsUI.instance.frontPage.buttonStart_position);
-        // 添加设置按钮
+
         settingButton = addButton_Setting(AssetsUI.instance.frontPage.buttonSetting,AssetsUI.instance.frontPage.buttonSetting_position);
-        // 添加退出按钮
+
         exitButton = addButton_Exit(AssetsUI.instance.frontPage.buttonExit,AssetsUI.instance.frontPage.buttonExit_position);
 
 
-        // 播放背景音乐
+
         AudioManager.instance.play(AssetsUI.instance.music.mainTheme);
 
 
-        // 测试面板
+
 
 
         this.addActor(backGround);
         this.addActor(startButton);
         this.addActor(settingButton);
         this.addActor(exitButton);
-      //  this.addListener(new MyInputListener1());//这个监听是对从最外层传入的输入信息的响应,可以多个舞台各自new一个同一个类的对象，都有效果
-        //****************注意，这个监听就算这个舞台没运行act也有效果
 
 
 
@@ -93,13 +89,13 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
         button.addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                // 在适当的条件（这里是按钮被按下），切换舞台，用下一个舞台换掉MyGdxGame的currentStage
+
                 AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
                 AudioManager.instance.stopMusic();
                 Stage0 stage0 = (Stage0) ActConstants.publicInformation.get("stage0");
                 MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest1,4);
                 stage0.dispose();
-                //注意每次切换舞台时把旧舞台dispose了，清空它占用的资源，主要是这个舞台用到的Asset
+
                 return false;
             }
             @Override
@@ -125,7 +121,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
-                // 点击打开社渚窗口：还未写
+
 
                 MyGdxGame.currentStage = new AssetsStageChage(AssetsUI.instance.mainPanel.backgroundForest2,
                         2f);
@@ -155,7 +151,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 AudioManager.instance.play(AssetsUI.instance.sounds.confirm);
-                // 点击退出游戏
+
                 Gdx.app.exit();
                 return false;
             }
@@ -177,7 +173,7 @@ public class Stage0 extends Stage {//有一些按钮和背景，是类似开始�
     }
 
     private ImageButton addButton(TextureRegion region, Vector2 position){
-        // 添加项目
+
         ImageButton imageButton = new ImageButton(new TextureRegionDrawable(region),new TextureRegionDrawable(region));
         imageButton.setPosition(position.x,position.y);
         return imageButton;

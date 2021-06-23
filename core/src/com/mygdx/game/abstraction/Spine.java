@@ -21,14 +21,14 @@ public class Spine extends Actor {
     PolygonShape shape;
 
 
-//    float statetime;//用于替换主角动作图片的标记
+//    float statetime;
 
 //    Animation spine;//这个就是
 
     boolean draw;
 
 
-    TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
+    TextureRegion currentFrame;
     public Spine(World world, float x, float y, float height, float width) {
 
         draw=true;
@@ -39,7 +39,7 @@ public class Spine extends Actor {
 
         this.world = world;
 
-        //创建主角物理模拟
+
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -47,12 +47,11 @@ public class Spine extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(width/ ActConstants.worldSize_shapeAndPhysics,height/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
         myFixtureDef.isSensor = false;
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -62,11 +61,6 @@ public class Spine extends Actor {
         this.setY(mySimulation.getPosition().y*ActConstants.worldSize_pAndPhysic);
 
 
-//
-//        //内存显示区
-//        this.statetime = 0;
-//
-//        this.spine = Assets.instance.bunny.animCopterTransform;
 
     }
 

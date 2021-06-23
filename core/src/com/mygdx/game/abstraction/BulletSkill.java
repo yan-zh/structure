@@ -56,10 +56,10 @@ public class BulletSkill extends Actor {
 
     public long actorId;
 
-    int type;//1 feng  2 mu 3 tu 4 jiguang
+    int type;//1 wind  2 wood 3 dust 4 laser
 
     public BulletSkill(TextureRegion fly, Animation contact, float x, float y, float[] direction, long actorId, int damage,int type) {
-//这里输入的x y是像素
+//input x and y is pixel
         this.damage = damage;
         this.delete = false;
         this.type =type;
@@ -69,7 +69,7 @@ public class BulletSkill extends Actor {
 
         bulletMark++;
         myMark = bulletMark;
-        //这里传入参数xy是主角位置，像素，之后根据方向移动一点获得发射位置
+        //the position to create bullet
         this.setX(x+80*direction[0]);
         this.setY(y+80*direction[1]);
 
@@ -77,24 +77,24 @@ public class BulletSkill extends Actor {
         this.contact = contact;
 
 
-        //物理实体创建
+        //physical entity
         PhysicalEntityDefine.defineAttack();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
-        CircleShape shape = new CircleShape();//似乎是一个像素一个
+        CircleShape shape = new CircleShape();
         shape.setRadius(0.5f/ActConstants.worldSize_shapeAndPhysics);
 
         myFixtureDef.shape = shape;
 
-        myBodyDef.position.set(this.getX()/ActConstants.worldSize_pAndPhysic,this.getY()/ActConstants.worldSize_pAndPhysic);//这个表示物理世界中的米
+        myBodyDef.position.set(this.getX()/ActConstants.worldSize_pAndPhysic,this.getY()/ActConstants.worldSize_pAndPhysic);//use m
 
         synchronized (ActConstants.publicInformationLock){
             this.world = ((MyStage)ActConstants.publicInformation.get("CurrentStage")).world;
         }
 
         mySimulation = world.createBody(myBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
+
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setUserData(new UserData(actorId,Integer.toString(myMark)));
 
@@ -122,6 +122,9 @@ public class BulletSkill extends Actor {
 
     @Override
     public void act(float delta) {
+
+        //play different ANimation
+
         if(contactMark==false){
             drawX = (mySimulation.getPosition().x-0.7f)*50f;
             drawY = (mySimulation.getPosition().y-0.45f)*50f;
@@ -164,6 +167,7 @@ public class BulletSkill extends Actor {
         super.draw(batch, parentAlpha);
 
 
+        //because different picture has different position
         if(type==1){
 
             if(flyMark==true) batch.draw(currentFrame,drawX+18, drawY);
@@ -192,6 +196,7 @@ public class BulletSkill extends Actor {
         }
     }
 
+    //delete the entity
     public void deleteBody(){
 
 
@@ -207,6 +212,7 @@ public class BulletSkill extends Actor {
 
     public int getDamage(){return damage;}
 
+    //change the state
     public void dispose(){
         this.contactMark=true;
         this.flyMark=false;

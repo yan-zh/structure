@@ -26,7 +26,7 @@ public class Boss extends Actor {
     long actorId;
     Body body;
 
-    float range;//每次移动距离基数
+    float range;//
     float duration;
     Timer timer;
     Timer.Task timerTask;
@@ -75,7 +75,6 @@ public class Boss extends Actor {
 
 
     private void patrol(){
-        //boss可以以很快的速度移动，每次移动range+-random距离后停下几秒(然后发射子弹)；每次随机往左或往右移动，如果x<x1或x>x2则往中间移动
 
     }
 

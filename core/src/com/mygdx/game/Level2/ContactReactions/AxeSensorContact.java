@@ -1,10 +1,7 @@
 package com.mygdx.game.Level2.ContactReactions;
 
-import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.Constants.ActConstants;
-import com.mygdx.game.Level2.NormalActors.Axe;
 import com.mygdx.game.Level2.NormalActors.ReverberateAxe;
-import com.mygdx.game.Tools.Assets;
 import com.mygdx.game.abstraction.ContactReaction;
 import com.mygdx.game.abstraction.UserData;
 

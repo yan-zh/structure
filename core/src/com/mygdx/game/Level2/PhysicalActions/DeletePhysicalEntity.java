@@ -11,7 +11,7 @@ public class DeletePhysicalEntity implements PhysicalAction {
     World world;
     Joint joint;
 
-    boolean jointOrBody;//true是joint
+    boolean jointOrBody;//
 
     public DeletePhysicalEntity() {
 

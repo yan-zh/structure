@@ -40,20 +40,20 @@ public class BallLauncher extends Actor {
         this.launch = false;
         this.currentFrame = currentFrame;
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(6.65f/ ActConstants.worldSize_shapeAndPhysics,6.1f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
 
 
         mySimulation = world.createBody(myBodyDef);

@@ -42,13 +42,13 @@ public class LaserDoor extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,8f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
 
 
         mySimulation = world.createBody(myBodyDef);
@@ -88,7 +88,7 @@ public class LaserDoor extends Actor {
 
         synchronized (ActConstants.MonsterActionLock){
            // MyGdxGame.currentStage.addActor(new DieAction(Assets.instance.bunny.animNormal,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
-            //消除自身，要锁
+
 
             DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
             deletePhysicalEntity1.deleteBody(mySimulation,world);

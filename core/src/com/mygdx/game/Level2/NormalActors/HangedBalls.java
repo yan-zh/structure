@@ -86,7 +86,7 @@ public class HangedBalls extends Actor {
 
 
 
-        for (Integer i = 0; i < 3; i++) {//注意这里改坐标的话三行代码都得改
+        for (Integer i = 0; i < 3; i++) {//
             vertices.add(BodyBuilder.createBox(world, vertexPos.get(i).x , vertexPos.get(i).y, 0.05f, 0.05f, false, 0b10, "vertex"));
             positions.add(new Vector2(vertexPos.get(i).x  , vertexPos.get(i).y));
             bodies.add(BodyBuilder.createCircle(world, vertexPos.get(i).x , vertexPos.get(i).y-ropeLength[i], 0.5f, true,
@@ -116,7 +116,7 @@ public class HangedBalls extends Actor {
         System.out.println("psw correct!");
 //        HangedBalls balls= (HangedBalls) ActConstants.publicInformation.get("hangedBalls");
         PswDoor door = (PswDoor) ActConstants.publicInformation.get("pswDoor");
-//这里加音效！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
         door.move();
 //        MainCharacter mainCharacter = ((MainCharacter) ActConstants.publicInformation.get("MainCharacter"));
 //        mainCharacter.mySimulation.setTransform(new Vector2(64f-1.2f,85f-23.4f), 0);
@@ -124,8 +124,8 @@ public class HangedBalls extends Actor {
 
         ActConstants.physicalActionList.add(createPortal);
         AudioManager.instance.play(AssetsLevel0.instance.sounds.success_Triggered);
-        //从actcontants里获得横门的body让它消失
-        //调用横门对象的draw还是act让它向左移
+        //
+        //
     }
 
     @Override

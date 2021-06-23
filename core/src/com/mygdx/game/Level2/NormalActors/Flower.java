@@ -56,7 +56,7 @@ public class Flower extends Actor {
         isDelete = false;
         count=0;
 
-        //创建主角物理模拟
+
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -70,7 +70,7 @@ public class Flower extends Actor {
 
         myFixtureDef.isSensor = false;
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -113,7 +113,7 @@ public class Flower extends Actor {
                         }
                     };
 
-                    timer.scheduleTask(timerTask, 0.5f, 0, 0);// 0s之后执行，每次间隔1s，再次重复执行20次。
+                    timer.scheduleTask(timerTask, 0.5f, 0, 0);
                 }
 
                 count=1;

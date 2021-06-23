@@ -31,9 +31,9 @@ public class ReverberateAxe extends Actor {
     PolygonShape sensorshape;
 
 
-    float statetime;//用于替换主角动作图片的标记
+    float statetime;//
 
-    TextureRegion picutre;//这个就是
+    TextureRegion picutre;//
 
     float physicalX;
     float physicalY;
@@ -53,13 +53,11 @@ public class ReverberateAxe extends Actor {
         down=true;
         move=false;
         physicalYStart = y;
-        //获得物理世界引用
         this.world = world;
 
         physicalWidth = 2f;
         physicalHeight = 3.5f;
 
-        //创建主角物理模拟
         PhysicalEntityDefine.defineKinematic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -68,13 +66,13 @@ public class ReverberateAxe extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox((float)(physicalWidth*0.9) / ActConstants.worldSize_shapeAndPhysics, (physicalHeight/10) / ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
 
 
-        myBodyDef.position.set(x, y);//这个表示物理世界中的米
+        myBodyDef.position.set(x, y);//
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -90,7 +88,7 @@ public class ReverberateAxe extends Actor {
 
 
         shape2 = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape2.setAsBox(physicalWidth / ActConstants.worldSize_shapeAndPhysics, (physicalHeight/2) / ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef2.shape = shape2;
 
@@ -104,7 +102,7 @@ public class ReverberateAxe extends Actor {
 
 
 
-        //创建sensor
+        //
         PhysicalEntityDefine.defineStatic();
         sensorBodyDef = PhysicalEntityDefine.getBd();
         sensorFixtureDef = PhysicalEntityDefine.getFd();
@@ -113,11 +111,11 @@ public class ReverberateAxe extends Actor {
 
 
         sensorshape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         sensorshape.setAsBox(1f / ActConstants.worldSize_shapeAndPhysics, 8f / ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorshape;
 
-        sensorBodyDef.position.set(x - 12, y - 8f);//这个表示物理世界中的米
+        sensorBodyDef.position.set(x - 12, y - 8f);//
 
         sensorSimulation = world.createBody(sensorBodyDef);
 

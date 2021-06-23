@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActConstants {
-    //游戏界面大小
+
     public static String currentPortal;
 
     public static float changeStageTo=0;
@@ -41,18 +41,10 @@ public class ActConstants {
         MainCharacterState.put("goLeft",false);
         MainCharacterState.put("goRight",false);
         MainCharacterState.put("repulse",false);
-//        MainCharacterState.put("slowDown",false);
         MainCharacterState.put("onGround",true);
         MainCharacterState.put("blow",false);
-//        MainCharacterState.put("noControl",true);
-//        MainCharacterState.put("froze",false);
-//        MainCharacterState.put("jumping",false);
     }
 
-//这两个是物理实体块的类型
-    //public static String ground = "ground";
-
-    //public static MainCharacter mainCharacter;
 
     public static HashMap<String,Object> publicInformation;
     static
@@ -87,14 +79,10 @@ public class ActConstants {
     public static long mainCharacterID = 0b1;
     public static long groundID = 0b10;
     public static long windFairyID = 0b100;
-    //碰撞类型ID表
-    //  0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0010
-   //   0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0011
 
 
 
-
-    //阎之泓**********************
+    //yzh**********************
 
     public static long windBulletID = 0b10000;
 
@@ -267,9 +255,7 @@ public class ActConstants {
     }
     public static boolean canGravityInverse = true;
 
-    //阎之泓part________________________
 
-    //郐洋Part
     public static long brokenBridgeID = 0b1000;
     //0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 0000 | 0000 0000 0000 1000
 
@@ -323,10 +309,10 @@ public class ActConstants {
         beaconID = 1;
         beaconID = beaconID << 49;
     }
-    //****************郐洋
+    //****************kuaiy
 
 
-    //***************林韫奇
+    //***************lyq
     public static long platformID = 0b100000;
     public static long thinSurfaceID= 0b1000000000000000000000000000000;
     public static long hangedBallsID=0b10000000000000000;

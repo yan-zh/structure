@@ -30,12 +30,12 @@ import com.mygdx.game.abstraction.*;
 public class Stage3 extends MyStage {
 
 
-    Box2DDebugRenderer boxRender;//物理世界绘制器
-    OrthographicCamera cameraPhysic;//物理世界相机
-    OrthographicCamera stageCamera;//舞台用的摄像机
+    Box2DDebugRenderer boxRender;//
+    OrthographicCamera cameraPhysic;//
+    OrthographicCamera stageCamera;//
 
     CameraFocus cameraFocus;
-    // GUI界面的相机
+    //
     private OrthographicCamera cameraGUI;
     private SpriteBatch batch;
 
@@ -62,63 +62,49 @@ public class Stage3 extends MyStage {
         AssetsUI.instance.addSprit();
         AssetsUI.instance.addSprit();
 
-        //注意如果把某些类的实体加入到ActConstants中，需要看一下使用的顺序，有时候先使用了ActConstants中的对象，但是这个对象是在后面才被加入的，可能会空指针异常
 
         System.out.println("新建了一个Stage3");
-        inputMultiplexer.addProcessor(this);//加入监听,接受来自最外层的信息。最外层的用户动作信息通过这个分配到各个stage
+        inputMultiplexer.addProcessor(this);
 
-        //一个舞台代表游戏的一个关，每关各自使用一个物理世界
         world = new World(new Vector2(0,-10),true);
         world.setContactListener(new PhysicalContactListener());
-        //这个类包含一些用于定义物理实体属性的函数，一般的物理实体都可以通过这个类定义
         PhysicalEntityDefine.boundWorld(world);
 
-        //stage2的第一个演员，如果这个演员的某些函数需要在其他类的实体中被调用，可以选择把它的引用放在ActConstants里
-        //添加常规演员，是关卡一开始就有的演员。子弹之类的临时的或在某些特定条件下出现的演员在监听函数里添加
-        this.addActor(new MainCharacter(world,35,60));//单位是米 35  60初始位置     最右 772 42  右2 653.8 95   48.868668
+        this.addActor(new MainCharacter(world,35,60));//
         this.addActor(new Beacon(35, 60, ActConstants.beaconID, world, "Beacon"));
         this.addActor(new Bubbles(world,745f,31f,25f,1f,ActConstants.BubbleID,"bubbles"));
         new BubbleAndCharacter();
 
-        //每个舞台自己准备摄像机
-        boxRender = new Box2DDebugRenderer();//物理实体绘制器，用于绘制物理实体形状
-        cameraPhysic = new OrthographicCamera();//用于投影物理实体形状的摄像机
-        //绑定物理绘制器和相机
+        boxRender = new Box2DDebugRenderer();
+        cameraPhysic = new OrthographicCamera();//
         cameraPhysic.setToOrtho(false, (ActConstants.SCREEN_WIDTH)/ ActConstants.worldSize_pAndPhysic,(ActConstants.SCREEN_HEIGHT)/ ActConstants.worldSize_pAndPhysic);//这个是摄像机的框的大小，摄像机取景后还要经过最外层界面的压缩得到最终效果
-        //用户绘制一般画面的相机
         stageCamera = (OrthographicCamera) this.getCamera();
         stageCamera.setToOrtho(false, ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
 
-        //cameraFocus是用于使相机跟踪主角的类
+        //
         cameraFocus = new CameraFocus(cameraPhysic, stageCamera);
 
 
 
 
-        //添加添加自定义的用户输入监听
-        this.addListener(new UserInputListener());//这个监听是对从最外层传入的输入信息的响应
+        //
+        this.addListener(new UserInputListener());//
 
 
-        //根据读取tiledmap。生成地图的背景和基础物理实体（包括不动的，比如石头，墙什么的）
-//        tiledMap = new TmxMapLoader().load("core/assets/JX03/JX03.tmx");
         tiledMap = new TmxMapLoader().load("core/assets/bing/bing.tmx");
-        //绘制tiledmap提供的背景用的类
+        //
         orthogonalTiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-        //根据tiledmap中的object图层自动在物理世界中创建实体
+        //
         LoadTiledMap.doScene2(world,this,tiledMap);
 
-        //这个是因为图本身很大，有些部分是透明的，所以看起来位置不对
+        //
 
-        //调整两个个相机到起始位置
+        //
         cameraFocus.focusOn(205.6f,80,1);//这里单位是米
 
-        //把stage1加入公共域，用于之后的析构和交互
+
         ActConstants.publicInformation.replace("CurrentStage",this);
 
-        //为主角添加一个技能，具体有关添加技能的细节在这个类里会写
-        //ActConstants.skillGroups[1]=new SkillGourpFire();
-
-        //为这一关用到的物理碰撞监听添加一个函数
 
         changeCamera = new ChangeCamera(cameraPhysic,stageCamera);
 
@@ -149,15 +135,15 @@ public class Stage3 extends MyStage {
 
         new MainCharacterAndBullet();
 
-        //测试***********************************
+        //***********************************
 
-// 初始化batch
+//
         batch = new SpriteBatch();
-// 创建GUI相机并配置参数
+//
         cameraGUI = new OrthographicCamera(ActConstants.SCREEN_WIDTH, ActConstants.SCREEN_HEIGHT);
         cameraGUI.position.set(0,0,0);
         cameraGUI.setToOrtho(true);
-// 反转y轴
+//
         cameraGUI.update();
 
 //yzh***************************************************
@@ -325,7 +311,7 @@ public class Stage3 extends MyStage {
 //357.14578,99.2157
         this.addActor(new Portal(12200,3900,357,99,ActConstants.portalID,world,"PortalIceTriggered",false,"none"));
 
-//机关的位置：422， 115
+
 //Portal的位置：436，80
 //Dst:515,49
         this.addActor(new Portal(21800,4000,515,49,ActConstants.portalID,world,"Portal2",false,"none"));
@@ -483,8 +469,8 @@ public class Stage3 extends MyStage {
     public void act() {
         super.act();
 
-        world.step(1.0f/60.0f, 6,6);//进行一次物理世界模拟，第一个 时间步，和系统时间同步；速度和位置的模拟精度，越大越准
-        //上面这个要放在各个stage里，因为不到这个stage运行的时候stage对应的物理世界是不动的
+        world.step(1.0f/60.0f, 6,6);
+        //上面这个要放在各个stage里，
 
 
         if(ActConstants.physicalActionList.size()!=0){
@@ -495,12 +481,12 @@ public class Stage3 extends MyStage {
         }
 
 
-        cameraFocus.innerBoundary(2,2,19,8);//进行物理相机和舞台相机的调整，在屏幕中划出一个区域作为触发相机调整的边框
+        cameraFocus.innerBoundary(2,2,19,8);//
 
-        //应用相机位置更新
-        cameraPhysic.update();//主角内存图片的相机就不用了，应为舞台自己有一个相机，舞台内新做的内存机替换了已有的，所以stage类每次会自动调用舞台新作的内存相机的update
+        //
+        cameraPhysic.update();
 
-        // 应用GUI相机的位置更新
+        //
         cameraGUI.update();
 
     }
@@ -509,7 +495,7 @@ public class Stage3 extends MyStage {
     public void draw() {
 
 
-        //绘制tiledmap的背景图
+        //
         orthogonalTiledMapRenderer.setView(this.stageCamera);
 //        orthogonalTiledMapRenderer.render();
 
@@ -520,24 +506,20 @@ public class Stage3 extends MyStage {
 
 
 
-        //不需要主动写代码绘制舞台相机，舞台相机是自动更新并绘制的
-
-        super.draw();//这个就是依次调用actor的draw
+        super.draw();//
 
 
         orthogonalTiledMapRenderer.renderTileLayer((TiledMapTileLayer) tiledMap.getLayers().get("L3"));
         orthogonalTiledMapRenderer.getBatch().end();
 
-        //绘制物理实体
-//        boxRender.render(world, cameraPhysic.combined);//结合相机进行绘制
-        // 尝试在此处绘制GUI图片
+
         AssetsUI.instance.updateSprite();
 //        renderGui(batch);
     }
     public void renderGui(SpriteBatch batch){
         batch.setProjectionMatrix(cameraGUI.combined);
         batch.begin();
-        // 绘制人物的状态栏（左上角）
+
         AssetsUI.instance.drawUpdate(batch);
         batch.end();
     }

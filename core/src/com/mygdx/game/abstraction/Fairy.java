@@ -14,7 +14,6 @@ import com.mygdx.game.Tools.asset.AssetsUI;
 
 public class Fairy extends Actor {
 
-    //public SkillGroup skillGroup;
     public int numberPosition;
 
     Body mySimulation;
@@ -40,9 +39,9 @@ public class Fairy extends Actor {
     float physicalX;
     float physicalY;
 
-    //输入的xy单位是像素
+    //x y pixel
     public Fairy(int numberPosition, Animation animationWait, Animation animationAbsorb, int x, int y, long actorId, World world,String name) {
-       // this.skillGroup = skillGroup;
+
         this.numberPosition = numberPosition;
 
         state=true;
@@ -52,17 +51,16 @@ public class Fairy extends Actor {
         this.physicalX = x/50;
         this.physicalY = y/50;
 
-        //这里把wait的动画和draw的动画准备好
+        //prepare different Animation
         this.wait = animationWait;
         this.absorb = animationAbsorb;
 
-        //物理实体创建
+        //curete entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
         PolygonShape shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(2.2f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
@@ -73,7 +71,6 @@ public class Fairy extends Actor {
         this.world = world;
 
         mySimulation = world.createBody(myBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         myFixture = mySimulation.createFixture(myFixtureDef);
         myFixture.setUserData(new UserData(actorId,name));
 
@@ -87,7 +84,7 @@ public class Fairy extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        statetime += delta;//用于调整主角要展示的图片的时间标记,****************这里调整了，用了传入的delta，看看行不行
+        statetime += delta;//used to play animation, the time
 
         if(state==true)currentFrame = (TextureRegion)wait.getKeyFrame(statetime,true);
         else currentFrame = (TextureRegion)absorb.getKeyFrame(statetime,true);
@@ -99,6 +96,7 @@ public class Fairy extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
+        //face to main character
         if(ActConstants.mainCharacter.getPhysicalX()>=this.physicalX) {
             if (!currentFrame.isFlipX()) {
                 currentFrame.flip(true, false);
@@ -119,6 +117,7 @@ public class Fairy extends Actor {
         return super.remove();
     }
 
+    //remove physical entity
     public void removeBody(){
         DeletePhysicalEntity deletePhysicalEntity = new DeletePhysicalEntity();
         deletePhysicalEntity.deleteBody(mySimulation,world);

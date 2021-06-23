@@ -16,6 +16,8 @@ import com.mygdx.game.Tools.PhysicalEntityDefine;
 import com.mygdx.game.abstraction.BulletSkill;
 import com.mygdx.game.abstraction.UserData;
 
+
+//fire launcher
 public class BossLauncher extends Actor {
 
 
@@ -63,8 +65,9 @@ public class BossLauncher extends Actor {
 
 
     public BossLauncher(World world,float physicalX, float physicalY) {
-        //启动一个打的计时器，1秒动一下
 
+
+        //launch every 1s
         timer = new Timer();
         timerTask = new Timer.Task() {
             @Override
@@ -87,7 +90,7 @@ public class BossLauncher extends Actor {
 
 
 
-        //创建主角物理模拟
+
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -95,16 +98,15 @@ public class BossLauncher extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor = false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);
 
         mySimulation = world.createBody(myBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
+
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.groundID,"Ground"));
 
 
@@ -117,13 +119,13 @@ public class BossLauncher extends Actor {
 
 
         sensorShape = new CircleShape();
-        sensorShape.setRadius(1f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        sensorShape.setRadius(1f/ActConstants.worldSize_shapeAndPhysics);
 //        sensorShape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorShape;
 
         sensorFixtureDef.isSensor=true;
 
-        sensorBodyDef.position.set(physicalX,physicalY-7);//这个表示物理世界中的米
+        sensorBodyDef.position.set(physicalX,physicalY-7);
 
         sensorSimulation = world.createBody(sensorBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -326,7 +328,7 @@ public class BossLauncher extends Actor {
 
     public void start(){
 
-        timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(timerTask, 1, 3, 500);
     }
 
     public void stop(){

@@ -15,7 +15,7 @@ public class Attack implements PhysicalAction {
 
     float mouseX;
     float mouseY;
-    int type;//1 风 2 土 3 木
+    int type;
 
     public Attack(float mouseX, float mouseY, int type) {
         this.mouseX = mouseX;

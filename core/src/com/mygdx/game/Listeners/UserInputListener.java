@@ -114,12 +114,12 @@ public class UserInputListener extends InputListener {
 
                                             }
                                         });
-                                        //一秒后回到之前的状态
+                                        //
                                         Action action = Actions.delay(1f, delayedAction);
                                         portal.addAction(action);
                                     }
                                 });
-                                //一秒后回到之前的状态
+                                //
                                 Action action = Actions.delay(0.01f, delayedAction);
                                 portal.addAction(action);
 
@@ -200,26 +200,25 @@ public class UserInputListener extends InputListener {
                     }
                 }
             }
-            // 调试用：用于减少生命值
+            //
             if (event.getKeyCode() == Input.Keys.N) {
                 ActConstants.changeStageTo = 1.5f;
 //                AssetsUI.instance.reduceLives(1);
             }
-            // 调试用：用于添加生命值
+            //
             if (event.getKeyCode() == Input.Keys.M) {
 //                AssetsUI.instance.addLives(1);
 //                AssetsUI.instance.addSprit();
                 ActConstants.changeStageTo = 2.5f;
             }
-            // 调试用：用于减少生命上限
             if (event.getKeyCode() == Input.Keys.H) {
                 AssetsUI.instance.reduceLivesLimit(1);
             }
-            // 调试用：用于添加生命上限
+            //
             if (event.getKeyCode() == Input.Keys.J) {
                 AssetsUI.instance.addLivesLimit(1);
             }
-            // 调试用：用于添加精灵数量
+            //
 //            if (event.getKeyCode() == Input.Keys.K) {
 //                AssetsUI.instance.addSprit();
 //            }
@@ -267,7 +266,7 @@ public class UserInputListener extends InputListener {
             }
 
 
-            //return false;//不知道干嘛的
+            //return false;
         }
         return super.keyUp(event, keycode);
     }
@@ -293,8 +292,8 @@ public class UserInputListener extends InputListener {
 
 
     @Override
-    public boolean mouseMoved(InputEvent event, float x, float y) {//这里鼠标位置应该是像素个数，在desktopluncher里设定1900,1000的情况下基本和最右边是1900，最上边是100
-        //当对话框调整的时候，在最左边和最上边的最大值会相应改变
+    public boolean mouseMoved(InputEvent event, float x, float y) {//
+
         //System.out.println(x+"   "+y);
 
         return super.mouseMoved(event, x, y);

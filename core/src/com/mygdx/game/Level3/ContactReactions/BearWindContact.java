@@ -6,7 +6,7 @@ import com.mygdx.game.abstraction.UserData;
 
 public class BearWindContact implements ContactReaction {
 
-public static long contactID= ActConstants.BearID+ActConstants.windBulletID;//风技能还没做好，先用主角碰撞替代一下
+public static long contactID= ActConstants.BearID+ActConstants.windBulletID;//
 
 public BearWindContact(){ActConstants.contactList.put(contactID,this);}
 

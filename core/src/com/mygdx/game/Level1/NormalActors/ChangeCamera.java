@@ -6,11 +6,13 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.Constants.ActConstants;
 
+
+//adjust the distance of camera and maincharacter
 public class ChangeCamera {
 
 
-    OrthographicCamera cameraPhysic;//物理世界相机
-    OrthographicCamera stageCamera;//舞台用的摄像机
+    OrthographicCamera cameraPhysic;
+    OrthographicCamera stageCamera;
 
     int state;
     int count;

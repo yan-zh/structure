@@ -55,24 +55,23 @@ public class Frag2 extends Actor {
         physicalX = x;
         physicalY = y;
         number++;
-        direction = false;//向右
+        direction = false;
 
         activeTime = 0;
-        //获得眼镜世界引用
         this.world = world;
         count=0;
 
-        //创建眼镜物理模拟
+
         PhysicalEntityDefine.defineStatic();
         eyeBodyDef = PhysicalEntityDefine.getBd();
         eyeFixtureDef = PhysicalEntityDefine.getFd();
 
 
-        CircleShape shape = new CircleShape();//似乎是一个像素一个
+        CircleShape shape = new CircleShape();//
         shape.setRadius(2.5f/ActConstants.worldSize_shapeAndPhysics);
         eyeFixtureDef.shape = shape;
 
-        eyeBodyDef.position.set(x,y);//这个表示物理世界中的米
+        eyeBodyDef.position.set(x,y);
 
         eyeSimulation = world.createBody(eyeBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -82,7 +81,7 @@ public class Frag2 extends Actor {
 
 
 
-        //缺一个素材
+
 
         stateTime = 0;
 

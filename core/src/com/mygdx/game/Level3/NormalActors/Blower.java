@@ -48,7 +48,7 @@ public class Blower extends Actor {
         this.width = width;
 
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -56,13 +56,13 @@ public class Blower extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(width/ ActConstants.worldSize_shapeAndPhysics,height/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor = true;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");

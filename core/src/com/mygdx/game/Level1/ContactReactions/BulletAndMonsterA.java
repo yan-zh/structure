@@ -30,6 +30,8 @@ public class BulletAndMonsterA implements ContactReaction {
                 BulletSkill bulletSkill = (BulletSkill) ActConstants.publicInformation.get(userData2.nameInPublicInformation);
                 if(monsterA!=null){
 
+
+                    //different kind of bullet have different action
                     if(bulletSkill.actorId==ActConstants.woodBulletID){
                         AssetsUI.instance.addLives(1);//
                     }else if(bulletSkill.actorId==ActConstants.windBulletID){

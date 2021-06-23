@@ -27,9 +27,9 @@ public class MainCharacter extends Actor {
 
 
 
-    float statetime;//用于替换主角动作图片的标记
+    float statetime;//used to change picutre of animation
 
-    Animation test;//这个就是
+    Animation test;
 
 
     int jumpNumber;
@@ -53,7 +53,8 @@ public class MainCharacter extends Actor {
 
     boolean hurt;
 
-    TextureRegion currentFrame;//当前该播放的图片（这个类是从texture中切一块出来）
+    TextureRegion currentFrame;
+
     public MainCharacter(World world,float x,float y){
 
         walkLeft = AssetsUI.instance.zj.animBreath;
@@ -73,11 +74,11 @@ public class MainCharacter extends Actor {
         goLeft= true;
 
         die=false;
-        //获得物理世界引用
+
         this.world = world;
         jumpNumber=2;
 
-        //创建主角物理模拟
+        //create entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -85,7 +86,6 @@ public class MainCharacter extends Actor {
 
 
         shape = new PolygonShape();
-       // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         //2.5  2.2还可以
         myFixtureDef.shape = shape;
@@ -93,7 +93,7 @@ public class MainCharacter extends Actor {
 
 
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);//use m
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -107,45 +107,26 @@ public class MainCharacter extends Actor {
 
 
 
-        //内存显示区
         this.statetime = 0;
         prepareForPicture();
 
 
-        //交互注册
         ActConstants.publicInformation.put("MainCharacter",this);
 
         ActConstants.mainCharacter = this;
 
     }
 
-    //Cancel Jump
+    //call it, then cannot jump
     public void cancelJump(){
         ActConstants.MainCharacterState.replace("onGround",false);
         ActConstants.MainCharacterState.replace("repulse",false);
     }
 
+    //just for test
     public void prepareForPicture() {
 
         test = Assets.instance.mainCharacter.animBreath;
-//
-//        Action delayedAction = Actions.run(new Runnable() {
-//
-//
-//
-//            @Override
-//
-//            public void run() {
-//
-//                System.out.println("time:" + (System.currentTimeMillis() / 1000) + ",执行something");
-//
-//            }
-//
-//        });
-//
-//        Action action = Actions.delay(20f,delayedAction);//这个数就是20s
-//
-//        this.addAction(Actions.sequence(action));
 
 
     }
@@ -155,7 +136,7 @@ public class MainCharacter extends Actor {
         if(die==false){
             timeWalk += delta;
 
-            //动作状态改变
+            //change physical action according to stage
             if(ActConstants.MainCharacterState.get("goLeft")){
                 goLeft=true;
                 mySimulation.setLinearVelocity(-ActConstants.MainCharacterSpeed,mySimulation.getLinearVelocity().y);
@@ -170,6 +151,7 @@ public class MainCharacter extends Actor {
             }
 
 
+            //change picture according to state
             if(hurt==false){
                 currentFrame = (TextureRegion) walkLeft.getKeyFrame(timeWalk,true);
             }else{
@@ -204,6 +186,7 @@ public class MainCharacter extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
+        //face to direction
         if(goLeft==false) {
             if (!currentFrame.isFlipX()) {
                 currentFrame.flip(true, false);
@@ -219,6 +202,7 @@ public class MainCharacter extends Actor {
 
     }
 
+    //most 2 jump
     public void jump(){
         if(jumpNumber>=1){
             float gravityScale;
@@ -265,6 +249,7 @@ public class MainCharacter extends Actor {
     }
 
 
+    //call it when being attacted
     public void repulse(float spineX, float spineY){
         mySimulation.setLinearVelocity(0,0);
         ActConstants.MainCharacterState.replace("repulse",true);
@@ -299,12 +284,14 @@ public class MainCharacter extends Actor {
         AssetsUI.instance.addLives(20);
     }
 
+    //call it when on ground
     public void reFreshJump(){
         ActConstants.MainCharacterState.replace("onGround",true);
         ActConstants.MainCharacterState.replace("repulse",false);
         jumpNumber=2;
     }
 
+    //for test
     public void startGravityInverse(){
         float scale = mySimulation.getGravityScale();
         if(scale==1){
@@ -329,6 +316,8 @@ public class MainCharacter extends Actor {
         }
     }
 
+
+    //set new position
     public void resetPosition(float x, float y){
         AdjustPosition adjustPosition = new AdjustPosition(x/50,y/50);
         synchronized (ActConstants.physicalActionListLock){

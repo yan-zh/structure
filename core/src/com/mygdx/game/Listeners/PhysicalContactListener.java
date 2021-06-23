@@ -15,8 +15,8 @@ import com.mygdx.game.abstraction.rotateSwitch;
 
 public class PhysicalContactListener implements ContactListener{
     @Override
-    public void beginContact(Contact contact) {//出现新接触点
-        //通过把这个my contact listener 添加到word里，进行监听，可以在函数里通过contact获得碰撞对象的fixturedefine（里面可以通过usedata设置编号来区分对象）
+    public void beginContact(Contact contact) {//
+
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
 
@@ -99,12 +99,10 @@ public class PhysicalContactListener implements ContactListener{
 
 
 
-        //之后也可以获得碰撞点坐标等
-        //还可以把刚体设置为传感器，就是会检测到碰撞但是物理世界里不与其它刚体产生相互作用
     }
 
     @Override
-    public void endContact(Contact contact) {//新接触点消失
+    public void endContact(Contact contact) {//
 
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
@@ -127,7 +125,7 @@ public class PhysicalContactListener implements ContactListener{
 
 
 ////
-//////两个指定物体碰撞后
+
 ////    if( ((faData.equals("wall")|| fbData.equals("wall"))&&(faData.equals("main character") || fbData.equals("main character")))){
 ////
 ////        PublicData.MainCharacterState.replace("onGround",true);
@@ -167,7 +165,7 @@ public class PhysicalContactListener implements ContactListener{
     }
 
     @Override
-    public void preSolve(Contact contact, Manifold oldManifold) {//aabb框之间出现新接触点
+    public void preSolve(Contact contact, Manifold oldManifold) {
         Fixture fa = contact.getFixtureA();
         Fixture fb = contact.getFixtureB();
         UserData faData = (UserData)fa.getUserData();
@@ -194,7 +192,7 @@ public class PhysicalContactListener implements ContactListener{
     }
 
     @Override
-    public void postSolve(Contact contact, ContactImpulse impulse) {//aabb框之间的新接触点消失
+    public void postSolve(Contact contact, ContactImpulse impulse) {//
 
     }
 }

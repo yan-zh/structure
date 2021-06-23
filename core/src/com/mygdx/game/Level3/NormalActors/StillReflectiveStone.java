@@ -63,7 +63,7 @@ public class StillReflectiveStone extends Actor{
 
 
 
-        //这里设定盒子的大小
+        //
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
@@ -82,7 +82,7 @@ public class StillReflectiveStone extends Actor{
         mySimulation.setGravityScale(1);
         ActConstants.publicInformation.put("stillReflectiveStone"+myNumber, this);
 
-        //用这种方式克隆
+        //
         currentFrame = new TextureRegion(AssetsLevel2.instance.decoration.pianzhuanqi);
 
     }

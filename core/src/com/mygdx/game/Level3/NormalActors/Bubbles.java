@@ -20,9 +20,9 @@ public class Bubbles extends Actor {
     public World world;
     long actorId;
     String name;
-    float range;//生成泡泡的区域范围，米
+    float range;
     float radius;
-    float distance; //发射台间隔
+    float distance; //
    public Array<Body> bubbles;
     Integer bubbleIndex;
    public int numOfDestroyed;
@@ -36,7 +36,7 @@ public class Bubbles extends Actor {
         textureRegion = (TextureRegion) AssetsLevel2.instance.decoration.qipao;
         image = new Image(textureRegion);
         this.world = world;
-        setX(x);//气泡场起始位置
+        setX(x);//
         setY(y);
         this.range = range;
         this.radius = radius;
@@ -78,7 +78,7 @@ public class Bubbles extends Actor {
                         numOfSpawned++;
                     }
 
-                    //此处为自动销毁泡泡的代码
+                    //
                     for(Body b:bubbles){
                         if(b.getPosition().y>90f){
                             b.setTransform(b.getPosition().x,getY(),0);

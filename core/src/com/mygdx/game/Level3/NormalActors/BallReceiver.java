@@ -43,20 +43,20 @@ public class BallReceiver extends Actor {
         this.physicalX = physicalX;
         this.physicalY = physicalY;
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(7.8f/ ActConstants.worldSize_shapeAndPhysics,0.7f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
 
 
         mySimulation = world.createBody(myBodyDef);

@@ -20,11 +20,11 @@ public class TongueMonster extends Actor {
     PolygonShape tongueShape;
 
 
-    float statetime;//用于替换主角动作图片的标记
+    float statetime;//
 
 
 
-    TextureRegion currentFrameTop;//当前该播放的图片（这个类是从texture中切一块出来）
+    TextureRegion currentFrameTop;
     TextureRegion currentFrameTongue;
 
     float physicalX;
@@ -56,7 +56,7 @@ public class TongueMonster extends Actor {
         myNumber = number;
 
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineKinematic();
         tongueBodyDef = PhysicalEntityDefine.getBd();
         tongueFixtureDef = PhysicalEntityDefine.getFd();
@@ -64,13 +64,13 @@ public class TongueMonster extends Actor {
 
 
         tongueShape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         tongueShape.setAsBox(tongueWidth,tongueHeight);
         tongueFixtureDef.shape = tongueShape;
         tongueFixtureDef.friction = 1;
         tongueFixtureDef.isSensor = false;
 
-        tongueBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        tongueBodyDef.position.set(physicalX,physicalY);//
 
 
         tongueSimulation = world.createBody(tongueBodyDef);

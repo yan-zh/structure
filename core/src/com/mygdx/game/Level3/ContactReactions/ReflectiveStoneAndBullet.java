@@ -40,7 +40,7 @@ public class ReflectiveStoneAndBullet implements ContactReaction {
                 }
 
         };
-        timer.scheduleTask(timerTask, 1, 1, 0);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(timerTask, 1, 1, 0);
 
 
 

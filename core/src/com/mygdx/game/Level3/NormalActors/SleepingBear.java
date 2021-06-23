@@ -26,7 +26,6 @@ public class SleepingBear extends Actor {
 
 
 
-    //注意这个熊的刚体类型设置为了static。是否该设为kinetic?
     public SleepingBear(World world, float x, float y, float width, float height, long actorId, String name) {
         animation= AssetsLevel2.instance.pangxie.animBreath;
         this.world = world;

@@ -36,7 +36,7 @@ public class WoodFairyAndMainCharacter implements ContactReaction {
                 }
             });
 
-            Action action = Actions.delay(0.5f,delayedAction);//这个数就是1s
+            Action action = Actions.delay(0.5f,delayedAction);//0.5s
             fairy.addAction(action);
         }
 

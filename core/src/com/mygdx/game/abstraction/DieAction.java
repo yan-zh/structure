@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+//if maincharacter die, new this to play the die animation
 public class DieAction extends Actor {
     Animation die;
     TextureRegion currentFrame;
@@ -37,6 +38,7 @@ public class DieAction extends Actor {
 
         currentFrame = (TextureRegion) die.getKeyFrame(t,false);
 
+        //remove if finish play
         if(die.isAnimationFinished(t)){
             this.remove();
         }

@@ -38,7 +38,7 @@ public class MonsterA extends Actor {
     static short number=0;
 
 
-    float statetime;//用于替换主角动作图片的标记
+    float statetime;
 
     Animation walk;
 
@@ -46,8 +46,8 @@ public class MonsterA extends Actor {
 
 
 
-    short action;//0 停 1 左 2 右移动方向
-    short direction;//0 左 1 右 图片朝向   两个全是3就是die
+    short action;//0 stop 1 left 2 right(move direction)
+    short direction;//0 left 1 right both 3 die(picture direction)
 
     float speed;
 
@@ -84,6 +84,7 @@ public class MonsterA extends Actor {
         this.remove = false;
         this.type = type;
 
+        //after contact, wait some time to attack
         timer = new Timer();
         timerTask = new Timer.Task() {
             @Override
@@ -115,10 +116,9 @@ public class MonsterA extends Actor {
 
 
         this.world = world;
-        //获得物理世界引用
 
 
-        //创建主角物理模拟
+        //physical entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -127,17 +127,15 @@ public class MonsterA extends Actor {
         myNumber=number;
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         shape.setAsBox(2.5f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor=false;
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);
 
 
         mySimulation = world.createBody(myBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
         mySimulation.createFixture(myFixtureDef).setUserData(new UserData(ActConstants.MonsterID,"Monster"+myNumber));
         mySimulation.setGravityScale(1);
 
@@ -151,17 +149,16 @@ public class MonsterA extends Actor {
 
 
         sensorShape = new CircleShape();
-        sensorShape.setRadius(5f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-//        sensorShape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
+        sensorShape.setRadius(5f/ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorShape;
 
         sensorFixtureDef.isSensor=true;
         sensorFixtureDef.density = 0;
 
-        sensorBodyDef.position.set(x,y);//这个表示物理世界中的米
+        sensorBodyDef.position.set(x,y);
 
         sensorSimulation = world.createBody(sensorBodyDef);
-        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
+
         sensorSimulation.createFixture(sensorFixtureDef).setUserData(new UserData(ActConstants.monsterSensorID,"Monster"+myNumber));
         sensorSimulation.setGravityScale(0);
 
@@ -170,11 +167,11 @@ public class MonsterA extends Actor {
         weldJointDef.initialize(mySimulation,sensorSimulation,mySimulation.getPosition());
         weldJoint = world.createJoint(weldJointDef);
 
-        //内存显示区
+
         this.statetime = 0;
 
 
-        //交互注册
+        //register
         ActConstants.publicInformation.put("Monster"+myNumber,this);
 
 
@@ -191,7 +188,7 @@ public class MonsterA extends Actor {
 
         if(count==0){
 
-            timer.scheduleTask(timerTask, 1, 3, 100);// 0s之后执行，每次间隔1s，执行20次。
+            timer.scheduleTask(timerTask, 1, 3, 100);// after 0s action，1s delay，do 20 times
 
         }
 
@@ -207,6 +204,7 @@ public class MonsterA extends Actor {
         this.physicalX = mySimulation.getPosition().x;
         this.physicalY = mySimulation.getPosition().y;
 
+        //close to mainActor
         if(move){
             MainCharacter mainCharacter = ((MainCharacter)ActConstants.publicInformation.get("MainCharacter"));
             if(mySimulation.getPosition().x>=mainCharacter.getPhysicalX()){
@@ -257,9 +255,11 @@ public class MonsterA extends Actor {
 
     @Override
     public boolean remove() {
+
+        //remove both sensor, body and joint
         synchronized (ActConstants.MonsterActionLock){
             MyGdxGame.currentStage.addActor(new DieAction(AssetsUI.instance.cdxgw.animDead,(mySimulation.getPosition().x-0.7f)*50f, (mySimulation.getPosition().y-0.45f)*50f));
-            //消除自身，要锁
+
 
             DeletePhysicalEntity deletePhysicalEntity1 = new DeletePhysicalEntity();
             deletePhysicalEntity1.deleteBody(mySimulation,world);
@@ -288,7 +288,7 @@ public class MonsterA extends Actor {
         }
     }
 
-    //true是还活着，这个bulletID有用的，判断伤害加成用的
+
     public boolean damage(long bulletContactID,int bulletDamage){
         life -= bulletDamage;
         if(life<=0){
@@ -308,16 +308,6 @@ public class MonsterA extends Actor {
     }
 
     public void attack(){
-//        MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
-//        float[] direction = MyVector.getStandardVector(mySimulation.getPosition().x,mySimulation.getPosition().y,mainCharacter.getPhysicalX(),mainCharacter.getPhysicalY());
-//        if(type==1){
-//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
-//        }else if(type==2){
-//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animBreath,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
-//        }else if(type==3){
-//            MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.getAnimCopterRotate,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
-//        }
-        //MyGdxGame.currentStage.addActor(new BulletSkill(Assets.instance.bunny.getAnimCopterRotate,Assets.instance.bunny.animNormal,Assets.instance.mainCharacter.animRun,this.getX(),this.getY(),direction,ActConstants.windBulletID,1));
         synchronized (ActConstants.physicalActionListLock){
             MonsterAttack monsterAttack = new MonsterAttack(mySimulation,getX(),getY(),type);
             ActConstants.physicalActionList.add(monsterAttack);

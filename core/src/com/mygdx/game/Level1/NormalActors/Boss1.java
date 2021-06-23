@@ -27,7 +27,7 @@ public class Boss1 extends Actor {
     PolygonShape sensorshape;
 
 
-    float statetime;//用于替换主角动作图片的标记
+    float statetime;
     float statetime2;
 
     Animation rest;
@@ -50,10 +50,9 @@ public class Boss1 extends Actor {
 
         reBorn = false;
 
-        //获得物理世界引用
         this.world = world;
 
-        //创建boss
+        //physical entity
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -63,11 +62,11 @@ public class Boss1 extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+
         shape.setAsBox(12f/ ActConstants.worldSize_shapeAndPhysics,4f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);
         physicalX = x;
         physicalY = y;
         physicalBX = x;
@@ -80,7 +79,7 @@ public class Boss1 extends Actor {
 
 
 
-        //创建sensor
+        //sensor entity
         PhysicalEntityDefine.defineStatic();
         sensorBodyDef = PhysicalEntityDefine.getBd();
         sensorFixtureDef = PhysicalEntityDefine.getFd();
@@ -93,30 +92,30 @@ public class Boss1 extends Actor {
 
 
         sensorshape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         sensorshape.setAsBox(1f/ ActConstants.worldSize_shapeAndPhysics,5f/ ActConstants.worldSize_shapeAndPhysics);
         sensorFixtureDef.shape = sensorshape;
 
-        sensorBodyDef.position.set(x+10,y-10);//这个表示物理世界中的米
+        sensorBodyDef.position.set(x+10,y-10);
 
         sensorSimulation = world.createBody(sensorBodyDef);
 
         sensorSimulation.createFixture(sensorFixtureDef).setUserData(new UserData(ActConstants.Boss1SensorID,"Boss1"));
 
 
-        //内存显示区
+
+        //differetn TIME for animation
         this.statetime = 0;
         this.statetime2 = 0;
 
-        //交互注册
+        //regist
         ActConstants.publicInformation.put("Boss1",this);
 
         rest = AssetsLevel0.instance.cdboss.animBreath;
         purchase = AssetsLevel0.instance.cdboss.animAttack;
         weakUp = AssetsLevel0.instance.cdboss.animAttack;
 
-        actionState1 = true;//true是等待，false是追逐
-        actionState2 = false;//true是播放weakup
+        actionState1 = true;//true is wait，false is purchasing
+        actionState2 = false;//true is play animation weak up
 
 
 
@@ -143,6 +142,7 @@ public class Boss1 extends Actor {
 
             }
         }else{
+            //follow the maincharacter not too far, not to close
             currentFrame = (TextureRegion) purchase.getKeyFrame(statetime,true);
             MainCharacter mainCharacter = (MainCharacter)ActConstants.publicInformation.get("MainCharacter");
             float mainCharacterX = mainCharacter.getPhysicalX();

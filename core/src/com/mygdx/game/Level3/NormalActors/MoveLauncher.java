@@ -20,7 +20,7 @@ import com.mygdx.game.abstraction.UserData;
 
 public class MoveLauncher extends Actor {
 
-    float range;//每次移动距离基数
+    float range;//
     float duration;
 
     Timer MoveTimer;
@@ -113,7 +113,6 @@ public class MoveLauncher extends Actor {
         attackStateTime = 0;
         this.world = world;
 
-        //启动一个打的计时器，1秒动一下
 
         timer = new Timer();
         timerTask = new Timer.Task() {
@@ -140,7 +139,7 @@ public class MoveLauncher extends Actor {
         this.setY(physicalY*50);
 
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -148,13 +147,13 @@ public class MoveLauncher extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,3f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
 
         myFixtureDef.isSensor = false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
 
         mySimulation = world.createBody(myBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -402,7 +401,7 @@ public class MoveLauncher extends Actor {
 
     public void start(){
 
-        timer.scheduleTask(timerTask, 1, 3, 500);// 0s之后执行，每次间隔1s，执行20次。
+        timer.scheduleTask(timerTask, 1, 3, 500);
         active = true;
 
 //        AudioManager.instance.play(AssetsLevel2.instance.sounds.Zboss);

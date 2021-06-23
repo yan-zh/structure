@@ -19,7 +19,7 @@ public abstract class AbstractItem {
     }
 
     /**
-     * 封装：辅助快速添加动画
+     *
      * @param fps
      * @param name
      * @return

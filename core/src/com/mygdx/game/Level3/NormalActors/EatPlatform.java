@@ -82,7 +82,7 @@ public class EatPlatform extends Actor {
 
 
         this.world = world;
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineStatic();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
@@ -94,7 +94,7 @@ public class EatPlatform extends Actor {
 
 
         shape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         shape.setAsBox(6f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         myFixtureDef.shape = shape;
         myFixtureDef.isSensor = false;
@@ -102,7 +102,7 @@ public class EatPlatform extends Actor {
         platformHeight = 1.5f;
         platformWidth = 6f;
 
-        myBodyDef.position.set(x,y);//这个表示物理世界中的米
+        myBodyDef.position.set(x,y);//
         physicalX = x;
         physicalY = y;
 
@@ -117,26 +117,13 @@ public class EatPlatform extends Actor {
         currentFrame = (TextureRegion) wait.getKeyFrames()[0];
 
 
-//        //创建主角物理模拟
+//        //
 //        PhysicalEntityDefine.defineKinematic();
 //        spineBodyDef = PhysicalEntityDefine.getBd();
 //        spineFixtureDef = PhysicalEntityDefine.getFd();
 //
 //
-//
-//        spineShape = new PolygonShape();
-//        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
-//        spineShape.setAsBox((float)(platformHeight*0.9),(float)(platformHeight*0.3));
-//        spineFixtureDef.shape = spineShape;
-//
-//        spineBodyDef.position.set(x,y);//这个表示物理世界中的米
-//
-//        spineSimulation = world.createBody(spineBodyDef);
-//        //mySimulation.createFixture(myFixtureDef).setUserData("main character");
-//        spineSimulation.createFixture(spineFixtureDef).setUserData(new UserData(ActConstants.spineID,"Spine"+number));
 
-
-       // spine.setDraw(false);
 
 
 

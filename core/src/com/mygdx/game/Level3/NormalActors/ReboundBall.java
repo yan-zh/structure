@@ -38,14 +38,14 @@ public class ReboundBall extends Actor {
         this.physicalX = physicalX;
         this.physicalY = physicalY;
 
-        //创建主角物理模拟
+        //
         PhysicalEntityDefine.defineCharacter();
         myBodyDef = PhysicalEntityDefine.getBd();
         myFixtureDef = PhysicalEntityDefine.getFd();
 
 
         shape = new CircleShape();
-        shape.setRadius(0.5f/ActConstants.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        shape.setRadius(0.5f/ActConstants.worldSize_shapeAndPhysics);//
 
         myFixtureDef.shape = shape;
         myFixtureDef.restitution = 0.7f;
@@ -53,7 +53,7 @@ public class ReboundBall extends Actor {
 
         myFixtureDef.isSensor=false;
 
-        myBodyDef.position.set(physicalX,physicalY);//这个表示物理世界中的米
+        myBodyDef.position.set(physicalX,physicalY);//
         myBodyDef.fixedRotation = true;
 
 

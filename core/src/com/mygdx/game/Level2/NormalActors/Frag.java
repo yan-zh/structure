@@ -60,23 +60,23 @@ public class Frag extends Actor {
         physicalX = x;
         physicalY = y;
         number++;
-        direction = false;//向右
+        direction = false;
 
         activeTime = 0;
-        //获得眼镜世界引用
+
         this.world = world;
 
-        //创建眼镜物理模拟
+
         PhysicalEntityDefine.defineStatic();
         eyeBodyDef = PhysicalEntityDefine.getBd();
         eyeFixtureDef = PhysicalEntityDefine.getFd();
 
 
-        CircleShape shape = new CircleShape();//似乎是一个像素一个
+        CircleShape shape = new CircleShape();
         shape.setRadius(0.5f/ActConstants.worldSize_shapeAndPhysics);
         eyeFixtureDef.shape = shape;
 
-        eyeBodyDef.position.set(x,y);//这个表示物理世界中的米
+        eyeBodyDef.position.set(x,y);
 
         eyeSimulation = world.createBody(eyeBodyDef);
         //mySimulation.createFixture(myFixtureDef).setUserData("main character");
@@ -84,7 +84,7 @@ public class Frag extends Actor {
 
         ActConstants.publicInformation.put("Frag"+number,this);
 
-        //创建青蛙物理模拟
+
         PhysicalEntityDefine.defineStatic();
         toadBodyDef = PhysicalEntityDefine.getBd();
         toadFixtureDef = PhysicalEntityDefine.getFd();
@@ -92,14 +92,13 @@ public class Frag extends Actor {
 
 
         toadShape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
         toadShape.setAsBox(1.5f/ ActConstants.worldSize_shapeAndPhysics,1.5f/ ActConstants.worldSize_shapeAndPhysics);
         toadFixtureDef.shape = toadShape;
 
         if(direction==false){
-            toadBodyDef.position.set(x+1,y-0.3f);//这个表示物理世界中的米
+            toadBodyDef.position.set(x+1,y-0.3f);
         }else{
-            toadBodyDef.position.set(x-1,y-0.3f);//这个表示物理世界中的米
+            toadBodyDef.position.set(x-1,y-0.3f);
         }
 
 
@@ -109,11 +108,6 @@ public class Frag extends Actor {
 
 
 
-//        //创建舌头物理模拟
-//        PhysicalEntityDefine.defineStatic();
-//        tongueBodyDef = PhysicalEntityDefine.getBd();
-//        tongueFixtureDef = PhysicalEntityDefine.getFd();
-//
 //
 //
 //        tongueShape = new PolygonShape();

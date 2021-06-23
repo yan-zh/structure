@@ -11,14 +11,13 @@ public class CameraFocus {
     OrthographicCamera camerab2d;
     OrthographicCamera camera;
     MainCharacter mainCharacter;
-    public float leftMouse;//鼠标位置与左边界的距离,使用像素坐标，界面是1900宽，1000高
+    public float leftMouse;//
     public float rightMouse;
     public float upMouse;
     public float downMouse;
     public int state;
 
    
-    //物理世界和皮肤的摄像头错位了，不知道为什么，但是好像不影响皮肤的显示和动作的流畅
     public CameraFocus(OrthographicCamera camerab2d, OrthographicCamera camera){
         this.mainCharacter = (MainCharacter) ActConstants.publicInformation.get("MainCharacter");
         this.camerab2d = camerab2d;
@@ -51,7 +50,7 @@ public class CameraFocus {
     public void innerBoundary(float width, float height, float positionX, float positionY){
 
 
-        //前两个是矩形的宽高（物理世界坐标），后来两个事矩形中心在物理世界坐标下在相机框的相对位置
+
         Vector2 characterPosition  = mainCharacter.getPositionInSimulation();
         Vector2 cameraPosition = new Vector2(camerab2d.position.x,camerab2d.position.y);
 

@@ -33,7 +33,6 @@ public class CreateTongue implements PhysicalAction {
 
     @Override
     public void act() {
-        //创建舌头物理模拟
         PhysicalEntityDefine.defineStatic();
         tongueBodyDef = PhysicalEntityDefine.getBd();
         tongueFixtureDef = PhysicalEntityDefine.getFd();
@@ -41,16 +40,16 @@ public class CreateTongue implements PhysicalAction {
 
 
         tongueShape = new PolygonShape();
-        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//worldsize左边的数表示物理世界中的米
+        // shape.setRadius(1.5f/ PublicData.worldSize_shapeAndPhysics);//
         tongueShape.setAsBox(3f/ ActConstants.worldSize_shapeAndPhysics,0.5f/ ActConstants.worldSize_shapeAndPhysics);
         tongueFixtureDef.shape = tongueShape;
 
         tongueFixtureDef.isSensor = false;
 
         if(direction==false){
-            tongueBodyDef.position.set(physicalX-1,physicalY-1);//这个表示物理世界中的米
+            tongueBodyDef.position.set(physicalX-1,physicalY-1);//
         }else{
-            tongueBodyDef.position.set(physicalX+1,physicalY-1);//这个表示物理世界中的米
+            tongueBodyDef.position.set(physicalX+1,physicalY-1);//
         }
 
 

@@ -16,7 +16,7 @@ public class LoadTiledMap {
     }
 
     public static void doScene2(World world, Stage stage, TiledMap tiledMap){
-        //地面
+
 
 //        PhysicalEntityDefine.defineWall();
 //
